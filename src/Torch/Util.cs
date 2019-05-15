@@ -24,6 +24,8 @@ namespace Torch
                 case string o: return new PyString(o);
                 // sequence types
                 case Array o: return ToTuple(o);
+                // other types
+                case NumSharp.Shape o: return ToTuple(o.Dimensions);
                 default:
                     throw new NotImplementedException("Type is not yet supported: " + obj.GetType().Name);
             }

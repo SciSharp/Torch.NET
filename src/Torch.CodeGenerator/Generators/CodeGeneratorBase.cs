@@ -72,7 +72,7 @@ namespace Torch.CodeGenerator
             {
                 case "None": return "null";
                 case "True": return "true";
-                case "False": return "False";
+                case "False": return "false";
             }
             return @default;
         }
