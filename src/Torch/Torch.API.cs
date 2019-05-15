@@ -9,12 +9,13 @@ namespace Torch
 {
     public partial class TorchRunner
     {
-        public Tensor empty(params int[] dims)
+        public Tensor empty(params int[] size)
         {
-            var tuple = new PyTuple(dims.Select(x => new PyInt(x)).ToArray());
-            dynamic py = torch.empty(tuple);
+            var _size = Util.ToPython<int[]>(size);
+            dynamic py = torch.empty(_size);
 
-            return new Tensor(py.Handle);
+            //return new Tensor(py.Handle);
+            return Util.ToCsharp<Tensor>(py);
         }
 
         public Tensor tensor<T>(T[] data)
