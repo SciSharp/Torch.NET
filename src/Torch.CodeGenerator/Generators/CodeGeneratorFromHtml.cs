@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using Torch.CodeGenerator.Models;
 
 namespace Torch.CodeGenerator
 {
