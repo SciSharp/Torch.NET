@@ -1,13 +1,17 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
     <RootNamespace>Torch</RootNamespace>
     <AssemblyName>Torch.NET</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="NumSharp" Version="0.10.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\pythonnet\src\runtime\Python.Runtime.csproj" />
   </ItemGroup>
 
 </Project>

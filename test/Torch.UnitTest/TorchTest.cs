@@ -1,4 +1,5 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Python.Runtime;
 
 namespace Torch
 {
@@ -12,7 +13,18 @@ namespace Torch
         [TestMethod]
         public void empty()
         {
-            torch.empty(2, 3);
+            var torch = new TorchRunner();
+            var tensor = torch.empty(2, 3);
+            
+            torch.run();
+        }
+
+        [TestMethod]
+        public void tensor()
+        {
+            var torch = new TorchRunner();
+            var tensor = torch.tensor(new int[] { 1, 2, 3 });
+            torch.run();
         }
     }
 }
