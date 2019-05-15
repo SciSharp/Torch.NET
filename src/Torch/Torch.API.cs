@@ -11,7 +11,7 @@ namespace Torch
     {
         public Tensor empty(params int[] size)
         {
-            var _size = Util.ToPython<int[]>(size);
+            var _size = Util.ToPython(size);
             dynamic py = torch.empty(_size);
 
             //return new Tensor(py.Handle);
