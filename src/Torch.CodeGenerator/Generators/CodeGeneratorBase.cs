@@ -62,7 +62,7 @@ namespace Torch.CodeGenerator
         private IEnumerable<Declaration> ExpandOverloads(Declaration decl)
         {
             // todo: let's hope there are not multiple expansions in one declaration, or else this will get complicated
-            if (!decl.arguments.Any(a => a.type == "(array_like)"))
+            if (decl.arguments.Any(a => a.type == "(array_like)"))
             {
                 foreach (var type in "NumSharp.NDArray int[] int[,] int[,,] int[,,,] int[][] int[][][] float[] double[] byte[] bool[]".Split())
                 {
