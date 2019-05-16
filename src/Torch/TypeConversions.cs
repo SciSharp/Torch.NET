@@ -29,6 +29,9 @@ namespace Torch
                 case float o: return new PyFloat(o);
                 case double o: return new PyFloat(o);
                 case string o: return new PyString(o);
+                case dtype o: return o.ToPython();
+                //case layout o: return o.ToPython(); // todo
+                //case device o: return o.ToPython(); // todo
                 // sequence types
                 case Array o: return ToTuple(o);
                 // other types

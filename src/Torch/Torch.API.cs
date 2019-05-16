@@ -5,10 +5,12 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
+
 namespace Torch
 {
     public partial class TorchRunner
     {
+
         public Tensor tensor(NumSharp.NDArray data, dtype? dtype = null, device? device = null, bool? requires_grad = null, bool? pin_memory = null)
         {
             //auto-generated code, do not change

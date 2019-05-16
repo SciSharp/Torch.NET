@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Newtonsoft.Json.Linq;
 
 namespace Torch.CodeGenerator.Models
 {
@@ -21,5 +22,10 @@ namespace Torch.CodeGenerator.Models
         public bool with_gil { get; set; }
         public bool deprecated { get; set; }
         public bool inplace { get; set; }
+
+        public Declaration Clone()
+        {
+            return JObject.FromObject(this).ToObject<Declaration>();
+        }
     }
 }

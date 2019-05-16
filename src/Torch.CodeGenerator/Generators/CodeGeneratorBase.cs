@@ -16,18 +16,19 @@ namespace Torch.CodeGenerator
         }
 
         // generate an entire API function declaration
-        protected virtual void GenerateApiFunction(Declaration decl, StringBuilder s)
+        protected virtual void GenerateApiFunction(Declaration input_decl, StringBuilder s)
         {
-            var retval = GenerateReturnType(decl);
-            var arguments = GenerateArguments(decl);
-            GenerateDocString(decl, s);
-            string declaration = $"public {retval} {decl.name}({arguments})";
-            s.AppendLine(declaration);
-            s.AppendLine("{");
-            GenerateBody(decl, s);
-            s.AppendLine("}\r\n");
-
-            Console.WriteLine(declaration);
+            foreach (var decl in ExpandOverloads(input_decl))
+            {
+                var retval = GenerateReturnType(decl);
+                var arguments = GenerateArguments(decl);
+                GenerateDocString(decl, s);
+                string declaration = $"public {retval} {decl.name}({arguments})";
+                s.AppendLine(declaration);
+                s.AppendLine("{");
+                GenerateBody(decl, s);
+                s.AppendLine("}\r\n");
+            }
         }
 
         // generate the argument list between the parentheses of a generated API function
@@ -55,6 +56,27 @@ namespace Torch.CodeGenerator
                     s.Append(", ");
             }
             return s.ToString();
+        }
+
+
+        private IEnumerable<Declaration> ExpandOverloads(Declaration decl)
+        {
+            // todo: let's hope there are not multiple expansions in one declaration, or else this will get complicated
+            if (!decl.arguments.Any(a => a.type == "(array_like)"))
+            {
+                foreach (var type in "NumSharp.NDArray int[] int[,] int[,,] int[,,,] int[][] int[][][] float[] double[] byte[] bool[]".Split())
+                {
+                    var clone_decl = decl.Clone();
+                    clone_decl.arguments.ForEach(a =>
+                    {
+                        if (a.type == "(array_like)")
+                            a.type = type;
+                    });
+                    yield return clone_decl;
+                }
+                yield break;
+            }
+            yield return decl;
         }
 
         // this expands certain types into inline arguments 
@@ -198,7 +220,7 @@ namespace Torch.CodeGenerator
             switch (value)
             {
                 case "(array_like)":
-                    return "NumSharp.NDArray";
+                    return "(array_like)"; // keep it like that so we can generate overloads
                 case "(int)":
                     return "int";
                 case "(list of Tensor)":

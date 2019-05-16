@@ -7,7 +7,10 @@ namespace Torch
 {
     public class Tensor : IDisposable
     {
-        private PyObject _pyobject;
+
+        private readonly PyObject _pyobject;
+        public dynamic PyObject => _pyobject;
+
         public IntPtr Handle => _pyobject.Handle;
         public string Name { get; set; }
 
