@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
+using Torch.CodeGenerator.Generators;
 using Torch.CodeGenerator.Models;
 
 namespace Torch.CodeGenerator
@@ -13,6 +15,16 @@ namespace Torch.CodeGenerator
             var apis = new string[] { /*"empty", */"tensor" };
 
             return apis.Contains(apiName);
+        }
+
+
+        protected Dictionary<string, GeneratorTemplate> _templates;
+        protected void LoadTemplates()
+        {
+            _templates = Assembly.GetEntryAssembly().GetTypes()
+                .Where(x => x.GetCustomAttribute<TemplateAttribute>() != null)
+                .Select(x => (GeneratorTemplate)Activator.CreateInstance(x)).ToDictionary(x =>
+                    x.GetType().GetCustomAttribute<TemplateAttribute>().ApiFunction);
         }
 
         // generate an entire API function declaration
@@ -187,6 +199,11 @@ namespace Torch.CodeGenerator
         // generates only the body of the API function declaration
         protected virtual void GenerateBody(Declaration decl, StringBuilder s)
         {
+            if (_templates.ContainsKey(decl.name)) {
+                // use generator template instead
+                _templates[decl.name].GenerateBody(decl, s);
+                return;
+            }
             s.AppendLine("    //auto-generated code, do not change");
             // first generate the positional args
             s.AppendLine($"    var args=ToTuple(new object[] {{");

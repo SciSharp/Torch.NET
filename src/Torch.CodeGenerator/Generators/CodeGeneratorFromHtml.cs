@@ -3,8 +3,10 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
+using Torch.CodeGenerator.Generators;
 using Torch.CodeGenerator.Models;
 
 namespace Torch.CodeGenerator
@@ -13,6 +15,7 @@ namespace Torch.CodeGenerator
     {
         public string Generate()
         {
+            LoadTemplates();
             var docs = LoadDocs();
             var s = new StringBuilder();
 
@@ -49,6 +52,7 @@ namespace Torch.CodeGenerator
 
             return s.ToString();
         }
+
 
         private void SetFunctionName(Declaration decl, HtmlNode node)
         {
