@@ -103,6 +103,7 @@ namespace Torch.CodeGenerator
                     {
                         arg.type = type_part.Split(',')[0].Substring(1).Trim();
                         arg.is_nullable = true;
+                        arg.kwarg_only = true;
                     }
 
                     type_part = Regex.Match(p_desc, @"\(int...\)")?.Value; //(int...)
@@ -116,6 +117,7 @@ namespace Torch.CodeGenerator
                         // infer data type
                         if (string.IsNullOrEmpty(arg.type))
                             arg.type = InferDataType(arg.@default, p_desc.Split('–')[1]);
+                        arg.kwarg_only = true;
                     }
 
                     if (string.IsNullOrEmpty(arg.type))

@@ -7,6 +7,7 @@ namespace Torch
     public class Tensor : IDisposable
     {
         private IntPtr handle;
+        public IntPtr Handle => handle;
         public string Name { get; set; }
 
         public Tensor(IntPtr _handle)

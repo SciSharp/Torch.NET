@@ -29,6 +29,7 @@ namespace Torch
                 case Array o: return ToTuple(o);
                 // other types
                 case NumSharp.Shape o: return ToTuple(o.Dimensions);
+                case Torch.Tensor o: return new PyObject( o.Handle);
                 default:
                     throw new NotImplementedException("Type is not yet supported: " + obj.GetType().Name);
             }

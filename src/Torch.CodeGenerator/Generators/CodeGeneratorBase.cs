@@ -21,13 +21,13 @@ namespace Torch.CodeGenerator
             var retval = GenerateReturnType(decl);
             var arguments = GenerateArguments(decl);
             GenerateDocString(decl, s);
-            string declare = $"public {retval} {decl.name}({arguments})";
-            s.AppendLine(declare);
+            string declaration = $"public {retval} {decl.name}({arguments})";
+            s.AppendLine(declaration);
             s.AppendLine("{");
             GenerateBody(decl, s);
             s.AppendLine("}\r\n");
 
-            Console.WriteLine(declare);
+            Console.WriteLine(declaration);
         }
 
         // generate the argument list between the parentheses of a generated API function
@@ -166,13 +166,22 @@ namespace Torch.CodeGenerator
         protected virtual void GenerateBody(Declaration decl, StringBuilder s)
         {
             s.AppendLine("    //auto-generated code, do not change");
-            // first generate the Python objects for every argument
-            foreach (var arg in ExpandArguments(decl.arguments))
+            // first generate the positional args
+            s.AppendLine($"    var args=Util.ToTuple(new object[] {{");
+            foreach (var arg in ExpandArguments(decl.arguments).Where(a=>a.kwarg_only==false))
             {
-                s.AppendLine($"    var _{arg.name} = Util.ToPython({EscapeName(arg.name)});");
+                 s.AppendLine($"        {EscapeName(arg.name)},");
+            }
+            s.AppendLine("    });");
+            // then generate the named args
+            s.AppendLine($"    var kwargs=new PyDict();");
+            foreach (var arg in ExpandArguments(decl.arguments).Where(a => a.kwarg_only == true))
+            {
+                var name = EscapeName(arg.name);
+                s.AppendLine($"    if ({name}!=null) kwargs[\"{arg.name}\"]=Util.ToPython({name});");
             }
             // then call the function
-            s.AppendLine($"    dynamic py = torch.{decl.name}({string.Join(", ", decl.arguments.Select(a => "_" + a.name))});");
+            s.AppendLine($"    dynamic py = torch.InvokeMethod(\"{decl.name}\", args, kwargs);");
             // return the return value if any
             if (decl.returns.Count == 0)
                 return;
