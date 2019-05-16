@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using Torch.CodeGenerator.Models;
 
 namespace Torch.CodeGenerator
@@ -38,6 +39,7 @@ namespace Torch.CodeGenerator
                     var decl = new Declaration();
                     SetFunctionName(decl, node);
                     SetReturnType(decl, node);
+                    SetParameters(decl, node);
 
                     Console.WriteLine(decl.schema_string);
                     GenerateApiFunction(decl, s);
@@ -55,9 +57,75 @@ namespace Torch.CodeGenerator
         private void SetReturnType(Declaration decl, HtmlNode node)
         {
             decl.returns = new List<Argument>();
-
-            // { new Argument() { type = GenerateReturnType(decl) } };
+            if (decl.name.StartsWith("is_"))
+            {
+                decl.returns.Add(new Argument
+                {
+                    type = "bool"
+                });
+            }
         }
+
+        private void SetParameters(Declaration decl, HtmlNode node)
+        {
+            decl.arguments = new List<Argument>();
+            var p_nodes = node.Descendants("dd").First().Descendants("dl").FirstOrDefault();
+            if (p_nodes == null) return;
+
+            var p_node = p_nodes.Descendants("dd").First();
+            if (p_node.InnerHtml == "")
+            {
+                Console.WriteLine($"Skipped {decl.name}");
+                return;
+            }
+
+            if (p_node.Element("ul") != null) // multiple parameters
+            {
+                foreach(var li in p_node.Element("ul").Elements("li"))
+                {
+                    var arg = new Argument();
+
+                    // precision – Number of digits of precision for floating point output(default = 4).
+                    var p_desc = li.InnerText;
+                    arg.name = p_desc.Split(' ')[0];
+
+                    var type_part = Regex.Match(p_desc, @"\(\S+, optional\)")?.Value; //(torch.dtype, optional)
+                    if (!string.IsNullOrEmpty(type_part))
+                    {
+                        arg.type = type_part.Split(',')[0].Substring(1).Trim();
+                        arg.is_nullable = true;
+                    }
+
+                    var default_part = Regex.Match(p_desc, @"\(default = \d+\)")?.Value; //(default = 4)
+                    if (!string.IsNullOrEmpty(default_part))
+                    {
+                        arg.@default = default_part.Split('=')[1].Replace(")", string.Empty);
+                        // infer data type
+                        if (string.IsNullOrEmpty(arg.type))
+                            arg.type = InferDataType(arg.@default, p_desc.Split('–')[1]);
+                    }
+
+                    if (string.IsNullOrEmpty(arg.type))
+                    {
+                        arg.type = InferDataType(Regex.Match(p_desc, @"\(\S+\)")?.Value, p_desc.Split('–')[1]);
+                    }
+
+                    decl.arguments.Add(arg);
+                }
+            }
+            else
+            {
+                var arg = new Argument();
+
+                var p_desc = p_node.InnerText; // obj (Object) – Object to test
+                arg.name = p_desc.Split(' ')[0];
+                arg.type = p_desc.Split('–')[0].Split(' ')[1].Replace("(", string.Empty).Replace(")", string.Empty);
+                var desc = p_desc.Split('–')[1].Trim();
+
+                decl.arguments.Add(arg);
+            }
+        }
+
 
         public Dictionary<string, string> LoadDocs()
         {

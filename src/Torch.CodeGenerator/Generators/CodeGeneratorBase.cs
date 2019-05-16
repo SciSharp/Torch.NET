@@ -14,10 +14,13 @@ namespace Torch.CodeGenerator
             var retval = GenerateReturnType(decl);
             var arguments = GenerateArguments(decl);
             GenerateDocString(decl, s);
-            s.AppendLine($"public {retval} {decl.name} ({arguments})");
+            string declare = $"public {retval} {decl.name}({arguments})";
+            s.AppendLine(declare);
             s.AppendLine("{");
             GenerateBody(decl, s);
             s.AppendLine("}\r\n");
+
+            Console.WriteLine(declare);
         }
 
         // generate the argument list between the parentheses of a generated API function
@@ -66,7 +69,7 @@ namespace Torch.CodeGenerator
         }
 
         // maps None to null, etc
-        protected virtual string MapDefaultValue(string @default)
+        protected string MapDefaultValue(string @default)
         {
             switch (@default)
             {
@@ -84,7 +87,7 @@ namespace Torch.CodeGenerator
         };
 
         // escape a varibale name if it violates C# syntax
-        protected virtual string EscapeName(string name)
+        protected string EscapeName(string name)
         {
             if (_disallowed_names.Contains(name))
                 return "@" + name;
@@ -107,7 +110,7 @@ namespace Torch.CodeGenerator
         }
 
         // maps a C++ type to C# type
-        protected virtual string MapType(Argument arg)
+        protected string MapType(Argument arg)
         {
             switch (arg.type)
             {
@@ -116,6 +119,8 @@ namespace Torch.CodeGenerator
                 case "int": return "int";
                 case "int64_t": return "long";
                 case "double": return "double";
+                case "string": return "string";
+                case "Object": return "object";
                 // sequence types
                 case "IntArrayRef":
                     if (arg.name == "size")
@@ -127,8 +132,8 @@ namespace Torch.CodeGenerator
                 case "Device": return "Torch.Device";
                 case "Tensor": return "Torch.Tensor";
                 default:
-                    Console.WriteLine("MapType doesn't handle type: " + arg.type);
-                    return "object";
+                    // Console.WriteLine("MapType doesn't handle type: " + arg.type);
+                    return arg.type;
             }
         }
 
@@ -157,6 +162,17 @@ namespace Torch.CodeGenerator
             {
                 throw new NotImplementedException("return a tuple or array of return values");
             }
+        }
+
+        protected string InferDataType(string value, string hint)
+        {
+            if (value == "(array_like)") return "NDArray";
+            if (value == "(int)") return "int";
+
+            if (hint.ToLower().Contains("number of "))
+                return "int";
+
+            return "string";
         }
     }
 }
