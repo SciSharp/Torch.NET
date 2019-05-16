@@ -17,6 +17,9 @@ namespace Torch
 
         public static PyObject ToPython(object obj)
         {
+            if (obj == null)
+                return null;
+
             switch (obj)
             {
                 // basic types

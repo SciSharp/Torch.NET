@@ -20,7 +20,7 @@ namespace Torch
         [TestMethod]
         public void empty()
         {
-            var tensor = torch.empty(2, 3);
+            var tensor = torch.empty((2, 3));
         }
 
         [TestMethod]

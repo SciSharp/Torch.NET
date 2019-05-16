@@ -8,6 +8,13 @@ namespace Torch.CodeGenerator
 {
     public abstract class CodeGeneratorBase
     {
+        protected bool InMigrationApiList(string apiName)
+        {
+            var apis = new string[] { "empty", "tensor" };
+
+            return apis.Contains(apiName);
+        }
+
         // generate an entire API function declaration
         protected virtual void GenerateApiFunction(Declaration decl, StringBuilder s)
         {
@@ -34,13 +41,15 @@ namespace Torch.CodeGenerator
                 // TODO modifier (if any)
                 // parameter type
                 s.Append(MapType(arg));
-                if (arg.is_nullable)
+                if (arg.is_nullable && arg.is_value_type)
                     s.Append("?");
                 s.Append(" ");
                 // parameter name
                 s.Append(EscapeName(arg.name));
                 if (!string.IsNullOrWhiteSpace(arg.@default))
-                    s.Append($"={MapDefaultValue(arg.@default)}");
+                    s.Append($" = {MapDefaultValue(arg.@default)}");
+                else if(arg.is_nullable)
+                    s.Append($" = null");
                 i++;
                 if (i < args.Length)
                     s.Append(", ");
@@ -115,25 +124,36 @@ namespace Torch.CodeGenerator
             switch (arg.type)
             {
                 // basic types
-                case "bool": return "bool";
-                case "int": return "int";
-                case "int64_t": return "long";
-                case "double": return "double";
-                case "string": return "string";
-                case "Object": return "object";
+                case "bool":
+                    arg.is_value_type = true;
+                    return "bool";
+                case "int":
+                    arg.is_value_type = true;
+                    return "int";
+                case "int64_t":
+                    arg.is_value_type = true;
+                    return "long";
+                case "double":
+                    arg.is_value_type = true;
+                    return "double";
+                case "string":
+                    return "string";
+                case "Object":
+                    return "object";
                 // sequence types
                 case "IntArrayRef":
                     if (arg.name == "size")
                         return "NumSharp.Shape"; // <-- int[] size usually means Shape of the tensor. 
                     return "int[]";
                 // torch types
-                case "ScalarType": return "Torch.ScalarType";
-                case "Layout": return "Torch.Layout";
-                case "Device": return "Torch.Device";
-                case "Tensor": return "Torch.Tensor";
+                case "int...":
+                    return "NumSharp.Shape";
+                case "Tensor":
+                    return "Tensor";
                 default:
+                    arg.is_value_type = true;
                     // Console.WriteLine("MapType doesn't handle type: " + arg.type);
-                    return arg.type;
+                    return arg.type.Replace("torch.", string.Empty);
             }
         }
 
@@ -166,8 +186,15 @@ namespace Torch.CodeGenerator
 
         protected string InferDataType(string value, string hint)
         {
-            if (value == "(array_like)") return "NDArray";
-            if (value == "(int)") return "int";
+            switch (value)
+            {
+                case "(array_like)":
+                    return "NumSharp.NDArray";
+                case "(int)":
+                    return "int";
+                case "(list of Tensor)":
+                    return "Tensor[]";
+            }
 
             if (hint.ToLower().Contains("number of "))
                 return "int";

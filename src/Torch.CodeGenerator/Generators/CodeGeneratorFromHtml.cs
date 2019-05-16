@@ -38,6 +38,7 @@ namespace Torch.CodeGenerator
                 {
                     var decl = new Declaration();
                     SetFunctionName(decl, node);
+                    if (!InMigrationApiList(decl.name)) continue;
                     SetReturnType(decl, node);
                     SetParameters(decl, node);
 
@@ -62,6 +63,14 @@ namespace Torch.CodeGenerator
                 decl.returns.Add(new Argument
                 {
                     type = "bool"
+                });
+            }
+
+            if(node.Element("dt").InnerText.Contains("&#x2192; Tensor"))
+            {
+                decl.returns.Add(new Argument
+                {
+                    type = "Tensor"
                 });
             }
         }
@@ -96,6 +105,10 @@ namespace Torch.CodeGenerator
                         arg.is_nullable = true;
                     }
 
+                    type_part = Regex.Match(p_desc, @"\(int...\)")?.Value; //(int...)
+                    if (!string.IsNullOrEmpty(type_part))
+                        arg.type = "int...";
+
                     var default_part = Regex.Match(p_desc, @"\(default = \d+\)")?.Value; //(default = 4)
                     if (!string.IsNullOrEmpty(default_part))
                     {
@@ -119,8 +132,13 @@ namespace Torch.CodeGenerator
 
                 var p_desc = p_node.InnerText; // obj (Object) – Object to test
                 arg.name = p_desc.Split(' ')[0];
-                arg.type = p_desc.Split('–')[0].Split(' ')[1].Replace("(", string.Empty).Replace(")", string.Empty);
-                var desc = p_desc.Split('–')[1].Trim();
+                // may contain type desc
+                var type_part = Regex.Match(p_desc.Split('–')[0], @"\([\S,\s]+\):")?.Value; // (list of Tensor):
+                if (!string.IsNullOrEmpty(type_part))
+                    arg.type = InferDataType(type_part.Replace(":", string.Empty), p_desc);
+                if (string.IsNullOrEmpty(arg.type))
+                    arg.type = p_desc.Split('–')[0].Split(' ')[1].Replace("(", string.Empty).Replace(")", string.Empty);
+                //var desc = p_desc.Split('–')[1].Trim();
 
                 decl.arguments.Add(arg);
             }
