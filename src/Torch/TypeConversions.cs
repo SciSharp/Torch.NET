@@ -59,7 +59,7 @@ namespace Torch
         {
             switch (typeof(T).Name)
             {
-                case "Tensor": return (T)(object)new Tensor(pyobj.Handle, pyobj.ToString());
+                case "Tensor": return (T)(object)new Tensor(pyobj);
                 default: return (T) pyobj;
             }
         }

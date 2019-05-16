@@ -1,31 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Python.Runtime;
 
 namespace Torch
 {
     public class Tensor : IDisposable
     {
-        private IntPtr handle;
-        public IntPtr Handle => handle;
+        private PyObject _pyobject;
+        public IntPtr Handle => _pyobject.Handle;
         public string Name { get; set; }
 
-        private string display;
-
-        public Tensor(IntPtr _handle, string display = null)
+        public Tensor(PyObject pyobject)
         {
-            handle = _handle;
-            this.display = display;
+            this._pyobject = pyobject;
         }
 
         public override string ToString()
         {
-            return display;
+            return _pyobject.ToString();
         }
 
         public void Dispose()
         {
-            
+            _pyobject?.Dispose();
         }
     }
 }
