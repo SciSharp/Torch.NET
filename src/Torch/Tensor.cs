@@ -10,9 +10,17 @@ namespace Torch
         public IntPtr Handle => handle;
         public string Name { get; set; }
 
-        public Tensor(IntPtr _handle)
+        private string display;
+
+        public Tensor(IntPtr _handle, string display = null)
         {
             handle = _handle;
+            this.display = display;
+        }
+
+        public override string ToString()
+        {
+            return display;
         }
 
         public void Dispose()
