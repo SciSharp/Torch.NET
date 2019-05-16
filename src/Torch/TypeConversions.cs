@@ -13,7 +13,7 @@ namespace Torch
         {
             var array = new PyObject[input.Length];
             for (int i = 0; i < input.Length; i++)
-                array[i]=ToPython(input.GetValue(0));
+                array[i]=ToPython(input.GetValue(i));
             return new PyTuple(array);
         }
 
