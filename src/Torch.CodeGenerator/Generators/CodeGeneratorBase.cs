@@ -10,7 +10,7 @@ namespace Torch.CodeGenerator
     {
         protected bool InMigrationApiList(string apiName)
         {
-            var apis = new string[] { "empty", "tensor" };
+            var apis = new string[] { /*"empty", */"tensor" };
 
             return apis.Contains(apiName);
         }

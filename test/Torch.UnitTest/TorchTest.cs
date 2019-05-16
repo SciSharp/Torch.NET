@@ -26,7 +26,7 @@ namespace Torch
         [TestMethod]
         public void tensor()
         {
-            var tensor = torch.tensor(new int[] { 1, 2, 3 });
+            var tensor = torch.tensor(new float[,] { { 0.1f, 1.2f }, { 2.2f, 3.1f }, { 4.9f, 5.2f } });
         }
     }
 }

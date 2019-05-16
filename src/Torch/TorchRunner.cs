@@ -8,11 +8,12 @@ namespace Torch
     {
         StringBuilder stats = new StringBuilder();
         dynamic torch;
-
+        dynamic np;
         public TorchRunner()
         {
             PythonEngine.Initialize();
             torch = Py.Import("torch");
+            np = Py.Import("numpy");
         }
 
         public void Dispose()
