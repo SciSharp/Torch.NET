@@ -167,7 +167,7 @@ namespace Torch.CodeGenerator
         {
             s.AppendLine("    //auto-generated code, do not change");
             // first generate the positional args
-            s.AppendLine($"    var args=Util.ToTuple(new object[] {{");
+            s.AppendLine($"    var args=ToTuple(new object[] {{");
             foreach (var arg in ExpandArguments(decl.arguments).Where(a=>a.kwarg_only==false))
             {
                  s.AppendLine($"        {EscapeName(arg.name)},");
@@ -178,7 +178,7 @@ namespace Torch.CodeGenerator
             foreach (var arg in ExpandArguments(decl.arguments).Where(a => a.kwarg_only == true))
             {
                 var name = EscapeName(arg.name);
-                s.AppendLine($"    if ({name}!=null) kwargs[\"{arg.name}\"]=Util.ToPython({name});");
+                s.AppendLine($"    if ({name}!=null) kwargs[\"{arg.name}\"]=ToPython({name});");
             }
             // then call the function
             s.AppendLine($"    dynamic py = torch.InvokeMethod(\"{decl.name}\", args, kwargs);");
@@ -186,7 +186,7 @@ namespace Torch.CodeGenerator
             if (decl.returns.Count == 0)
                 return;
             if (decl.returns.Count == 1)
-                s.AppendLine($"    return Util.ToCsharp<{decl.returns[0].type}>(py);");
+                s.AppendLine($"    return ToCsharp<{decl.returns[0].type}>(py);");
             else
             {
                 throw new NotImplementedException("return a tuple or array of return values");

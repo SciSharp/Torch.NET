@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using NumSharp;
 using Python.Runtime;
 
 namespace Torch
 {
-    public static class Util
+    public partial class TorchRunner
     {
-        public static PyTuple ToTuple(Array input)
+        public PyTuple ToTuple(Array input)
         {
             var array = new PyObject[input.Length];
             for (int i = 0; i < input.Length; i++)
@@ -15,7 +17,7 @@ namespace Torch
             return new PyTuple(array);
         }
 
-        public static PyObject ToPython(object obj)
+        public PyObject ToPython(object obj)
         {
             if (obj == null)
                 return null;
@@ -24,18 +26,36 @@ namespace Torch
             {
                 // basic types
                 case int o: return new PyInt(o);
+                case float o: return new PyFloat(o);
+                case double o: return new PyFloat(o);
                 case string o: return new PyString(o);
                 // sequence types
                 case Array o: return ToTuple(o);
                 // other types
                 case NumSharp.Shape o: return ToTuple(o.Dimensions);
                 case Torch.Tensor o: return new PyObject( o.Handle);
+                case NumSharp.NDArray o: return NDArrayToPython(o);
                 default:
                     throw new NotImplementedException("Type is not yet supported: " + obj.GetType().Name);
             }
         }
 
-        public static T ToCsharp<T>(dynamic pyobj)
+        private PyObject NDArrayToPython(NDArray nd)
+        {         
+            var result = np.array(new PyTuple(new []{ToTuple(nd.Array)}));
+            if (nd.ndim==0)
+                throw new NotImplementedException("Are Scalars supported here?");
+            if (nd.ndim > 1)
+            {
+                var shape = result.shape;
+                var ndims = result.ndim;
+                result = np.reshape(result, nd.shape.ToList<int>());
+            }
+
+            return result;
+        }
+
+        public T ToCsharp<T>(dynamic pyobj)
         {
             switch (typeof(T).Name)
             {
