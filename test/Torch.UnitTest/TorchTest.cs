@@ -28,10 +28,18 @@ namespace Torch
         }
 
         [TestMethod]
-        public void tensor()
+        public void tensor_int()
+        {
+            var tensor = torch.tensor(new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 0 });
+            Assert.IsNotNull(tensor.ToString());
+            Console.WriteLine(tensor);
+        }
+        [TestMethod]
+        public void tensor_jagged_float()
         {
             var tensor = torch.tensor(new float[,] { { 0.1f, 1.2f }, { 2.2f, 3.1f }, { 4.9f, 5.2f } });
             Assert.IsNotNull(tensor.ToString());
+            Console.WriteLine(tensor);
         }
 
         [TestMethod]
