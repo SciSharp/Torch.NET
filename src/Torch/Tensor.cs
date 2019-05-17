@@ -5,28 +5,44 @@ using Python.Runtime;
 
 namespace Torch
 {
-    public class Tensor : IDisposable
+    public partial class Tensor : IDisposable
     {
 
-        private readonly PyObject _pyobject;
-        public dynamic PyObject => _pyobject;
+        protected readonly PyObject _pobj;
+        public dynamic PyObject => _pobj;
 
-        public IntPtr Handle => _pyobject.Handle;
+        public IntPtr Handle => _pobj.Handle;
         public string Name { get; set; }
 
         public Tensor(PyObject pyobject)
         {
-            this._pyobject = pyobject;
+            this._pobj = pyobject;
+        }
+
+        public Tensor(Tensor t)
+        {
+            this._pobj = t.PyObject;
         }
 
         public override string ToString()
         {
-            return _pyobject.ToString();
+            return _pobj.ToString();
         }
 
         public void Dispose()
         {
-            _pyobject?.Dispose();
+            _pobj?.Dispose();
+        }
+    }
+
+    public partial class Tensor<T> : Tensor
+    {
+        public Tensor(Tensor t) : base(t)
+        {
+        }
+
+        public Tensor(PyObject pyobject) : base(pyobject)
+        {
         }
     }
 }

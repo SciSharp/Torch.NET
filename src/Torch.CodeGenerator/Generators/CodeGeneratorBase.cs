@@ -10,13 +10,21 @@ namespace Torch.CodeGenerator
 {
     public abstract class CodeGeneratorBase
     {
+        // generate these API calls
         protected bool InMigrationApiList(string apiName)
         {
-            var apis = new string[] { /*"empty", */"tensor" };
+            var apis = new string[] { "empty", };
 
             return apis.Contains(apiName);
         }
 
+        // do not generate these API calls (they are manually implemented)
+        protected bool IgnoreApiList(string apiName)
+        {
+            var apis = new string[] { "tensor" };
+
+            return apis.Contains(apiName);
+        }
 
         protected Dictionary<string, GeneratorTemplate> _templates;
         protected void LoadTemplates()
@@ -76,7 +84,7 @@ namespace Torch.CodeGenerator
             // todo: let's hope there are not multiple expansions in one declaration, or else this will get complicated
             if (decl.arguments.Any(a => a.type == "(array_like)"))
             {
-                foreach (var type in "NumSharp.NDArray int[] int[,] int[,,] int[,,,] int[][] int[][][] float[] double[] byte[] bool[]".Split())
+                foreach (var type in "NumSharp.NDArray T[] T[,] T[,,]".Split())
                 {
                     var clone_decl = decl.Clone();
                     clone_decl.arguments.ForEach(a =>
@@ -92,6 +100,7 @@ namespace Torch.CodeGenerator
         }
 
         // this expands certain types into inline arguments 
+        [Obsolete("this will be removed soon")]
         protected virtual IEnumerable<Argument> ExpandArguments(List<Argument> args)
         {
             foreach (var arg in args)
