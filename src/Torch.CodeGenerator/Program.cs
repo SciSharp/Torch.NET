@@ -7,7 +7,7 @@ namespace Torch.CodeGenerator
         static void Main(string[] args)
         {
             //var generator = new CodeGeneratorFromYaml();
-            var generator = new CodeGeneratorFromHtml();
+            var generator = new TorchApiGenerator();
             var code = generator.Generate();
             Console.WriteLine("Generated code:\r\n");
             Console.WriteLine(code);

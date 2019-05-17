@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Python.Runtime", "..\python
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Torch.CodeGenerator", "src\Torch.CodeGenerator\Torch.CodeGenerator.csproj", "{A1C7F925-C5FD-4AFE-976F-133D02A4409B}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeMinion.Core", "..\CodeMinion\src\CodeMinion.Core\CodeMinion.Core.csproj", "{036916A6-AE4D-4231-A590-2FBA9879B31D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -105,6 +107,26 @@ Global
 		{A1C7F925-C5FD-4AFE-976F-133D02A4409B}.ReleaseWin|Any CPU.Build.0 = Release|Any CPU
 		{A1C7F925-C5FD-4AFE-976F-133D02A4409B}.ReleaseWinPY3|Any CPU.ActiveCfg = Release|Any CPU
 		{A1C7F925-C5FD-4AFE-976F-133D02A4409B}.ReleaseWinPY3|Any CPU.Build.0 = Release|Any CPU
+		{036916A6-AE4D-4231-A590-2FBA9879B31D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{036916A6-AE4D-4231-A590-2FBA9879B31D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{036916A6-AE4D-4231-A590-2FBA9879B31D}.DebugMono|Any CPU.ActiveCfg = Debug|Any CPU
+		{036916A6-AE4D-4231-A590-2FBA9879B31D}.DebugMono|Any CPU.Build.0 = Debug|Any CPU
+		{036916A6-AE4D-4231-A590-2FBA9879B31D}.DebugMonoPY3|Any CPU.ActiveCfg = Debug|Any CPU
+		{036916A6-AE4D-4231-A590-2FBA9879B31D}.DebugMonoPY3|Any CPU.Build.0 = Debug|Any CPU
+		{036916A6-AE4D-4231-A590-2FBA9879B31D}.DebugWin|Any CPU.ActiveCfg = Debug|Any CPU
+		{036916A6-AE4D-4231-A590-2FBA9879B31D}.DebugWin|Any CPU.Build.0 = Debug|Any CPU
+		{036916A6-AE4D-4231-A590-2FBA9879B31D}.DebugWinPY3|Any CPU.ActiveCfg = Debug|Any CPU
+		{036916A6-AE4D-4231-A590-2FBA9879B31D}.DebugWinPY3|Any CPU.Build.0 = Debug|Any CPU
+		{036916A6-AE4D-4231-A590-2FBA9879B31D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{036916A6-AE4D-4231-A590-2FBA9879B31D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{036916A6-AE4D-4231-A590-2FBA9879B31D}.ReleaseMono|Any CPU.ActiveCfg = Release|Any CPU
+		{036916A6-AE4D-4231-A590-2FBA9879B31D}.ReleaseMono|Any CPU.Build.0 = Release|Any CPU
+		{036916A6-AE4D-4231-A590-2FBA9879B31D}.ReleaseMonoPY3|Any CPU.ActiveCfg = Release|Any CPU
+		{036916A6-AE4D-4231-A590-2FBA9879B31D}.ReleaseMonoPY3|Any CPU.Build.0 = Release|Any CPU
+		{036916A6-AE4D-4231-A590-2FBA9879B31D}.ReleaseWin|Any CPU.ActiveCfg = Release|Any CPU
+		{036916A6-AE4D-4231-A590-2FBA9879B31D}.ReleaseWin|Any CPU.Build.0 = Release|Any CPU
+		{036916A6-AE4D-4231-A590-2FBA9879B31D}.ReleaseWinPY3|Any CPU.ActiveCfg = Release|Any CPU
+		{036916A6-AE4D-4231-A590-2FBA9879B31D}.ReleaseWinPY3|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

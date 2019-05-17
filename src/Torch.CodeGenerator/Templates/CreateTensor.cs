@@ -1,15 +1,17 @@
 ﻿using System.Collections;
 using System.Text;
-using Torch.CodeGenerator.Generators;
-using Torch.CodeGenerator.Models;
+using CodeMinion.Core;
+using CodeMinion.Core.Attributes;
+using CodeMinion.Core.Models;
 
-namespace Torch.CodeGenerator {
+namespace Torch.CodeGenerator.Templates {
+
     [Template("tensor")]
-    internal class CreateTensor : GeneratorTemplate
+    internal class CreateTensor : BodyTemplate
     {
         public override void GenerateBody(Declaration decl, StringBuilder s)
         {
-            var arg_type = decl.arguments[0].type;
+            var arg_type = decl.Arguments[0].Type;
             switch (arg_type) {
                 case "T[]":
                 case "T[,]":

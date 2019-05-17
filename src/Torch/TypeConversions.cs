@@ -45,6 +45,7 @@ namespace Torch
 
         private PyObject NDArrayToPython(NDArray nd)
         {         
+            // todo: MarshalCopy
             var result = np.array(new PyTuple(new []{ToTuple(nd.Array)}));
             if (nd.ndim==0)
                 throw new NotImplementedException("Are Scalars supported here?");
