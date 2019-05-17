@@ -11,7 +11,8 @@ using NumSharp;
 
 namespace Torch
 {
-    public partial class TorchRunner
+    // note: this file contains manually overridden implementations
+    public partial class PyTorch
     {
 
         public Tensor tensor(NumSharp.NDArray data, dtype? dtype = null, device? device = null, bool? requires_grad = null, bool? pin_memory = null)
@@ -21,7 +22,7 @@ namespace Torch
             var type = data.dtype.ToDtype();
             if (dtype != null && type != dtype)
                 throw new NotImplementedException("Type of the array is different from specified dtype. Data conversion is not supported (yet)");
-            var tensor = empty((Shape)data.shape, dtype: type, device: device,
+            var tensor = torch.empty((Shape)data.shape, dtype: type, device: device,
                 requires_grad: requires_grad, pin_memory: pin_memory);
             var storage = tensor.PyObject.storage();
             long ptr = storage.data_ptr();
@@ -43,7 +44,7 @@ namespace Torch
             var type = data.GetDtype();
             if (dtype!=null && type!=dtype)
                 throw new NotImplementedException("Type of the array is different from specified dtype. Data conversion is not supported (yet)");
-            var tensor = empty(new Shape(data.Length), dtype: type, device: device,
+            var tensor = torch.empty(new Shape(data.Length), dtype: type, device: device,
                 requires_grad: requires_grad, pin_memory: pin_memory);
             var storage = tensor.PyObject.storage();
             long ptr = storage.data_ptr();

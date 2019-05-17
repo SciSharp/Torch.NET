@@ -9,13 +9,6 @@ namespace Torch
     [TestClass]
     public class TorchTest
     {
-        TorchRunner torch;
-        [TestInitialize]
-        public void Init()
-        {
-            torch = TorchRunner.Instance;
-        }
-
         /// <summary>
         /// do_test_empty_full
         /// test\common_utils.py

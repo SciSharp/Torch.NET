@@ -34,7 +34,7 @@ namespace Torch
     {
         public static PyObject ToPython(this dtype value)
         {
-            var torch = TorchRunner.Instance.torch;
+            var torch = PyTorch.Instance.self;
             // todo: cache these values
             switch (value)
             {

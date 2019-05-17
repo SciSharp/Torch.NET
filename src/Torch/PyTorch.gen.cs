@@ -10,7 +10,7 @@ using NumSharp;
 
 namespace Torch
 {
-    public partial class PyTorch
+    public partial class PyTorch : IDisposable
     {
 
         public Tensor empty(NumSharp.Shape sizes, Tensor @out = null, dtype? dtype = null, layout? layout = null, device? device = null, bool? requires_grad = null, bool? pin_memory = null)
@@ -26,10 +26,18 @@ namespace Torch
             if (device!=null) kwargs["device"]=ToPython(device);
             if (requires_grad!=null) kwargs["requires_grad"]=ToPython(requires_grad);
             if (pin_memory!=null) kwargs["pin_memory"]=ToPython(pin_memory);
-            dynamic py = _self.InvokeMethod("empty", args, kwargs);
+            dynamic py = self.InvokeMethod("empty", args, kwargs);
             return ToCsharp<Tensor>(py);
         }
 
+private static Lazy<PyTorch> _instance = new Lazy<PyTorch>(() => new PyTorch());
+public static PyTorch Instance => _instance.Value;
+Lazy<PyObject> _pyobj = new Lazy<PyObject>(() => Py.Import("torch"));
+public dynamic self => _pyobj.Value;
+Lazy<PyObject> _np = new Lazy<PyObject>(() => Py.Import("numpy"));
+public dynamic np => _np.Value;
+private PyTorch() { PythonEngine.Initialize(); }
+public void Dispose() { PythonEngine.Shutdown(); }
 
     }
 }

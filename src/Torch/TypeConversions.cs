@@ -7,7 +7,8 @@ using Python.Runtime;
 
 namespace Torch
 {
-    public partial class TorchRunner
+    //TODO: this file must be generated from a database of types
+    public partial class PyTorch
     {
         public PyTuple ToTuple(Array input)
         {
@@ -44,10 +45,10 @@ namespace Torch
         }
 
         private PyObject NDArrayToPython(NDArray nd)
-        {         
+        {
             // todo: MarshalCopy
-            var result = np.array(new PyTuple(new []{ToTuple(nd.Array)}));
-            if (nd.ndim==0)
+            var result = np.array(new PyTuple(new[] { ToTuple(nd.Array) }));
+            if (nd.ndim == 0)
                 throw new NotImplementedException("Are Scalars supported here?");
             if (nd.ndim > 1)
             {

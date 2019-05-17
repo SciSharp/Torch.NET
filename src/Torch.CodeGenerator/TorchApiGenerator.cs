@@ -18,23 +18,18 @@ namespace Torch.CodeGenerator
             NameSpace = "Torch";
             Usings.Add("using NumSharp;");
         }
-        private StaticApi torch_api = new StaticApi() {StaticName = "torch", SingletonName = "PyTorch"};
+        private StaticApi torch_api = new StaticApi() {StaticName = "torch", SingletonName = "PyTorch", PythonModule = "torch" };
 
         // generate these API calls
         protected bool InMigrationApiList(string apiName)
         {
-            var apis = new string[] { "empty", };
+            var apis = new string[] { "empty", "tensor" };
 
             return apis.Contains(apiName);
         }
 
-        // do not generate these API calls (they are manually implemented)
-        protected bool IgnoreApiList(string apiName)
-        {
-            var apis = new string[] { "tensor" };
+        private HashSet<string> ManualOverride = new HashSet<string>() { "tensor" };
 
-            return apis.Contains(apiName);
-        }
 
         public string Generate()
         {
@@ -63,7 +58,7 @@ namespace Torch.CodeGenerator
                 {
                     var decl = new Declaration();
                     SetFunctionName(decl, node);
-                    if (IgnoreApiList(decl.Name)) continue;
+                    if (ManualOverride.Contains(decl.Name)) continue;
                     if (!InMigrationApiList(decl.Name)) continue;
                     SetReturnType(decl, node);
                     SetParameters(decl, node);
