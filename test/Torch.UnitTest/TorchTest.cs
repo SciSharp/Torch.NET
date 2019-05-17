@@ -2,7 +2,7 @@ using System;
 using System.Runtime.InteropServices;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Python.Runtime;
-
+using Assert = NUnit.Framework.Assert;
 
 namespace Torch
 {
@@ -33,6 +33,8 @@ namespace Torch
             var tensor = torch.tensor(new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 0 });
             Assert.IsNotNull(tensor.ToString());
             Console.WriteLine(tensor);
+            Assert.AreEqual(new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 0 }, tensor.GetData());
+            
         }
         [TestMethod]
         public void tensor_jagged_float()
