@@ -34,12 +34,13 @@ namespace Torch.ApiGenerator
         public string Generate()
         {
             var docs = LoadDocs();
-            var torch_api = new StaticApi()
+            var api = new StaticApi()
             {
                 StaticName = "torch", // name of the static API class
                 SingletonName = "PyTorch", // name of the singleton that implements the static API behind the scenes
                 PythonModule = "torch" // name of the Python module that the static api wraps 
             };
+            _generator.StaticApis.Add(api);
             foreach (var html in docs)
             {
                 var doc = new HtmlDocument();
@@ -67,13 +68,13 @@ namespace Torch.ApiGenerator
                     SetReturnType(decl, node);
                     SetParameters(decl, node);
 
-                    torch_api.Declarations.Add(decl);
+                    api.Declarations.Add(decl);
                 }
             }
 
             var dir = Directory.GetCurrentDirectory();
             var src_dir = dir.Substring(0, dir.LastIndexOf("\\src\\")) + "\\src\\";
-            torch_api.OutputPath = Path.Combine(src_dir, "Torch");
+            api.OutputPath = Path.Combine(src_dir, "Torch");
 
             _generator.Generate();
             return "DONE";
@@ -86,15 +87,15 @@ namespace Torch.ApiGenerator
 
         private void SetReturnType(Declaration decl, HtmlNode node)
         {
-            decl.returns = new List<Argument>();
+            decl.Returns = new List<Argument>();
             if (decl.Name.StartsWith("is_"))
             {
-                decl.returns.Add(new Argument { Type = "bool" });
+                decl.Returns.Add(new Argument { Type = "bool" });
             }
 
             if(node.Element("dt").InnerText.Contains("&#x2192; Tensor"))
             {
-                decl.returns.Add(new Argument { Type = "Tensor" });
+                decl.Returns.Add(new Argument { Type = "Tensor" });
             }
         }
 

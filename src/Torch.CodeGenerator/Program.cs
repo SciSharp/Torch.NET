@@ -6,9 +6,10 @@ namespace Torch.ApiGenerator
     {
         static void Main(string[] args)
         {
-            //var generator = new CodeGeneratorFromYaml();
-            var generator = new TorchApiGenerator();
-            generator.Generate();
+            //var generator = new TorchApiGenerator();
+            //generator.Generate();
+            var generator1 = new NumpyApiGenerator();
+            generator1.Generate();
         }
     }
 }
