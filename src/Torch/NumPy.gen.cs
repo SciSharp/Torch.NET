@@ -513,7 +513,22 @@ namespace Numpy
             dynamic py = self.InvokeMethod("asarray", args, kwargs);
         }
         
-        public NDarray arange(byte start = (byte)0, byte stop, byte step = (byte)1, Dtype dtype)
+        public NDarray arange(byte start, byte stop, byte step = 1, Dtype? dtype = null)
+        {
+            //auto-generated code, do not change
+            var args=ToTuple(new object[]
+            {
+                start,
+                stop,
+            });
+            var kwargs=new PyDict();
+            if (step!=null) kwargs["step"]=ToPython(step);
+            if (dtype!=null) kwargs["dtype"]=ToPython(dtype);
+            dynamic py = self.InvokeMethod("arange", args, kwargs);
+            return ToCsharp<NDarray>(py);
+        }
+        
+        public NDarray arange(byte stop, byte step = 1, Dtype? dtype = null)
         {
             //auto-generated code, do not change
             var args=ToTuple(new object[]
@@ -521,14 +536,28 @@ namespace Numpy
                 stop,
             });
             var kwargs=new PyDict();
-            if (start!=null) kwargs["start"]=ToPython(start);
             if (step!=null) kwargs["step"]=ToPython(step);
             if (dtype!=null) kwargs["dtype"]=ToPython(dtype);
             dynamic py = self.InvokeMethod("arange", args, kwargs);
             return ToCsharp<NDarray>(py);
         }
         
-        public NDarray arange(short start = (short)0, short stop, short step = (short)1, Dtype dtype)
+        public NDarray arange(short start, short stop, short step = 1, Dtype? dtype = null)
+        {
+            //auto-generated code, do not change
+            var args=ToTuple(new object[]
+            {
+                start,
+                stop,
+            });
+            var kwargs=new PyDict();
+            if (step!=null) kwargs["step"]=ToPython(step);
+            if (dtype!=null) kwargs["dtype"]=ToPython(dtype);
+            dynamic py = self.InvokeMethod("arange", args, kwargs);
+            return ToCsharp<NDarray>(py);
+        }
+        
+        public NDarray arange(short stop, short step = 1, Dtype? dtype = null)
         {
             //auto-generated code, do not change
             var args=ToTuple(new object[]
@@ -536,14 +565,28 @@ namespace Numpy
                 stop,
             });
             var kwargs=new PyDict();
-            if (start!=null) kwargs["start"]=ToPython(start);
             if (step!=null) kwargs["step"]=ToPython(step);
             if (dtype!=null) kwargs["dtype"]=ToPython(dtype);
             dynamic py = self.InvokeMethod("arange", args, kwargs);
             return ToCsharp<NDarray>(py);
         }
         
-        public NDarray arange(int start = 0, int stop, int step = 1, Dtype dtype)
+        public NDarray arange(int start, int stop, int step = 1, Dtype? dtype = null)
+        {
+            //auto-generated code, do not change
+            var args=ToTuple(new object[]
+            {
+                start,
+                stop,
+            });
+            var kwargs=new PyDict();
+            if (step!=null) kwargs["step"]=ToPython(step);
+            if (dtype!=null) kwargs["dtype"]=ToPython(dtype);
+            dynamic py = self.InvokeMethod("arange", args, kwargs);
+            return ToCsharp<NDarray>(py);
+        }
+        
+        public NDarray arange(int stop, int step = 1, Dtype? dtype = null)
         {
             //auto-generated code, do not change
             var args=ToTuple(new object[]
@@ -551,14 +594,28 @@ namespace Numpy
                 stop,
             });
             var kwargs=new PyDict();
-            if (start!=null) kwargs["start"]=ToPython(start);
             if (step!=null) kwargs["step"]=ToPython(step);
             if (dtype!=null) kwargs["dtype"]=ToPython(dtype);
             dynamic py = self.InvokeMethod("arange", args, kwargs);
             return ToCsharp<NDarray>(py);
         }
         
-        public NDarray arange(long start = (long)0, long stop, long step = (long)1, Dtype dtype)
+        public NDarray arange(long start, long stop, long step = 1, Dtype? dtype = null)
+        {
+            //auto-generated code, do not change
+            var args=ToTuple(new object[]
+            {
+                start,
+                stop,
+            });
+            var kwargs=new PyDict();
+            if (step!=null) kwargs["step"]=ToPython(step);
+            if (dtype!=null) kwargs["dtype"]=ToPython(dtype);
+            dynamic py = self.InvokeMethod("arange", args, kwargs);
+            return ToCsharp<NDarray>(py);
+        }
+        
+        public NDarray arange(long stop, long step = 1, Dtype? dtype = null)
         {
             //auto-generated code, do not change
             var args=ToTuple(new object[]
@@ -566,14 +623,28 @@ namespace Numpy
                 stop,
             });
             var kwargs=new PyDict();
-            if (start!=null) kwargs["start"]=ToPython(start);
             if (step!=null) kwargs["step"]=ToPython(step);
             if (dtype!=null) kwargs["dtype"]=ToPython(dtype);
             dynamic py = self.InvokeMethod("arange", args, kwargs);
             return ToCsharp<NDarray>(py);
         }
         
-        public NDarray arange(float start = (float)0, float stop, float step = (float)1, Dtype dtype)
+        public NDarray arange(float start, float stop, float step = 1, Dtype? dtype = null)
+        {
+            //auto-generated code, do not change
+            var args=ToTuple(new object[]
+            {
+                start,
+                stop,
+            });
+            var kwargs=new PyDict();
+            if (step!=null) kwargs["step"]=ToPython(step);
+            if (dtype!=null) kwargs["dtype"]=ToPython(dtype);
+            dynamic py = self.InvokeMethod("arange", args, kwargs);
+            return ToCsharp<NDarray>(py);
+        }
+        
+        public NDarray arange(float stop, float step = 1, Dtype? dtype = null)
         {
             //auto-generated code, do not change
             var args=ToTuple(new object[]
@@ -581,14 +652,28 @@ namespace Numpy
                 stop,
             });
             var kwargs=new PyDict();
-            if (start!=null) kwargs["start"]=ToPython(start);
             if (step!=null) kwargs["step"]=ToPython(step);
             if (dtype!=null) kwargs["dtype"]=ToPython(dtype);
             dynamic py = self.InvokeMethod("arange", args, kwargs);
             return ToCsharp<NDarray>(py);
         }
         
-        public NDarray arange(double start = (double)0, double stop, double step = (double)1, Dtype dtype)
+        public NDarray arange(double start, double stop, double step = 1, Dtype? dtype = null)
+        {
+            //auto-generated code, do not change
+            var args=ToTuple(new object[]
+            {
+                start,
+                stop,
+            });
+            var kwargs=new PyDict();
+            if (step!=null) kwargs["step"]=ToPython(step);
+            if (dtype!=null) kwargs["dtype"]=ToPython(dtype);
+            dynamic py = self.InvokeMethod("arange", args, kwargs);
+            return ToCsharp<NDarray>(py);
+        }
+        
+        public NDarray arange(double stop, double step = 1, Dtype? dtype = null)
         {
             //auto-generated code, do not change
             var args=ToTuple(new object[]
@@ -596,26 +681,488 @@ namespace Numpy
                 stop,
             });
             var kwargs=new PyDict();
-            if (start!=null) kwargs["start"]=ToPython(start);
             if (step!=null) kwargs["step"]=ToPython(step);
             if (dtype!=null) kwargs["dtype"]=ToPython(dtype);
             dynamic py = self.InvokeMethod("arange", args, kwargs);
             return ToCsharp<NDarray>(py);
         }
         
-/*
-
- --------------- generator exception ---------------------
-Return tuple
-   at CodeMinion.Core.CodeGenerator.GenerateReturnType(Declaration decl) in D:\dev\CodeMinion\src\CodeMinion.Core\CodeGenerator.cs:line 238
+        // Error generating delaration: linspace
+        // Message: Return tuple
+        /*
+           at CodeMinion.Core.CodeGenerator.GenerateReturnType(Declaration decl) in D:\dev\CodeMinion\src\CodeMinion.Core\CodeGenerator.cs:line 225
    at CodeMinion.Core.CodeGenerator.GenerateApiFunction(Declaration decl, CodeWriter s) in D:\dev\CodeMinion\src\CodeMinion.Core\CodeGenerator.cs:line 55
-   at CodeMinion.Core.CodeGenerator.<>c__DisplayClass32_0.<GenerateApiImpl>b__1() in D:\dev\CodeMinion\src\CodeMinion.Core\CodeGenerator.cs:line 363
-   at CodeMinion.Core.Helpers.CodeWriter.Indent(Action a) in D:\dev\CodeMinion\src\CodeMinion.Core\Helpers\CodeWriter.cs:line 58
-   at CodeMinion.Core.Helpers.CodeWriter.Block(Action a, String opening_brace, String closing_brace) in D:\dev\CodeMinion\src\CodeMinion.Core\Helpers\CodeWriter.cs:line 75
-   at CodeMinion.Core.CodeGenerator.<>c__DisplayClass32_0.<GenerateApiImpl>b__0() in D:\dev\CodeMinion\src\CodeMinion.Core\CodeGenerator.cs:line 357
-   at CodeMinion.Core.Helpers.CodeWriter.Indent(Action a) in D:\dev\CodeMinion\src\CodeMinion.Core\Helpers\CodeWriter.cs:line 58
-   at CodeMinion.Core.Helpers.CodeWriter.Block(Action a, String opening_brace, String closing_brace) in D:\dev\CodeMinion\src\CodeMinion.Core\Helpers\CodeWriter.cs:line 75
-   at CodeMinion.Core.CodeGenerator.GenerateApiImpl(StaticApi api, CodeWriter s) in D:\dev\CodeMinion\src\CodeMinion.Core\CodeGenerator.cs:line 354
-   at CodeMinion.Core.CodeGenerator.<>c__DisplayClass34_0.<Generate>b__2(CodeWriter s) in D:\dev\CodeMinion\src\CodeMinion.Core\CodeGenerator.cs:line 398
-   at CodeMinion.Core.CodeGenerator.WriteFile(String path, Action`1 generate_action) in D:\dev\CodeMinion\src\CodeMinion.Core\CodeGenerator.cs:line 374
-*/
+   at CodeMinion.Core.CodeGenerator.<>c__DisplayClass32_0.<GenerateApiImpl>b__1() in D:\dev\CodeMinion\src\CodeMinion.Core\CodeGenerator.cs:line 370
+        ----------------------------
+        Declaration JSON:
+        {
+  "Name": "linspace",
+  "ClassName": "numpy",
+  "Arguments": [
+    {
+      "IsNullable": false,
+      "IsValueType": false,
+      "Name": "start",
+      "Type": "NDarray",
+      "DefaultValue": null,
+      "IsNamedArg": false
+    },
+    {
+      "IsNullable": false,
+      "IsValueType": false,
+      "Name": "stop",
+      "Type": "NDarray",
+      "DefaultValue": null,
+      "IsNamedArg": false
+    },
+    {
+      "IsNullable": true,
+      "IsValueType": false,
+      "Name": "num",
+      "Type": "int",
+      "DefaultValue": null,
+      "IsNamedArg": true
+    },
+    {
+      "IsNullable": true,
+      "IsValueType": false,
+      "Name": "endpoint",
+      "Type": "bool",
+      "DefaultValue": null,
+      "IsNamedArg": true
+    },
+    {
+      "IsNullable": true,
+      "IsValueType": false,
+      "Name": "retstep",
+      "Type": "bool",
+      "DefaultValue": null,
+      "IsNamedArg": true
+    },
+    {
+      "IsNullable": true,
+      "IsValueType": true,
+      "Name": "dtype",
+      "Type": "Dtype",
+      "DefaultValue": null,
+      "IsNamedArg": true
+    },
+    {
+      "IsNullable": true,
+      "IsValueType": false,
+      "Name": "axis",
+      "Type": "int",
+      "DefaultValue": null,
+      "IsNamedArg": true
+    }
+  ],
+  "Returns": [
+    {
+      "IsNullable": false,
+      "IsValueType": false,
+      "Name": null,
+      "Type": "NDarray",
+      "DefaultValue": null,
+      "IsNamedArg": false
+    },
+    {
+      "IsNullable": false,
+      "IsValueType": false,
+      "Name": null,
+      "Type": "float",
+      "DefaultValue": null,
+      "IsNamedArg": false
+    }
+  ],
+  "IsDeprecated": false,
+  "ManualOverride": false,
+  "Generics": null,
+  "CommentOut": false,
+  "DebuggerBreak": false
+}
+        */
+        // Error generating delaration: linspace
+        // Message: Return tuple
+        /*
+           at CodeMinion.Core.CodeGenerator.GenerateReturnType(Declaration decl) in D:\dev\CodeMinion\src\CodeMinion.Core\CodeGenerator.cs:line 225
+   at CodeMinion.Core.CodeGenerator.GenerateApiFunction(Declaration decl, CodeWriter s) in D:\dev\CodeMinion\src\CodeMinion.Core\CodeGenerator.cs:line 55
+   at CodeMinion.Core.CodeGenerator.<>c__DisplayClass32_0.<GenerateApiImpl>b__1() in D:\dev\CodeMinion\src\CodeMinion.Core\CodeGenerator.cs:line 370
+        ----------------------------
+        Declaration JSON:
+        {
+  "Name": "linspace",
+  "ClassName": "numpy",
+  "Arguments": [
+    {
+      "IsNullable": false,
+      "IsValueType": false,
+      "Name": "start",
+      "Type": "T[]",
+      "DefaultValue": null,
+      "IsNamedArg": false
+    },
+    {
+      "IsNullable": false,
+      "IsValueType": false,
+      "Name": "stop",
+      "Type": "T[]",
+      "DefaultValue": null,
+      "IsNamedArg": false
+    },
+    {
+      "IsNullable": true,
+      "IsValueType": false,
+      "Name": "num",
+      "Type": "int",
+      "DefaultValue": null,
+      "IsNamedArg": true
+    },
+    {
+      "IsNullable": true,
+      "IsValueType": false,
+      "Name": "endpoint",
+      "Type": "bool",
+      "DefaultValue": null,
+      "IsNamedArg": true
+    },
+    {
+      "IsNullable": true,
+      "IsValueType": false,
+      "Name": "retstep",
+      "Type": "bool",
+      "DefaultValue": null,
+      "IsNamedArg": true
+    },
+    {
+      "IsNullable": true,
+      "IsValueType": true,
+      "Name": "dtype",
+      "Type": "Dtype",
+      "DefaultValue": null,
+      "IsNamedArg": true
+    },
+    {
+      "IsNullable": true,
+      "IsValueType": false,
+      "Name": "axis",
+      "Type": "int",
+      "DefaultValue": null,
+      "IsNamedArg": true
+    }
+  ],
+  "Returns": [
+    {
+      "IsNullable": false,
+      "IsValueType": false,
+      "Name": null,
+      "Type": "NDarray<T>",
+      "DefaultValue": null,
+      "IsNamedArg": false
+    },
+    {
+      "IsNullable": false,
+      "IsValueType": false,
+      "Name": null,
+      "Type": "float",
+      "DefaultValue": null,
+      "IsNamedArg": false
+    }
+  ],
+  "IsDeprecated": false,
+  "ManualOverride": false,
+  "Generics": [
+    "T"
+  ],
+  "CommentOut": false,
+  "DebuggerBreak": false
+}
+        */
+        public NDarray logspace(NDarray start, NDarray stop, int? num = null, bool? endpoint = null, float? @base = null, Dtype? dtype = null, int? axis = null)
+        {
+            //auto-generated code, do not change
+            var args=ToTuple(new object[]
+            {
+                start,
+                stop,
+            });
+            var kwargs=new PyDict();
+            if (num!=null) kwargs["num"]=ToPython(num);
+            if (endpoint!=null) kwargs["endpoint"]=ToPython(endpoint);
+            if (@base!=null) kwargs["base"]=ToPython(@base);
+            if (dtype!=null) kwargs["dtype"]=ToPython(dtype);
+            if (axis!=null) kwargs["axis"]=ToPython(axis);
+            dynamic py = self.InvokeMethod("logspace", args, kwargs);
+            return ToCsharp<NDarray>(py);
+        }
+        
+        public NDarray<T> logspace<T>(T[] start, T[] stop, int? num = null, bool? endpoint = null, float? @base = null, Dtype? dtype = null, int? axis = null)
+        {
+            //auto-generated code, do not change
+            var args=ToTuple(new object[]
+            {
+                start,
+                stop,
+            });
+            var kwargs=new PyDict();
+            if (num!=null) kwargs["num"]=ToPython(num);
+            if (endpoint!=null) kwargs["endpoint"]=ToPython(endpoint);
+            if (@base!=null) kwargs["base"]=ToPython(@base);
+            if (dtype!=null) kwargs["dtype"]=ToPython(dtype);
+            if (axis!=null) kwargs["axis"]=ToPython(axis);
+            dynamic py = self.InvokeMethod("logspace", args, kwargs);
+            return ToCsharp<NDarray<T>>(py);
+        }
+        
+        public NDarray geomspace(NDarray start, NDarray stop, int? num = null, bool? endpoint = null, Dtype? dtype = null, int? axis = null)
+        {
+            //auto-generated code, do not change
+            var args=ToTuple(new object[]
+            {
+                start,
+                stop,
+            });
+            var kwargs=new PyDict();
+            if (num!=null) kwargs["num"]=ToPython(num);
+            if (endpoint!=null) kwargs["endpoint"]=ToPython(endpoint);
+            if (dtype!=null) kwargs["dtype"]=ToPython(dtype);
+            if (axis!=null) kwargs["axis"]=ToPython(axis);
+            dynamic py = self.InvokeMethod("geomspace", args, kwargs);
+            return ToCsharp<NDarray>(py);
+        }
+        
+        public NDarray<T> geomspace<T>(T[] start, T[] stop, int? num = null, bool? endpoint = null, Dtype? dtype = null, int? axis = null)
+        {
+            //auto-generated code, do not change
+            var args=ToTuple(new object[]
+            {
+                start,
+                stop,
+            });
+            var kwargs=new PyDict();
+            if (num!=null) kwargs["num"]=ToPython(num);
+            if (endpoint!=null) kwargs["endpoint"]=ToPython(endpoint);
+            if (dtype!=null) kwargs["dtype"]=ToPython(dtype);
+            if (axis!=null) kwargs["axis"]=ToPython(axis);
+            dynamic py = self.InvokeMethod("geomspace", args, kwargs);
+            return ToCsharp<NDarray<T>>(py);
+        }
+        
+        /*
+        public NDarray meshgrid(NDarray x1, x2,…, xn, {‘xy’ indexing = null, bool? sparse = null, bool? copy = null)
+        {
+            //auto-generated code, do not change
+            var args=ToTuple(new object[]
+            {
+                x1, x2,…, xn,
+            });
+            var kwargs=new PyDict();
+            if (indexing!=null) kwargs["indexing"]=ToPython(indexing);
+            if (sparse!=null) kwargs["sparse"]=ToPython(sparse);
+            if (copy!=null) kwargs["copy"]=ToPython(copy);
+            dynamic py = self.InvokeMethod("meshgrid", args, kwargs);
+            return ToCsharp<NDarray>(py);
+        }
+        */
+        
+        /*
+        public NDarray<T> meshgrid<T>(T[] x1, x2,…, xn, {‘xy’ indexing = null, bool? sparse = null, bool? copy = null)
+        {
+            //auto-generated code, do not change
+            var args=ToTuple(new object[]
+            {
+                x1, x2,…, xn,
+            });
+            var kwargs=new PyDict();
+            if (indexing!=null) kwargs["indexing"]=ToPython(indexing);
+            if (sparse!=null) kwargs["sparse"]=ToPython(sparse);
+            if (copy!=null) kwargs["copy"]=ToPython(copy);
+            dynamic py = self.InvokeMethod("meshgrid", args, kwargs);
+            return ToCsharp<NDarray<T>>(py);
+        }
+        */
+        
+        public NDarray diag(NDarray v, int? k = null)
+        {
+            //auto-generated code, do not change
+            var args=ToTuple(new object[]
+            {
+                v,
+            });
+            var kwargs=new PyDict();
+            if (k!=null) kwargs["k"]=ToPython(k);
+            dynamic py = self.InvokeMethod("diag", args, kwargs);
+            return ToCsharp<NDarray>(py);
+        }
+        
+        public NDarray<T> diag<T>(T[] v, int? k = null)
+        {
+            //auto-generated code, do not change
+            var args=ToTuple(new object[]
+            {
+                v,
+            });
+            var kwargs=new PyDict();
+            if (k!=null) kwargs["k"]=ToPython(k);
+            dynamic py = self.InvokeMethod("diag", args, kwargs);
+            return ToCsharp<NDarray<T>>(py);
+        }
+        
+        public NDarray diagflat(NDarray v, int? k = null)
+        {
+            //auto-generated code, do not change
+            var args=ToTuple(new object[]
+            {
+                v,
+            });
+            var kwargs=new PyDict();
+            if (k!=null) kwargs["k"]=ToPython(k);
+            dynamic py = self.InvokeMethod("diagflat", args, kwargs);
+            return ToCsharp<NDarray>(py);
+        }
+        
+        public NDarray<T> diagflat<T>(T[] v, int? k = null)
+        {
+            //auto-generated code, do not change
+            var args=ToTuple(new object[]
+            {
+                v,
+            });
+            var kwargs=new PyDict();
+            if (k!=null) kwargs["k"]=ToPython(k);
+            dynamic py = self.InvokeMethod("diagflat", args, kwargs);
+            return ToCsharp<NDarray<T>>(py);
+        }
+        
+        public NDarray tri(int N, int? M = null, int? k = null, Dtype? dtype = null)
+        {
+            //auto-generated code, do not change
+            var args=ToTuple(new object[]
+            {
+                N,
+            });
+            var kwargs=new PyDict();
+            if (M!=null) kwargs["M"]=ToPython(M);
+            if (k!=null) kwargs["k"]=ToPython(k);
+            if (dtype!=null) kwargs["dtype"]=ToPython(dtype);
+            dynamic py = self.InvokeMethod("tri", args, kwargs);
+            return ToCsharp<NDarray>(py);
+        }
+        
+        public NDarray tril(NDarray m, int? k = null)
+        {
+            //auto-generated code, do not change
+            var args=ToTuple(new object[]
+            {
+                m,
+            });
+            var kwargs=new PyDict();
+            if (k!=null) kwargs["k"]=ToPython(k);
+            dynamic py = self.InvokeMethod("tril", args, kwargs);
+            return ToCsharp<NDarray>(py);
+        }
+        
+        public NDarray<T> tril<T>(T[] m, int? k = null)
+        {
+            //auto-generated code, do not change
+            var args=ToTuple(new object[]
+            {
+                m,
+            });
+            var kwargs=new PyDict();
+            if (k!=null) kwargs["k"]=ToPython(k);
+            dynamic py = self.InvokeMethod("tril", args, kwargs);
+            return ToCsharp<NDarray<T>>(py);
+        }
+        
+        public NDarray vander(NDarray x, int? N = null, bool? increasing = null)
+        {
+            //auto-generated code, do not change
+            var args=ToTuple(new object[]
+            {
+                x,
+            });
+            var kwargs=new PyDict();
+            if (N!=null) kwargs["N"]=ToPython(N);
+            if (increasing!=null) kwargs["increasing"]=ToPython(increasing);
+            dynamic py = self.InvokeMethod("vander", args, kwargs);
+            return ToCsharp<NDarray>(py);
+        }
+        
+        public NDarray<T> vander<T>(T[] x, int? N = null, bool? increasing = null)
+        {
+            //auto-generated code, do not change
+            var args=ToTuple(new object[]
+            {
+                x,
+            });
+            var kwargs=new PyDict();
+            if (N!=null) kwargs["N"]=ToPython(N);
+            if (increasing!=null) kwargs["increasing"]=ToPython(increasing);
+            dynamic py = self.InvokeMethod("vander", args, kwargs);
+            return ToCsharp<NDarray<T>>(py);
+        }
+        
+        /*
+        public matrix mat(NDarray data, Dtype dtype)
+        {
+            //auto-generated code, do not change
+            var args=ToTuple(new object[]
+            {
+                data,
+                dtype,
+            });
+            var kwargs=new PyDict();
+            dynamic py = self.InvokeMethod("mat", args, kwargs);
+            return ToCsharp<matrix>(py);
+        }
+        */
+        
+        /*
+        public matrix mat<T>(T[] data, Dtype dtype)
+        {
+            //auto-generated code, do not change
+            var args=ToTuple(new object[]
+            {
+                data,
+                dtype,
+            });
+            var kwargs=new PyDict();
+            dynamic py = self.InvokeMethod("mat", args, kwargs);
+            return ToCsharp<matrix>(py);
+        }
+        */
+        
+        /*
+        public matrix bmat(string obj, Hashtable ldict = null, Hashtable gdict = null)
+        {
+            //auto-generated code, do not change
+            var args=ToTuple(new object[]
+            {
+                obj,
+            });
+            var kwargs=new PyDict();
+            if (ldict!=null) kwargs["ldict"]=ToPython(ldict);
+            if (gdict!=null) kwargs["gdict"]=ToPython(gdict);
+            dynamic py = self.InvokeMethod("bmat", args, kwargs);
+            return ToCsharp<matrix>(py);
+        }
+        */
+        
+        /*
+        public matrix<T> bmat<T>(T[] obj, Hashtable ldict = null, Hashtable gdict = null)
+        {
+            //auto-generated code, do not change
+            var args=ToTuple(new object[]
+            {
+                obj,
+            });
+            var kwargs=new PyDict();
+            if (ldict!=null) kwargs["ldict"]=ToPython(ldict);
+            if (gdict!=null) kwargs["gdict"]=ToPython(gdict);
+            dynamic py = self.InvokeMethod("bmat", args, kwargs);
+            return ToCsharp<matrix<T>>(py);
+        }
+        */
+        
+    }
+}

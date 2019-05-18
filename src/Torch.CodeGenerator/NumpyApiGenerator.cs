@@ -137,9 +137,16 @@ namespace Torch.ApiGenerator
                     decl.Arguments[3].IsNullable = false;
                     decl.Arguments[3].IsNamedArg = true;
                     break;
-                //case "loadtxt":
-                //    decl.DebuggerBreak = true;
-                //    break;
+                case "logspace":
+                case "geomspace":
+                    decl.Arguments.First(a => a.Type == "Dtype").IsNullable = true;
+                    decl.Arguments.First(a => a.Type == "Dtype").IsNamedArg = true;
+                    break;
+                case "meshgrid":
+                case "mat":
+                case "bmat":
+                    decl.CommentOut = true;
+                    break;
             }
         }
         
@@ -166,6 +173,12 @@ namespace Torch.ApiGenerator
             if (decl.Arguments.Count == 0)
             {
                 yield return decl;
+                yield break;
+            }
+            if (decl.Name == "arange")
+            {
+                foreach (var d in ExpandArange(decl))
+                    yield return d;
                 yield break;
             }
             // array_like
@@ -204,7 +217,50 @@ namespace Torch.ApiGenerator
                 }
                 yield break;
             }
+            if (decl.Name == "bmat")
+            {
+                decl.Arguments[0].Type = "string";
+                yield return decl;
+                var clone_decl = decl.Clone();
+                clone_decl.Arguments[0].Type = "T[]";
+                clone_decl.Generics = new []{"T"};
+                clone_decl.Returns[0].Type = "matrix<T>";
+                yield return clone_decl;
+                yield break;
+
+            }
             yield return decl;
+        }
+
+        // special treatment for np.arange which is a "monster"
+        private IEnumerable<Declaration> ExpandArange(Declaration decl)
+        {
+            // numpy.arange([start, ]stop, [step, ]dtype=None)
+            var dtype = decl.Arguments.Last();
+            dtype.IsNullable = true;
+            dtype.IsNamedArg = true;
+            if (decl.Arguments.Any(a => a.Type == "number"))
+            {
+                foreach (var type in "byte short int long float double".Split())
+                {
+                    // start, stop
+                    var clone_decl = decl.Clone();
+                    clone_decl.Arguments.ForEach(a =>
+                    {
+                        if (a.Type == "number")
+                            a.Type = type;
+                    });
+                    clone_decl.Arguments[0].IsNamedArg = false;
+                    clone_decl.Arguments[0].IsNullable = false;
+                    clone_decl.Arguments[0].DefaultValue=null;
+                    yield return clone_decl;
+                    // [start=0] <-- remove start from arg list
+                    clone_decl = clone_decl.Clone(); // <---- clone from the clone, as it has the correct type
+                    clone_decl.Arguments.RemoveAt(0);
+                    yield return clone_decl;
+                }
+                yield break;
+            }
         }
 
         private string InferDefaultValue(string default_value)
@@ -238,6 +294,8 @@ namespace Torch.ApiGenerator
                 case "iterable object": return "IEnumerable<T>";
                 case "dict": return "Hashtable";
                 case "int or sequence": return "int[]";
+                case "boolean": return "bool";
+                case "integer": return "int";
             }
             if (type.StartsWith("ndarray"))
                 return "NDarray";
