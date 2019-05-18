@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using CodeMinion.Core;
+using CodeMinion.Core.Helpers;
 using CodeMinion.Core.Models;
 
 namespace Torch.ApiGenerator
@@ -19,6 +20,20 @@ namespace Torch.ApiGenerator
             {
                 NameSpace = "Torch",
                 Usings = {"using NumSharp;"},
+                ToCsharpConversions =
+                {
+                    "case \"Tensor\": return (T)(object)new Tensor(pyobj);",
+                },
+                ToPythonConversions =
+                {
+                    "case NumSharp.Shape o: return ToTuple(o.Dimensions);",
+                    "case Tensor o: return o.PyObject;",
+                    "case NumSharp.NDArray o: return NDArrayToPython(o);",
+                },
+                SpecialConversionGenerators =
+                {
+                    SpecialGenerators.GenNDArrayToPython,
+                }
             };
         }
 
@@ -37,7 +52,7 @@ namespace Torch.ApiGenerator
             var api = new StaticApi()
             {
                 StaticName = "torch", // name of the static API class
-                SingletonName = "PyTorch", // name of the singleton that implements the static API behind the scenes
+                ImplName = "PyTorch", // name of the singleton that implements the static API behind the scenes
                 PythonModule = "torch" // name of the Python module that the static api wraps 
             };
             _generator.StaticApis.Add(api);

@@ -29,7 +29,7 @@ namespace Torch.ApiGenerator
             var api = new StaticApi()
             {
                 StaticName = "np", // name of the static API class
-                SingletonName = "NumPy", // name of the singleton that implements the static API behind the scenes
+                ImplName = "NumPy", // name of the singleton that implements the static API behind the scenes
                 PythonModule = "numpy" // name of the Python module that the static api wraps 
             };
             _generator.StaticApis.Add(api);

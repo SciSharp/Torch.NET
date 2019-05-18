@@ -10,13 +10,14 @@ using NumSharp;
 
 namespace Torch
 {
-    public partial class PyTorch : IDisposable
+    public partial class PyTorch
     {
-
+        
         public Tensor empty(NumSharp.Shape sizes, Tensor @out = null, dtype? dtype = null, layout? layout = null, device? device = null, bool? requires_grad = null, bool? pin_memory = null)
         {
             //auto-generated code, do not change
-            var args=ToTuple(new object[] {
+            var args=ToTuple(new object[]
+            {
                 sizes,
             });
             var kwargs=new PyDict();
@@ -29,15 +30,6 @@ namespace Torch
             dynamic py = self.InvokeMethod("empty", args, kwargs);
             return ToCsharp<Tensor>(py);
         }
-
-private static Lazy<PyTorch> _instance = new Lazy<PyTorch>(() => new PyTorch());
-public static PyTorch Instance => _instance.Value;
-Lazy<PyObject> _pyobj = new Lazy<PyObject>(() => Py.Import("torch"));
-public dynamic self => _pyobj.Value;
-Lazy<PyObject> _np = new Lazy<PyObject>(() => Py.Import("numpy"));
-public dynamic np => _np.Value;
-private PyTorch() { PythonEngine.Initialize(); }
-public void Dispose() { PythonEngine.Shutdown(); }
-
+        
     }
 }

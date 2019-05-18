@@ -10,20 +10,8 @@ using NumSharp;
 
 namespace Numpy
 {
-    public partial class NumPy : IDisposable
+    public partial class NumPy
     {
-        
-        private static Lazy<NumPy> _instance = new Lazy<NumPy>(() => new NumPy());
-        public static NumPy Instance => _instance.Value;
-        
-        Lazy<PyObject> _pyobj = new Lazy<PyObject>(() => Py.Import("numpy"));
-        public dynamic self => _pyobj.Value;
-        
-        Lazy<PyObject> _np = new Lazy<PyObject>(() => Py.Import("numpy"));
-        public dynamic np => _np.Value;
-        private NumPy() { PythonEngine.Initialize(); }
-        public void Dispose() { PythonEngine.Shutdown(); }
-        
         
         public NDarray empty(NumSharp.Shape shape, Dtype? dtype = null, string order = null)
         {
@@ -397,15 +385,15 @@ namespace Numpy
 
  --------------- generator exception ---------------------
 Return tuple
-   at CodeMinion.Core.CodeGenerator.GenerateReturnType(Declaration decl) in D:\dev\CodeMinion\src\CodeMinion.Core\CodeGenerator.cs:line 191
-   at CodeMinion.Core.CodeGenerator.GenerateApiFunction(Declaration input_decl, CodeWriter s) in D:\dev\CodeMinion\src\CodeMinion.Core\CodeGenerator.cs:line 49
-   at CodeMinion.Core.CodeGenerator.<>c__DisplayClass29_0.<GenerateApiImplementation>b__1() in D:\dev\CodeMinion\src\CodeMinion.Core\CodeGenerator.cs:line 342
-   at CodeMinion.Core.Helpers.CodeWriter.Indent(Action a) in D:\dev\CodeMinion\src\CodeMinion.Core\Helpers\CodeWriter.cs:line 55
-   at CodeMinion.Core.Helpers.CodeWriter.Block(Action a, String opening_brace, String closing_brace) in D:\dev\CodeMinion\src\CodeMinion.Core\Helpers\CodeWriter.cs:line 72
-   at CodeMinion.Core.CodeGenerator.<>c__DisplayClass29_0.<GenerateApiImplementation>b__0() in D:\dev\CodeMinion\src\CodeMinion.Core\CodeGenerator.cs:line 325
-   at CodeMinion.Core.Helpers.CodeWriter.Indent(Action a) in D:\dev\CodeMinion\src\CodeMinion.Core\Helpers\CodeWriter.cs:line 55
-   at CodeMinion.Core.Helpers.CodeWriter.Block(Action a, String opening_brace, String closing_brace) in D:\dev\CodeMinion\src\CodeMinion.Core\Helpers\CodeWriter.cs:line 72
-   at CodeMinion.Core.CodeGenerator.GenerateApiImplementation(StaticApi api, CodeWriter s) in D:\dev\CodeMinion\src\CodeMinion.Core\CodeGenerator.cs:line 323
-   at CodeMinion.Core.CodeGenerator.<>c__DisplayClass31_0.<Generate>b__1(CodeWriter s) in D:\dev\CodeMinion\src\CodeMinion.Core\CodeGenerator.cs:line 374
-   at CodeMinion.Core.CodeGenerator.WriteFile(String path, Action`1 generate_action) in D:\dev\CodeMinion\src\CodeMinion.Core\CodeGenerator.cs:line 353
+   at CodeMinion.Core.CodeGenerator.GenerateReturnType(Declaration decl) in D:\dev\CodeMinion\src\CodeMinion.Core\CodeGenerator.cs:line 192
+   at CodeMinion.Core.CodeGenerator.GenerateApiFunction(Declaration input_decl, CodeWriter s) in D:\dev\CodeMinion\src\CodeMinion.Core\CodeGenerator.cs:line 50
+   at CodeMinion.Core.CodeGenerator.<>c__DisplayClass29_0.<GenerateApiImpl>b__1() in D:\dev\CodeMinion\src\CodeMinion.Core\CodeGenerator.cs:line 331
+   at CodeMinion.Core.Helpers.CodeWriter.Indent(Action a) in D:\dev\CodeMinion\src\CodeMinion.Core\Helpers\CodeWriter.cs:line 58
+   at CodeMinion.Core.Helpers.CodeWriter.Block(Action a, String opening_brace, String closing_brace) in D:\dev\CodeMinion\src\CodeMinion.Core\Helpers\CodeWriter.cs:line 75
+   at CodeMinion.Core.CodeGenerator.<>c__DisplayClass29_0.<GenerateApiImpl>b__0() in D:\dev\CodeMinion\src\CodeMinion.Core\CodeGenerator.cs:line 326
+   at CodeMinion.Core.Helpers.CodeWriter.Indent(Action a) in D:\dev\CodeMinion\src\CodeMinion.Core\Helpers\CodeWriter.cs:line 58
+   at CodeMinion.Core.Helpers.CodeWriter.Block(Action a, String opening_brace, String closing_brace) in D:\dev\CodeMinion\src\CodeMinion.Core\Helpers\CodeWriter.cs:line 75
+   at CodeMinion.Core.CodeGenerator.GenerateApiImpl(StaticApi api, CodeWriter s) in D:\dev\CodeMinion\src\CodeMinion.Core\CodeGenerator.cs:line 324
+   at CodeMinion.Core.CodeGenerator.<>c__DisplayClass31_0.<Generate>b__2(CodeWriter s) in D:\dev\CodeMinion\src\CodeMinion.Core\CodeGenerator.cs:line 366
+   at CodeMinion.Core.CodeGenerator.WriteFile(String path, Action`1 generate_action) in D:\dev\CodeMinion\src\CodeMinion.Core\CodeGenerator.cs:line 342
 */
