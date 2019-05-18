@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Torch.UnitTest", "test\Torc
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Python.Runtime", "..\pythonnet\src\runtime\Python.Runtime.csproj", "{75F990E3-495C-497D-8310-2407E12E0206}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Torch.CodeGenerator", "src\Torch.CodeGenerator\Torch.CodeGenerator.csproj", "{A1C7F925-C5FD-4AFE-976F-133D02A4409B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Torch.ApiGenerator", "src\Torch.CodeGenerator\Torch.ApiGenerator.csproj", "{A1C7F925-C5FD-4AFE-976F-133D02A4409B}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeMinion.Core", "..\CodeMinion\src\CodeMinion.Core\CodeMinion.Core.csproj", "{036916A6-AE4D-4231-A590-2FBA9879B31D}"
 EndProject

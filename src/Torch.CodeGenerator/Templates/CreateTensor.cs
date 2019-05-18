@@ -4,7 +4,7 @@ using CodeMinion.Core;
 using CodeMinion.Core.Attributes;
 using CodeMinion.Core.Models;
 
-namespace Torch.CodeGenerator.Templates {
+namespace Torch.ApiGenerator.Templates {
 
     [Template("tensor")]
     internal class CreateTensor : BodyTemplate

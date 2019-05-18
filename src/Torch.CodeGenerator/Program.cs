@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Torch.CodeGenerator
+namespace Torch.ApiGenerator
 {
     class Program
     {

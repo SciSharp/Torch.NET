@@ -8,35 +8,39 @@ using System.Text.RegularExpressions;
 using CodeMinion.Core;
 using CodeMinion.Core.Models;
 
-namespace Torch.CodeGenerator
+namespace Torch.ApiGenerator
 {
-    public class TorchApiGenerator : CodeGeneratorBase, ICodeGenerator
+    public class TorchApiGenerator
     {
-
+        private CodeGenerator _generator;
         public TorchApiGenerator()
         {
-            NameSpace = "Torch";
-            Usings.Add("using NumSharp;");
+            _generator = new CodeGenerator
+            {
+                NameSpace = "Torch",
+                Usings = {"using NumSharp;"},
+            };
         }
-        private StaticApi torch_api = new StaticApi() {StaticName = "torch", SingletonName = "PyTorch", PythonModule = "torch" };
 
         // generate these API calls
         protected bool InMigrationApiList(string apiName)
         {
             var apis = new string[] { "empty", "tensor" };
-
             return apis.Contains(apiName);
         }
 
         private HashSet<string> ManualOverride = new HashSet<string>() { "tensor" };
 
-
         public string Generate()
         {
-            LoadTemplates();
             var docs = LoadDocs();
-
-            foreach(var html in docs)
+            var torch_api = new StaticApi()
+            {
+                StaticName = "torch", // name of the static API class
+                SingletonName = "PyTorch", // name of the singleton that implements the static API behind the scenes
+                PythonModule = "torch" // name of the Python module that the static api wraps 
+            };
+            foreach (var html in docs)
             {
                 var doc = new HtmlDocument();
                 doc.LoadHtml(html.Value);
@@ -69,33 +73,10 @@ namespace Torch.CodeGenerator
 
             var dir = Directory.GetCurrentDirectory();
             var src_dir = dir.Substring(0, dir.LastIndexOf("\\src\\")) + "\\src\\";
-            var out_path = Path.Combine(src_dir, "Torch\\torch.gen.cs");
-            WriteFile(out_path, s =>
-            {
-                GenerateStaticApi(torch_api, s);
-            });
-            out_path = Path.Combine(src_dir, "Torch\\PyTorch.gen.cs");
-            WriteFile(out_path, s =>
-            {
-                GenerateApiImplementation(torch_api, s);
-            });
-            return "DONE";
-        }
+            torch_api.OutputPath = Path.Combine(src_dir, "Torch");
 
-        protected void WriteFile(string path, Action<StringBuilder> generate_action)
-        {
-            var s = new StringBuilder();
-            try
-            {
-                generate_action(s);
-            }
-            catch (Exception e)
-            {
-                s.AppendLine("\r\n --------------- generator exception ---------------------");
-                s.AppendLine(e.Message);
-                s.AppendLine(e.StackTrace);
-            }
-            File.WriteAllText(path, s.ToString());
+            _generator.Generate();
+            return "DONE";
         }
 
         private void SetFunctionName(Declaration decl, HtmlNode node)
