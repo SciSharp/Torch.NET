@@ -18,6 +18,7 @@ namespace Torch.ApiGenerator
         {
             _generator = new CodeGenerator
             {
+                //PrintModelJson=true,  // <-- if enabled prints the declaration model as JSON for debugging reasons
                 NameSpace = "Torch",
                 Usings = {"using NumSharp;"},
                 ToCsharpConversions =
@@ -83,7 +84,8 @@ namespace Torch.ApiGenerator
                     SetReturnType(decl, node);
                     SetParameters(decl, node);
 
-                    api.Declarations.Add(decl);
+                    foreach(var d in InferOverloads(decl))
+                        api.Declarations.Add(d);
                 }
             }
 
@@ -183,6 +185,34 @@ namespace Torch.ApiGenerator
 
                 decl.Arguments.Add(arg);
             }
+        }
+
+        private IEnumerable<Declaration> InferOverloads(Declaration decl)
+        {
+            // without args we don't need to consider possible overloads
+            if (decl.Arguments.Count == 0)
+            {
+                yield return decl;
+                yield break;
+            }
+            // array_like
+            if (decl.Arguments.Any(a => a.Type == "(array_like)"))
+            {
+                foreach (var type in "NDarray T[]".Split())
+                {
+                    var clone_decl = decl.Clone();
+                    clone_decl.Arguments.ForEach(a =>
+                    {
+                        if (a.Type == "array_like")
+                            a.Type = type;
+                    });
+                    if (type == "T[]")
+                        clone_decl.Generics = new string[] { "T" };
+                    yield return clone_decl;
+                }
+                yield break;
+            }
+            yield return decl;
         }
 
         protected string InferDataType(string value, string hint)

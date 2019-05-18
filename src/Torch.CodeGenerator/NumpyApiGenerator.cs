@@ -18,6 +18,7 @@ namespace Torch.ApiGenerator
         {
             _generator = new CodeGenerator
             {
+                //PrintModelJson=true,  // <-- if enabled prints the declaration model as JSON for debugging reasons
                 NameSpace = "Numpy",
                 Usings = { "using NumSharp;" },
             };
@@ -57,6 +58,7 @@ namespace Torch.ApiGenerator
                 // return type(s)
                 ParseReturnTypes(html_doc, table, decl);
 
+                PostProcess(decl);
                 // if necessary create overloads
                 foreach (var d in InferOverloads(decl))
                     api.Declarations.Add(d);
@@ -83,7 +85,7 @@ namespace Torch.ApiGenerator
                 var type_description = dt.Descendants("span")
                     .First(span => span.Attributes["class"]?.Value == "classifier").InnerText;
                 var type = type_description.Split(",").FirstOrDefault();
-                arg.Type = InferType(arg.Name, type);
+                arg.Type = InferType(type, arg);
                 if (type_description.Contains("optional"))
                 {
                     arg.IsNamedArg = true;
@@ -101,8 +103,46 @@ namespace Torch.ApiGenerator
         {
             if (arg.Name == "order")
                 arg.DefaultValue = null;
+            switch (arg.Type)
+            {
+                //case "int[]":
+                //case "Hashtable":
+                //    arg.IsValueType = false;
+                //    break;
+                case "Dtype":
+                    arg.IsValueType = true;
+                    break;
+            }
         }
 
+        private void PostProcess(Declaration decl)
+        {
+            if (decl.Arguments.Any(a => a.Type == "buffer_like"))
+                decl.CommentOut = true;
+            // iterable object            
+            if (decl.Arguments.Any(a => a.Type == "IEnumerable<T>"))
+            {
+                        decl.Generics = new string[] { "T" };
+                        if (decl.Returns[0].Type == "NDarray") // TODO: this feels like a hack. make it more robust if necessary
+                            decl.Returns[0].Type = "NDarray<T>";
+            }
+
+            switch (decl.Name)
+            {
+                case "arange":
+                    decl.Arguments[0].IsNullable = false;
+                    decl.Arguments[0].DefaultValue = "0";
+                    decl.Arguments[2].DefaultValue = "1";
+                    decl.Arguments[2].IsNullable = false;
+                    decl.Arguments[3].IsNullable = false;
+                    decl.Arguments[3].IsNamedArg = true;
+                    break;
+                //case "loadtxt":
+                //    decl.DebuggerBreak = true;
+                //    break;
+            }
+        }
+        
         private void ParseReturnTypes(HtmlDoc html_doc, HtmlNode table, Declaration decl)
         {
             var tr = table.Descendants("tr").FirstOrDefault(x => x.InnerText.StartsWith("Returns:"));
@@ -115,14 +155,55 @@ namespace Torch.ApiGenerator
                 var type_description = dt.Descendants("span")
                     .First(span => span.Attributes["class"]?.Value == "classifier").InnerText;
                 var type = type_description.Split(",").FirstOrDefault();
-                arg.Type = InferType(arg.Name, type);
+                arg.Type = InferType(type, arg);
                 decl.Returns.Add(arg);
             }
         }
 
         private IEnumerable<Declaration> InferOverloads(Declaration decl)
         {
-            // todo
+            // without args we don't need to consider possible overloads
+            if (decl.Arguments.Count == 0)
+            {
+                yield return decl;
+                yield break;
+            }
+            // array_like
+            if (decl.Arguments.Any(a=>a.Type == "array_like"))
+            {
+                foreach (var type in "NDarray T[]".Split())
+                {
+                    var clone_decl = decl.Clone();
+                    clone_decl.Arguments.ForEach(a =>
+                    {
+                        if (a.Type == "array_like")
+                            a.Type = type;
+                    });
+                    if (type == "T[]")
+                    {
+                        clone_decl.Generics = new string[] {"T"};
+                        if (clone_decl.Returns[0].Type == "NDarray") // TODO: this feels like a hack. make it more robust if necessary
+                            clone_decl.Returns[0].Type = "NDarray<T>";
+                    }
+                    yield return clone_decl;
+                }
+                yield break;
+            }
+            // number
+            if (decl.Arguments.Any(a => a.Type == "number"))
+            {
+                foreach (var type in "byte short int long float double".Split())
+                {
+                    var clone_decl = decl.Clone();
+                    clone_decl.Arguments.ForEach(a =>
+                    {
+                        if (a.Type == "number")
+                            a.Type = type;
+                    });
+                    yield return clone_decl;
+                }
+                yield break;
+            }
             yield return decl;
         }
 
@@ -134,9 +215,9 @@ namespace Torch.ApiGenerator
             return default_value;
         }
 
-        private string InferType(string argname, string type)
+        private string InferType(string type, Argument arg)
         {
-            switch (argname)
+            switch (arg.Name)
             {
                 case "shape": return "NumSharp.Shape";
                 case "dtype": return "Dtype";
@@ -146,6 +227,17 @@ namespace Torch.ApiGenerator
             {
                 case "data-type": return "Dtype";
                 case "ndarray": return "NDarray";
+                case "scalar": return "ValueType";
+                case "file": return "string";
+                case "str": return "string";
+                case "file or str": return "string";
+                case "str or sequence of str": return "string[]";
+                case "array of str or unicode-like": return "string[]";
+                case "callable": return "Delegate";
+                case "any": return "object";
+                case "iterable object": return "IEnumerable<T>";
+                case "dict": return "Hashtable";
+                case "int or sequence": return "int[]";
             }
             if (type.StartsWith("ndarray"))
                 return "NDarray";

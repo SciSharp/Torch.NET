@@ -3,37 +3,20 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Text;
 using Python.Runtime;
+using Torch.Models;
 
 namespace Torch
 {
-    public partial class Tensor : IDisposable
+    public partial class Tensor : PythonObject
     {
-
-        protected readonly PyObject _pobj;
-        public dynamic PyObject => _pobj;
-
-        public IntPtr Handle => _pobj.Handle;
-        public string Name { get; set; }
-
-        public Tensor(PyObject pyobject)
+        public Tensor(PyObject pyobj) : base(pyobj)
         {
-            this._pobj = pyobject;
         }
 
-        public Tensor(Tensor t)
+        public Tensor(Tensor t) : base((PyObject)t.PyObject)
         {
-            this._pobj = t.PyObject;
         }
 
-        public override string ToString()
-        {
-            return _pobj.ToString();
-        }
-
-        public void Dispose()
-        {
-            _pobj?.Dispose();
-        }
     }
 
     public partial class Tensor<T> : Tensor
