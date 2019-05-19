@@ -13,7 +13,7 @@ namespace Torch
     public partial class PyTorch
     {
         
-        public Tensor empty(NumSharp.Shape sizes, Tensor @out = null, dtype dtype = null, layout layout = null, device device = null, bool? requires_grad = null, bool? pin_memory = null)
+        public Tensor empty(NumSharp.Shape sizes, Tensor @out = null, dtype? dtype = null, layout? layout = null, device? device = null, bool? requires_grad = null, bool? pin_memory = null)
         {
             //auto-generated code, do not change
             var args=ToTuple(new object[]
