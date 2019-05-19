@@ -48,6 +48,7 @@ namespace Torch.ApiGenerator
                 var func_name = doc.DocumentNode.Descendants("code")
                     .First(x => x.Attributes["class"]?.Value == "descname").InnerText;
                 var decl = new Declaration() { Name = func_name, ClassName= class_name.TrimEnd('.') };
+                ParseFunctionDescription(dl, decl);
                 var table = doc.DocumentNode.Descendants("table")
                     .FirstOrDefault(x => x.Attributes["class"]?.Value == "docutils field-list");
                 if (table==null)
@@ -68,6 +69,15 @@ namespace Torch.ApiGenerator
             api.OutputPath = Path.Combine(src_dir, "Torch");
             _generator.Generate();
             return "DONE";
+        }
+
+        private void ParseFunctionDescription(HtmlNode dl, Declaration decl)
+        {
+            var dd=dl.Descendants("dd").FirstOrDefault();
+            if (dd == null)
+                return;
+            var desc = string.Join("\r\n\r\n", dd.ChildNodes.Where(n => n.Name == "p").Select(p => p.InnerText).TakeWhile(s=>!s.StartsWith("Examples")));
+            decl.Description = desc;
         }
 
         private void ParseArguments(HtmlDoc html_doc, HtmlNode table, Declaration decl)
