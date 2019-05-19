@@ -48,7 +48,9 @@ namespace Torch.ApiGenerator
                 var func_name = doc.DocumentNode.Descendants("code")
                     .First(x => x.Attributes["class"]?.Value == "descname").InnerText;
                 var decl = new Declaration() { Name = func_name, ClassName= class_name.TrimEnd('.') };
-                ParseFunctionDescription(dl, decl);
+                // function description
+                var dd = dl.Descendants("dd").FirstOrDefault();
+                decl.Description=ParseDescription(dd);
                 var table = doc.DocumentNode.Descendants("table")
                     .FirstOrDefault(x => x.Attributes["class"]?.Value == "docutils field-list");
                 if (table==null)
@@ -71,13 +73,12 @@ namespace Torch.ApiGenerator
             return "DONE";
         }
 
-        private void ParseFunctionDescription(HtmlNode dl, Declaration decl)
+        private string ParseDescription(HtmlNode dd)
         {
-            var dd=dl.Descendants("dd").FirstOrDefault();
             if (dd == null)
-                return;
+                return null;
             var desc = string.Join("\r\n\r\n", dd.ChildNodes.Where(n => n.Name == "p").Select(p => p.InnerText).TakeWhile(s=>!s.StartsWith("Examples")));
-            decl.Description = desc;
+            return desc;
         }
 
         private void ParseArguments(HtmlDoc html_doc, HtmlNode table, Declaration decl)
@@ -104,6 +105,8 @@ namespace Torch.ApiGenerator
                 if (type_description.Contains("default:"))
                     arg.DefaultValue = InferDefaultValue(type_description.Split(",")
                         .First(x => x.Contains("default: ")).Replace("default: ", ""));
+                var dd = dt.NextSibling?.NextSibling;
+                arg.Description = ParseDescription(dd);
                 PostProcess(arg);
                 decl.Arguments.Add(arg);
             }
@@ -168,11 +171,15 @@ namespace Torch.ApiGenerator
             foreach (var dt in tr.Descendants("dt"))
             {
                 var arg = new Argument();
-                //arg.Name = dt.Descendants("strong").First().InnerText;
+                var strong = dt.Descendants("strong").FirstOrDefault();
+                if(strong!=null)
+                    arg.Name = strong.InnerText;
                 var type_description = dt.Descendants("span")
                     .First(span => span.Attributes["class"]?.Value == "classifier").InnerText;
                 var type = type_description.Split(",").FirstOrDefault();
                 arg.Type = InferType(type, arg);
+                var dd = dt.NextSibling?.NextSibling;
+                arg.Description = ParseDescription(dd);
                 decl.Returns.Add(arg);
             }
         }
