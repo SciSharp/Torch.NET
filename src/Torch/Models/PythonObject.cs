@@ -3,33 +3,100 @@ using System.Collections.Generic;
 using System.Text;
 using Python.Runtime;
 
-namespace Torch.Models
+namespace Torch
 {
-    public class PythonObject : IDisposable
+    public partial class PythonObject : IDisposable
     {
-        protected readonly PyObject _pobj;
-        public dynamic PyObject => _pobj;
+        protected readonly PyObject self;
+        public dynamic PyObject => self;
 
-        public IntPtr Handle => _pobj.Handle;
+        public IntPtr Handle => self.Handle;
 
         public PythonObject(PyObject pyobject)
         {
-            this._pobj = pyobject;
+            this.self = pyobject;
         }
 
         public PythonObject(Tensor t)
         {
-            this._pobj = t.PyObject;
+            this.self = t.PyObject;
         }
+
+        public static bool operator ==(PythonObject a, object b)
+        {
+            if (ReferenceEquals(a, b))
+                return true;
+            if (ReferenceEquals(a, null))
+                return false;
+            if (ReferenceEquals(b, null))
+                return false;
+            return a.Equals(b);
+        }
+
+        public static bool operator !=(PythonObject a, object b)
+        {
+            if (ReferenceEquals(a, b))
+                return false;
+            if (ReferenceEquals(a, null))
+                return true;
+            if (ReferenceEquals(b, null))
+                return true;
+            return !a.Equals(b);
+        }
+
+        public override bool Equals(object obj)
+        {
+            switch (obj)
+            {
+                case PythonObject other:
+                    return self.Equals(other.self);
+                case PyObject other:
+                    return self.Equals(other);
+            }
+            return base.Equals(obj);
+        }
+
+        public override int GetHashCode()
+        {
+            return self.GetHashCode();
+        }
+
+        // there is no need for this yet. if it is, we'll generate it automatically
+        public object FromPython(PyObject obj)
+        {
+            if (obj.IsNone())
+                return null;
+            var python_typename = Runtime.PyObject_GetTypeName(obj.Handle);
+            switch (python_typename)
+            {
+                case "Tensor": return new Tensor(obj);
+                default: throw new NotImplementedException($"Type is not yet supported: { python_typename}. Add it to 'FromPythonConversions'");
+            }
+            return obj;
+        }
+
+        public string repr => ToString();
 
         public override string ToString()
         {
-            return _pobj.ToString();
+            return self.ToString();
         }
+
+        /// <summary>
+        /// Returns True if obj is a PyTorch tensor.
+        /// </summary>
+        public bool is_tensor
+            => PyTorch.Instance.is_tensor(this);
+
+        /// <summary>
+        /// Returns True if obj is a PyTorch storage object.
+        /// </summary>
+        public bool is_storage
+            => PyTorch.Instance.is_storage(this);
 
         public void Dispose()
         {
-            _pobj?.Dispose();
+            self?.Dispose();
         }
     }
 }

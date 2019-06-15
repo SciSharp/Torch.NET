@@ -13,44 +13,8 @@ using Numpy.Models;
 
 namespace Torch
 {
-    public partial class PyTorch : IDisposable
+    public partial class PythonObject
     {
-        
-        private PyObject _pyobj = null;
-        public static PyTorch Instance => _instance.Value;
-        
-        private static Lazy<PyTorch> _instance = new Lazy<PyTorch>(() => 
-        {
-            var instance=new PyTorch();
-            try
-            {
-                instance._pyobj = InstallAndImport();
-            }
-            catch (Exception)
-            {
-                // retry to fix the installation by forcing a repair.
-                instance._pyobj = InstallAndImport(force: true);
-            }
-            return instance;
-        }
-        );
-        
-        private static PyObject InstallAndImport(bool force = false)
-        {
-            PythonEngine.Initialize();
-            var mod = Py.Import("torch");
-            return mod;
-        }
-        
-        public dynamic self => _pyobj;
-        private bool IsInitialized => _pyobj != null;
-        
-        private PyTorch() { }
-        
-        public void Dispose()
-        {
-            self?.Dispose();
-        }
         
         
         //auto-generated
