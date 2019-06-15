@@ -1800,6 +1800,22 @@ namespace Torch
         /// argument is passed in. Otherwise, an integer value is returned as the stride in
         /// the particular dimension dim.
         /// </summary>
+        public int[] stride()
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            dynamic py = __self__.InvokeMethod("stride");
+            return ToCsharp<int[]>(py);
+        }
+        
+        /// <summary>
+        /// Returns the stride of self tensor.
+        /// 
+        /// Stride is the jump necessary to go from one element to the next one in the
+        /// specified dimension dim. A tuple of all strides is returned when no
+        /// argument is passed in. Otherwise, an integer value is returned as the stride in
+        /// the particular dimension dim.
+        /// </summary>
         public int stride(int dim)
         {
             //auto-generated code, do not change
@@ -1822,16 +1838,16 @@ namespace Torch
         /// broadcastable with the shape of the underlying
         /// tensor.
         /// </summary>
-        public Tensor sub( @value,  other)
+        public Tensor sub<T>(T @value, Tensor other = null)
         {
             //auto-generated code, do not change
             var __self__=self;
             var pyargs=ToTuple(new object[]
             {
                 @value,
-                other,
             });
             var kwargs=new PyDict();
+            if (other!=null) kwargs["other"]=ToPython(other);
             dynamic py = __self__.InvokeMethod("sub", pyargs, kwargs);
             return ToCsharp<Tensor>(py);
         }
@@ -1843,7 +1859,7 @@ namespace Torch
         /// 
         /// as other.
         /// </summary>
-        public Tensor sum_to_size( size)
+        public Tensor sum_to_size(Shape size, Tensor other = null)
         {
             //auto-generated code, do not change
             var __self__=self;
@@ -1852,6 +1868,7 @@ namespace Torch
                 size,
             });
             var kwargs=new PyDict();
+            if (other!=null) kwargs["other"]=ToPython(other);
             dynamic py = __self__.InvokeMethod("sum_to_size", pyargs, kwargs);
             return ToCsharp<Tensor>(py);
         }
@@ -1868,17 +1885,72 @@ namespace Torch
         /// 
         /// Here are the ways to call to:
         /// </summary>
-        public Tensor to(a Returns,  args,  kwargs)
+        public Tensor to(Device device, Dtype dtype = null, bool non_blocking = false, bool copy = false)
         {
             //auto-generated code, do not change
             var __self__=self;
             var pyargs=ToTuple(new object[]
             {
-                Returns,
-                args,
-                kwargs,
+                device,
             });
             var kwargs=new PyDict();
+            if (dtype!=null) kwargs["dtype"]=ToPython(dtype);
+            if (non_blocking!=false) kwargs["non_blocking"]=ToPython(non_blocking);
+            if (copy!=false) kwargs["copy"]=ToPython(copy);
+            dynamic py = __self__.InvokeMethod("to", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
+        
+        /// <summary>
+        /// Performs Tensor dtype and/or device conversion. A torch.dtype and torch.device are
+        /// inferred from the arguments of self.to(*args, **kwargs).
+        /// 
+        /// Note
+        /// If the self Tensor already
+        /// has the correct torch.dtype and torch.device, then self is returned.
+        /// Otherwise, the returned tensor is a copy of self with the desired
+        /// torch.dtype and torch.device.
+        /// 
+        /// Here are the ways to call to:
+        /// </summary>
+        public Tensor to(Tensor other, bool non_blocking = false, bool copy = false)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                other,
+            });
+            var kwargs=new PyDict();
+            if (non_blocking!=false) kwargs["non_blocking"]=ToPython(non_blocking);
+            if (copy!=false) kwargs["copy"]=ToPython(copy);
+            dynamic py = __self__.InvokeMethod("to", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
+        
+        /// <summary>
+        /// Performs Tensor dtype and/or device conversion. A torch.dtype and torch.device are
+        /// inferred from the arguments of self.to(*args, **kwargs).
+        /// 
+        /// Note
+        /// If the self Tensor already
+        /// has the correct torch.dtype and torch.device, then self is returned.
+        /// Otherwise, the returned tensor is a copy of self with the desired
+        /// torch.dtype and torch.device.
+        /// 
+        /// Here are the ways to call to:
+        /// </summary>
+        public Tensor to(Dtype dtype, bool non_blocking = false, bool copy = false)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                dtype,
+            });
+            var kwargs=new PyDict();
+            if (non_blocking!=false) kwargs["non_blocking"]=ToPython(non_blocking);
+            if (copy!=false) kwargs["copy"]=ToPython(copy);
             dynamic py = __self__.InvokeMethod("to", pyargs, kwargs);
             return ToCsharp<Tensor>(py);
         }
@@ -1944,11 +2016,7 @@ namespace Torch
         /// asynchronously with respect to the host. Otherwise, the argument
         /// has no effect.
         /// </param>
-        /// <param name="kwargs">
-        /// For compatibility, may contain the key async in place of
-        /// the non_blocking argument. The async arg is deprecated.
-        /// </param>
-        public Tensor type( dtype = null, bool non_blocking = false,  kwargs)
+        public Tensor type(Dtype dtype = null, bool non_blocking = false)
         {
             //auto-generated code, do not change
             var __self__=self;
@@ -1958,7 +2026,6 @@ namespace Torch
             var kwargs=new PyDict();
             if (dtype!=null) kwargs["dtype"]=ToPython(dtype);
             if (non_blocking!=false) kwargs["non_blocking"]=ToPython(non_blocking);
-            if (kwargs!=null) kwargs["kwargs"]=ToPython(kwargs);
             dynamic py = __self__.InvokeMethod("type", pyargs, kwargs);
             return ToCsharp<Tensor>(py);
         }
@@ -2026,18 +2093,18 @@ namespace Torch
         /// 
         /// \]
         /// </summary>
-        public Tensor uniform_( @from = 0,  to = 1)
+        public Tensor<T> uniform_<T>(T @from, T to)
         {
             //auto-generated code, do not change
             var __self__=self;
             var pyargs=ToTuple(new object[]
             {
+                @from,
+                to,
             });
             var kwargs=new PyDict();
-            if (@from!=0) kwargs["from"]=ToPython(@from);
-            if (to!=1) kwargs["to"]=ToPython(to);
             dynamic py = __self__.InvokeMethod("uniform_", pyargs, kwargs);
-            return ToCsharp<Tensor>(py);
+            return ToCsharp<Tensor<T>>(py);
         }
         
         /// <summary>

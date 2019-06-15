@@ -99,6 +99,8 @@ namespace Torch
                 case "Layout": return (T)(object)new Layout(pyobj);
                 case "Device": return (T)(object)new Device(pyobj);
                 case "NDarray": return (T)(object)new NDarray(pyobj);
+                case "Storage": return (T)(object)new Storage(pyobj);
+                case "Shape": return (T)(object)new Shape(pyobj.As<int[]>());
                 default: return (T)pyobj;
             }
         }

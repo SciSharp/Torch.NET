@@ -72,9 +72,7 @@ namespace Torch
         /// </summary>
         public T item<T>() => self.InvokeMethod("item").As<T>();
 
-        public Shape stride() => new Shape(self.InvokeMethod("stride").As<int[]>());
-
-        public Shape Shape => stride();
+        public Shape Shape => size();
 
         ///// <summary>
         ///// Returns True if the data type of tensor is a floating point data type i.e.,
