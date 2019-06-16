@@ -147,22 +147,19 @@ namespace Torch.UnitTest
             //         [ 3,  3,  3,  3]])
             // 
 
-            var x = torch.tensor(new[,] { { 1 }, { 2 }, { 3 } });
-            var given = x.size();
+            var x = torch.tensor(new long[,] { { 1 }, { 2 }, { 3 } });
+            Assert.AreEqual(new Shape(3,1), x.size());
+            var given = x.expand(3, 4);
             var expected =
-                "torch.Size([3, 1])";
-            Assert.AreEqual(expected, given.repr);
-            given = x.expand(3, 4);
-            expected =
-               "tensor([[ 1,  1,  1,  1],\n" +
-               "        [ 2,  2,  2,  2],\n" +
-               "        [ 3,  3,  3,  3]])";
+               "tensor([[1, 1, 1, 1],\n" +
+               "        [2, 2, 2, 2],\n" +
+               "        [3, 3, 3, 3]])";
             Assert.AreEqual(expected, given.repr);
             given = x.expand(-1, 4);   // -1 means not changing the size of that dimension;
              expected =
-                "tensor([[ 1,  1,  1,  1],\n" +
-                "        [ 2,  2,  2,  2],\n" +
-                "        [ 3,  3,  3,  3]])";
+                "tensor([[1, 1, 1, 1],\n" +
+                "        [2, 2, 2, 2],\n" +
+                "        [3, 3, 3, 3]])";
             Assert.AreEqual(expected, given.repr);
         }
 
