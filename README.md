@@ -6,7 +6,7 @@ Torch.NET brings the awesome Python package [PyTorch](https://pytorch.org) to th
 
 ## Status
 
-Torch.NET is currently under very busy construction. We estimate to release the first Nuget supporting most of the Torch API in a few weeks. 
+Torch.NET is currently under very busy construction. 
 
 ### Completion
 The checked categories have been wrapped.
