@@ -36,3 +36,7 @@ The checked categories have been wrapped.
 - [ ] torch.utils.tensorboard (experimental)
 - [ ] torch.onnx
 - [ ] torch.__config__
+
+# Release
+
+[Torch.NET 1.0.0](https://www.nuget.org/packages/Torch.NET/1.0.0) on Nuget.org
