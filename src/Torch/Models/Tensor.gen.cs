@@ -271,7 +271,7 @@ namespace Torch
         /// 
         /// \[f(x) = \dfrac{1}{\pi} \dfrac{\sigma}{(x - \text{median})^2 + \sigma^2}\]
         /// </summary>
-        public Tensor cauchy_(double median = 0, double sigma = 1, object generator = null)
+        public Tensor cauchy_(double median = 0, double sigma = 1)
         {
             //auto-generated code, do not change
             var __self__=self;
@@ -281,7 +281,6 @@ namespace Torch
             var kwargs=new PyDict();
             if (median!=0) kwargs["median"]=ToPython(median);
             if (sigma!=1) kwargs["sigma"]=ToPython(sigma);
-            if (generator!=null) kwargs["generator"]=ToPython(generator);
             dynamic py = __self__.InvokeMethod("cauchy_", pyargs, kwargs);
             return ToCsharp<Tensor>(py);
         }
@@ -559,7 +558,7 @@ namespace Torch
         /// 
         /// \[f(x) = \lambda e^{-\lambda x}\]
         /// </summary>
-        public Tensor exponential_(double lambd = 1, object generator = null)
+        public Tensor exponential_(double lambd = 1)
         {
             //auto-generated code, do not change
             var __self__=self;
@@ -568,7 +567,6 @@ namespace Torch
             });
             var kwargs=new PyDict();
             if (lambd!=1) kwargs["lambd"]=ToPython(lambd);
-            if (generator!=null) kwargs["generator"]=ToPython(generator);
             dynamic py = __self__.InvokeMethod("exponential_", pyargs, kwargs);
             return ToCsharp<Tensor>(py);
         }
@@ -605,7 +603,7 @@ namespace Torch
         /// 
         /// \[f(X=k) = (1 - p)^{k - 1} p\]
         /// </summary>
-        public Tensor geometric_(double p, object generator = null)
+        public Tensor geometric_(double p)
         {
             //auto-generated code, do not change
             var __self__=self;
@@ -614,7 +612,6 @@ namespace Torch
                 p,
             });
             var kwargs=new PyDict();
-            if (generator!=null) kwargs["generator"]=ToPython(generator);
             dynamic py = __self__.InvokeMethod("geometric_", pyargs, kwargs);
             return ToCsharp<Tensor>(py);
         }
@@ -810,7 +807,7 @@ namespace Torch
         /// <param name="indices">
         /// tensors used to index into self.
         /// </param>
-        /// <param name="@value">
+        /// <param name="value">
         /// tensor of same dtype as self.
         /// </param>
         /// <param name="accumulate">
@@ -998,7 +995,7 @@ namespace Torch
         /// 
         /// \[f(x) = \dfrac{1}{x \sigma \sqrt{2\pi}}\ e^{-\frac{(\ln x - \mu)^2}{2\sigma^2}}\]
         /// </summary>
-        public void log_normal_(double mean = 1, double std = 2, object generator = null)
+        public void log_normal_(double mean = 1, double std = 2)
         {
             //auto-generated code, do not change
             var __self__=self;
@@ -1008,7 +1005,6 @@ namespace Torch
             var kwargs=new PyDict();
             if (mean!=1) kwargs["mean"]=ToPython(mean);
             if (std!=2) kwargs["std"]=ToPython(std);
-            if (generator!=null) kwargs["generator"]=ToPython(generator);
             dynamic py = __self__.InvokeMethod("log_normal_", pyargs, kwargs);
         }
         
@@ -1097,7 +1093,7 @@ namespace Torch
         /// <param name="mask">
         /// the binary mask
         /// </param>
-        /// <param name="@value">
+        /// <param name="value">
         /// the value to fill in with
         /// </param>
         public void masked_fill_(Tensor<byte> mask, double @value)
@@ -1178,7 +1174,7 @@ namespace Torch
         /// Fills self tensor with elements samples from the normal distribution
         /// parameterized by mean and std.
         /// </summary>
-        public Tensor normal_(double mean = 0, double std = 1, object generator = null)
+        public Tensor normal_(double mean = 0, double std = 1)
         {
             //auto-generated code, do not change
             var __self__=self;
@@ -1188,7 +1184,6 @@ namespace Torch
             var kwargs=new PyDict();
             if (mean!=0) kwargs["mean"]=ToPython(mean);
             if (std!=1) kwargs["std"]=ToPython(std);
-            if (generator!=null) kwargs["generator"]=ToPython(generator);
             dynamic py = __self__.InvokeMethod("normal_", pyargs, kwargs);
             return ToCsharp<Tensor>(py);
         }
@@ -1209,7 +1204,7 @@ namespace Torch
         /// <summary>
         /// Permute the dimensions of this tensor.
         /// </summary>
-        public Tensor permute(Shape dims)
+        public Tensor permute(params int[] dims)
         {
             //auto-generated code, do not change
             var __self__=self;
@@ -1317,7 +1312,7 @@ namespace Torch
         /// value is representable. For example, torch.tensor(1, dtype=torch.double).random_()
         /// will be uniform in [0, 2^53].
         /// </summary>
-        public Tensor<T> random_<T>(T @from, T to, object generator = null)
+        public Tensor<T> random_<T>(T @from, T to)
         {
             //auto-generated code, do not change
             var __self__=self;
@@ -1327,7 +1322,6 @@ namespace Torch
                 to,
             });
             var kwargs=new PyDict();
-            if (generator!=null) kwargs["generator"]=ToPython(generator);
             dynamic py = __self__.InvokeMethod("random_", pyargs, kwargs);
             return ToCsharp<Tensor<T>>(py);
         }
@@ -1529,7 +1523,7 @@ namespace Torch
         /// the source element(s) to scatter,
         /// incase value is not specified
         /// </param>
-        /// <param name="@value">
+        /// <param name="value">
         /// the source element(s) to scatter,
         /// incase src is not specified
         /// </param>
