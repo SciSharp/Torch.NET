@@ -4,6 +4,10 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <RootNamespace>Torch</RootNamespace>
     <AssemblyName>Torch.NET</AssemblyName>
+    <Authors>Meinrad Recheis</Authors>
+    <Copyright>2019 - Meinrad Recheis</Copyright>
+    <PackageLicenseUrl>https://github.com/SciSharp/Torch.NET/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/SciSharpTorch.NET</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup>
