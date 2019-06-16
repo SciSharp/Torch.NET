@@ -4,3 +4,32 @@ Torch.NET brings the awesome Python package [PyTorch](https://pytorch.org) to th
 ## Status
 
 Torch.NET is currently under very busy construction. We estimate to release the first Nuget supporting most of the Torch API in a few weeks. 
+
+### Completion
+The checked categories have been wrapped.
+- [x] torch
+- [x] torch.Tensor
+- [x] Tensor Attributes
+- [x] Type Info
+- [ ] torch.sparse
+- [ ] torch.cuda
+- [ ] torch.Storage
+- [ ] torch.nn
+- [ ] torch.nn.functional
+- [ ] torch.nn.init
+- [ ] torch.optim
+- [ ] torch.autograd
+- [ ] torch.distributed
+- [ ] torch.distributions
+- [ ] torch.hub
+- [ ] torch.jit
+- [ ] torch.multiprocessing
+- [ ] torch.utils.bottleneck
+- [ ] torch.utils.checkpoint
+- [ ] torch.utils.cpp_extension
+- [ ] torch.utils.data
+- [ ] torch.utils.dlpack
+- [ ] torch.utils.model_zoo
+- [ ] torch.utils.tensorboard (experimental)
+- [ ] torch.onnx
+- [ ] torch.__config__
