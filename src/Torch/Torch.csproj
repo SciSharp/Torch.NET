@@ -8,7 +8,7 @@
     <Copyright>2019 - Meinrad Recheis</Copyright>
     <PackageLicenseUrl>https://github.com/SciSharp/Torch.NET/blob/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/SciSharpTorch.NET</PackageProjectUrl>
-    <PackageIconUrl>https://github.com/SciSharp/Torch.NET/blob/master/docs/art/Torch.NET_64.png?raw=true</PackageIconUrl>
+    <PackageIconUrl>https://github.com/SciSharp/Torch.NET/blob/master/docs/art/Torch.NET_icon128.png?raw=true</PackageIconUrl>
     <RepositoryUrl>https://github.com/SciSharp/Torch.NET/</RepositoryUrl>
     <PackageTags>Torch, PyTorch, ML, AI,</PackageTags>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
