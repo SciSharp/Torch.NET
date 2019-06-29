@@ -101,7 +101,16 @@ namespace Torch
                 case "NDarray": return (T)(object)new NDarray(pyobj);
                 case "Storage": return (T)(object)new Storage(pyobj);
                 case "Shape": return (T)(object)new Shape(pyobj.As<int[]>());
-                default: return (T)pyobj;
+                default:
+                try
+                {
+                    return pyobj.As<T>();
+                }
+                catch (Exception e)
+                {
+                    throw new NotImplementedException($"conversion from {typeof(T).Name} to {pyobj.__class__} not implemented", e);
+                    return default(T);
+                }
             }
         }
         

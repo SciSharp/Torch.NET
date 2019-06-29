@@ -15,10 +15,10 @@ namespace Torch
     public static partial class torch
     {
 
-        public static Tensor tensor(NDarray data, Dtype dtype = null, Device device = null, bool? requires_grad = null, bool? pin_memory = null)
+        public static Tensor tensor(NDarray data, Dtype dtype = null, Device device = null, bool requires_grad = false, bool pin_memory = false)
             => PyTorch.Instance.tensor(data, dtype: dtype, device: device, requires_grad: requires_grad, pin_memory: pin_memory);
 
-        public static Tensor<T> tensor<T>(T[] data, Dtype dtype = null, Device device = null, bool? requires_grad = null, bool? pin_memory = null)
+        public static Tensor<T> tensor<T>(T[] data, Dtype dtype = null, Device device = null, bool requires_grad = false, bool pin_memory = false)
             => PyTorch.Instance.tensor(data, dtype: dtype, device: device, requires_grad: requires_grad, pin_memory: pin_memory);
 
         /// <summary>
@@ -63,6 +63,17 @@ namespace Torch
         public static Dtype IntTensor => new Dtype(PyTorch.Instance.self.GetAttr("IntTensor"));
         public static Dtype LongTensor => new Dtype(PyTorch.Instance.self.GetAttr("LongTensor"));
         public static Dtype ByteTensor => new Dtype(PyTorch.Instance.self.GetAttr("ByteTensor"));
+
+        // Locally disabling gradient computation
+        public static PyObject no_grad() => autograd.no_grad();
+        public static PyObject enable_grad() => autograd.enable_grad();
+        public static PyObject set_grad_enabled(bool mode) => autograd.set_grad_enabled(mode);
+        public static partial class autograd
+        {
+            public static PyObject no_grad() => PyTorch.Instance.self.no_grad();
+            public static PyObject enable_grad() => PyTorch.Instance.self.enable_grad();
+            public static PyObject set_grad_enabled(bool mode) => PyTorch.Instance.self.enable_grad(mode);
+        }
 
         /// <summary>
         /// A torch.device is an object representing the device on which a torch.Tensor is or will be allocated.
@@ -326,6 +337,36 @@ namespace Torch
         /// </param>
         public static Tensor arange(int end, Tensor @out = null, Dtype dtype = null, Layout layout = null, Device device = null, bool? requires_grad = false)
             => PyTorch.Instance.arange(0, end, 1, @out: @out, dtype: torch.int64, layout: layout, device: device, requires_grad: requires_grad);
+
+        /// <summary>
+        /// Clamp all elements in input into the range [ min, max ] and return
+        /// a resulting tensor:
+        /// 
+        /// \[y_i = \begin{cases}
+        ///     \text{min} & \text{if } x_i < \text{min} \\
+        ///     x_i & \text{if } \text{min} \leq x_i \leq \text{max} \\
+        ///     \text{max} & \text{if } x_i > \text{max}
+        /// \end{cases}
+        /// 
+        /// \]
+        /// 
+        /// If input is of type FloatTensor or DoubleTensor, args min
+        /// and max must be real numbers, otherwise they should be integers.
+        /// </summary>
+        /// <param name="input">
+        /// the input tensor
+        /// </param>
+        /// <param name="min">
+        /// lower-bound of the range to be clamped to
+        /// </param>
+        /// <param name="max">
+        /// upper-bound of the range to be clamped to
+        /// </param>
+        /// <param name="out">
+        /// the output tensor
+        /// </param>
+        public static Tensor clamp(Tensor input, double? min = null, double? max = null, Tensor @out = null)
+            => PyTorch.Instance.clamp(input, min: min, max: max, @out: @out);
 
     }
 }

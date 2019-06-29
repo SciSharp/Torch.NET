@@ -55,6 +55,14 @@ namespace Torch
 
         public Tensor<T> AsTensor<T>() => new Tensor<T>(self);
 
+        /// <summary>
+        /// Is True if gradients need to be computed for this Tensor, False otherwise.
+        /// 
+        /// Note
+        /// The fact that gradients need to be computed for a Tensor do not mean that the grad
+        /// attribute will be populated, see is_leaf for more details.
+        /// </summary>
+        public bool requires_grad => self.GetAttr("requires_grad").As<bool>();
 
         public Tensor this[params int[] index]
         {

@@ -7,7 +7,7 @@ namespace Torch
 {
     public partial class PythonObject : IDisposable
     {
-        protected readonly PyObject self;
+        protected PyObject self; // must not be readonly for derived constructors will need to overwrite it.
         public dynamic PyObject => self;
 
         public IntPtr Handle => self.Handle;
@@ -20,6 +20,12 @@ namespace Torch
         public PythonObject(Tensor t)
         {
             this.self = t.PyObject;
+        }
+
+        protected PythonObject()
+        {
+            // setting intermediate self for derived constructors to be able to call the python constructor on self
+            self = PyTorch.Instance.self;
         }
 
         public static bool operator ==(PythonObject a, object b)
