@@ -1,8 +1,10 @@
-![Logo](docs/art/Torch.NET_128.png)
+![Logo](docs/art/Torch.NET_logo512.png)
 
-# Torch.NET
+**Torch.NET** brings the awesome [PyTorch](https://pytorch.org) library to the .NET world. It offers Tensor computations and Neural Network modules with efficient GPU or multi-core CPU processing support and is to be considered one of the fundamental libraries for scientific computing, machine learning and AI. Torch.NET empowers .NET developers to leverage PyTorch's extensive functionality including computational graphs with with multi-dimensional arrays, back-propagation, neural network implementations and many more via a compatible strong-typed API.
 
-Torch.NET brings the awesome Python package [PyTorch](https://pytorch.org) to the .NET world. PyTorch offers Tensor computations and more with efficient GPU or multi-core CPU processing support and is to be considered one of the fundamental libraries for scientific computing, machine learning and AI in Python. Torch.NET empowers .NET developers to leverage PyTorch's extensive functionality including computational graphs with with multi-dimensional arrays, back-propagation, neural network implementations and many more via a compatible strong-typed API.
+Check out this [example](src/Examples/SimpleNeuralNetworkExample/Program.cs) fitting a two-layer neural network against random data in C# and Python: 
+
+![Side-By-Side](docs/art/cs_vs_py.png)
 
 ## Dependencies
 You need **Python 3.7** and **PyTorch** installed on your System for Torch.NET to work.
@@ -20,7 +22,7 @@ The checked categories have been wrapped.
 - [ ] torch.sparse
 - [ ] torch.cuda
 - [ ] torch.Storage
-- [ ] torch.nn
+- [x] torch.nn
 - [ ] torch.nn.functional
 - [ ] torch.nn.init
 - [ ] torch.optim
