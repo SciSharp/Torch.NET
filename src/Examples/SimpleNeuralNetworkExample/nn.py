@@ -1,13 +1,11 @@
 ﻿import torch
 
 dtype = torch.float
-device = torch.device("cpu")
-# device = torch.device("cuda:0") # Uncomment this to run on GPU
+device = torch.device("cuda:0")  # or "cpu"
 
 # N is batch size; D_in is input dimension;
 # H is hidden dimension; D_out is output dimension.
 N, D_in, H, D_out = 64, 1000, 100, 10
-
 # Create random Tensors to hold input and outputs.
 # Setting requires_grad=False indicates that we do not need to compute gradients
 # with respect to these Tensors during the backward pass.

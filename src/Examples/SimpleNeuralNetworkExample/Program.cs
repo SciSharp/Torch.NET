@@ -9,16 +9,14 @@ namespace SimpleNeuralNetworkExample
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Console.WriteLine("Fitting a two-layer NN against random data ...");
 
             var dtype = torch.@float;
-            //var device = torch.device("cpu"); // Us this to run on CPU
-            var device = torch.device("cuda:0");
+            var device = torch.device("cuda:0"); // or "cpu"
 
             // N is batch size; D_in is input dimension;
             // H is hidden dimension; D_out is output dimension.
             var (N, D_in, H, D_out) = (64, 1000, 100, 10);
-
             // Create random Tensors to hold input and outputs.
             // Setting requires_grad=False indicates that we do not need to compute gradients
             // with respect to these Tensors during the backward pass.
@@ -44,7 +42,7 @@ namespace SimpleNeuralNetworkExample
                 // Now loss is a Tensor of shape (1,)
                 // loss.item() gets the a scalar value held in the loss.
                 var loss = (y_pred - y).pow(2).sum();
-                Console.WriteLine($"\tstep {t}: {loss.item()}");
+                Console.WriteLine($"\tstep {t}: {loss.item<double>()}");
 
                 // Use autograd to compute the backward pass. This call will compute the
                 // gradient of loss with respect to all Tensors with requires_grad=true.
