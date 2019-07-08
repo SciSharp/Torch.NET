@@ -16,21 +16,53 @@ namespace Torch
     {
 
         public static Tensor tensor(NDarray data, Dtype dtype = null, Device device = null, bool requires_grad = false, bool pin_memory = false)
-            => PyTorch.Instance.tensor(data, dtype: dtype, device: device, requires_grad: requires_grad, pin_memory: pin_memory);
+        {
+            var __self__ = self;
+            var pyargs = ToTuple(new object[]
+            {
+                data.PyObject,
+            });
+            var kwargs = new PyDict();
+            if (dtype != null) kwargs["dtype"] = ToPython(dtype);
+            //if (layout != null) kwargs["layout"] = ToPython(layout);
+            if (device != null) kwargs["device"] = ToPython(device);
+            if (requires_grad != null) kwargs["requires_grad"] = ToPython(requires_grad);
+            if (pin_memory != null) kwargs["pin_memory"] = ToPython(pin_memory);
+            dynamic py = __self__.InvokeMethod("tensor", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
 
         public static Tensor<T> tensor<T>(T[] data, Dtype dtype = null, Device device = null, bool requires_grad = false, bool pin_memory = false)
-            => PyTorch.Instance.tensor(data, dtype: dtype, device: device, requires_grad: requires_grad, pin_memory: pin_memory);
+        {
+            var type = data.GetDtype();
+            var tensor = torch.empty(new Shape(data.Length), dtype: dtype ?? type, device: device,
+                requires_grad: requires_grad, pin_memory: pin_memory);
+            if (data.Length == 0)
+                return new Tensor<T>(tensor);
+            var storage = tensor.PyObject.storage();
+            long ptr = storage.data_ptr();
+            switch ((object)data)
+            {
+                case byte[] a: Marshal.Copy(a, 0, new IntPtr(ptr), a.Length); break;
+                case short[] a: Marshal.Copy(a, 0, new IntPtr(ptr), a.Length); break;
+                case int[] a: Marshal.Copy(a, 0, new IntPtr(ptr), a.Length); break;
+                case long[] a: Marshal.Copy(a, 0, new IntPtr(ptr), a.Length); break;
+                case float[] a: Marshal.Copy(a, 0, new IntPtr(ptr), a.Length); break;
+                case double[] a: Marshal.Copy(a, 0, new IntPtr(ptr), a.Length); break;
+            }
+            return new Tensor<T>(tensor);
+        }
 
         /// <summary>
         /// retrun a Tensor from a scalar value
         /// </summary>
         public static Tensor<T> as_tensor<T>(T scalar, Dtype dtype = null, Device device = null)
         {
-            var self = PyTorch.Instance.self;
-            var pyargs = PyTorch.Instance.ToTuple(new object[] { scalar });
+            var self = torch.self;
+            var pyargs = torch.ToTuple(new object[] { scalar });
             var kwargs = new PyDict();
-            if (dtype != null) kwargs["dtype"] = PyTorch.Instance.ToPython(dtype);
-            if (device != null) kwargs["device"] = PyTorch.Instance.ToPython(device);
+            if (dtype != null) kwargs["dtype"] = torch.ToPython(dtype);
+            if (device != null) kwargs["device"] = torch.ToPython(device);
             return new Tensor<T>(self.InvokeMethod("as_tensor", pyargs, kwargs));
         }
 
@@ -40,29 +72,29 @@ namespace Torch
         }
 
         // layouts
-        public static Layout strided => new Layout(PyTorch.Instance.self.GetAttr("strided"));
-        public static Layout sparse_coo => new Layout(PyTorch.Instance.self.GetAttr("sparse_coo"));
+        public static Layout strided => new Layout(torch.self.GetAttr("strided"));
+        public static Layout sparse_coo => new Layout(torch.self.GetAttr("sparse_coo"));
 
         // dtypes
-        public static Dtype float32 => new Dtype(PyTorch.Instance.self.GetAttr("float32"));
-        public static Dtype @float => new Dtype(PyTorch.Instance.self.GetAttr("float"));
-        public static Dtype float64 => new Dtype(PyTorch.Instance.self.GetAttr("float64"));
-        public static Dtype @double => new Dtype(PyTorch.Instance.self.GetAttr("double"));
-        public static Dtype float16 => new Dtype(PyTorch.Instance.self.GetAttr("float16"));
-        public static Dtype half => new Dtype(PyTorch.Instance.self.GetAttr("half"));
-        public static Dtype uint8 => new Dtype(PyTorch.Instance.self.GetAttr("uint8"));
-        public static Dtype int8 => new Dtype(PyTorch.Instance.self.GetAttr("int8"));
-        public static Dtype int16 => new Dtype(PyTorch.Instance.self.GetAttr("int16"));
-        public static Dtype @short => new Dtype(PyTorch.Instance.self.GetAttr("short"));
-        public static Dtype int32 => new Dtype(PyTorch.Instance.self.GetAttr("int32"));
-        public static Dtype @int => new Dtype(PyTorch.Instance.self.GetAttr("int"));
-        public static Dtype int64 => new Dtype(PyTorch.Instance.self.GetAttr("int64"));
-        public static Dtype @long => new Dtype(PyTorch.Instance.self.GetAttr("long"));
-        public static Dtype FloatTensor => new Dtype(PyTorch.Instance.self.GetAttr("FloatTensor"));
-        public static Dtype DoubleTensor => new Dtype(PyTorch.Instance.self.GetAttr("DoubleTensor"));
-        public static Dtype IntTensor => new Dtype(PyTorch.Instance.self.GetAttr("IntTensor"));
-        public static Dtype LongTensor => new Dtype(PyTorch.Instance.self.GetAttr("LongTensor"));
-        public static Dtype ByteTensor => new Dtype(PyTorch.Instance.self.GetAttr("ByteTensor"));
+        public static Dtype float32 => new Dtype(torch.self.GetAttr("float32"));
+        public static Dtype @float => new Dtype(torch.self.GetAttr("float"));
+        public static Dtype float64 => new Dtype(torch.self.GetAttr("float64"));
+        public static Dtype @double => new Dtype(torch.self.GetAttr("double"));
+        public static Dtype float16 => new Dtype(torch.self.GetAttr("float16"));
+        public static Dtype half => new Dtype(torch.self.GetAttr("half"));
+        public static Dtype uint8 => new Dtype(torch.self.GetAttr("uint8"));
+        public static Dtype int8 => new Dtype(torch.self.GetAttr("int8"));
+        public static Dtype int16 => new Dtype(torch.self.GetAttr("int16"));
+        public static Dtype @short => new Dtype(torch.self.GetAttr("short"));
+        public static Dtype int32 => new Dtype(torch.self.GetAttr("int32"));
+        public static Dtype @int => new Dtype(torch.self.GetAttr("int"));
+        public static Dtype int64 => new Dtype(torch.self.GetAttr("int64"));
+        public static Dtype @long => new Dtype(torch.self.GetAttr("long"));
+        public static Dtype FloatTensor => new Dtype(torch.self.GetAttr("FloatTensor"));
+        public static Dtype DoubleTensor => new Dtype(torch.self.GetAttr("DoubleTensor"));
+        public static Dtype IntTensor => new Dtype(torch.self.GetAttr("IntTensor"));
+        public static Dtype LongTensor => new Dtype(torch.self.GetAttr("LongTensor"));
+        public static Dtype ByteTensor => new Dtype(torch.self.GetAttr("ByteTensor"));
 
         // Locally disabling gradient computation
         public static PyObject no_grad() => autograd.no_grad();
@@ -70,9 +102,9 @@ namespace Torch
         public static PyObject set_grad_enabled(bool mode) => autograd.set_grad_enabled(mode);
         public static partial class autograd
         {
-            public static PyObject no_grad() => PyTorch.Instance.self.no_grad();
-            public static PyObject enable_grad() => PyTorch.Instance.self.enable_grad();
-            public static PyObject set_grad_enabled(bool mode) => PyTorch.Instance.self.enable_grad(mode);
+            public static PyObject no_grad() => dynamic_self.no_grad();
+            public static PyObject enable_grad() => dynamic_self.enable_grad();
+            public static PyObject set_grad_enabled(bool mode) => dynamic_self.enable_grad(mode);
         }
 
         /// <summary>
@@ -92,8 +124,8 @@ namespace Torch
         public static Device device(string name, int? index=null)
         {
             if (index==null)
-                return new Device(PyTorch.Instance.self.InvokeMethod("device", PyTorch.Instance.ToTuple(new object[]{name})));
-            return new Device(PyTorch.Instance.self.InvokeMethod("device", PyTorch.Instance.ToTuple(new object[] { name, index.Value })));
+                return new Device(torch.self.InvokeMethod("device", torch.ToTuple(new object[]{name})));
+            return new Device(torch.self.InvokeMethod("device", torch.ToTuple(new object[] { name, index.Value })));
         }
 
         /// <summary>
@@ -101,7 +133,7 @@ namespace Torch
         /// </summary>
         public static Device device(int index)
         {
-            return new Device(PyTorch.Instance.self.InvokeMethod("device", PyTorch.Instance.ToTuple(new object[] { index})));
+            return new Device(torch.self.InvokeMethod("device", torch.ToTuple(new object[] { index})));
         }
 
         /// <summary>
@@ -117,7 +149,18 @@ namespace Torch
         /// <param name="out">The output tensor</param>
         /// <returns></returns>
         public static Tensor normal(Tensor mean, Tensor std, Tensor @out = null)
-            => PyTorch.Instance.normal(mean, std, @out: @out);
+        {
+            var __self__ = self;
+            var pyargs = ToTuple(new object[]
+            {
+                mean,
+                std,
+            });
+            var kwargs = new PyDict();
+            if (@out != null) kwargs["out"] = ToPython(@out);
+            dynamic py = __self__.InvokeMethod("normal", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
 
         /// <summary>
         /// Returns a tensor of random numbers drawn from separate normal distributions whose mean
@@ -128,7 +171,18 @@ namespace Torch
         /// <param name="out">The output tensor</param>
         /// <returns></returns>
         public static Tensor normal(float? mean, Tensor std, Tensor @out = null)
-            => PyTorch.Instance.normal(mean: mean, std: std, @out: @out);
+        {
+            var __self__ = self;
+            var pyargs = ToTuple(new object[]
+            {
+            });
+            var kwargs = new PyDict();
+            if (mean != null && mean.Value != 0.0f) kwargs["mean"] = ToPython(mean);
+            if (std != null) kwargs["std"] = ToPython(std);
+            if (@out != null) kwargs["out"] = ToPython(@out);
+            dynamic py = __self__.InvokeMethod("normal", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
 
         /// <summary>
         /// Returns a tensor of random numbers drawn from separate normal distributions whose mean
@@ -139,7 +193,18 @@ namespace Torch
         /// <param name="out">The output tensor</param>
         /// <returns></returns>
         public static Tensor normal(Tensor mean, float std = 1.0f, Tensor @out = null)
-            => PyTorch.Instance.normal(mean, std: std, @out: @out);
+        {
+            var __self__ = self;
+            var pyargs = ToTuple(new object[]
+            {
+                mean,
+            });
+            var kwargs = new PyDict();
+            if (std != 1.0) kwargs["std"] = ToPython(std);
+            if (@out != null) kwargs["out"] = ToPython(@out);
+            dynamic py = __self__.InvokeMethod("normal", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
 
         /// <summary>
         /// Adds the scalar value to each element of the input input and returns a new resulting tensor.
@@ -151,7 +216,17 @@ namespace Torch
         /// <param name="@value">the number to be added to each element of input</param>
         /// <param name="out"> the output tensor</param>
         public static void @add(Tensor input, object @value, Tensor @out = null)
-            => PyTorch.Instance.@add(input, @value, @out: @out);
+        {
+            var __self__ = self;
+            var pyargs = ToTuple(new object[]
+            {
+                input,
+                @value,
+            });
+            var kwargs = new PyDict();
+            if (@out != null) kwargs["out"] = ToPython(@out);
+            dynamic py = __self__.InvokeMethod("add", pyargs, kwargs);
+        }
 
         /// <summary>
         /// Each element of the tensor other is multiplied by the scalar value and added to each element of the tensor input.
@@ -165,7 +240,18 @@ namespace Torch
         /// <param name="other">the second input tensor</param>
         /// <param name="out">the output tensor</param>
         public static void @add(Tensor input, object @value, Tensor other, Tensor @out = null)
-            => PyTorch.Instance.@add(input, @value: @value, other: other, @out: @out);
+        {
+            var __self__ = self;
+            var pyargs = ToTuple(new object[]
+            {
+                input,
+            });
+            var kwargs = new PyDict();
+            kwargs["value"] = ToPython(@value);
+            kwargs["other"] = ToPython(other);
+            if (@out != null) kwargs["out"] = ToPython(@out);
+            dynamic py = __self__.InvokeMethod("add", pyargs, kwargs);
+        }
 
         /// <summary>
         /// Each element of the tensor other added to each element of the tensor input.
@@ -177,7 +263,7 @@ namespace Torch
         /// <param name="other">the second input tensor</param>
         /// <param name="out">the output tensor</param>
         public static void @add(Tensor input, Tensor other, Tensor @out = null)
-            => PyTorch.Instance.@add(input, @value: 1, other: other, @out: @out);
+            => torch.@add(input, @value: 1, other: other, @out: @out);
 
         /// <summary>
         /// Returns a tensor filled with random numbers from a uniform distribution
@@ -190,7 +276,7 @@ namespace Torch
         /// Can be a variable number of arguments or a collection like a list or tuple.
         /// </param>
         public static Tensor rand(params int[] sizes)
-            => PyTorch.Instance.rand(new Shape(sizes));
+            => torch.rand(new Shape(sizes));
 
         /// <summary>
         /// Returns a tensor filled with random numbers from a normal distribution
@@ -208,7 +294,7 @@ namespace Torch
         /// Can be a variable number of arguments or a collection like a list or tuple.
         /// </param>
         public static Tensor randn(params int[] sizes)
-            => PyTorch.Instance.randn(new Shape(sizes));
+            => torch.randn(new Shape(sizes));
 
         /// <summary>
         /// Returns a tensor filled with the scalar value 0, with the shape defined
@@ -219,7 +305,7 @@ namespace Torch
         /// Can be a variable number of arguments or a collection like a list or tuple.
         /// </param>
         public static Tensor zeros(params int[] sizes)
-            => PyTorch.Instance.zeros(new Shape(sizes));
+            => torch.zeros(new Shape(sizes));
 
         /// <summary>
         /// Returns a tensor filled with the scalar value 1, with the shape defined
@@ -230,7 +316,7 @@ namespace Torch
         /// Can be a variable number of arguments or a collection like a list or tuple.
         /// </param>
         public static Tensor ones(params int[] sizes)
-            => PyTorch.Instance.ones(new Shape(sizes));
+            => torch.ones(new Shape(sizes));
 
 
         /// <summary>
@@ -242,7 +328,7 @@ namespace Torch
         /// Can be a variable number of arguments or a collection like a list or tuple.
         /// </param>
         public static Tensor empty(params int[] sizes)
-            => PyTorch.Instance.empty(new Shape(sizes));
+            => torch.empty(new Shape(sizes));
 
         /// <summary>
         /// Returns a 1-D tensor of size \(\left\lfloor \frac{\text{end} - \text{start}}{\text{step}} \right\rfloor\)
@@ -292,7 +378,7 @@ namespace Torch
         /// returned tensor. Default: False.
         /// </param>
         public static Tensor arange(int start, int end, int step = 1, Tensor @out = null, Dtype dtype = null, Layout layout = null, Device device = null, bool? requires_grad = false)
-            => PyTorch.Instance.arange(start, end, step: step, @out: @out, dtype: torch.int64, layout: layout, device: device, requires_grad: requires_grad);
+            => torch.arange(start, end, step: step, @out: @out, dtype: torch.int64, layout: layout, device: device, requires_grad: requires_grad);
 
         /// <summary>
         /// Returns a 1-D tensor of size \(\left\lfloor \frac{\text{end} - \text{start}}{\text{step}} \right\rfloor\)
@@ -336,7 +422,7 @@ namespace Torch
         /// returned tensor. Default: False.
         /// </param>
         public static Tensor arange(int end, Tensor @out = null, Dtype dtype = null, Layout layout = null, Device device = null, bool? requires_grad = false)
-            => PyTorch.Instance.arange(0, end, 1, @out: @out, dtype: torch.int64, layout: layout, device: device, requires_grad: requires_grad);
+            => torch.arange(0, end, 1, @out: @out, dtype: torch.int64, layout: layout, device: device, requires_grad: requires_grad);
 
         /// <summary>
         /// Clamp all elements in input into the range [ min, max ] and return
@@ -366,8 +452,20 @@ namespace Torch
         /// the output tensor
         /// </param>
         public static Tensor clamp(Tensor input, double? min = null, double? max = null, Tensor @out = null)
-            => PyTorch.Instance.clamp(input, min: min, max: max, @out: @out);
-
+        {
+            //auto-generated code, do not change
+            var __self__ = self;
+            var pyargs = ToTuple(new object[]
+            {
+                input,
+            });
+            var kwargs = new PyDict();
+            if (min != null) kwargs["min"] = ToPython(min);
+            if (max != null) kwargs["max"] = ToPython(max);
+            if (@out != null) kwargs["out"] = ToPython(@out);
+            dynamic py = __self__.InvokeMethod("clamp", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
     }
 }
 

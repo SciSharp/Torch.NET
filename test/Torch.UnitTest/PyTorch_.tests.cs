@@ -24,41 +24,10 @@ namespace Torch.UnitTest
         [TestMethod]
         public void set_default_dtypeTest()
         {
-            // >>> torch.tensor([1.2, 3]).dtype           # initial default for floating point is torch.float32
-            // torch.float32
-            // >>> torch.set_default_dtype(torch.float64)
-            // >>> torch.tensor([1.2, 3]).dtype           # a new floating point tensor
-            // torch.float64
-            // 
-
-            var given = torch.tensor(new[] { 1.2f, 3 }).dtype; // initial default for floating point is torch.float32
-            var expected = "torch.float32";
-            Assert.AreEqual(expected, given.repr);
-            torch.set_default_dtype(torch.float64);
-            given = torch.tensor(new[] { 1.2, 3 }).dtype;          // a new floating point tensor;
-            expected =
-               "torch.float64";
-            Assert.AreEqual(expected, given.repr);
-        }
-
-
-        [TestMethod]
-        public void get_default_dtypeTest()
-        {
-            // >>> torch.get_default_dtype()  # initial default for floating point is torch.float32
-            // torch.float32
-            // >>> torch.set_default_dtype(torch.float64)
-            // >>> torch.get_default_dtype()  # default is now changed to torch.float64
-            // torch.float64
-            // >>> torch.set_default_tensor_type(torch.FloatTensor)  # setting tensor type also affects this
-            // >>> torch.get_default_dtype()  # changed to torch.float32, the dtype for torch.FloatTensor
-            // torch.float32
-            // 
-
-            var given = torch.get_default_dtype(); // initial default for floating point is torch.float32;
+            torch.set_default_dtype(torch.float32);
+            var given = torch.get_default_dtype();  // default is now changed to torch.float64;
             var expected =
                 "torch.float32";
-            Assert.AreEqual(expected, given.repr);
             torch.set_default_dtype(torch.float64);
             given = torch.get_default_dtype();  // default is now changed to torch.float64;
             expected =
@@ -69,6 +38,8 @@ namespace Torch.UnitTest
             expected =
                "torch.float32";
             Assert.AreEqual(expected, given.repr);
+            // set back to 64bit in order not to disturb other tests
+            torch.set_default_dtype(torch.float64);
         }
 
 
@@ -419,17 +390,17 @@ namespace Torch.UnitTest
             // tensor([ 1.0000,  1.5000,  2.0000])
             // 
 
-            var given=  torch.arange(5);
-            var expected=
+            var given = torch.arange(5);
+            var expected =
                 "tensor([0, 1, 2, 3, 4])";
             Assert.AreEqual(expected, given.repr);
-             given=  torch.arange(1, 4);
-             expected=
-                "tensor([1, 2, 3])";
+            given = torch.arange(1, 4);
+            expected =
+               "tensor([1, 2, 3])";
             Assert.AreEqual(expected, given.repr);
-             given=  torch.arange(1, 2.5, 0.5);
-             expected=
-                "tensor([1.0000, 1.5000, 2.0000])";
+            given = torch.arange(1, 2.5, 0.5);
+            expected =
+               "tensor([1.0000, 1.5000, 2.0000])";
             Assert.AreEqual(expected, given.repr);
         }
 
@@ -443,13 +414,13 @@ namespace Torch.UnitTest
             // tensor([ 1.0000,  1.5000,  2.0000,  2.5000,  3.0000,  3.5000,  4.0000])
             // 
 
-            var given=  torch.range(1, 4);
-            var expected=
+            var given = torch.range(1, 4);
+            var expected =
                 "tensor([1., 2., 3., 4.])";
             Assert.AreEqual(expected, given.repr);
-             given=  torch.range(1f, 4f, 0.5f);
-             expected=
-                "tensor([1.0000, 1.5000, 2.0000, 2.5000, 3.0000, 3.5000, 4.0000])";
+            given = torch.range(1f, 4f, 0.5f);
+            expected =
+               "tensor([1.0000, 1.5000, 2.0000, 2.5000, 3.0000, 3.5000, 4.0000])";
             Assert.AreEqual(expected, given.repr);
         }
 
@@ -467,24 +438,22 @@ namespace Torch.UnitTest
             // tensor([-10.])
             // 
 
-#if TODO
-            var given=  torch.linspace(3, 10, steps=5);
-            var expected=
-                "tensor([  3.0000,   4.7500,   6.5000,   8.2500,  10.0000])";
+            var given = torch.linspace(3, 10, steps: 5);
+            var expected =
+                "tensor([ 3.0000,  4.7500,  6.5000,  8.2500, 10.0000])";
             Assert.AreEqual(expected, given.repr);
-             given=  torch.linspace(-10, 10, steps=5);
-             expected=
-                "tensor([-10.,  -5.,   0.,   5.,  10.])";
+            given = torch.linspace(-10, 10, steps: 5);
+            expected =
+               "tensor([-10.,  -5.,   0.,   5.,  10.])";
             Assert.AreEqual(expected, given.repr);
-             given=  torch.linspace(start=-10, end=10, steps=5);
-             expected=
-                "tensor([-10.,  -5.,   0.,   5.,  10.])";
+            given = torch.linspace(start: -10, end: 10, steps: 5);
+            expected =
+               "tensor([-10.,  -5.,   0.,   5.,  10.])";
             Assert.AreEqual(expected, given.repr);
-             given=  torch.linspace(start=-10, end=10, steps=1);
-             expected=
-                "tensor([-10.])";
+            given = torch.linspace(start: -10, end: 10, steps: 1);
+            expected =
+               "tensor([-10.])";
             Assert.AreEqual(expected, given.repr);
-#endif
         }
 
 

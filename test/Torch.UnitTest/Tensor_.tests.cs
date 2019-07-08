@@ -50,12 +50,13 @@ namespace Torch.UnitTest
             //         [ 3.1416,  3.1416,  3.1416,  3.1416]], dtype=torch.float64)
             // 
 
+            torch.set_default_dtype(torch.float64);
             var tensor = torch.ones(new Shape(2), dtype: torch.float64);
             var given = tensor.new_full(new Shape(3, 4), 3.141592);
             var expected =
                 "tensor([[3.1416, 3.1416, 3.1416, 3.1416],\n" +
                 "        [3.1416, 3.1416, 3.1416, 3.1416],\n" +
-                "        [3.1416, 3.1416, 3.1416, 3.1416]], dtype=torch.float64)";
+                "        [3.1416, 3.1416, 3.1416, 3.1416]])";
             Assert.AreEqual(expected, given.repr);
         }
 

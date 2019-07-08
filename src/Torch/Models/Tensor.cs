@@ -118,10 +118,43 @@ namespace Torch
         public Device device
             => new Device(self.GetAttr("device"));
 
-        public virtual Tensor t() => new Tensor(self.InvokeMethod("t"));
-
+        /// <summary>
+        /// Transpose (see t())
+        /// </summary>
         public Tensor T => t();
 
+        /// <summary>
+        /// Clamp all elements into the range [ min, max ] and return
+        /// a resulting tensor:
+        /// 
+        /// \[y_i = \begin{cases}
+        ///     \text{min} & \text{if } x_i < \text{min} \\
+        ///     x_i & \text{if } \text{min} \leq x_i \leq \text{max} \\
+        ///     \text{max} & \text{if } x_i > \text{max}
+        /// \end{cases}
+        /// 
+        /// \]
+        /// 
+        /// <param name="min">
+        /// lower-bound of the range to be clamped to
+        /// </param>
+        /// <param name="max">
+        /// upper-bound of the range to be clamped to
+        /// </param>
+        /// <param name="out">
+        /// the output tensor
+        /// </param>
+        public Tensor clamp(double? min = null, double? max = null, Tensor @out = null)
+        {
+            //auto-generated code, do not change
+            var __self__ = self;
+            var kwargs = new PyDict();
+            if (min != null) kwargs["min"] = ToPython(min);
+            if (max != null) kwargs["max"] = ToPython(max);
+            if (@out != null) kwargs["out"] = ToPython(@out);
+            dynamic py = __self__.InvokeMethod("clamp", new PyTuple(), kwargs);
+            return ToCsharp<Tensor>(py);
+        }
     }
 
     public partial class Tensor<T> : Tensor
@@ -159,6 +192,5 @@ namespace Torch
 
         public new Tensor<T> t() => new Tensor<T>(self.InvokeMethod("t"));
 
-   
     }
 }

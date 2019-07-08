@@ -20,20 +20,51 @@ namespace Torch
         ///	Returns True if obj is a PyTorch tensor.
         /// </summary>
         public static bool is_tensor(Object obj)
-            => PyTorch.Instance.is_tensor(obj);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                obj,
+            });
+            var kwargs=new PyDict();
+            dynamic py = __self__.InvokeMethod("is_tensor", pyargs, kwargs);
+            return ToCsharp<bool>(py);
+        }
         
         /// <summary>
         ///	Returns True if obj is a PyTorch storage object.
         /// </summary>
         public static bool is_storage(Object obj)
-            => PyTorch.Instance.is_storage(obj);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                obj,
+            });
+            var kwargs=new PyDict();
+            dynamic py = __self__.InvokeMethod("is_storage", pyargs, kwargs);
+            return ToCsharp<bool>(py);
+        }
         
         /// <summary>
         ///	Returns True if the data type of tensor is a floating point data type i.e.,
         ///	one of torch.float64, torch.float32 and torch.float16.
         /// </summary>
         public static (bool, bool) is_floating_point(Tensor tensor)
-            => PyTorch.Instance.is_floating_point(tensor);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                tensor,
+            });
+            var kwargs=new PyDict();
+            dynamic py = __self__.InvokeMethod("is_floating_point", pyargs, kwargs);
+            var t = py as PyTuple;
+            return (ToCsharp<bool>(t[0]), ToCsharp<bool>(t[1]));
+        }
         
         /// <summary>
         ///	Sets the default floating point dtype to d.<br></br>
@@ -44,13 +75,27 @@ namespace Torch
         ///	The default floating point dtype is initially torch.float32.
         /// </summary>
         public static void set_default_dtype(Dtype d)
-            => PyTorch.Instance.set_default_dtype(d);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                d,
+            });
+            var kwargs=new PyDict();
+            dynamic py = __self__.InvokeMethod("set_default_dtype", pyargs, kwargs);
+        }
         
         /// <summary>
         ///	Get the current default floating point torch.dtype.
         /// </summary>
         public static Dtype get_default_dtype()
-            => PyTorch.Instance.get_default_dtype();
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            dynamic py = __self__.InvokeMethod("get_default_dtype");
+            return ToCsharp<Dtype>(py);
+        }
         
         /// <summary>
         ///	Sets the default torch.Tensor type to floating point tensor type
@@ -61,13 +106,32 @@ namespace Torch
         ///	The default floating point tensor type is initially torch.FloatTensor.
         /// </summary>
         public static void set_default_tensor_type(Dtype t)
-            => PyTorch.Instance.set_default_tensor_type(t);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                t,
+            });
+            var kwargs=new PyDict();
+            dynamic py = __self__.InvokeMethod("set_default_tensor_type", pyargs, kwargs);
+        }
         
         /// <summary>
         ///	Returns the total number of elements in the input tensor.
         /// </summary>
         public static int numel(Tensor input)
-            => PyTorch.Instance.numel(input);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+            });
+            var kwargs=new PyDict();
+            dynamic py = __self__.InvokeMethod("numel", pyargs, kwargs);
+            return ToCsharp<int>(py);
+        }
         
         /// <summary>
         ///	Set options for printing.<br></br>
@@ -103,7 +167,21 @@ namespace Torch
         ///	None (default) is specified, the value is defined by _Formatter
         /// </param>
         public static void set_printoptions(int? precision = 4, int? threshold = 1000, int? edgeitems = 3, int? linewidth = 80, string profile = "default", bool? sci_mode = null)
-            => PyTorch.Instance.set_printoptions(precision:precision, threshold:threshold, edgeitems:edgeitems, linewidth:linewidth, profile:profile, sci_mode:sci_mode);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+            });
+            var kwargs=new PyDict();
+            if (precision!=4) kwargs["precision"]=ToPython(precision);
+            if (threshold!=1000) kwargs["threshold"]=ToPython(threshold);
+            if (edgeitems!=3) kwargs["edgeitems"]=ToPython(edgeitems);
+            if (linewidth!=80) kwargs["linewidth"]=ToPython(linewidth);
+            if (profile!="default") kwargs["profile"]=ToPython(profile);
+            if (sci_mode!=null) kwargs["sci_mode"]=ToPython(sci_mode);
+            dynamic py = __self__.InvokeMethod("set_printoptions", pyargs, kwargs);
+        }
         
         /// <summary>
         ///	Disables denormal floating numbers on CPU.<br></br>
@@ -114,7 +192,17 @@ namespace Torch
         ///	is only supported on x86 architectures supporting SSE3.
         /// </summary>
         public static bool set_flush_denormal(bool mode)
-            => PyTorch.Instance.set_flush_denormal(mode);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                mode,
+            });
+            var kwargs=new PyDict();
+            dynamic py = __self__.InvokeMethod("set_flush_denormal", pyargs, kwargs);
+            return ToCsharp<bool>(py);
+        }
         
         /// <summary>
         ///	Constructs a sparse tensors in COO(rdinate) format with non-zero elements at the given indices
@@ -163,7 +251,22 @@ namespace Torch
         ///	Default: False.
         /// </param>
         public static Tensor sparse_coo_tensor(NDarray<int> indices, NDarray values, int? size = null, Dtype dtype = null, Device device = null, bool? requires_grad = false)
-            => PyTorch.Instance.sparse_coo_tensor(indices, values, size:size, dtype:dtype, device:device, requires_grad:requires_grad);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                indices,
+                values,
+            });
+            var kwargs=new PyDict();
+            if (size!=null) kwargs["size"]=ToPython(size);
+            if (dtype!=null) kwargs["dtype"]=ToPython(dtype);
+            if (device!=null) kwargs["device"]=ToPython(device);
+            if (requires_grad!=false) kwargs["requires_grad"]=ToPython(requires_grad);
+            dynamic py = __self__.InvokeMethod("sparse_coo_tensor", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Convert the data into a torch.Tensor.<br></br>
@@ -192,7 +295,19 @@ namespace Torch
         ///	for CPU tensor types and the current CUDA device for CUDA tensor types.
         /// </param>
         public static Tensor as_tensor(NDarray data, Dtype dtype = null, Device device = null)
-            => PyTorch.Instance.as_tensor(data, dtype:dtype, device:device);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                data,
+            });
+            var kwargs=new PyDict();
+            if (dtype!=null) kwargs["dtype"]=ToPython(dtype);
+            if (device!=null) kwargs["device"]=ToPython(device);
+            dynamic py = __self__.InvokeMethod("as_tensor", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Creates a Tensor from a numpy.ndarray.<br></br>
@@ -204,7 +319,17 @@ namespace Torch
         ///	tensor is not resizable.
         /// </summary>
         public static Tensor from_numpy(NDarray ndarray)
-            => PyTorch.Instance.from_numpy(ndarray);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                ndarray,
+            });
+            var kwargs=new PyDict();
+            dynamic py = __self__.InvokeMethod("from_numpy", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Returns a tensor filled with the scalar value 0, with the shape defined
@@ -242,7 +367,22 @@ namespace Torch
         ///	Default: False.
         /// </param>
         public static Tensor zeros(Shape sizes, Tensor @out = null, Dtype dtype = null, Layout layout = null, Device device = null, bool? requires_grad = false)
-            => PyTorch.Instance.zeros(sizes, @out:@out, dtype:dtype, layout:layout, device:device, requires_grad:requires_grad);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                sizes,
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            if (dtype!=null) kwargs["dtype"]=ToPython(dtype);
+            if (layout!=null) kwargs["layout"]=ToPython(layout);
+            if (device!=null) kwargs["device"]=ToPython(device);
+            if (requires_grad!=false) kwargs["requires_grad"]=ToPython(requires_grad);
+            dynamic py = __self__.InvokeMethod("zeros", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Returns a tensor filled with the scalar value 0, with the same size as
@@ -280,7 +420,21 @@ namespace Torch
         ///	Default: False.
         /// </param>
         public static Tensor zeros_like(Tensor input, Dtype dtype = null, Layout layout = null, Device device = null, bool? requires_grad = false)
-            => PyTorch.Instance.zeros_like(input, dtype:dtype, layout:layout, device:device, requires_grad:requires_grad);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+            });
+            var kwargs=new PyDict();
+            if (dtype!=null) kwargs["dtype"]=ToPython(dtype);
+            if (layout!=null) kwargs["layout"]=ToPython(layout);
+            if (device!=null) kwargs["device"]=ToPython(device);
+            if (requires_grad!=false) kwargs["requires_grad"]=ToPython(requires_grad);
+            dynamic py = __self__.InvokeMethod("zeros_like", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Returns a tensor filled with the scalar value 1, with the shape defined
@@ -318,7 +472,22 @@ namespace Torch
         ///	Default: False.
         /// </param>
         public static Tensor ones(Shape sizes, Tensor @out = null, Dtype dtype = null, Layout layout = null, Device device = null, bool? requires_grad = false)
-            => PyTorch.Instance.ones(sizes, @out:@out, dtype:dtype, layout:layout, device:device, requires_grad:requires_grad);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                sizes,
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            if (dtype!=null) kwargs["dtype"]=ToPython(dtype);
+            if (layout!=null) kwargs["layout"]=ToPython(layout);
+            if (device!=null) kwargs["device"]=ToPython(device);
+            if (requires_grad!=false) kwargs["requires_grad"]=ToPython(requires_grad);
+            dynamic py = __self__.InvokeMethod("ones", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Returns a tensor filled with the scalar value 1, with the same size as
@@ -356,7 +525,21 @@ namespace Torch
         ///	Default: False.
         /// </param>
         public static Tensor ones_like(Tensor input, Dtype dtype = null, Layout layout = null, Device device = null, bool? requires_grad = false)
-            => PyTorch.Instance.ones_like(input, dtype:dtype, layout:layout, device:device, requires_grad:requires_grad);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+            });
+            var kwargs=new PyDict();
+            if (dtype!=null) kwargs["dtype"]=ToPython(dtype);
+            if (layout!=null) kwargs["layout"]=ToPython(layout);
+            if (device!=null) kwargs["device"]=ToPython(device);
+            if (requires_grad!=false) kwargs["requires_grad"]=ToPython(requires_grad);
+            dynamic py = __self__.InvokeMethod("ones_like", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Returns a 1-D tensor of size \(\left\lfloor \frac{\text{end} - \text{start}}{\text{step}} \right\rfloor\)
@@ -408,7 +591,22 @@ namespace Torch
         ///	Default: False.
         /// </param>
         public static Tensor arange(double end, Tensor @out = null, Dtype dtype = null, Layout layout = null, Device device = null, bool? requires_grad = false)
-            => PyTorch.Instance.arange(end, @out:@out, dtype:dtype, layout:layout, device:device, requires_grad:requires_grad);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                end,
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            if (dtype!=null) kwargs["dtype"]=ToPython(dtype);
+            if (layout!=null) kwargs["layout"]=ToPython(layout);
+            if (device!=null) kwargs["device"]=ToPython(device);
+            if (requires_grad!=false) kwargs["requires_grad"]=ToPython(requires_grad);
+            dynamic py = __self__.InvokeMethod("arange", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Returns a 1-D tensor of size \(\left\lfloor \frac{\text{end} - \text{start}}{\text{step}} \right\rfloor\)
@@ -468,7 +666,24 @@ namespace Torch
         ///	Default: False.
         /// </param>
         public static Tensor arange(double start, double end, double step = 1, Tensor @out = null, Dtype dtype = null, Layout layout = null, Device device = null, bool? requires_grad = false)
-            => PyTorch.Instance.arange(start, end, step:step, @out:@out, dtype:dtype, layout:layout, device:device, requires_grad:requires_grad);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                start,
+                end,
+            });
+            var kwargs=new PyDict();
+            if (step!=1) kwargs["step"]=ToPython(step);
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            if (dtype!=null) kwargs["dtype"]=ToPython(dtype);
+            if (layout!=null) kwargs["layout"]=ToPython(layout);
+            if (device!=null) kwargs["device"]=ToPython(device);
+            if (requires_grad!=false) kwargs["requires_grad"]=ToPython(requires_grad);
+            dynamic py = __self__.InvokeMethod("arange", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Returns a 1-D tensor of size \(\left\lfloor \frac{\text{end} - \text{start}}{\text{step}} \right\rfloor + 1\)
@@ -520,7 +735,22 @@ namespace Torch
         ///	Default: False.
         /// </param>
         public static Tensor range(float end, Tensor @out = null, Dtype dtype = null, Layout layout = null, Device device = null, bool? requires_grad = false)
-            => PyTorch.Instance.range(end, @out:@out, dtype:dtype, layout:layout, device:device, requires_grad:requires_grad);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                end,
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            if (dtype!=null) kwargs["dtype"]=ToPython(dtype);
+            if (layout!=null) kwargs["layout"]=ToPython(layout);
+            if (device!=null) kwargs["device"]=ToPython(device);
+            if (requires_grad!=false) kwargs["requires_grad"]=ToPython(requires_grad);
+            dynamic py = __self__.InvokeMethod("range", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Returns a 1-D tensor of size \(\left\lfloor \frac{\text{end} - \text{start}}{\text{step}} \right\rfloor + 1\)
@@ -580,7 +810,24 @@ namespace Torch
         ///	Default: False.
         /// </param>
         public static Tensor range(float start, float end, float step = 1f, Tensor @out = null, Dtype dtype = null, Layout layout = null, Device device = null, bool? requires_grad = false)
-            => PyTorch.Instance.range(start, end, step:step, @out:@out, dtype:dtype, layout:layout, device:device, requires_grad:requires_grad);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                start,
+                end,
+            });
+            var kwargs=new PyDict();
+            if (step!=1f) kwargs["step"]=ToPython(step);
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            if (dtype!=null) kwargs["dtype"]=ToPython(dtype);
+            if (layout!=null) kwargs["layout"]=ToPython(layout);
+            if (device!=null) kwargs["device"]=ToPython(device);
+            if (requires_grad!=false) kwargs["requires_grad"]=ToPython(requires_grad);
+            dynamic py = __self__.InvokeMethod("range", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Returns a one-dimensional tensor of steps
@@ -626,7 +873,24 @@ namespace Torch
         ///	Default: False.
         /// </param>
         public static Tensor linspace(float start, float end, int steps = 100, Tensor @out = null, Dtype dtype = null, Layout layout = null, Device device = null, bool? requires_grad = false)
-            => PyTorch.Instance.linspace(start, end, steps:steps, @out:@out, dtype:dtype, layout:layout, device:device, requires_grad:requires_grad);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                start,
+                end,
+            });
+            var kwargs=new PyDict();
+            if (steps!=100) kwargs["steps"]=ToPython(steps);
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            if (dtype!=null) kwargs["dtype"]=ToPython(dtype);
+            if (layout!=null) kwargs["layout"]=ToPython(layout);
+            if (device!=null) kwargs["device"]=ToPython(device);
+            if (requires_grad!=false) kwargs["requires_grad"]=ToPython(requires_grad);
+            dynamic py = __self__.InvokeMethod("linspace", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Returns a one-dimensional tensor of steps points
@@ -677,7 +941,25 @@ namespace Torch
         ///	Default: False.
         /// </param>
         public static Tensor logspace(float start, float end, int steps = 100, float @base = 10.0f, Tensor @out = null, Dtype dtype = null, Layout layout = null, Device device = null, bool? requires_grad = false)
-            => PyTorch.Instance.logspace(start, end, steps:steps, @base:@base, @out:@out, dtype:dtype, layout:layout, device:device, requires_grad:requires_grad);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                start,
+                end,
+            });
+            var kwargs=new PyDict();
+            if (steps!=100) kwargs["steps"]=ToPython(steps);
+            if (@base!=10.0f) kwargs["base"]=ToPython(@base);
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            if (dtype!=null) kwargs["dtype"]=ToPython(dtype);
+            if (layout!=null) kwargs["layout"]=ToPython(layout);
+            if (device!=null) kwargs["device"]=ToPython(device);
+            if (requires_grad!=false) kwargs["requires_grad"]=ToPython(requires_grad);
+            dynamic py = __self__.InvokeMethod("logspace", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Returns a 2-D tensor with ones on the diagonal and zeros elsewhere.
@@ -715,7 +997,23 @@ namespace Torch
         ///	Default: False.
         /// </param>
         public static Tensor eye(int n, int? m = null, Tensor @out = null, Dtype dtype = null, Layout layout = null, Device device = null, bool? requires_grad = false)
-            => PyTorch.Instance.eye(n, m:m, @out:@out, dtype:dtype, layout:layout, device:device, requires_grad:requires_grad);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                n,
+            });
+            var kwargs=new PyDict();
+            if (m!=null) kwargs["m"]=ToPython(m);
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            if (dtype!=null) kwargs["dtype"]=ToPython(dtype);
+            if (layout!=null) kwargs["layout"]=ToPython(layout);
+            if (device!=null) kwargs["device"]=ToPython(device);
+            if (requires_grad!=false) kwargs["requires_grad"]=ToPython(requires_grad);
+            dynamic py = __self__.InvokeMethod("eye", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Returns a tensor filled with uninitialized data.<br></br>
@@ -760,7 +1058,23 @@ namespace Torch
         ///	Default: False.
         /// </param>
         public static Tensor empty(Shape sizes, Tensor @out = null, Dtype dtype = null, Layout layout = null, Device device = null, bool requires_grad = false, bool pin_memory = false)
-            => PyTorch.Instance.empty(sizes, @out:@out, dtype:dtype, layout:layout, device:device, requires_grad:requires_grad, pin_memory:pin_memory);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                sizes,
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            if (dtype!=null) kwargs["dtype"]=ToPython(dtype);
+            if (layout!=null) kwargs["layout"]=ToPython(layout);
+            if (device!=null) kwargs["device"]=ToPython(device);
+            if (requires_grad!=false) kwargs["requires_grad"]=ToPython(requires_grad);
+            if (pin_memory!=false) kwargs["pin_memory"]=ToPython(pin_memory);
+            dynamic py = __self__.InvokeMethod("empty", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Returns an uninitialized tensor with the same size as input.<br></br>
@@ -792,7 +1106,21 @@ namespace Torch
         ///	Default: False.
         /// </param>
         public static Tensor empty_like(Tensor input, Dtype dtype = null, Layout layout = null, Device device = null, bool? requires_grad = false)
-            => PyTorch.Instance.empty_like(input, dtype:dtype, layout:layout, device:device, requires_grad:requires_grad);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+            });
+            var kwargs=new PyDict();
+            if (dtype!=null) kwargs["dtype"]=ToPython(dtype);
+            if (layout!=null) kwargs["layout"]=ToPython(layout);
+            if (device!=null) kwargs["device"]=ToPython(device);
+            if (requires_grad!=false) kwargs["requires_grad"]=ToPython(requires_grad);
+            dynamic py = __self__.InvokeMethod("empty_like", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Returns a tensor of size size filled with fill_value.
@@ -831,7 +1159,23 @@ namespace Torch
         ///	Default: False.
         /// </param>
         public static Tensor full(Shape size, object fill_value, Tensor @out = null, Dtype dtype = null, Layout layout = null, Device device = null, bool? requires_grad = false)
-            => PyTorch.Instance.full(size, fill_value, @out:@out, dtype:dtype, layout:layout, device:device, requires_grad:requires_grad);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                size,
+                fill_value,
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            if (dtype!=null) kwargs["dtype"]=ToPython(dtype);
+            if (layout!=null) kwargs["layout"]=ToPython(layout);
+            if (device!=null) kwargs["device"]=ToPython(device);
+            if (requires_grad!=false) kwargs["requires_grad"]=ToPython(requires_grad);
+            dynamic py = __self__.InvokeMethod("full", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Returns a tensor with the same size as input filled with fill_value.<br></br>
@@ -866,7 +1210,23 @@ namespace Torch
         ///	Default: False.
         /// </param>
         public static Tensor full_like(Tensor input, object fill_value, Dtype dtype = null, Layout layout = null, Device device = null, bool? requires_grad = false, Tensor @out = null)
-            => PyTorch.Instance.full_like(input, fill_value, dtype:dtype, layout:layout, device:device, requires_grad:requires_grad, @out:@out);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+                fill_value,
+            });
+            var kwargs=new PyDict();
+            if (dtype!=null) kwargs["dtype"]=ToPython(dtype);
+            if (layout!=null) kwargs["layout"]=ToPython(layout);
+            if (device!=null) kwargs["device"]=ToPython(device);
+            if (requires_grad!=false) kwargs["requires_grad"]=ToPython(requires_grad);
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("full_like", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Concatenates the given sequence of seq tensors in the given dimension.<br></br>
@@ -892,7 +1252,19 @@ namespace Torch
         ///	the output tensor
         /// </param>
         public static Tensor cat(Tensor[] tensors, int? dim = 0, Tensor @out = null)
-            => PyTorch.Instance.cat(tensors, dim:dim, @out:@out);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                tensors,
+            });
+            var kwargs=new PyDict();
+            if (dim!=0) kwargs["dim"]=ToPython(dim);
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("cat", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Splits a tensor into a specific number of chunks.<br></br>
@@ -910,7 +1282,19 @@ namespace Torch
         ///	dimension along which to split the tensor
         /// </param>
         public static Tensor[] chunk(Tensor tensor, int chunks, int dim = 0)
-            => PyTorch.Instance.chunk(tensor, chunks, dim:dim);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                tensor,
+                chunks,
+            });
+            var kwargs=new PyDict();
+            if (dim!=0) kwargs["dim"]=ToPython(dim);
+            dynamic py = __self__.InvokeMethod("chunk", pyargs, kwargs);
+            return ToCsharp<Tensor[]>(py);
+        }
         
         /// <summary>
         ///	Gathers values along an axis specified by dim.<br></br>
@@ -944,7 +1328,21 @@ namespace Torch
         ///	input will be a sparse tensor.
         /// </param>
         public static Tensor gather(Tensor input, int dim, Tensor<long> index, Tensor @out = null, bool? sparse_grad = false)
-            => PyTorch.Instance.gather(input, dim, index, @out:@out, sparse_grad:sparse_grad);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+                dim,
+                index,
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            if (sparse_grad!=false) kwargs["sparse_grad"]=ToPython(sparse_grad);
+            dynamic py = __self__.InvokeMethod("gather", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Returns a new tensor which indexes the input tensor along dimension
@@ -975,7 +1373,20 @@ namespace Torch
         ///	the output tensor
         /// </param>
         public static Tensor index_select(Tensor input, int dim, Tensor<long> index, Tensor @out = null)
-            => PyTorch.Instance.index_select(input, dim, index, @out:@out);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+                dim,
+                index,
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("index_select", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Returns a new 1-D tensor which indexes the input tensor according to
@@ -998,7 +1409,19 @@ namespace Torch
         ///	the output tensor
         /// </param>
         public static Tensor masked_select(Tensor input, Tensor<byte> mask, Tensor @out = null)
-            => PyTorch.Instance.masked_select(input, mask, @out:@out);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+                mask,
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("masked_select", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Returns a new tensor that is a narrowed version of input tensor.<br></br>
@@ -1020,7 +1443,20 @@ namespace Torch
         ///	the distance to the ending dimension
         /// </param>
         public static Tensor narrow(Tensor input, int dimension, int start, int length)
-            => PyTorch.Instance.narrow(input, dimension, start, length);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+                dimension,
+                start,
+                length,
+            });
+            var kwargs=new PyDict();
+            dynamic py = __self__.InvokeMethod("narrow", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Returns a tensor containing the indices of all non-zero elements of
@@ -1041,7 +1477,18 @@ namespace Torch
         ///	the output tensor containing indices
         /// </param>
         public static Tensor<long> nonzero(Tensor input, Tensor<long> @out = null)
-            => PyTorch.Instance.nonzero(input, @out:@out);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("nonzero", pyargs, kwargs);
+            return ToCsharp<Tensor<long>>(py);
+        }
         
         /// <summary>
         ///	Returns a tensor with the same data and number of elements as input,
@@ -1066,7 +1513,18 @@ namespace Torch
         ///	ints) : the new shape
         /// </param>
         public static Tensor reshape(Tensor input, Shape shape)
-            => PyTorch.Instance.reshape(input, shape);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+                shape,
+            });
+            var kwargs=new PyDict();
+            dynamic py = __self__.InvokeMethod("reshape", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Splits the tensor into chunks.<br></br>
@@ -1092,7 +1550,18 @@ namespace Torch
         ///	dimension along which to split the tensor.
         /// </param>
         public static void split(Tensor tensor, int split_size_or_sections, int dim = 0)
-            => PyTorch.Instance.split(tensor, split_size_or_sections, dim:dim);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                tensor,
+                split_size_or_sections,
+            });
+            var kwargs=new PyDict();
+            if (dim!=0) kwargs["dim"]=ToPython(dim);
+            dynamic py = __self__.InvokeMethod("split", pyargs, kwargs);
+        }
         
         /// <summary>
         ///	Returns a tensor with all the dimensions of input of size 1 removed.<br></br>
@@ -1122,7 +1591,19 @@ namespace Torch
         ///	the output tensor
         /// </param>
         public static Tensor squeeze(Tensor input, int? dim = null, Tensor @out = null)
-            => PyTorch.Instance.squeeze(input, dim:dim, @out:@out);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+            });
+            var kwargs=new PyDict();
+            if (dim!=null) kwargs["dim"]=ToPython(dim);
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("squeeze", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Concatenates sequence of tensors along a new dimension.<br></br>
@@ -1141,7 +1622,19 @@ namespace Torch
         ///	the output tensor
         /// </param>
         public static Tensor stack(Tensor[] seq, int dim = 0, Tensor @out = null)
-            => PyTorch.Instance.stack(seq, dim:dim, @out:@out);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                seq,
+            });
+            var kwargs=new PyDict();
+            if (dim!=0) kwargs["dim"]=ToPython(dim);
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("stack", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Expects input to be &lt;= 2-D tensor and transposes dimensions 0
@@ -1151,7 +1644,17 @@ namespace Torch
         ///	2-D tensor can be seen as a short-hand function for transpose(input, 0, 1).
         /// </summary>
         public static Tensor t(Tensor input)
-            => PyTorch.Instance.t(input);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+            });
+            var kwargs=new PyDict();
+            dynamic py = __self__.InvokeMethod("t", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Returns a new tensor with the elements of input at the given indices.<br></br>
@@ -1167,7 +1670,18 @@ namespace Torch
         ///	the indices into tensor
         /// </param>
         public static Tensor take(Tensor input, Tensor<long> indices)
-            => PyTorch.Instance.take(input, indices);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+                indices,
+            });
+            var kwargs=new PyDict();
+            dynamic py = __self__.InvokeMethod("take", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Returns a tensor that is a transposed version of input.<br></br>
@@ -1188,7 +1702,19 @@ namespace Torch
         ///	the second dimension to be transposed
         /// </param>
         public static Tensor transpose(Tensor input, int dim0, int dim1)
-            => PyTorch.Instance.transpose(input, dim0, dim1);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+                dim0,
+                dim1,
+            });
+            var kwargs=new PyDict();
+            dynamic py = __self__.InvokeMethod("transpose", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Removes a tensor dimension.<br></br>
@@ -1202,7 +1728,18 @@ namespace Torch
         ///	dimension to remove
         /// </param>
         public static Tensor[] unbind(Tensor tensor, int dim = 0)
-            => PyTorch.Instance.unbind(tensor, dim:dim);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                tensor,
+            });
+            var kwargs=new PyDict();
+            if (dim!=0) kwargs["dim"]=ToPython(dim);
+            dynamic py = __self__.InvokeMethod("unbind", pyargs, kwargs);
+            return ToCsharp<Tensor[]>(py);
+        }
         
         /// <summary>
         ///	Returns a new tensor with a dimension of size one inserted at the
@@ -1225,7 +1762,19 @@ namespace Torch
         ///	the output tensor
         /// </param>
         public static Tensor unsqueeze(Tensor input, int dim, Tensor @out = null)
-            => PyTorch.Instance.unsqueeze(input, dim, @out:@out);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+                dim,
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("unsqueeze", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Return a tensor of elements selected from either x or y, depending on condition.<br></br>
@@ -1252,7 +1801,19 @@ namespace Torch
         ///	values selected at indices where condition is False
         /// </param>
         public static Tensor @where(Tensor<byte> condition, Tensor x, Tensor y)
-            => PyTorch.Instance.@where(condition, x, y);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                condition,
+                x,
+                y,
+            });
+            var kwargs=new PyDict();
+            dynamic py = __self__.InvokeMethod("where", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Sets the seed for generating random numbers.<br></br>
@@ -1260,26 +1821,52 @@ namespace Torch
         ///	torch._C.Generator object.
         /// </summary>
         public static void manual_seed(int seed)
-            => PyTorch.Instance.manual_seed(seed);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                seed,
+            });
+            var kwargs=new PyDict();
+            dynamic py = __self__.InvokeMethod("manual_seed", pyargs, kwargs);
+        }
         
         /// <summary>
         ///	Returns the initial seed for generating random numbers as a
         ///	Python long.
         /// </summary>
         public static void initial_seed()
-            => PyTorch.Instance.initial_seed();
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            dynamic py = __self__.InvokeMethod("initial_seed");
+        }
         
         /// <summary>
         ///	Returns the random number generator state as a torch.ByteTensor.
         /// </summary>
         public static void get_rng_state()
-            => PyTorch.Instance.get_rng_state();
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            dynamic py = __self__.InvokeMethod("get_rng_state");
+        }
         
         /// <summary>
         ///	Sets the random number generator state.
         /// </summary>
         public static void set_rng_state(Tensor<byte> new_state)
-            => PyTorch.Instance.set_rng_state(new_state);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                new_state,
+            });
+            var kwargs=new PyDict();
+            dynamic py = __self__.InvokeMethod("set_rng_state", pyargs, kwargs);
+        }
         
         /// <summary>
         ///	Draws binary random numbers (0 or 1) from a Bernoulli distribution.<br></br>
@@ -1311,7 +1898,18 @@ namespace Torch
         ///	the output tensor
         /// </param>
         public static Tensor bernoulli(Tensor input, Tensor @out = null)
-            => PyTorch.Instance.bernoulli(input, @out:@out);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("bernoulli", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Returns a tensor where each row contains num_samples indices sampled
@@ -1354,7 +1952,20 @@ namespace Torch
         ///	the output tensor
         /// </param>
         public static Tensor<long> multinomial(Tensor input, int num_samples, bool? replacement = false, Tensor @out = null)
-            => PyTorch.Instance.multinomial(input, num_samples, replacement:replacement, @out:@out);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+                num_samples,
+            });
+            var kwargs=new PyDict();
+            if (replacement!=false) kwargs["replacement"]=ToPython(replacement);
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("multinomial", pyargs, kwargs);
+            return ToCsharp<Tensor<long>>(py);
+        }
         
         /// <summary>
         ///	Returns a tensor filled with random numbers from a uniform distribution
@@ -1394,7 +2005,22 @@ namespace Torch
         ///	Default: False.
         /// </param>
         public static Tensor rand(Shape sizes, Tensor @out = null, Dtype dtype = null, Layout layout = null, Device device = null, bool? requires_grad = false)
-            => PyTorch.Instance.rand(sizes, @out:@out, dtype:dtype, layout:layout, device:device, requires_grad:requires_grad);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                sizes,
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            if (dtype!=null) kwargs["dtype"]=ToPython(dtype);
+            if (layout!=null) kwargs["layout"]=ToPython(layout);
+            if (device!=null) kwargs["device"]=ToPython(device);
+            if (requires_grad!=false) kwargs["requires_grad"]=ToPython(requires_grad);
+            dynamic py = __self__.InvokeMethod("rand", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Returns a tensor with the same size as input that is filled with
@@ -1427,7 +2053,21 @@ namespace Torch
         ///	Default: False.
         /// </param>
         public static Tensor rand_like(Tensor input, Dtype dtype = null, Layout layout = null, Device device = null, bool? requires_grad = false)
-            => PyTorch.Instance.rand_like(input, dtype:dtype, layout:layout, device:device, requires_grad:requires_grad);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+            });
+            var kwargs=new PyDict();
+            if (dtype!=null) kwargs["dtype"]=ToPython(dtype);
+            if (layout!=null) kwargs["layout"]=ToPython(layout);
+            if (device!=null) kwargs["device"]=ToPython(device);
+            if (requires_grad!=false) kwargs["requires_grad"]=ToPython(requires_grad);
+            dynamic py = __self__.InvokeMethod("rand_like", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Returns a tensor filled with random integers generated uniformly
@@ -1468,7 +2108,23 @@ namespace Torch
         ///	Default: False.
         /// </param>
         public static Tensor randint(int high, Shape size, Tensor @out = null, Dtype dtype = null, Layout layout = null, Device device = null, bool? requires_grad = false)
-            => PyTorch.Instance.randint(high, size, @out:@out, dtype:dtype, layout:layout, device:device, requires_grad:requires_grad);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                high,
+                size,
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            if (dtype!=null) kwargs["dtype"]=ToPython(dtype);
+            if (layout!=null) kwargs["layout"]=ToPython(layout);
+            if (device!=null) kwargs["device"]=ToPython(device);
+            if (requires_grad!=false) kwargs["requires_grad"]=ToPython(requires_grad);
+            dynamic py = __self__.InvokeMethod("randint", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Returns a tensor filled with random integers generated uniformly
@@ -1513,7 +2169,24 @@ namespace Torch
         ///	Default: False.
         /// </param>
         public static Tensor randint(int low, int high, Shape size, Tensor @out = null, Dtype dtype = null, Layout layout = null, Device device = null, bool? requires_grad = false)
-            => PyTorch.Instance.randint(low:low, high:high, size:size, @out:@out, dtype:dtype, layout:layout, device:device, requires_grad:requires_grad);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+            });
+            var kwargs=new PyDict();
+            if (low!=null) kwargs["low"]=ToPython(low);
+            if (high!=null) kwargs["high"]=ToPython(high);
+            if (size!=null) kwargs["size"]=ToPython(size);
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            if (dtype!=null) kwargs["dtype"]=ToPython(dtype);
+            if (layout!=null) kwargs["layout"]=ToPython(layout);
+            if (device!=null) kwargs["device"]=ToPython(device);
+            if (requires_grad!=false) kwargs["requires_grad"]=ToPython(requires_grad);
+            dynamic py = __self__.InvokeMethod("randint", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Returns a tensor with the same shape as Tensor input filled with
@@ -1547,7 +2220,22 @@ namespace Torch
         ///	Default: False.
         /// </param>
         public static Tensor randint_like(Tensor input, int high, Dtype dtype = null, Layout layout = null, Device device = null, bool? requires_grad = false)
-            => PyTorch.Instance.randint_like(input, high, dtype:dtype, layout:layout, device:device, requires_grad:requires_grad);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+                high,
+            });
+            var kwargs=new PyDict();
+            if (dtype!=null) kwargs["dtype"]=ToPython(dtype);
+            if (layout!=null) kwargs["layout"]=ToPython(layout);
+            if (device!=null) kwargs["device"]=ToPython(device);
+            if (requires_grad!=false) kwargs["requires_grad"]=ToPython(requires_grad);
+            dynamic py = __self__.InvokeMethod("randint_like", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Returns a tensor with the same shape as Tensor input filled with
@@ -1585,7 +2273,23 @@ namespace Torch
         ///	Default: False.
         /// </param>
         public static Tensor randint_like(Tensor input, int low, int high, Dtype dtype = null, Layout layout = null, Device device = null, bool? requires_grad = false)
-            => PyTorch.Instance.randint_like(input, low:low, high:high, dtype:dtype, layout:layout, device:device, requires_grad:requires_grad);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+            });
+            var kwargs=new PyDict();
+            if (low!=null) kwargs["low"]=ToPython(low);
+            if (high!=null) kwargs["high"]=ToPython(high);
+            if (dtype!=null) kwargs["dtype"]=ToPython(dtype);
+            if (layout!=null) kwargs["layout"]=ToPython(layout);
+            if (device!=null) kwargs["device"]=ToPython(device);
+            if (requires_grad!=false) kwargs["requires_grad"]=ToPython(requires_grad);
+            dynamic py = __self__.InvokeMethod("randint_like", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Returns a tensor filled with random numbers from a normal distribution
@@ -1630,7 +2334,22 @@ namespace Torch
         ///	Default: False.
         /// </param>
         public static Tensor randn(Shape sizes, Tensor @out = null, Dtype dtype = null, Layout layout = null, Device device = null, bool? requires_grad = false)
-            => PyTorch.Instance.randn(sizes, @out:@out, dtype:dtype, layout:layout, device:device, requires_grad:requires_grad);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                sizes,
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            if (dtype!=null) kwargs["dtype"]=ToPython(dtype);
+            if (layout!=null) kwargs["layout"]=ToPython(layout);
+            if (device!=null) kwargs["device"]=ToPython(device);
+            if (requires_grad!=false) kwargs["requires_grad"]=ToPython(requires_grad);
+            dynamic py = __self__.InvokeMethod("randn", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Returns a tensor with the same size as input that is filled with
@@ -1663,7 +2382,21 @@ namespace Torch
         ///	Default: False.
         /// </param>
         public static Tensor randn_like(Tensor input, Dtype dtype = null, Layout layout = null, Device device = null, bool? requires_grad = false)
-            => PyTorch.Instance.randn_like(input, dtype:dtype, layout:layout, device:device, requires_grad:requires_grad);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+            });
+            var kwargs=new PyDict();
+            if (dtype!=null) kwargs["dtype"]=ToPython(dtype);
+            if (layout!=null) kwargs["layout"]=ToPython(layout);
+            if (device!=null) kwargs["device"]=ToPython(device);
+            if (requires_grad!=false) kwargs["requires_grad"]=ToPython(requires_grad);
+            dynamic py = __self__.InvokeMethod("randn_like", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Returns a random permutation of integers from 0 to n - 1.
@@ -1698,7 +2431,22 @@ namespace Torch
         ///	Default: False.
         /// </param>
         public static Tensor<long> randperm(int n, Tensor @out = null, Dtype dtype = null, Layout layout = null, Device device = null, bool? requires_grad = false)
-            => PyTorch.Instance.randperm(n, @out:@out, dtype:dtype, layout:layout, device:device, requires_grad:requires_grad);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                n,
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            if (dtype!=null) kwargs["dtype"]=ToPython(dtype);
+            if (layout!=null) kwargs["layout"]=ToPython(layout);
+            if (device!=null) kwargs["device"]=ToPython(device);
+            if (requires_grad!=false) kwargs["requires_grad"]=ToPython(requires_grad);
+            dynamic py = __self__.InvokeMethod("randperm", pyargs, kwargs);
+            return ToCsharp<Tensor<long>>(py);
+        }
         
         /// <summary>
         ///	Saves an object to a disk file.<br></br>
@@ -1719,7 +2467,19 @@ namespace Torch
         ///	can be specified to override the default protocol
         /// </param>
         public static void save(PythonObject obj, string f, PyObject pickle_module = null, int pickle_protocol = 2)
-            => PyTorch.Instance.save(obj, f, pickle_module:pickle_module, pickle_protocol:pickle_protocol);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                obj,
+                f,
+            });
+            var kwargs=new PyDict();
+            if (pickle_module!=null) kwargs["pickle_module"]=ToPython(pickle_module);
+            if (pickle_protocol!=2) kwargs["pickle_protocol"]=ToPython(pickle_protocol);
+            dynamic py = __self__.InvokeMethod("save", pyargs, kwargs);
+        }
         
         /// <summary>
         ///	Loads an object saved with torch.save() from a file.<br></br>
@@ -1782,13 +2542,30 @@ namespace Torch
         ///	encoding=....
         /// </param>
         public static void load(string f, PyObject map_location = null, PyObject pickle_module = null, params PyObject[] pickle_load_args)
-            => PyTorch.Instance.load(f, map_location:map_location, pickle_module:pickle_module, pickle_load_args:pickle_load_args);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                f,
+            });
+            var kwargs=new PyDict();
+            if (map_location!=null) kwargs["map_location"]=ToPython(map_location);
+            if (pickle_module!=null) kwargs["pickle_module"]=ToPython(pickle_module);
+            if (pickle_load_args!=null) kwargs["pickle_load_args"]=ToPython(pickle_load_args);
+            dynamic py = __self__.InvokeMethod("load", pyargs, kwargs);
+        }
         
         /// <summary>
         ///	Gets the number of threads used for parallelizing CPU operations
         /// </summary>
         public static int get_num_threads()
-            => PyTorch.Instance.get_num_threads();
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            dynamic py = __self__.InvokeMethod("get_num_threads");
+            return ToCsharp<int>(py);
+        }
         
         /// <summary>
         ///	Sets the number of threads used for parallelizing CPU operations.<br></br>
@@ -1798,7 +2575,16 @@ namespace Torch
         ///	must be called before running eager, JIT or autograd code.
         /// </summary>
         public static void set_num_threads(int num)
-            => PyTorch.Instance.set_num_threads(num);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                num,
+            });
+            var kwargs=new PyDict();
+            dynamic py = __self__.InvokeMethod("set_num_threads", pyargs, kwargs);
+        }
         
         /// <summary>
         ///	Computes the element-wise absolute value of the given input tensor.<br></br>
@@ -1814,7 +2600,18 @@ namespace Torch
         ///	the output tensor
         /// </param>
         public static Tensor abs(Tensor input, Tensor @out = null)
-            => PyTorch.Instance.abs(input, @out:@out);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("abs", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Returns a new tensor with the arccosine  of the elements of input.<br></br>
@@ -1830,7 +2627,18 @@ namespace Torch
         ///	the output tensor
         /// </param>
         public static Tensor acos(Tensor input, Tensor @out = null)
-            => PyTorch.Instance.acos(input, @out:@out);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("acos", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Performs the element-wise division of tensor1 by tensor2,
@@ -1859,7 +2667,20 @@ namespace Torch
         ///	the output tensor
         /// </param>
         public static Tensor addcdiv(Tensor tensor, Tensor tensor1, Tensor tensor2, Tensor @out = null)
-            => PyTorch.Instance.addcdiv(tensor, tensor1, tensor2, @out:@out);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                tensor,
+                tensor1,
+                tensor2,
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("addcdiv", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Performs the element-wise division of tensor1 by tensor2,
@@ -1891,7 +2712,21 @@ namespace Torch
         ///	the output tensor
         /// </param>
         public static Tensor addcdiv(Tensor tensor, double @value, Tensor tensor1, Tensor tensor2, Tensor @out = null)
-            => PyTorch.Instance.addcdiv(tensor, @value:@value, tensor1:tensor1, tensor2:tensor2, @out:@out);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                tensor,
+            });
+            var kwargs=new PyDict();
+            if (@value!=null) kwargs["value"]=ToPython(@value);
+            if (tensor1!=null) kwargs["tensor1"]=ToPython(tensor1);
+            if (tensor2!=null) kwargs["tensor2"]=ToPython(tensor2);
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("addcdiv", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Performs the element-wise multiplication of tensor1
@@ -1921,7 +2756,20 @@ namespace Torch
         ///	the output tensor
         /// </param>
         public static Tensor addcmul(Tensor tensor, Tensor tensor1, Tensor tensor2, Tensor @out = null)
-            => PyTorch.Instance.addcmul(tensor, tensor1, tensor2, @out:@out);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                tensor,
+                tensor1,
+                tensor2,
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("addcmul", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Performs the element-wise multiplication of tensor1
@@ -1954,7 +2802,21 @@ namespace Torch
         ///	the output tensor
         /// </param>
         public static Tensor addcmul(Tensor tensor, double @value, Tensor tensor1, Tensor tensor2, Tensor @out = null)
-            => PyTorch.Instance.addcmul(tensor, @value:@value, tensor1:tensor1, tensor2:tensor2, @out:@out);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                tensor,
+            });
+            var kwargs=new PyDict();
+            if (@value!=null) kwargs["value"]=ToPython(@value);
+            if (tensor1!=null) kwargs["tensor1"]=ToPython(tensor1);
+            if (tensor2!=null) kwargs["tensor2"]=ToPython(tensor2);
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("addcmul", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Returns a new tensor with the arcsine  of the elements of input.<br></br>
@@ -1970,7 +2832,18 @@ namespace Torch
         ///	the output tensor
         /// </param>
         public static Tensor asin(Tensor input, Tensor @out = null)
-            => PyTorch.Instance.asin(input, @out:@out);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("asin", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Returns a new tensor with the arctangent  of the elements of input.<br></br>
@@ -1986,7 +2859,18 @@ namespace Torch
         ///	the output tensor
         /// </param>
         public static Tensor atan(Tensor input, Tensor @out = null)
-            => PyTorch.Instance.atan(input, @out:@out);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("atan", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Returns a new tensor with the arctangent of the elements of input1
@@ -2005,7 +2889,19 @@ namespace Torch
         ///	the output tensor
         /// </param>
         public static Tensor atan2(Tensor input1, Tensor input2, Tensor @out = null)
-            => PyTorch.Instance.atan2(input1, input2, @out:@out);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input1,
+                input2,
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("atan2", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Returns a new tensor with the ceil of the elements of input,
@@ -2022,7 +2918,18 @@ namespace Torch
         ///	the output tensor
         /// </param>
         public static Tensor ceil(Tensor input, Tensor @out = null)
-            => PyTorch.Instance.ceil(input, @out:@out);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("ceil", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Returns a new tensor with the cosine  of the elements of input.<br></br>
@@ -2038,7 +2945,18 @@ namespace Torch
         ///	the output tensor
         /// </param>
         public static Tensor cos(Tensor input, Tensor @out = null)
-            => PyTorch.Instance.cos(input, @out:@out);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("cos", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Returns a new tensor with the hyperbolic cosine  of the elements of
@@ -2055,13 +2973,48 @@ namespace Torch
         ///	the output tensor
         /// </param>
         public static Tensor cosh(Tensor input, Tensor @out = null)
-            => PyTorch.Instance.cosh(input, @out:@out);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("cosh", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         public static Tensor div<T>(Tensor input, T @value, Tensor @out = null)
-            => PyTorch.Instance.div(input, @value, @out:@out);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+                @value,
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("div", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         public static Tensor div(Tensor input, Tensor other, Tensor @out = null)
-            => PyTorch.Instance.div(input, other, @out:@out);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+                other,
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("div", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Computes the logarithmic derivative of the gamma function on input.<br></br>
@@ -2071,7 +3024,18 @@ namespace Torch
         ///	\]
         /// </summary>
         public static Tensor digamma(Tensor input, Tensor @out = null)
-            => PyTorch.Instance.digamma(input, @out:@out);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("digamma", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Computes the error function of each element.<br></br>
@@ -2088,7 +3052,18 @@ namespace Torch
         ///	the output tensor
         /// </param>
         public static Tensor erf(Tensor tensor, Tensor @out = null)
-            => PyTorch.Instance.erf(tensor, @out:@out);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                tensor,
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("erf", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Computes the complementary error function of each element of input.<br></br>
@@ -2106,7 +3081,18 @@ namespace Torch
         ///	the output tensor
         /// </param>
         public static Tensor erfc(Tensor tensor, Tensor @out = null)
-            => PyTorch.Instance.erfc(tensor, @out:@out);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                tensor,
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("erfc", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Computes the inverse error function of each element of input.<br></br>
@@ -2124,7 +3110,18 @@ namespace Torch
         ///	the output tensor
         /// </param>
         public static Tensor erfinv(Tensor input, Tensor @out = null)
-            => PyTorch.Instance.erfinv(input, @out:@out);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("erfinv", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Returns a new tensor with the exponential of the elements
@@ -2141,7 +3138,18 @@ namespace Torch
         ///	the output tensor
         /// </param>
         public static Tensor exp(Tensor input, Tensor @out = null)
-            => PyTorch.Instance.exp(input, @out:@out);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("exp", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Returns a new tensor with the exponential of the elements minus 1
@@ -2158,7 +3166,18 @@ namespace Torch
         ///	the output tensor
         /// </param>
         public static Tensor expm1(Tensor input, Tensor @out = null)
-            => PyTorch.Instance.expm1(input, @out:@out);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("expm1", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Returns a new tensor with the floor of the elements of input,
@@ -2175,7 +3194,18 @@ namespace Torch
         ///	the output tensor
         /// </param>
         public static Tensor floor(Tensor input, Tensor @out = null)
-            => PyTorch.Instance.floor(input, @out:@out);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("floor", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Computes the element-wise remainder of division.<br></br>
@@ -2197,7 +3227,19 @@ namespace Torch
         ///	the output tensor
         /// </param>
         public static Tensor fmod(Tensor input, Tensor divisor, Tensor @out = null)
-            => PyTorch.Instance.fmod(input, divisor, @out:@out);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+                divisor,
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("fmod", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Computes the element-wise remainder of division.<br></br>
@@ -2219,7 +3261,19 @@ namespace Torch
         ///	the output tensor
         /// </param>
         public static Tensor fmod(Tensor input, double divisor, Tensor @out = null)
-            => PyTorch.Instance.fmod(input, divisor, @out:@out);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+                divisor,
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("fmod", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Computes the fractional portion of each element in input.<br></br>
@@ -2229,7 +3283,18 @@ namespace Torch
         ///	\]
         /// </summary>
         public static Tensor frac(Tensor input, Tensor @out = null)
-            => PyTorch.Instance.frac(input, @out:@out);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("frac", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Does a linear interpolation of two tensors start and end based
@@ -2257,7 +3322,19 @@ namespace Torch
         ///	the output tensor
         /// </param>
         public static void lerp(Tensor start, Tensor end, double weight, Tensor @out = null)
-            => PyTorch.Instance.lerp(start, end, weight, @out:@out);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                start,
+                end,
+                weight,
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("lerp", pyargs, kwargs);
+        }
         
         /// <summary>
         ///	Returns a new tensor with the natural logarithm of the elements
@@ -2274,7 +3351,18 @@ namespace Torch
         ///	the output tensor
         /// </param>
         public static Tensor log(Tensor input, Tensor @out = null)
-            => PyTorch.Instance.log(input, @out:@out);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("log", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Returns a new tensor with the logarithm to the base 10 of the elements
@@ -2291,7 +3379,18 @@ namespace Torch
         ///	the output tensor
         /// </param>
         public static Tensor log10(Tensor input, Tensor @out = null)
-            => PyTorch.Instance.log10(input, @out:@out);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("log10", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Returns a new tensor with the natural logarithm of (1 + input).<br></br>
@@ -2311,7 +3410,18 @@ namespace Torch
         ///	the output tensor
         /// </param>
         public static Tensor log1p(Tensor input, Tensor @out = null)
-            => PyTorch.Instance.log1p(input, @out:@out);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("log1p", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Returns a new tensor with the logarithm to the base 2 of the elements
@@ -2328,13 +3438,46 @@ namespace Torch
         ///	the output tensor
         /// </param>
         public static Tensor log2(Tensor input, Tensor @out = null)
-            => PyTorch.Instance.log2(input, @out:@out);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("log2", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         public static void mul<T>(Tensor input, T @value, Tensor @out = null)
-            => PyTorch.Instance.mul(input, @value, @out:@out);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+                @value,
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("mul", pyargs, kwargs);
+        }
         
         public static void mul(Tensor input, Tensor other, Tensor @out = null)
-            => PyTorch.Instance.mul(input, other, @out:@out);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+                other,
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("mul", pyargs, kwargs);
+        }
         
         /// <summary>
         ///	Computes the multivariate log-gamma function ([reference]) with dimension \(p\) element-wise, given by
@@ -2355,7 +3498,18 @@ namespace Torch
         ///	the number of dimensions
         /// </param>
         public static Tensor mvlgamma(Tensor input, int p)
-            => PyTorch.Instance.mvlgamma(input, p);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+                p,
+            });
+            var kwargs=new PyDict();
+            dynamic py = __self__.InvokeMethod("mvlgamma", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Returns a new tensor with the negative of the elements of input.<br></br>
@@ -2371,16 +3525,63 @@ namespace Torch
         ///	the output tensor
         /// </param>
         public static Tensor neg(Tensor input, Tensor @out = null)
-            => PyTorch.Instance.neg(input, @out:@out);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("neg", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         public static Tensor pow(Tensor input, Tensor exponent, Tensor @out = null)
-            => PyTorch.Instance.pow(input, exponent, @out:@out);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+                exponent,
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("pow", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         public static Tensor pow(Tensor input, double exponent, Tensor @out = null)
-            => PyTorch.Instance.pow(input, exponent, @out:@out);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+                exponent,
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("pow", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         public static Tensor pow(double @base, Tensor input, Tensor @out = null)
-            => PyTorch.Instance.pow(@base, input, @out:@out);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                @base,
+                input,
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("pow", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Returns a new tensor with the reciprocal of the elements of input
@@ -2396,7 +3597,18 @@ namespace Torch
         ///	the output tensor
         /// </param>
         public static Tensor reciprocal(Tensor input, Tensor @out = null)
-            => PyTorch.Instance.reciprocal(input, @out:@out);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("reciprocal", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Computes the element-wise remainder of division.<br></br>
@@ -2419,7 +3631,19 @@ namespace Torch
         ///	the output tensor
         /// </param>
         public static Tensor remainder(Tensor input, Tensor divisor, Tensor @out = null)
-            => PyTorch.Instance.remainder(input, divisor, @out:@out);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+                divisor,
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("remainder", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Computes the element-wise remainder of division.<br></br>
@@ -2442,7 +3666,19 @@ namespace Torch
         ///	the output tensor
         /// </param>
         public static Tensor remainder(Tensor input, double divisor, Tensor @out = null)
-            => PyTorch.Instance.remainder(input, divisor, @out:@out);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+                divisor,
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("remainder", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Returns a new tensor with each of the elements of input rounded
@@ -2455,7 +3691,18 @@ namespace Torch
         ///	the output tensor
         /// </param>
         public static Tensor round(Tensor input, Tensor @out = null)
-            => PyTorch.Instance.round(input, @out:@out);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("round", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Returns a new tensor with the reciprocal of the square-root of each of
@@ -2472,7 +3719,18 @@ namespace Torch
         ///	the output tensor
         /// </param>
         public static Tensor rsqrt(Tensor input, Tensor @out = null)
-            => PyTorch.Instance.rsqrt(input, @out:@out);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("rsqrt", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Returns a new tensor with the sigmoid of the elements of input.<br></br>
@@ -2488,7 +3746,18 @@ namespace Torch
         ///	the output tensor
         /// </param>
         public static Tensor sigmoid(Tensor input, Tensor @out = null)
-            => PyTorch.Instance.sigmoid(input, @out:@out);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("sigmoid", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Returns a new tensor with the sign of the elements of input.
@@ -2500,7 +3769,18 @@ namespace Torch
         ///	the output tensor
         /// </param>
         public static Tensor sign(Tensor input, Tensor @out = null)
-            => PyTorch.Instance.sign(input, @out:@out);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("sign", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Returns a new tensor with the sine of the elements of input.<br></br>
@@ -2516,7 +3796,18 @@ namespace Torch
         ///	the output tensor
         /// </param>
         public static Tensor sin(Tensor input, Tensor @out = null)
-            => PyTorch.Instance.sin(input, @out:@out);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("sin", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Returns a new tensor with the hyperbolic sine of the elements of
@@ -2533,7 +3824,18 @@ namespace Torch
         ///	the output tensor
         /// </param>
         public static Tensor sinh(Tensor input, Tensor @out = null)
-            => PyTorch.Instance.sinh(input, @out:@out);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("sinh", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Returns a new tensor with the square-root of the elements of input.<br></br>
@@ -2549,7 +3851,18 @@ namespace Torch
         ///	the output tensor
         /// </param>
         public static Tensor sqrt(Tensor input, Tensor @out = null)
-            => PyTorch.Instance.sqrt(input, @out:@out);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("sqrt", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Returns a new tensor with the tangent of the elements of input.<br></br>
@@ -2565,7 +3878,18 @@ namespace Torch
         ///	the output tensor
         /// </param>
         public static Tensor tan(Tensor input, Tensor @out = null)
-            => PyTorch.Instance.tan(input, @out:@out);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("tan", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Returns a new tensor with the hyperbolic tangent of the elements
@@ -2582,7 +3906,18 @@ namespace Torch
         ///	the output tensor
         /// </param>
         public static Tensor tanh(Tensor input, Tensor @out = null)
-            => PyTorch.Instance.tanh(input, @out:@out);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("tanh", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Returns a new tensor with the truncated integer values of
@@ -2595,19 +3930,75 @@ namespace Torch
         ///	the output tensor
         /// </param>
         public static Tensor trunc(Tensor input, Tensor @out = null)
-            => PyTorch.Instance.trunc(input, @out:@out);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("trunc", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         public static Tensor<long> argmax(Tensor input)
-            => PyTorch.Instance.argmax(input);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+            });
+            var kwargs=new PyDict();
+            dynamic py = __self__.InvokeMethod("argmax", pyargs, kwargs);
+            return ToCsharp<Tensor<long>>(py);
+        }
         
         public static Tensor<long> argmax(Tensor input, int dim, bool keepdim = false)
-            => PyTorch.Instance.argmax(input, dim, keepdim:keepdim);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+                dim,
+            });
+            var kwargs=new PyDict();
+            if (keepdim!=false) kwargs["keepdim"]=ToPython(keepdim);
+            dynamic py = __self__.InvokeMethod("argmax", pyargs, kwargs);
+            return ToCsharp<Tensor<long>>(py);
+        }
         
         public static Tensor<long> argmin(Tensor input)
-            => PyTorch.Instance.argmin(input);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+            });
+            var kwargs=new PyDict();
+            dynamic py = __self__.InvokeMethod("argmin", pyargs, kwargs);
+            return ToCsharp<Tensor<long>>(py);
+        }
         
         public static Tensor<long> argmin(Tensor input, int dim, bool keepdim = false, Tensor @out = null)
-            => PyTorch.Instance.argmin(input, dim, keepdim:keepdim, @out:@out);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+                dim,
+            });
+            var kwargs=new PyDict();
+            if (keepdim!=false) kwargs["keepdim"]=ToPython(keepdim);
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("argmin", pyargs, kwargs);
+            return ToCsharp<Tensor<long>>(py);
+        }
         
         /// <summary>
         ///	Returns the cumulative product of elements of input in the dimension
@@ -2638,7 +4029,20 @@ namespace Torch
         ///	the output tensor
         /// </param>
         public static Tensor cumprod(Tensor input, int dim, Dtype dtype = null, Tensor @out = null)
-            => PyTorch.Instance.cumprod(input, dim, dtype:dtype, @out:@out);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+                dim,
+            });
+            var kwargs=new PyDict();
+            if (dtype!=null) kwargs["dtype"]=ToPython(dtype);
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("cumprod", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Returns the cumulative sum of elements of input in the dimension
@@ -2669,7 +4073,20 @@ namespace Torch
         ///	the output tensor
         /// </param>
         public static Tensor cumsum(Tensor input, int dim, Dtype dtype = null, Tensor @out = null)
-            => PyTorch.Instance.cumsum(input, dim, dtype:dtype, @out:@out);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+                dim,
+            });
+            var kwargs=new PyDict();
+            if (dtype!=null) kwargs["dtype"]=ToPython(dtype);
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("cumsum", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Returns the p-norm of (input - other)
@@ -2687,7 +4104,19 @@ namespace Torch
         ///	the norm to be computed
         /// </param>
         public static Tensor dist(Tensor input, Tensor other, float? p = 2f)
-            => PyTorch.Instance.dist(input, other, p:p);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+                other,
+            });
+            var kwargs=new PyDict();
+            if (p!=2f) kwargs["p"]=ToPython(p);
+            dynamic py = __self__.InvokeMethod("dist", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Returns the log of summed exponentials of each row of the input
@@ -2720,19 +4149,79 @@ namespace Torch
         ///	the output tensor
         /// </param>
         public static void logsumexp(Tensor input, int dim, bool keepdim = false, Tensor @out = null)
-            => PyTorch.Instance.logsumexp(input, dim, keepdim:keepdim, @out:@out);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+                dim,
+            });
+            var kwargs=new PyDict();
+            if (keepdim!=false) kwargs["keepdim"]=ToPython(keepdim);
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("logsumexp", pyargs, kwargs);
+        }
         
         public static Tensor mean(Tensor input)
-            => PyTorch.Instance.mean(input);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+            });
+            var kwargs=new PyDict();
+            dynamic py = __self__.InvokeMethod("mean", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         public static Tensor mean(Tensor input, int dim, bool keepdim = false, Tensor @out = null)
-            => PyTorch.Instance.mean(input, dim, keepdim:keepdim, @out:@out);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+                dim,
+            });
+            var kwargs=new PyDict();
+            if (keepdim!=false) kwargs["keepdim"]=ToPython(keepdim);
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("mean", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         public static Tensor median(Tensor input)
-            => PyTorch.Instance.median(input);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+            });
+            var kwargs=new PyDict();
+            dynamic py = __self__.InvokeMethod("median", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         public static (Tensor, Tensor<long>, Tensor, Tensor<long>) median(Tensor input, int dim = -1, bool keepdim = false, Tensor values = null, Tensor indices = null)
-            => PyTorch.Instance.median(input, dim:dim, keepdim:keepdim, values:values, indices:indices);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+            });
+            var kwargs=new PyDict();
+            if (dim!=-1) kwargs["dim"]=ToPython(dim);
+            if (keepdim!=false) kwargs["keepdim"]=ToPython(keepdim);
+            if (values!=null) kwargs["values"]=ToPython(values);
+            if (indices!=null) kwargs["indices"]=ToPython(indices);
+            dynamic py = __self__.InvokeMethod("median", pyargs, kwargs);
+            var t = py as PyTuple;
+            return (ToCsharp<Tensor>(t[0]), ToCsharp<Tensor<long>>(t[1]), ToCsharp<Tensor>(t[2]), ToCsharp<Tensor<long>>(t[3]));
+        }
         
         /// <summary>
         ///	Returns a namedtuple (values, indices) where values is the mode
@@ -2768,7 +4257,22 @@ namespace Torch
         ///	the output index tensor
         /// </param>
         public static (Tensor, Tensor<long>) mode(Tensor input, int dim = -1, bool keepdim = false, Tensor values = null, Tensor indices = null)
-            => PyTorch.Instance.mode(input, dim:dim, keepdim:keepdim, values:values, indices:indices);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+            });
+            var kwargs=new PyDict();
+            if (dim!=-1) kwargs["dim"]=ToPython(dim);
+            if (keepdim!=false) kwargs["keepdim"]=ToPython(keepdim);
+            if (values!=null) kwargs["values"]=ToPython(values);
+            if (indices!=null) kwargs["indices"]=ToPython(indices);
+            dynamic py = __self__.InvokeMethod("mode", pyargs, kwargs);
+            var t = py as PyTuple;
+            return (ToCsharp<Tensor>(t[0]), ToCsharp<Tensor<long>>(t[1]));
+        }
         
         /// <summary>
         ///	Returns the matrix norm or vector norm of a given tensor.
@@ -2832,25 +4336,112 @@ namespace Torch
         ///	Default: None.
         /// </param>
         public static void norm(Tensor input, object p = null, int[] dim = null, bool? keepdim = false, Tensor @out = null, Dtype dtype = null)
-            => PyTorch.Instance.norm(input, p:p, dim:dim, keepdim:keepdim, @out:@out, dtype:dtype);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+            });
+            var kwargs=new PyDict();
+            if (p!=null) kwargs["p"]=ToPython(p);
+            if (dim!=null) kwargs["dim"]=ToPython(dim);
+            if (keepdim!=false) kwargs["keepdim"]=ToPython(keepdim);
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            if (dtype!=null) kwargs["dtype"]=ToPython(dtype);
+            dynamic py = __self__.InvokeMethod("norm", pyargs, kwargs);
+        }
         
         public static Tensor prod(Tensor input, Dtype dtype = null)
-            => PyTorch.Instance.prod(input, dtype:dtype);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+            });
+            var kwargs=new PyDict();
+            if (dtype!=null) kwargs["dtype"]=ToPython(dtype);
+            dynamic py = __self__.InvokeMethod("prod", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         public static Tensor prod(Tensor input, int dim, bool keepdim = false, Dtype dtype = null)
-            => PyTorch.Instance.prod(input, dim, keepdim:keepdim, dtype:dtype);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+                dim,
+            });
+            var kwargs=new PyDict();
+            if (keepdim!=false) kwargs["keepdim"]=ToPython(keepdim);
+            if (dtype!=null) kwargs["dtype"]=ToPython(dtype);
+            dynamic py = __self__.InvokeMethod("prod", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         public static Tensor std(Tensor input, bool unbiased = true)
-            => PyTorch.Instance.std(input, unbiased:unbiased);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+            });
+            var kwargs=new PyDict();
+            if (unbiased!=true) kwargs["unbiased"]=ToPython(unbiased);
+            dynamic py = __self__.InvokeMethod("std", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         public static Tensor std(Tensor input, int dim, bool keepdim = false, bool unbiased = true, Tensor @out = null)
-            => PyTorch.Instance.std(input, dim, keepdim:keepdim, unbiased:unbiased, @out:@out);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+                dim,
+            });
+            var kwargs=new PyDict();
+            if (keepdim!=false) kwargs["keepdim"]=ToPython(keepdim);
+            if (unbiased!=true) kwargs["unbiased"]=ToPython(unbiased);
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("std", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         public static Tensor sum(Tensor input, Dtype dtype = null)
-            => PyTorch.Instance.sum(input, dtype:dtype);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+            });
+            var kwargs=new PyDict();
+            if (dtype!=null) kwargs["dtype"]=ToPython(dtype);
+            dynamic py = __self__.InvokeMethod("sum", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         public static Tensor sum(Tensor input, int dim, bool keepdim = false, Dtype dtype = null)
-            => PyTorch.Instance.sum(input, dim, keepdim:keepdim, dtype:dtype);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+                dim,
+            });
+            var kwargs=new PyDict();
+            if (keepdim!=false) kwargs["keepdim"]=ToPython(keepdim);
+            if (dtype!=null) kwargs["dtype"]=ToPython(dtype);
+            dynamic py = __self__.InvokeMethod("sum", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Returns the unique elements of the input tensor.
@@ -2894,7 +4485,22 @@ namespace Torch
         ///	for each unique value or tensor.
         /// </returns>
         public static (Tensor, Tensor, Tensor) unique(Tensor input, bool sorted = true, bool return_inverse = false, bool return_counts = false, int? dim = null)
-            => PyTorch.Instance.unique(input, sorted:sorted, return_inverse:return_inverse, return_counts:return_counts, dim:dim);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+            });
+            var kwargs=new PyDict();
+            if (sorted!=true) kwargs["sorted"]=ToPython(sorted);
+            if (return_inverse!=false) kwargs["return_inverse"]=ToPython(return_inverse);
+            if (return_counts!=false) kwargs["return_counts"]=ToPython(return_counts);
+            if (dim!=null) kwargs["dim"]=ToPython(dim);
+            dynamic py = __self__.InvokeMethod("unique", pyargs, kwargs);
+            var t = py as PyTuple;
+            return (ToCsharp<Tensor>(t[0]), ToCsharp<Tensor>(t[1]), ToCsharp<Tensor>(t[2]));
+        }
         
         /// <summary>
         ///	Eliminates all but the first element from every consecutive group of equivalent elements.<br></br>
@@ -2923,13 +4529,52 @@ namespace Torch
         ///	default: None
         /// </param>
         public static (Tensor, Tensor, Tensor) unique_consecutive(Tensor input, bool return_inverse = false, bool return_counts = false, int? dim = null)
-            => PyTorch.Instance.unique_consecutive(input, return_inverse:return_inverse, return_counts:return_counts, dim:dim);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+            });
+            var kwargs=new PyDict();
+            if (return_inverse!=false) kwargs["return_inverse"]=ToPython(return_inverse);
+            if (return_counts!=false) kwargs["return_counts"]=ToPython(return_counts);
+            if (dim!=null) kwargs["dim"]=ToPython(dim);
+            dynamic py = __self__.InvokeMethod("unique_consecutive", pyargs, kwargs);
+            var t = py as PyTuple;
+            return (ToCsharp<Tensor>(t[0]), ToCsharp<Tensor>(t[1]), ToCsharp<Tensor>(t[2]));
+        }
         
         public static Tensor @var(Tensor input, bool unbiased = true)
-            => PyTorch.Instance.@var(input, unbiased:unbiased);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+            });
+            var kwargs=new PyDict();
+            if (unbiased!=true) kwargs["unbiased"]=ToPython(unbiased);
+            dynamic py = __self__.InvokeMethod("var", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         public static Tensor @var(Tensor input, int dim, bool keepdim = false, bool unbiased = true, Tensor @out = null)
-            => PyTorch.Instance.@var(input, dim, keepdim:keepdim, unbiased:unbiased, @out:@out);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+                dim,
+            });
+            var kwargs=new PyDict();
+            if (keepdim!=false) kwargs["keepdim"]=ToPython(keepdim);
+            if (unbiased!=true) kwargs["unbiased"]=ToPython(unbiased);
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("var", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	This function checks if all self and other satisfy the condition:
@@ -2961,7 +4606,21 @@ namespace Torch
         ///	Default: False
         /// </param>
         public static bool allclose(Tensor self_, Tensor other, float? atol = 1e-08f, float? rtol = 1e-05f, bool? equal_nan = false)
-            => PyTorch.Instance.allclose(self_, other, atol:atol, rtol:rtol, equal_nan:equal_nan);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                self_,
+                other,
+            });
+            var kwargs=new PyDict();
+            if (atol!=1e-08f) kwargs["atol"]=ToPython(atol);
+            if (rtol!=1e-05f) kwargs["rtol"]=ToPython(rtol);
+            if (equal_nan!=false) kwargs["equal_nan"]=ToPython(equal_nan);
+            dynamic py = __self__.InvokeMethod("allclose", pyargs, kwargs);
+            return ToCsharp<bool>(py);
+        }
         
         /// <summary>
         ///	Returns the indices that sort a tensor along a given dimension in ascending
@@ -2981,7 +4640,20 @@ namespace Torch
         ///	controls the sorting order (ascending or descending)
         /// </param>
         public static Tensor<long> argsort(Tensor input, int? dim = -1, bool? @descending = false, Tensor @out = null)
-            => PyTorch.Instance.argsort(input, dim:dim, @descending:@descending, @out:@out);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+            });
+            var kwargs=new PyDict();
+            if (dim!=-1) kwargs["dim"]=ToPython(dim);
+            if (@descending!=false) kwargs["descending"]=ToPython(@descending);
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("argsort", pyargs, kwargs);
+            return ToCsharp<Tensor<long>>(py);
+        }
         
         /// <summary>
         ///	Computes element-wise equality
@@ -3000,13 +4672,36 @@ namespace Torch
         ///	Must be a ByteTensor
         /// </param>
         public static Tensor eq(Tensor input, Tensor other, Tensor @out = null)
-            => PyTorch.Instance.eq(input, other, @out:@out);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+                other,
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("eq", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	True if two tensors have the same size and elements, False otherwise.
         /// </summary>
         public static bool equal(Tensor tensor1, Tensor tensor2)
-            => PyTorch.Instance.equal(tensor1, tensor2);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                tensor1,
+                tensor2,
+            });
+            var kwargs=new PyDict();
+            dynamic py = __self__.InvokeMethod("equal", pyargs, kwargs);
+            return ToCsharp<bool>(py);
+        }
         
         /// <summary>
         ///	Computes \(\text{input} \geq \text{other}\) element-wise.<br></br>
@@ -3024,7 +4719,19 @@ namespace Torch
         ///	the output tensor that must be a ByteTensor
         /// </param>
         public static Tensor ge(Tensor input, Tensor other, Tensor @out = null)
-            => PyTorch.Instance.ge(input, other, @out:@out);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+                other,
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("ge", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Computes \(\text{input} &gt; \text{other}\) element-wise.<br></br>
@@ -3042,25 +4749,67 @@ namespace Torch
         ///	the output tensor that must be a ByteTensor
         /// </param>
         public static Tensor gt(Tensor input, Tensor other, Tensor @out = null)
-            => PyTorch.Instance.gt(input, other, @out:@out);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+                other,
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("gt", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Returns a new tensor with boolean elements representing if each element is Finite or not.
         /// </summary>
         public static Tensor isfinite(Tensor tensor)
-            => PyTorch.Instance.isfinite(tensor);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                tensor,
+            });
+            var kwargs=new PyDict();
+            dynamic py = __self__.InvokeMethod("isfinite", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Returns a new tensor with boolean elements representing if each element is +/-INF or not.
         /// </summary>
         public static Tensor isinf(Tensor tensor)
-            => PyTorch.Instance.isinf(tensor);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                tensor,
+            });
+            var kwargs=new PyDict();
+            dynamic py = __self__.InvokeMethod("isinf", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Returns a new tensor with boolean elements representing if each element is NaN or not.
         /// </summary>
         public static Tensor isnan(Tensor tensor)
-            => PyTorch.Instance.isnan(tensor);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                tensor,
+            });
+            var kwargs=new PyDict();
+            dynamic py = __self__.InvokeMethod("isnan", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Returns a namedtuple (values, indices) where values is the k th
@@ -3094,7 +4843,22 @@ namespace Torch
         ///	can be optionally given to be used as output buffers
         /// </param>
         public static (Tensor, Tensor<long>) kthvalue(Tensor input, int k, int? dim = null, bool keepdim = false, Tensor[] @out = null)
-            => PyTorch.Instance.kthvalue(input, k, dim:dim, keepdim:keepdim, @out:@out);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+                k,
+            });
+            var kwargs=new PyDict();
+            if (dim!=null) kwargs["dim"]=ToPython(dim);
+            if (keepdim!=false) kwargs["keepdim"]=ToPython(keepdim);
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("kthvalue", pyargs, kwargs);
+            var t = py as PyTuple;
+            return (ToCsharp<Tensor>(t[0]), ToCsharp<Tensor<long>>(t[1]));
+        }
         
         /// <summary>
         ///	Computes \(\text{input} \leq \text{other}\) element-wise.<br></br>
@@ -3112,7 +4876,19 @@ namespace Torch
         ///	the output tensor that must be a ByteTensor
         /// </param>
         public static Tensor le(Tensor input, Tensor other, Tensor @out = null)
-            => PyTorch.Instance.le(input, other, @out:@out);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+                other,
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("le", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Computes \(\text{input} &lt; \text{other}\) element-wise.<br></br>
@@ -3130,25 +4906,109 @@ namespace Torch
         ///	the output tensor that must be a ByteTensor
         /// </param>
         public static Tensor lt(Tensor input, Tensor other, Tensor @out = null)
-            => PyTorch.Instance.lt(input, other, @out:@out);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+                other,
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("lt", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         public static Tensor max(Tensor input)
-            => PyTorch.Instance.max(input);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+            });
+            var kwargs=new PyDict();
+            dynamic py = __self__.InvokeMethod("max", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         public static (Tensor, Tensor<long>) max(Tensor input, int dim, bool keepdim = false, Tensor @out = null)
-            => PyTorch.Instance.max(input, dim, keepdim:keepdim, @out:@out);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+                dim,
+            });
+            var kwargs=new PyDict();
+            if (keepdim!=false) kwargs["keepdim"]=ToPython(keepdim);
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("max", pyargs, kwargs);
+            var t = py as PyTuple;
+            return (ToCsharp<Tensor>(t[0]), ToCsharp<Tensor<long>>(t[1]));
+        }
         
         public static Tensor max(Tensor input, Tensor other, Tensor @out = null)
-            => PyTorch.Instance.max(input, other, @out:@out);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+                other,
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("max", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         public static Tensor min(Tensor input)
-            => PyTorch.Instance.min(input);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+            });
+            var kwargs=new PyDict();
+            dynamic py = __self__.InvokeMethod("min", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         public static (Tensor, Tensor<long>) min(Tensor input, int dim, bool keepdim = false, Tensor @out = null)
-            => PyTorch.Instance.min(input, dim, keepdim:keepdim, @out:@out);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+                dim,
+            });
+            var kwargs=new PyDict();
+            if (keepdim!=false) kwargs["keepdim"]=ToPython(keepdim);
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("min", pyargs, kwargs);
+            var t = py as PyTuple;
+            return (ToCsharp<Tensor>(t[0]), ToCsharp<Tensor<long>>(t[1]));
+        }
         
         public static Tensor min(Tensor input, Tensor other, Tensor @out = null)
-            => PyTorch.Instance.min(input, other, @out:@out);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+                other,
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("min", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Computes \(input \neq other\) element-wise.<br></br>
@@ -3166,7 +5026,19 @@ namespace Torch
         ///	the output tensor that must be a ByteTensor
         /// </param>
         public static Tensor ne(Tensor input, Tensor other, Tensor @out = null)
-            => PyTorch.Instance.ne(input, other, @out:@out);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+                other,
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("ne", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Sorts the elements of the input tensor along a given dimension
@@ -3195,7 +5067,21 @@ namespace Torch
         ///	be optionally given to be used as output buffers
         /// </param>
         public static (Tensor, Tensor<long>) sort(Tensor input, int? dim = -1, bool? @descending = false, Tensor[] @out = null)
-            => PyTorch.Instance.sort(input, dim:dim, @descending:@descending, @out:@out);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+            });
+            var kwargs=new PyDict();
+            if (dim!=-1) kwargs["dim"]=ToPython(dim);
+            if (@descending!=false) kwargs["descending"]=ToPython(@descending);
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("sort", pyargs, kwargs);
+            var t = py as PyTuple;
+            return (ToCsharp<Tensor>(t[0]), ToCsharp<Tensor<long>>(t[1]));
+        }
         
         /// <summary>
         ///	Returns the k largest elements of the given input tensor along
@@ -3233,7 +5119,23 @@ namespace Torch
         ///	optionally given to be used as output buffers
         /// </param>
         public static (Tensor, Tensor<long>) topk(Tensor input, int k, int? dim = null, bool? largest = true, bool? sorted = true, Tensor[] @out = null)
-            => PyTorch.Instance.topk(input, k, dim:dim, largest:largest, sorted:sorted, @out:@out);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+                k,
+            });
+            var kwargs=new PyDict();
+            if (dim!=null) kwargs["dim"]=ToPython(dim);
+            if (largest!=true) kwargs["largest"]=ToPython(largest);
+            if (sorted!=true) kwargs["sorted"]=ToPython(sorted);
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("topk", pyargs, kwargs);
+            var t = py as PyTuple;
+            return (ToCsharp<Tensor>(t[0]), ToCsharp<Tensor<long>>(t[1]));
+        }
         
         /// <summary>
         ///	Complex-to-complex Discrete Fourier Transform
@@ -3293,7 +5195,19 @@ namespace Torch
         ///	Default: False
         /// </param>
         public static Tensor fft(Tensor input, int signal_ndim, bool? normalized = false)
-            => PyTorch.Instance.fft(input, signal_ndim, normalized:normalized);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+                signal_ndim,
+            });
+            var kwargs=new PyDict();
+            if (normalized!=false) kwargs["normalized"]=ToPython(normalized);
+            dynamic py = __self__.InvokeMethod("fft", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Complex-to-complex Inverse Discrete Fourier Transform
@@ -3352,7 +5266,19 @@ namespace Torch
         ///	Default: False
         /// </param>
         public static Tensor ifft(Tensor input, int signal_ndim, bool? normalized = false)
-            => PyTorch.Instance.ifft(input, signal_ndim, normalized:normalized);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+                signal_ndim,
+            });
+            var kwargs=new PyDict();
+            if (normalized!=false) kwargs["normalized"]=ToPython(normalized);
+            dynamic py = __self__.InvokeMethod("ifft", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Real-to-complex Discrete Fourier Transform
@@ -3420,7 +5346,20 @@ namespace Torch
         ///	Default: True
         /// </param>
         public static Tensor rfft(Tensor input, int signal_ndim, bool? normalized = false, bool? onesided = true)
-            => PyTorch.Instance.rfft(input, signal_ndim, normalized:normalized, onesided:onesided);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+                signal_ndim,
+            });
+            var kwargs=new PyDict();
+            if (normalized!=false) kwargs["normalized"]=ToPython(normalized);
+            if (onesided!=true) kwargs["onesided"]=ToPython(onesided);
+            dynamic py = __self__.InvokeMethod("rfft", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Complex-to-real Inverse Discrete Fourier Transform
@@ -3508,7 +5447,21 @@ namespace Torch
         ///	Default: None
         /// </param>
         public static Tensor irfft(Tensor input, int signal_ndim, bool? normalized = false, bool? onesided = true, Shape signal_sizes = null)
-            => PyTorch.Instance.irfft(input, signal_ndim, normalized:normalized, onesided:onesided, signal_sizes:signal_sizes);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+                signal_ndim,
+            });
+            var kwargs=new PyDict();
+            if (normalized!=false) kwargs["normalized"]=ToPython(normalized);
+            if (onesided!=true) kwargs["onesided"]=ToPython(onesided);
+            if (signal_sizes!=null) kwargs["signal_sizes"]=ToPython(signal_sizes);
+            dynamic py = __self__.InvokeMethod("irfft", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Short-time Fourier transform (STFT).<br></br>
@@ -3615,7 +5568,25 @@ namespace Torch
         ///	avoid redundancy Default: True
         /// </param>
         public static Tensor stft(Tensor input, int n_fft, int? hop_length = null, int? win_length = null, Tensor window = null, bool? center = true, string pad_mode = "reflect", bool? normalized = false, bool? onesided = true)
-            => PyTorch.Instance.stft(input, n_fft, hop_length:hop_length, win_length:win_length, window:window, center:center, pad_mode:pad_mode, normalized:normalized, onesided:onesided);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+                n_fft,
+            });
+            var kwargs=new PyDict();
+            if (hop_length!=null) kwargs["hop_length"]=ToPython(hop_length);
+            if (win_length!=null) kwargs["win_length"]=ToPython(win_length);
+            if (window!=null) kwargs["window"]=ToPython(window);
+            if (center!=true) kwargs["center"]=ToPython(center);
+            if (pad_mode!="reflect") kwargs["pad_mode"]=ToPython(pad_mode);
+            if (normalized!=false) kwargs["normalized"]=ToPython(normalized);
+            if (onesided!=true) kwargs["onesided"]=ToPython(onesided);
+            dynamic py = __self__.InvokeMethod("stft", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Bartlett window function.<br></br>
@@ -3677,7 +5648,22 @@ namespace Torch
         ///	Default: False.
         /// </param>
         public static Tensor bartlett_window(int window_length, bool? periodic = true, Dtype dtype = null, Layout layout = null, Device device = null, bool? requires_grad = false)
-            => PyTorch.Instance.bartlett_window(window_length, periodic:periodic, dtype:dtype, layout:layout, device:device, requires_grad:requires_grad);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                window_length,
+            });
+            var kwargs=new PyDict();
+            if (periodic!=true) kwargs["periodic"]=ToPython(periodic);
+            if (dtype!=null) kwargs["dtype"]=ToPython(dtype);
+            if (layout!=null) kwargs["layout"]=ToPython(layout);
+            if (device!=null) kwargs["device"]=ToPython(device);
+            if (requires_grad!=false) kwargs["requires_grad"]=ToPython(requires_grad);
+            dynamic py = __self__.InvokeMethod("bartlett_window", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Blackman window function.<br></br>
@@ -3736,7 +5722,22 @@ namespace Torch
         ///	Default: False.
         /// </param>
         public static Tensor blackman_window(int window_length, bool? periodic = true, Dtype dtype = null, Layout layout = null, Device device = null, bool? requires_grad = false)
-            => PyTorch.Instance.blackman_window(window_length, periodic:periodic, dtype:dtype, layout:layout, device:device, requires_grad:requires_grad);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                window_length,
+            });
+            var kwargs=new PyDict();
+            if (periodic!=true) kwargs["periodic"]=ToPython(periodic);
+            if (dtype!=null) kwargs["dtype"]=ToPython(dtype);
+            if (layout!=null) kwargs["layout"]=ToPython(layout);
+            if (device!=null) kwargs["device"]=ToPython(device);
+            if (requires_grad!=false) kwargs["requires_grad"]=ToPython(requires_grad);
+            dynamic py = __self__.InvokeMethod("blackman_window", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Hamming window function.<br></br>
@@ -3798,7 +5799,24 @@ namespace Torch
         ///	Default: False.
         /// </param>
         public static Tensor hamming_window(int window_length, bool? periodic = true, Dtype dtype = null, Layout layout = null, Device device = null, bool? requires_grad = false, double alpha = 0.54, double beta = 0.46)
-            => PyTorch.Instance.hamming_window(window_length, periodic:periodic, dtype:dtype, layout:layout, device:device, requires_grad:requires_grad, alpha:alpha, beta:beta);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                window_length,
+            });
+            var kwargs=new PyDict();
+            if (periodic!=true) kwargs["periodic"]=ToPython(periodic);
+            if (dtype!=null) kwargs["dtype"]=ToPython(dtype);
+            if (layout!=null) kwargs["layout"]=ToPython(layout);
+            if (device!=null) kwargs["device"]=ToPython(device);
+            if (requires_grad!=false) kwargs["requires_grad"]=ToPython(requires_grad);
+            if (alpha!=0.54) kwargs["alpha"]=ToPython(alpha);
+            if (beta!=0.46) kwargs["beta"]=ToPython(beta);
+            dynamic py = __self__.InvokeMethod("hamming_window", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Hann window function.<br></br>
@@ -3858,7 +5876,22 @@ namespace Torch
         ///	Default: False.
         /// </param>
         public static Tensor hann_window(int window_length, bool? periodic = true, Dtype dtype = null, Layout layout = null, Device device = null, bool? requires_grad = false)
-            => PyTorch.Instance.hann_window(window_length, periodic:periodic, dtype:dtype, layout:layout, device:device, requires_grad:requires_grad);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                window_length,
+            });
+            var kwargs=new PyDict();
+            if (periodic!=true) kwargs["periodic"]=ToPython(periodic);
+            if (dtype!=null) kwargs["dtype"]=ToPython(dtype);
+            if (layout!=null) kwargs["layout"]=ToPython(layout);
+            if (device!=null) kwargs["device"]=ToPython(device);
+            if (requires_grad!=false) kwargs["requires_grad"]=ToPython(requires_grad);
+            dynamic py = __self__.InvokeMethod("hann_window", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Count the frequency of each value in an array of non-negative ints.<br></br>
@@ -3892,13 +5925,35 @@ namespace Torch
         ///	Should be non-negative.
         /// </param>
         public static Tensor bincount(Tensor input, Tensor weights = null, int? minlength = 0)
-            => PyTorch.Instance.bincount(input, weights:weights, minlength:minlength);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+            });
+            var kwargs=new PyDict();
+            if (weights!=null) kwargs["weights"]=ToPython(weights);
+            if (minlength!=0) kwargs["minlength"]=ToPython(minlength);
+            dynamic py = __self__.InvokeMethod("bincount", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Broadcasts the given tensors according to Broadcasting semantics.
         /// </summary>
         public static Tensor[] broadcast_tensors(int tensors)
-            => PyTorch.Instance.broadcast_tensors(tensors);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                tensors,
+            });
+            var kwargs=new PyDict();
+            dynamic py = __self__.InvokeMethod("broadcast_tensors", pyargs, kwargs);
+            return ToCsharp<Tensor[]>(py);
+        }
         
         /// <summary>
         ///	Do cartesian product of the given sequence of tensors.<br></br>
@@ -3906,7 +5961,17 @@ namespace Torch
         ///	python’s itertools.product.
         /// </summary>
         public static Tensor cartesian_prod(int tensors)
-            => PyTorch.Instance.cartesian_prod(tensors);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                tensors,
+            });
+            var kwargs=new PyDict();
+            dynamic py = __self__.InvokeMethod("cartesian_prod", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Compute combinations of length \(r\) of the given tensor.<br></br>
@@ -3924,7 +5989,19 @@ namespace Torch
         ///	whether to allow duplication in combination
         /// </param>
         public static Tensor combinations(Tensor tensor, int? r = 2, bool? with_replacement = false)
-            => PyTorch.Instance.combinations(tensor, r:r, with_replacement:with_replacement);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                tensor,
+            });
+            var kwargs=new PyDict();
+            if (r!=2) kwargs["r"]=ToPython(r);
+            if (with_replacement!=false) kwargs["with_replacement"]=ToPython(with_replacement);
+            dynamic py = __self__.InvokeMethod("combinations", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Returns the cross product of vectors in dimension dim of input
@@ -3949,7 +6026,20 @@ namespace Torch
         ///	the output tensor
         /// </param>
         public static Tensor cross(Tensor input, Tensor other, int? dim = -1, Tensor @out = null)
-            => PyTorch.Instance.cross(input, other, dim:dim, @out:@out);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+                other,
+            });
+            var kwargs=new PyDict();
+            if (dim!=-1) kwargs["dim"]=ToPython(dim);
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("cross", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	If input is a vector (1-D tensor), then returns a 2-D square tensor
@@ -3976,7 +6066,19 @@ namespace Torch
         ///	the output tensor
         /// </param>
         public static Tensor diag(Tensor input, int? diagonal = 0, Tensor @out = null)
-            => PyTorch.Instance.diag(input, diagonal:diagonal, @out:@out);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+            });
+            var kwargs=new PyDict();
+            if (diagonal!=0) kwargs["diagonal"]=ToPython(diagonal);
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("diag", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Creates a tensor whose diagonals of certain 2D planes (specified by
@@ -4027,7 +6129,20 @@ namespace Torch
         ///	Default: -1.
         /// </param>
         public static Tensor diag_embed(Tensor input, int? offset = 0, int? dim1 = -2, int? dim2 = -1)
-            => PyTorch.Instance.diag_embed(input, offset:offset, dim1:dim1, dim2:dim2);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+            });
+            var kwargs=new PyDict();
+            if (offset!=0) kwargs["offset"]=ToPython(offset);
+            if (dim1!=-2) kwargs["dim1"]=ToPython(dim1);
+            if (dim2!=-1) kwargs["dim2"]=ToPython(dim2);
+            dynamic py = __self__.InvokeMethod("diag_embed", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	If input is a vector (1-D tensor), then returns a 2-D square tensor
@@ -4053,7 +6168,18 @@ namespace Torch
         ///	diagonal).
         /// </param>
         public static Tensor diagflat(Tensor input, int? offset = 0)
-            => PyTorch.Instance.diagflat(input, offset:offset);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+            });
+            var kwargs=new PyDict();
+            if (offset!=0) kwargs["offset"]=ToPython(offset);
+            dynamic py = __self__.InvokeMethod("diagflat", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Returns a partial view of input with the its diagonal elements
@@ -4094,7 +6220,20 @@ namespace Torch
         ///	Default: 1.
         /// </param>
         public static Tensor diagonal(Tensor input, int? offset = 0, int? dim1 = 0, int? dim2 = 1)
-            => PyTorch.Instance.diagonal(input, offset:offset, dim1:dim1, dim2:dim2);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+            });
+            var kwargs=new PyDict();
+            if (offset!=0) kwargs["offset"]=ToPython(offset);
+            if (dim1!=0) kwargs["dim1"]=ToPython(dim1);
+            if (dim2!=1) kwargs["dim2"]=ToPython(dim2);
+            dynamic py = __self__.InvokeMethod("diagonal", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	This function provides a way of computing multilinear expressions (i.e.<br></br>
@@ -4126,7 +6265,18 @@ namespace Torch
         ///	The operands to compute the Einstein sum of.
         /// </param>
         public static Tensor einsum(int equation, params Tensor[] operands)
-            => PyTorch.Instance.einsum(equation, operands);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                equation,
+                operands,
+            });
+            var kwargs=new PyDict();
+            dynamic py = __self__.InvokeMethod("einsum", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Flattens a contiguous range of dims in a tensor.
@@ -4141,7 +6291,19 @@ namespace Torch
         ///	the last dim to flatten
         /// </param>
         public static Tensor flatten(Tensor input, int start_dim = 0, int end_dim = -1)
-            => PyTorch.Instance.flatten(input, start_dim:start_dim, end_dim:end_dim);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+            });
+            var kwargs=new PyDict();
+            if (start_dim!=0) kwargs["start_dim"]=ToPython(start_dim);
+            if (end_dim!=-1) kwargs["end_dim"]=ToPython(end_dim);
+            dynamic py = __self__.InvokeMethod("flatten", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Reverse the order of a n-D tensor along given axis in dims.
@@ -4153,7 +6315,18 @@ namespace Torch
         ///	axis to flip on
         /// </param>
         public static Tensor flip(Tensor input, int[] dims)
-            => PyTorch.Instance.flip(input, dims);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+                dims,
+            });
+            var kwargs=new PyDict();
+            dynamic py = __self__.InvokeMethod("flip", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Rotate a n-D tensor by 90 degrees in the plane specified by dims axis.<br></br>
@@ -4170,7 +6343,19 @@ namespace Torch
         ///	axis to rotate
         /// </param>
         public static Tensor rot90(Tensor input, int k, int[] dims)
-            => PyTorch.Instance.rot90(input, k, dims);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+                k,
+                dims,
+            });
+            var kwargs=new PyDict();
+            dynamic py = __self__.InvokeMethod("rot90", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Computes the histogram of a tensor.<br></br>
@@ -4196,7 +6381,21 @@ namespace Torch
         ///	the output tensor
         /// </param>
         public static Tensor histc(Tensor input, int bins = 100, int min = 0, int max = 0, Tensor @out = null)
-            => PyTorch.Instance.histc(input, bins:bins, min:min, max:max, @out:@out);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+            });
+            var kwargs=new PyDict();
+            if (bins!=100) kwargs["bins"]=ToPython(bins);
+            if (min!=0) kwargs["min"]=ToPython(min);
+            if (max!=0) kwargs["max"]=ToPython(max);
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("histc", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Take \(N\) tensors, each of which can be either scalar or 1-dimensional
@@ -4225,7 +6424,16 @@ namespace Torch
         ///	        [4, 5, 6]])
         /// </summary>
         public static void meshgrid(params Tensor[] tensors)
-            => PyTorch.Instance.meshgrid(tensors);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                tensors,
+            });
+            var kwargs=new PyDict();
+            dynamic py = __self__.InvokeMethod("meshgrid", pyargs, kwargs);
+        }
         
         /// <summary>
         ///	Returns a tensor where each sub-tensor of input along dimension
@@ -4251,13 +6459,51 @@ namespace Torch
         ///	the output tensor
         /// </param>
         public static Tensor renorm(Tensor input, float p, int dim, float maxnorm, Tensor @out = null)
-            => PyTorch.Instance.renorm(input, p, dim, maxnorm, @out:@out);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+                p,
+                dim,
+                maxnorm,
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("renorm", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         public static Tensor repeat_interleave(Tensor input, int repeats, int? dim = null)
-            => PyTorch.Instance.repeat_interleave(input, repeats, dim:dim);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+                repeats,
+            });
+            var kwargs=new PyDict();
+            if (dim!=null) kwargs["dim"]=ToPython(dim);
+            dynamic py = __self__.InvokeMethod("repeat_interleave", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         public static Tensor repeat_interleave(Tensor input, Tensor repeats, int? dim = null)
-            => PyTorch.Instance.repeat_interleave(input, repeats, dim:dim);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+                repeats,
+            });
+            var kwargs=new PyDict();
+            if (dim!=null) kwargs["dim"]=ToPython(dim);
+            dynamic py = __self__.InvokeMethod("repeat_interleave", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Roll the tensor along the given dimension(s).<br></br>
@@ -4281,7 +6527,19 @@ namespace Torch
         ///	ints) : Axis along which to roll
         /// </param>
         public static Tensor roll(Tensor input, int[] shifts, int[] dims = null)
-            => PyTorch.Instance.roll(input, shifts, dims:dims);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+                shifts,
+            });
+            var kwargs=new PyDict();
+            if (dims!=null) kwargs["dims"]=ToPython(dims);
+            dynamic py = __self__.InvokeMethod("roll", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Returns a contraction of a and b over multiple dimensions.<br></br>
@@ -4300,13 +6558,34 @@ namespace Torch
         ///	b respectively
         /// </param>
         public static void tensordot(Tensor a, Tensor b, int[] dims)
-            => PyTorch.Instance.tensordot(a, b, dims);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                a,
+                b,
+                dims,
+            });
+            var kwargs=new PyDict();
+            dynamic py = __self__.InvokeMethod("tensordot", pyargs, kwargs);
+        }
         
         /// <summary>
         ///	Returns the sum of the elements of the diagonal of the input 2-D matrix.
         /// </summary>
         public static Tensor trace(Tensor input)
-            => PyTorch.Instance.trace(input);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+            });
+            var kwargs=new PyDict();
+            dynamic py = __self__.InvokeMethod("trace", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Returns the lower triangular part of the matrix (2-D tensor) or batch of matrices
@@ -4336,7 +6615,19 @@ namespace Torch
         ///	the output tensor
         /// </param>
         public static Tensor tril(Tensor input, int? diagonal = 0, Tensor @out = null)
-            => PyTorch.Instance.tril(input, diagonal:diagonal, @out:@out);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+            });
+            var kwargs=new PyDict();
+            if (diagonal!=0) kwargs["diagonal"]=ToPython(diagonal);
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("tril", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Returns the indices of the lower triangular part of a row-by-
@@ -4390,7 +6681,22 @@ namespace Torch
         ///	currently only support torch.strided.
         /// </param>
         public static Tensor tril_indices(int row, int column, int offset = 0, Dtype dtype = null, Device device = null, Layout layout = null)
-            => PyTorch.Instance.tril_indices(row, column, offset:offset, dtype:dtype, device:device, layout:layout);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                row,
+                column,
+            });
+            var kwargs=new PyDict();
+            if (offset!=0) kwargs["offset"]=ToPython(offset);
+            if (dtype!=null) kwargs["dtype"]=ToPython(dtype);
+            if (device!=null) kwargs["device"]=ToPython(device);
+            if (layout!=null) kwargs["layout"]=ToPython(layout);
+            dynamic py = __self__.InvokeMethod("tril_indices", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Returns the upper triangular part of a matrix (2-D tensor) or batch of matrices
@@ -4420,7 +6726,19 @@ namespace Torch
         ///	the output tensor
         /// </param>
         public static Tensor triu(Tensor input, int? diagonal = 0, Tensor @out = null)
-            => PyTorch.Instance.triu(input, diagonal:diagonal, @out:@out);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+            });
+            var kwargs=new PyDict();
+            if (diagonal!=0) kwargs["diagonal"]=ToPython(diagonal);
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("triu", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Returns the indices of the upper triangular part of a row by
@@ -4474,7 +6792,22 @@ namespace Torch
         ///	currently only support torch.strided.
         /// </param>
         public static Tensor triu_indices(int row, int column, int offset = 0, Dtype dtype = null, Device device = null, Layout layout = null)
-            => PyTorch.Instance.triu_indices(row, column, offset:offset, dtype:dtype, device:device, layout:layout);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                row,
+                column,
+            });
+            var kwargs=new PyDict();
+            if (offset!=0) kwargs["offset"]=ToPython(offset);
+            if (dtype!=null) kwargs["dtype"]=ToPython(dtype);
+            if (device!=null) kwargs["device"]=ToPython(device);
+            if (layout!=null) kwargs["layout"]=ToPython(layout);
+            dynamic py = __self__.InvokeMethod("triu_indices", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Performs a batch matrix-matrix product of matrices stored
@@ -4512,7 +6845,20 @@ namespace Torch
         ///	the output tensor
         /// </param>
         public static Tensor addbmm(Tensor mat, Tensor batch1, Tensor batch2, Tensor @out = null)
-            => PyTorch.Instance.addbmm(mat:mat, batch1:batch1, batch2:batch2, @out:@out);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+            });
+            var kwargs=new PyDict();
+            if (mat!=null) kwargs["mat"]=ToPython(mat);
+            if (batch1!=null) kwargs["batch1"]=ToPython(batch1);
+            if (batch2!=null) kwargs["batch2"]=ToPython(batch2);
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("addbmm", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Performs a batch matrix-matrix product of matrices stored
@@ -4556,7 +6902,22 @@ namespace Torch
         ///	the output tensor
         /// </param>
         public static Tensor addbmm(double beta, Tensor mat, double alpha, Tensor batch1, Tensor batch2, Tensor @out = null)
-            => PyTorch.Instance.addbmm(beta:beta, mat:mat, alpha:alpha, batch1:batch1, batch2:batch2, @out:@out);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+            });
+            var kwargs=new PyDict();
+            if (beta!=null) kwargs["beta"]=ToPython(beta);
+            if (mat!=null) kwargs["mat"]=ToPython(mat);
+            if (alpha!=null) kwargs["alpha"]=ToPython(alpha);
+            if (batch1!=null) kwargs["batch1"]=ToPython(batch1);
+            if (batch2!=null) kwargs["batch2"]=ToPython(batch2);
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("addbmm", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Performs a matrix multiplication of the matrices mat1 and mat2.
@@ -4590,7 +6951,20 @@ namespace Torch
         ///	the output tensor
         /// </param>
         public static Tensor addmm(Tensor mat, Tensor mat1, Tensor mat2, Tensor @out = null)
-            => PyTorch.Instance.addmm(mat:mat, mat1:mat1, mat2:mat2, @out:@out);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+            });
+            var kwargs=new PyDict();
+            if (mat!=null) kwargs["mat"]=ToPython(mat);
+            if (mat1!=null) kwargs["mat1"]=ToPython(mat1);
+            if (mat2!=null) kwargs["mat2"]=ToPython(mat2);
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("addmm", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Performs a matrix multiplication of the matrices mat1 and mat2.
@@ -4630,7 +7004,22 @@ namespace Torch
         ///	the output tensor
         /// </param>
         public static Tensor addmm(double beta, Tensor mat, double alpha, Tensor mat1, Tensor mat2, Tensor @out = null)
-            => PyTorch.Instance.addmm(beta:beta, mat:mat, alpha:alpha, mat1:mat1, mat2:mat2, @out:@out);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+            });
+            var kwargs=new PyDict();
+            if (beta!=null) kwargs["beta"]=ToPython(beta);
+            if (mat!=null) kwargs["mat"]=ToPython(mat);
+            if (alpha!=null) kwargs["alpha"]=ToPython(alpha);
+            if (mat1!=null) kwargs["mat1"]=ToPython(mat1);
+            if (mat2!=null) kwargs["mat2"]=ToPython(mat2);
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("addmm", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Performs a matrix-vector product of the matrix mat and
@@ -4666,7 +7055,20 @@ namespace Torch
         ///	the output tensor
         /// </param>
         public static Tensor addmv(Tensor tensor, Tensor mat, Tensor vec, Tensor @out = null)
-            => PyTorch.Instance.addmv(tensor:tensor, mat:mat, vec:vec, @out:@out);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+            });
+            var kwargs=new PyDict();
+            if (tensor!=null) kwargs["tensor"]=ToPython(tensor);
+            if (mat!=null) kwargs["mat"]=ToPython(mat);
+            if (vec!=null) kwargs["vec"]=ToPython(vec);
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("addmv", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Performs a matrix-vector product of the matrix mat and
@@ -4708,7 +7110,22 @@ namespace Torch
         ///	the output tensor
         /// </param>
         public static Tensor addmv(double beta, Tensor tensor, double alpha, Tensor mat, Tensor vec, Tensor @out = null)
-            => PyTorch.Instance.addmv(beta:beta, tensor:tensor, alpha:alpha, mat:mat, vec:vec, @out:@out);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+            });
+            var kwargs=new PyDict();
+            if (beta!=null) kwargs["beta"]=ToPython(beta);
+            if (tensor!=null) kwargs["tensor"]=ToPython(tensor);
+            if (alpha!=null) kwargs["alpha"]=ToPython(alpha);
+            if (mat!=null) kwargs["mat"]=ToPython(mat);
+            if (vec!=null) kwargs["vec"]=ToPython(vec);
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("addmv", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Performs the outer-product of vectors vec1 and vec2
@@ -4744,7 +7161,20 @@ namespace Torch
         ///	the output tensor
         /// </param>
         public static Tensor addr(Tensor mat, Tensor vec1, Tensor vec2, Tensor @out = null)
-            => PyTorch.Instance.addr(mat:mat, vec1:vec1, vec2:vec2, @out:@out);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+            });
+            var kwargs=new PyDict();
+            if (mat!=null) kwargs["mat"]=ToPython(mat);
+            if (vec1!=null) kwargs["vec1"]=ToPython(vec1);
+            if (vec2!=null) kwargs["vec2"]=ToPython(vec2);
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("addr", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Performs the outer-product of vectors vec1 and vec2
@@ -4786,7 +7216,22 @@ namespace Torch
         ///	the output tensor
         /// </param>
         public static Tensor addr(double beta, Tensor mat, double alpha, Tensor vec1, Tensor vec2, Tensor @out = null)
-            => PyTorch.Instance.addr(beta:beta, mat:mat, alpha:alpha, vec1:vec1, vec2:vec2, @out:@out);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+            });
+            var kwargs=new PyDict();
+            if (beta!=null) kwargs["beta"]=ToPython(beta);
+            if (mat!=null) kwargs["mat"]=ToPython(mat);
+            if (alpha!=null) kwargs["alpha"]=ToPython(alpha);
+            if (vec1!=null) kwargs["vec1"]=ToPython(vec1);
+            if (vec2!=null) kwargs["vec2"]=ToPython(vec2);
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("addr", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Performs a batch matrix-matrix product of matrices in batch1
@@ -4824,7 +7269,20 @@ namespace Torch
         ///	the output tensor
         /// </param>
         public static Tensor baddbmm(Tensor mat, Tensor batch1, Tensor batch2, Tensor @out = null)
-            => PyTorch.Instance.baddbmm(mat:mat, batch1:batch1, batch2:batch2, @out:@out);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+            });
+            var kwargs=new PyDict();
+            if (mat!=null) kwargs["mat"]=ToPython(mat);
+            if (batch1!=null) kwargs["batch1"]=ToPython(batch1);
+            if (batch2!=null) kwargs["batch2"]=ToPython(batch2);
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("baddbmm", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Performs a batch matrix-matrix product of matrices in batch1
@@ -4868,7 +7326,22 @@ namespace Torch
         ///	the output tensor
         /// </param>
         public static Tensor baddbmm(double beta, Tensor mat, double alpha, Tensor batch1, Tensor batch2, Tensor @out = null)
-            => PyTorch.Instance.baddbmm(beta:beta, mat:mat, alpha:alpha, batch1:batch1, batch2:batch2, @out:@out);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+            });
+            var kwargs=new PyDict();
+            if (beta!=null) kwargs["beta"]=ToPython(beta);
+            if (mat!=null) kwargs["mat"]=ToPython(mat);
+            if (alpha!=null) kwargs["alpha"]=ToPython(alpha);
+            if (batch1!=null) kwargs["batch1"]=ToPython(batch1);
+            if (batch2!=null) kwargs["batch2"]=ToPython(batch2);
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("baddbmm", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Performs a batch matrix-matrix product of matrices stored in batch1
@@ -4900,7 +7373,19 @@ namespace Torch
         ///	the output tensor
         /// </param>
         public static Tensor bmm(Tensor batch1, Tensor batch2, Tensor @out = null)
-            => PyTorch.Instance.bmm(batch1, batch2, @out:@out);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                batch1,
+                batch2,
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("bmm", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Returns the matrix product of the \(N\) 2-D tensors.<br></br>
@@ -4913,7 +7398,17 @@ namespace Torch
         ///	If \(N\) is 1, then this is a no-op - the original matrix is returned as is.
         /// </summary>
         public static Tensor chain_matmul(params Tensor[] matrices)
-            => PyTorch.Instance.chain_matmul(matrices);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                matrices,
+            });
+            var kwargs=new PyDict();
+            dynamic py = __self__.InvokeMethod("chain_matmul", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Computes the Cholesky decomposition of a symmetric positive-definite
@@ -4949,7 +7444,19 @@ namespace Torch
         ///	the output matrix
         /// </param>
         public static Tensor cholesky(Tensor a, bool? upper = false, Tensor @out = null)
-            => PyTorch.Instance.cholesky(a, upper:upper, @out:@out);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                a,
+            });
+            var kwargs=new PyDict();
+            if (upper!=false) kwargs["upper"]=ToPython(upper);
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("cholesky", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Computes the inverse of a symmetric positive-definite matrix \(A\) using its
@@ -4982,7 +7489,19 @@ namespace Torch
         ///	the output tensor for inv
         /// </param>
         public static Tensor cholesky_inverse(Tensor u, bool? upper = false, Tensor @out = null)
-            => PyTorch.Instance.cholesky_inverse(u, upper:upper, @out:@out);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                u,
+            });
+            var kwargs=new PyDict();
+            if (upper!=false) kwargs["upper"]=ToPython(upper);
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("cholesky_inverse", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Solves a linear system of equations with a positive semidefinite
@@ -5029,7 +7548,20 @@ namespace Torch
         ///	the output tensor for c
         /// </param>
         public static Tensor cholesky_solve(Tensor b, Tensor u, bool? upper = false, Tensor @out = null)
-            => PyTorch.Instance.cholesky_solve(b, u, upper:upper, @out:@out);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                b,
+                u,
+            });
+            var kwargs=new PyDict();
+            if (upper!=false) kwargs["upper"]=ToPython(upper);
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("cholesky_solve", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Computes the dot product (inner product) of two tensors.<br></br>
@@ -5038,7 +7570,18 @@ namespace Torch
         ///	This function does not broadcast.
         /// </summary>
         public static Tensor dot(Tensor tensor1, Tensor tensor2)
-            => PyTorch.Instance.dot(tensor1, tensor2);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                tensor1,
+                tensor2,
+            });
+            var kwargs=new PyDict();
+            dynamic py = __self__.InvokeMethod("dot", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Computes the eigenvalues and eigenvectors of a real square matrix.<br></br>
@@ -5060,7 +7603,20 @@ namespace Torch
         ///	the output tensors
         /// </param>
         public static (Tensor, Tensor) eig(Tensor a, bool eigenvectors = false, Tensor[] @out = null)
-            => PyTorch.Instance.eig(a, eigenvectors:eigenvectors, @out:@out);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                a,
+            });
+            var kwargs=new PyDict();
+            if (eigenvectors!=false) kwargs["eigenvectors"]=ToPython(eigenvectors);
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("eig", pyargs, kwargs);
+            var t = py as PyTuple;
+            return (ToCsharp<Tensor>(t[0]), ToCsharp<Tensor>(t[1]));
+        }
         
         /// <summary>
         ///	Computes the solution to the least squares and least norm problems for a full
@@ -5097,7 +7653,20 @@ namespace Torch
         ///	the optional destination tensor
         /// </param>
         public static (Tensor, Tensor) gels(Tensor B, Tensor A, Tensor[] @out = null)
-            => PyTorch.Instance.gels(B, A, @out:@out);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                B,
+                A,
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("gels", pyargs, kwargs);
+            var t = py as PyTuple;
+            return (ToCsharp<Tensor>(t[0]), ToCsharp<Tensor>(t[1]));
+        }
         
         /// <summary>
         ///	This is a low-level function for calling LAPACK directly.<br></br>
@@ -5121,7 +7690,19 @@ namespace Torch
         ///	the output tuple of (Tensor, Tensor)
         /// </param>
         public static (Tensor, Tensor) geqrf(Tensor input, Tensor[] @out = null)
-            => PyTorch.Instance.geqrf(input, @out:@out);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("geqrf", pyargs, kwargs);
+            var t = py as PyTuple;
+            return (ToCsharp<Tensor>(t[0]), ToCsharp<Tensor>(t[1]));
+        }
         
         /// <summary>
         ///	Outer product of vec1 and vec2.
@@ -5141,7 +7722,19 @@ namespace Torch
         ///	optional output matrix
         /// </param>
         public static Tensor ger(Tensor vec1, Tensor vec2, Tensor @out = null)
-            => PyTorch.Instance.ger(vec1, vec2, @out:@out);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                vec1,
+                vec2,
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("ger", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Takes the inverse of the square matrix input.<br></br>
@@ -5162,7 +7755,18 @@ namespace Torch
         ///	the optional output tensor
         /// </param>
         public static Tensor inverse(Tensor input, Tensor @out = null)
-            => PyTorch.Instance.inverse(input, @out:@out);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("inverse", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Calculates determinant of a 2D square tensor.<br></br>
@@ -5176,7 +7780,17 @@ namespace Torch
         ///	svd() for details.
         /// </summary>
         public static Tensor det(Tensor A)
-            => PyTorch.Instance.det(A);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                A,
+            });
+            var kwargs=new PyDict();
+            dynamic py = __self__.InvokeMethod("det", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Calculates log determinant of a 2D square tensor.<br></br>
@@ -5194,7 +7808,17 @@ namespace Torch
         ///	svd() for details.
         /// </summary>
         public static Tensor logdet(Tensor A)
-            => PyTorch.Instance.logdet(A);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                A,
+            });
+            var kwargs=new PyDict();
+            dynamic py = __self__.InvokeMethod("logdet", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Calculates the sign and log value of a 2D square tensor’s determinant.<br></br>
@@ -5211,7 +7835,18 @@ namespace Torch
         ///	See svd() for details.
         /// </summary>
         public static (Tensor, Tensor) slogdet(Tensor A)
-            => PyTorch.Instance.slogdet(A);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                A,
+            });
+            var kwargs=new PyDict();
+            dynamic py = __self__.InvokeMethod("slogdet", pyargs, kwargs);
+            var t = py as PyTuple;
+            return (ToCsharp<Tensor>(t[0]), ToCsharp<Tensor>(t[1]));
+        }
         
         /// <summary>
         ///	Computes the LU factorization of a square matrix or batches of square matrices
@@ -5258,7 +7893,21 @@ namespace Torch
         ///	Default: None
         /// </param>
         public static (Tensor, Tensor<int>, Tensor<int>) lu(Tensor A, bool? pivot = true, bool? get_infos = false, Tensor[] @out = null)
-            => PyTorch.Instance.lu(A, pivot:pivot, get_infos:get_infos, @out:@out);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                A,
+            });
+            var kwargs=new PyDict();
+            if (pivot!=true) kwargs["pivot"]=ToPython(pivot);
+            if (get_infos!=false) kwargs["get_infos"]=ToPython(get_infos);
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("lu", pyargs, kwargs);
+            var t = py as PyTuple;
+            return (ToCsharp<Tensor>(t[0]), ToCsharp<Tensor<int>>(t[1]), ToCsharp<Tensor<int>>(t[2]));
+        }
         
         /// <summary>
         ///	Batch LU solve.<br></br>
@@ -5279,7 +7928,20 @@ namespace Torch
         ///	the optional output tensor
         /// </param>
         public static Tensor lu_solve(Tensor b, Tensor LU_data, Tensor<int> LU_pivots, Tensor @out = null)
-            => PyTorch.Instance.lu_solve(b, LU_data, LU_pivots, @out:@out);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                b,
+                LU_data,
+                LU_pivots,
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("lu_solve", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Unpacks the data and pivots from a LU factorization of a tensor.<br></br>
@@ -5299,7 +7961,19 @@ namespace Torch
         ///	flag indicating if the pivots should be unpacked
         /// </param>
         public static void lu_unpack(Tensor LU_data, Tensor LU_pivots, bool unpack_data = true, bool unpack_pivots = true)
-            => PyTorch.Instance.lu_unpack(LU_data, LU_pivots, unpack_data:unpack_data, unpack_pivots:unpack_pivots);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                LU_data,
+                LU_pivots,
+            });
+            var kwargs=new PyDict();
+            if (unpack_data!=true) kwargs["unpack_data"]=ToPython(unpack_data);
+            if (unpack_pivots!=true) kwargs["unpack_pivots"]=ToPython(unpack_pivots);
+            dynamic py = __self__.InvokeMethod("lu_unpack", pyargs, kwargs);
+        }
         
         /// <summary>
         ///	Matrix product of two tensors.<br></br>
@@ -5346,7 +8020,19 @@ namespace Torch
         ///	the output tensor
         /// </param>
         public static Tensor matmul(Tensor tensor1, Tensor tensor2, Tensor @out = null)
-            => PyTorch.Instance.matmul(tensor1, tensor2, @out:@out);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                tensor1,
+                tensor2,
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("matmul", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Returns the matrix raised to the power n for square matrices.<br></br>
@@ -5367,7 +8053,18 @@ namespace Torch
         ///	the power to raise the matrix to
         /// </param>
         public static Tensor matrix_power(Tensor input, int n)
-            => PyTorch.Instance.matrix_power(input, n);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+                n,
+            });
+            var kwargs=new PyDict();
+            dynamic py = __self__.InvokeMethod("matrix_power", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Returns the numerical rank of a 2-D tensor.<br></br>
@@ -5397,7 +8094,19 @@ namespace Torch
         ///	Default: False
         /// </param>
         public static Tensor matrix_rank(Tensor input, float? tol = null, bool? symmetric = false)
-            => PyTorch.Instance.matrix_rank(input, tol:tol, symmetric:symmetric);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+            });
+            var kwargs=new PyDict();
+            if (tol!=null) kwargs["tol"]=ToPython(tol);
+            if (symmetric!=false) kwargs["symmetric"]=ToPython(symmetric);
+            dynamic py = __self__.InvokeMethod("matrix_rank", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Performs a matrix multiplication of the matrices mat1 and mat2.
@@ -5420,7 +8129,19 @@ namespace Torch
         ///	the output tensor
         /// </param>
         public static Tensor mm(Tensor mat1, Tensor mat2, Tensor @out = null)
-            => PyTorch.Instance.mm(mat1, mat2, @out:@out);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                mat1,
+                mat2,
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("mm", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Performs a matrix-vector product of the matrix mat and the vector
@@ -5442,7 +8163,19 @@ namespace Torch
         ///	the output tensor
         /// </param>
         public static Tensor mv(Tensor mat, Tensor vec, Tensor @out = null)
-            => PyTorch.Instance.mv(mat, vec, @out:@out);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                mat,
+                vec,
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("mv", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Computes the orthogonal matrix Q of a QR factorization, from the (a, tau)
@@ -5459,7 +8192,18 @@ namespace Torch
         ///	the tau from torch.geqrf().
         /// </param>
         public static Tensor orgqr(Tensor a, Tensor tau)
-            => PyTorch.Instance.orgqr(a, tau);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                a,
+                tau,
+            });
+            var kwargs=new PyDict();
+            dynamic py = __self__.InvokeMethod("orgqr", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Multiplies mat by the orthogonal Q matrix of the QR factorization
@@ -5479,7 +8223,21 @@ namespace Torch
         ///	the matrix to be multiplied.
         /// </param>
         public static Tensor ormqr(Tensor a, Tensor tau, Tensor mat, bool left = true, bool transpose = false)
-            => PyTorch.Instance.ormqr(a, tau, mat, left:left, transpose:transpose);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                a,
+                tau,
+                mat,
+            });
+            var kwargs=new PyDict();
+            if (left!=true) kwargs["left"]=ToPython(left);
+            if (transpose!=false) kwargs["transpose"]=ToPython(transpose);
+            dynamic py = __self__.InvokeMethod("ormqr", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Calculates the pseudo-inverse (also known as the Moore-Penrose inverse) of a 2D tensor.<br></br>
@@ -5509,7 +8267,18 @@ namespace Torch
         ///	Default: 1e-15
         /// </param>
         public static Tensor pinverse(Tensor input, float rcond = 1e-15f)
-            => PyTorch.Instance.pinverse(input, rcond:rcond);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+            });
+            var kwargs=new PyDict();
+            if (rcond!=1e-15f) kwargs["rcond"]=ToPython(rcond);
+            dynamic py = __self__.InvokeMethod("pinverse", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
         
         /// <summary>
         ///	Computes the QR decomposition of a matrix input, and returns a namedtuple
@@ -5539,7 +8308,19 @@ namespace Torch
         ///	tuple of Q and R tensors
         /// </param>
         public static (Tensor, Tensor) qr(Tensor input, Tensor[] @out = null)
-            => PyTorch.Instance.qr(input, @out:@out);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("qr", pyargs, kwargs);
+            var t = py as PyTuple;
+            return (ToCsharp<Tensor>(t[0]), ToCsharp<Tensor>(t[1]));
+        }
         
         /// <summary>
         ///	This function returns the solution to the system of linear
@@ -5572,7 +8353,20 @@ namespace Torch
         ///	optional output tuple.
         /// </param>
         public static (Tensor, Tensor) solve(Tensor B, Tensor A, Tensor @out = null)
-            => PyTorch.Instance.solve(B, A, @out:@out);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                B,
+                A,
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("solve", pyargs, kwargs);
+            var t = py as PyTuple;
+            return (ToCsharp<Tensor>(t[0]), ToCsharp<Tensor>(t[1]));
+        }
         
         /// <summary>
         ///	svd(A) returns a namedtuple (U, S, V) which the singular value
@@ -5634,7 +8428,21 @@ namespace Torch
         ///	the output tuple of tensors
         /// </param>
         public static (Tensor, Tensor, Tensor) svd(Tensor input, bool? some = true, Tensor[] @out = null, bool compute_uv = true)
-            => PyTorch.Instance.svd(input, some:some, @out:@out, compute_uv:compute_uv);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+            });
+            var kwargs=new PyDict();
+            if (some!=true) kwargs["some"]=ToPython(some);
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            if (compute_uv!=true) kwargs["compute_uv"]=ToPython(compute_uv);
+            dynamic py = __self__.InvokeMethod("svd", pyargs, kwargs);
+            var t = py as PyTuple;
+            return (ToCsharp<Tensor>(t[0]), ToCsharp<Tensor>(t[1]), ToCsharp<Tensor>(t[2]));
+        }
         
         /// <summary>
         ///	This function returns eigenvalues and eigenvectors
@@ -5684,7 +8492,21 @@ namespace Torch
         ///	the output tuple of (Tensor, Tensor)
         /// </param>
         public static (Tensor, Tensor) symeig(Tensor input, bool? eigenvectors = false, bool? upper = true, Tensor[] @out = null)
-            => PyTorch.Instance.symeig(input, eigenvectors:eigenvectors, upper:upper, @out:@out);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input,
+            });
+            var kwargs=new PyDict();
+            if (eigenvectors!=false) kwargs["eigenvectors"]=ToPython(eigenvectors);
+            if (upper!=true) kwargs["upper"]=ToPython(upper);
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("symeig", pyargs, kwargs);
+            var t = py as PyTuple;
+            return (ToCsharp<Tensor>(t[0]), ToCsharp<Tensor>(t[1]));
+        }
         
         /// <summary>
         ///	Solves a system of equations with a triangular coefficient matrix \(A\)
@@ -5728,13 +8550,33 @@ namespace Torch
         ///	Default: False.
         /// </param>
         public static (Tensor, Tensor) triangular_solve(Tensor A, Tensor b, bool? upper = true, bool? transpose = false, bool? unitriangular = false)
-            => PyTorch.Instance.triangular_solve(A, b, upper:upper, transpose:transpose, unitriangular:unitriangular);
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                A,
+                b,
+            });
+            var kwargs=new PyDict();
+            if (upper!=true) kwargs["upper"]=ToPython(upper);
+            if (transpose!=false) kwargs["transpose"]=ToPython(transpose);
+            if (unitriangular!=false) kwargs["unitriangular"]=ToPython(unitriangular);
+            dynamic py = __self__.InvokeMethod("triangular_solve", pyargs, kwargs);
+            var t = py as PyTuple;
+            return (ToCsharp<Tensor>(t[0]), ToCsharp<Tensor>(t[1]));
+        }
         
         /// <summary>
         ///	Returns whether PyTorch was built with _GLIBCXX_USE_CXX11_ABI=1
         /// </summary>
         public static bool compiled_with_cxx11_abi()
-            => PyTorch.Instance.compiled_with_cxx11_abi();
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            dynamic py = __self__.InvokeMethod("compiled_with_cxx11_abi");
+            return ToCsharp<bool>(py);
+        }
         
         
     }

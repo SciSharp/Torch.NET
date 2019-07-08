@@ -234,6 +234,456 @@ namespace Torch
         }
         
         /// <summary>
+        ///	Computes the element-wise absolute value of the given input tensor.<br></br>
+        ///	
+        ///	\[\text{out}_{i} = |\text{input}_{i}|
+        ///	
+        ///	\]
+        /// </summary>
+        /// <param name="out">
+        ///	the output tensor
+        /// </param>
+        public Tensor abs(Tensor @out = null)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("abs", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
+        
+        /// <summary>
+        ///	Returns a new tensor with the arccosine  of the elements of input.<br></br>
+        ///	
+        ///	\[\text{out}_{i} = \cos^{-1}(\text{input}_{i})
+        ///	
+        ///	\]
+        /// </summary>
+        /// <param name="out">
+        ///	the output tensor
+        /// </param>
+        public Tensor acos(Tensor @out = null)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("acos", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
+        
+        /// <summary>
+        ///	Performs a batch matrix-matrix product of matrices stored
+        ///	in batch1 and batch2,
+        ///	with a reduced add step (all matrix multiplications get accumulated
+        ///	along the first dimension).<br></br>
+        ///	
+        ///	mat is added to the final result.<br></br>
+        ///	
+        ///	batch1 and batch2 must be 3-D tensors each containing the
+        ///	same number of matrices.<br></br>
+        ///	
+        ///	If batch1 is a \((b \times n \times m)\) tensor, batch2 is a
+        ///	\((b \times m \times p)\) tensor, mat must be
+        ///	broadcastable with a \((n \times p)\) tensor
+        ///	and out will be a \((n \times p)\) tensor.<br></br>
+        ///	
+        ///	\[out = \beta\ \text{mat} + \alpha\ (\sum_{i=0}^{b-1} \text{batch1}_i \mathbin{@} \text{batch2}_i)
+        ///	
+        ///	\]
+        ///	
+        ///	For inputs of type FloatTensor or DoubleTensor, arguments beta and alpha
+        ///	must be real numbers, otherwise they should be integers.
+        /// </summary>
+        /// <param name="mat">
+        ///	matrix to be added
+        /// </param>
+        /// <param name="batch1">
+        ///	the first batch of matrices to be multiplied
+        /// </param>
+        /// <param name="batch2">
+        ///	the second batch of matrices to be multiplied
+        /// </param>
+        /// <param name="out">
+        ///	the output tensor
+        /// </param>
+        public Tensor addbmm(Tensor mat, Tensor batch1, Tensor batch2, Tensor @out = null)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                mat,
+            });
+            var kwargs=new PyDict();
+            if (batch1!=null) kwargs["batch1"]=ToPython(batch1);
+            if (batch2!=null) kwargs["batch2"]=ToPython(batch2);
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("addbmm", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
+        
+        /// <summary>
+        ///	Performs the element-wise division of tensor1 by tensor2,
+        ///	multiply the result by the scalar value and add it to tensor.<br></br>
+        ///	
+        ///	\[\text{out}_i = \text{tensor}_i + \text{value} \times \frac{\text{tensor1}_i}{\text{tensor2}_i}
+        ///	
+        ///	\]
+        ///	
+        ///	The shapes of tensor, tensor1, and tensor2 must be
+        ///	broadcastable.<br></br>
+        ///	
+        ///	For inputs of type FloatTensor or DoubleTensor, value must be
+        ///	a real number, otherwise an integer.
+        /// </summary>
+        /// <param name="tensor1">
+        ///	the numerator tensor
+        /// </param>
+        /// <param name="tensor2">
+        ///	the denominator tensor
+        /// </param>
+        /// <param name="out">
+        ///	the output tensor
+        /// </param>
+        public Tensor addcdiv(Tensor tensor1, Tensor tensor2, Tensor @out = null)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                tensor1,
+                tensor2,
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("addcdiv", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
+        
+        /// <summary>
+        ///	Performs the element-wise multiplication of tensor1
+        ///	by tensor2, multiply the result by the scalar value
+        ///	and add it to tensor.<br></br>
+        ///	
+        ///	\[\text{out}_i = \text{tensor}_i + \text{value} \times \text{tensor1}_i \times \text{tensor2}_i
+        ///	
+        ///	\]
+        ///	
+        ///	The shapes of tensor, tensor1, and tensor2 must be
+        ///	broadcastable.<br></br>
+        ///	
+        ///	For inputs of type FloatTensor or DoubleTensor, value must be
+        ///	a real number, otherwise an integer.
+        /// </summary>
+        /// <param name="tensor1">
+        ///	the tensor to be multiplied
+        /// </param>
+        /// <param name="tensor2">
+        ///	the tensor to be multiplied
+        /// </param>
+        /// <param name="out">
+        ///	the output tensor
+        /// </param>
+        public Tensor addcmul(Tensor tensor1, Tensor tensor2, Tensor @out = null)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                tensor1,
+                tensor2,
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("addcmul", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
+        
+        /// <summary>
+        ///	Performs a matrix multiplication of the matrices mat1 and mat2.
+        ///	The matrix mat is added to the final result.<br></br>
+        ///	
+        ///	If mat1 is a \((n \times m)\) tensor, mat2 is a
+        ///	\((m \times p)\) tensor, then mat must be
+        ///	broadcastable with a \((n \times p)\) tensor
+        ///	and out will be a \((n \times p)\) tensor.<br></br>
+        ///	
+        ///	alpha and beta are scaling factors on matrix-vector product between
+        ///	mat1 and mat2 and the added matrix mat respectively.<br></br>
+        ///	
+        ///	\[\text{out} = \beta\ \text{mat} + \alpha\ (\text{mat1}_i \mathbin{@} \text{mat2}_i)
+        ///	
+        ///	\]
+        ///	
+        ///	For inputs of type FloatTensor or DoubleTensor, arguments beta and
+        ///	alpha must be real numbers, otherwise they should be integers.
+        /// </summary>
+        /// <param name="mat">
+        ///	matrix to be added
+        /// </param>
+        /// <param name="mat1">
+        ///	the first matrix to be multiplied
+        /// </param>
+        /// <param name="mat2">
+        ///	the second matrix to be multiplied
+        /// </param>
+        /// <param name="out">
+        ///	the output tensor
+        /// </param>
+        public Tensor addmm(Tensor mat, Tensor mat1, Tensor mat2, Tensor @out = null)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                mat,
+            });
+            var kwargs=new PyDict();
+            if (mat1!=null) kwargs["mat1"]=ToPython(mat1);
+            if (mat2!=null) kwargs["mat2"]=ToPython(mat2);
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("addmm", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
+        
+        /// <summary>
+        ///	Performs a matrix-vector product of the matrix mat and
+        ///	the vector vec.<br></br>
+        ///	
+        ///	The vector tensor is added to the final result.<br></br>
+        ///	
+        ///	If mat is a \((n \times m)\) tensor, vec is a 1-D tensor of
+        ///	size m, then tensor must be
+        ///	broadcastable with a 1-D tensor of size n and
+        ///	out will be 1-D tensor of size n.<br></br>
+        ///	
+        ///	alpha and beta are scaling factors on matrix-vector product between
+        ///	mat and vec and the added tensor tensor respectively.<br></br>
+        ///	
+        ///	\[\text{out} = \beta\ \text{tensor} + \alpha\ (\text{mat} \mathbin{@} \text{vec})
+        ///	
+        ///	\]
+        ///	
+        ///	For inputs of type FloatTensor or DoubleTensor, arguments beta and
+        ///	alpha must be real numbers, otherwise they should be integers
+        /// </summary>
+        /// <param name="tensor">
+        ///	vector to be added
+        /// </param>
+        /// <param name="mat">
+        ///	matrix to be multiplied
+        /// </param>
+        /// <param name="vec">
+        ///	vector to be multiplied
+        /// </param>
+        /// <param name="out">
+        ///	the output tensor
+        /// </param>
+        public Tensor addmv(Tensor tensor, Tensor mat, Tensor vec, Tensor @out = null)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                tensor,
+            });
+            var kwargs=new PyDict();
+            if (mat!=null) kwargs["mat"]=ToPython(mat);
+            if (vec!=null) kwargs["vec"]=ToPython(vec);
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("addmv", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
+        
+        /// <summary>
+        ///	Performs the outer-product of vectors vec1 and vec2
+        ///	and adds it to the matrix mat.<br></br>
+        ///	
+        ///	Optional values beta and alpha are scaling factors on the
+        ///	outer product between vec1 and vec2 and the added matrix
+        ///	mat respectively.<br></br>
+        ///	
+        ///	\[\text{out} = \beta\ \text{mat} + \alpha\ (\text{vec1} \otimes \text{vec2})
+        ///	
+        ///	\]
+        ///	
+        ///	If vec1 is a vector of size n and vec2 is a vector
+        ///	of size m, then mat must be
+        ///	broadcastable with a matrix of size
+        ///	\((n \times m)\) and out will be a matrix of size
+        ///	\((n \times m)\).<br></br>
+        ///	
+        ///	For inputs of type FloatTensor or DoubleTensor, arguments beta and
+        ///	alpha must be real numbers, otherwise they should be integers
+        /// </summary>
+        /// <param name="mat">
+        ///	matrix to be added
+        /// </param>
+        /// <param name="vec1">
+        ///	the first vector of the outer product
+        /// </param>
+        /// <param name="vec2">
+        ///	the second vector of the outer product
+        /// </param>
+        /// <param name="out">
+        ///	the output tensor
+        /// </param>
+        public Tensor addr(Tensor mat, Tensor vec1, Tensor vec2, Tensor @out = null)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                mat,
+            });
+            var kwargs=new PyDict();
+            if (vec1!=null) kwargs["vec1"]=ToPython(vec1);
+            if (vec2!=null) kwargs["vec2"]=ToPython(vec2);
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("addr", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
+        
+        /// <summary>
+        ///	This function checks if all self and other satisfy the condition:
+        ///	
+        ///	\[\lvert \text{self} - \text{other} \rvert \leq \texttt{atol} + \texttt{rtol} \times \lvert \text{other} \rvert
+        ///	
+        ///	\]
+        ///	
+        ///	elementwise, for all elements of self and other.<br></br>
+        ///	 The behaviour of this function is analogous to
+        ///	numpy.allclose
+        /// </summary>
+        /// <param name="other">
+        ///	second tensor to compare
+        /// </param>
+        /// <param name="atol">
+        ///	absolute tolerance.<br></br>
+        ///	Default: 1e-08
+        /// </param>
+        /// <param name="rtol">
+        ///	relative tolerance.<br></br>
+        ///	Default: 1e-05
+        /// </param>
+        /// <param name="equal_nan">
+        ///	if True, then two NaN s will be compared as equal.<br></br>
+        ///	Default: False
+        /// </param>
+        public bool allclose(Tensor other, float? atol = 1e-08f, float? rtol = 1e-05f, bool? equal_nan = false)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                other,
+            });
+            var kwargs=new PyDict();
+            if (atol!=1e-08f) kwargs["atol"]=ToPython(atol);
+            if (rtol!=1e-05f) kwargs["rtol"]=ToPython(rtol);
+            if (equal_nan!=false) kwargs["equal_nan"]=ToPython(equal_nan);
+            dynamic py = __self__.InvokeMethod("allclose", pyargs, kwargs);
+            return ToCsharp<bool>(py);
+        }
+        
+        public Tensor<long> argmax()
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            dynamic py = __self__.InvokeMethod("argmax");
+            return ToCsharp<Tensor<long>>(py);
+        }
+        
+        public Tensor<long> argmin()
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            dynamic py = __self__.InvokeMethod("argmin");
+            return ToCsharp<Tensor<long>>(py);
+        }
+        
+        /// <summary>
+        ///	Returns a new tensor with the arcsine  of the elements of input.<br></br>
+        ///	
+        ///	\[\text{out}_{i} = \sin^{-1}(\text{input}_{i})
+        ///	
+        ///	\]
+        /// </summary>
+        /// <param name="out">
+        ///	the output tensor
+        /// </param>
+        public Tensor asin(Tensor @out = null)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("asin", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
+        
+        /// <summary>
+        ///	Returns a new tensor with the arctangent  of the elements of input.<br></br>
+        ///	
+        ///	\[\text{out}_{i} = \tan^{-1}(\text{input}_{i})
+        ///	
+        ///	\]
+        /// </summary>
+        /// <param name="out">
+        ///	the output tensor
+        /// </param>
+        public Tensor atan(Tensor @out = null)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("atan", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
+        
+        /// <summary>
+        ///	Returns a new tensor with the arctangent of the elements of input1
+        ///	and input2.
+        ///	
+        ///	The shapes of input1 and input2 must be
+        ///	broadcastable.
+        /// </summary>
+        /// <param name="input2">
+        ///	the second input tensor
+        /// </param>
+        /// <param name="out">
+        ///	the output tensor
+        /// </param>
+        public Tensor atan2(Tensor input2, Tensor @out = null)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                input2,
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("atan2", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
+        
+        /// <summary>
         ///	Computes the gradient of current tensor w.r.t.<br></br>
         ///	 graph leaves.<br></br>
         ///	
@@ -292,6 +742,178 @@ namespace Torch
         }
         
         /// <summary>
+        ///	Performs a batch matrix-matrix product of matrices in batch1
+        ///	and batch2.
+        ///	mat is added to the final result.<br></br>
+        ///	
+        ///	batch1 and batch2 must be 3-D tensors each containing the same
+        ///	number of matrices.<br></br>
+        ///	
+        ///	If batch1 is a \((b \times n \times m)\) tensor, batch2 is a
+        ///	\((b \times m \times p)\) tensor, then mat must be
+        ///	broadcastable with a
+        ///	\((b \times n \times p)\) tensor and out will be a
+        ///	\((b \times n \times p)\) tensor.<br></br>
+        ///	 Both alpha and beta mean the
+        ///	same as the scaling factors used in torch.addbmm().<br></br>
+        ///	
+        ///	\[\text{out}_i = \beta\ \text{mat}_i + \alpha\ (\text{batch1}_i \mathbin{@} \text{batch2}_i)
+        ///	
+        ///	\]
+        ///	
+        ///	For inputs of type FloatTensor or DoubleTensor, arguments beta and
+        ///	alpha must be real numbers, otherwise they should be integers.
+        /// </summary>
+        /// <param name="mat">
+        ///	the tensor to be added
+        /// </param>
+        /// <param name="batch1">
+        ///	the first batch of matrices to be multiplied
+        /// </param>
+        /// <param name="batch2">
+        ///	the second batch of matrices to be multiplied
+        /// </param>
+        /// <param name="out">
+        ///	the output tensor
+        /// </param>
+        public Tensor baddbmm(Tensor mat, Tensor batch1, Tensor batch2, Tensor @out = null)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                mat,
+            });
+            var kwargs=new PyDict();
+            if (batch1!=null) kwargs["batch1"]=ToPython(batch1);
+            if (batch2!=null) kwargs["batch2"]=ToPython(batch2);
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("baddbmm", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
+        
+        /// <summary>
+        ///	Draws binary random numbers (0 or 1) from a Bernoulli distribution.<br></br>
+        ///	
+        ///	The input tensor should be a tensor containing probabilities
+        ///	to be used for drawing the binary random number.<br></br>
+        ///	
+        ///	Hence, all values in input have to be in the range:
+        ///	\(0 \leq \text{input}_i \leq 1\).<br></br>
+        ///	
+        ///	The \(\text{i}^{th}\) element of the output tensor will draw a
+        ///	value \(1\) according to the \(\text{i}^{th}\) probability value given
+        ///	in input.<br></br>
+        ///	
+        ///	\[\text{out}_{i} \sim \mathrm{Bernoulli}(p = \text{input}_{i})
+        ///	
+        ///	\]
+        ///	
+        ///	The returned out tensor only has values 0 or 1 and is of the same
+        ///	shape as input.<br></br>
+        ///	
+        ///	out can have integral dtype, but input must have floating
+        ///	point dtype.
+        /// </summary>
+        /// <param name="out">
+        ///	the output tensor
+        /// </param>
+        public Tensor bernoulli(Tensor @out = null)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("bernoulli", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
+        
+        /// <summary>
+        ///	Count the frequency of each value in an array of non-negative ints.<br></br>
+        ///	
+        ///	The number of bins (size 1) is one larger than the largest value in
+        ///	input unless input is empty, in which case the result is a
+        ///	tensor of size 0.<br></br>
+        ///	 If minlength is specified, the number of bins is at least
+        ///	minlength and if input is empty, then the result is tensor of size
+        ///	minlength filled with zeros.<br></br>
+        ///	 If n is the value at position i,
+        ///	out[n] += weights[i] if weights is specified else
+        ///	out[n] += 1.<br></br>
+        ///	
+        ///	Note
+        ///	When using the CUDA backend, this operation may induce nondeterministic
+        ///	behaviour that is not easily switched off.<br></br>
+        ///	
+        ///	Please see the notes on Reproducibility for background.
+        /// </summary>
+        /// <param name="weights">
+        ///	optional, weight for each value in the input tensor.<br></br>
+        ///	
+        ///	Should be of same size as input tensor.
+        /// </param>
+        /// <param name="minlength">
+        ///	optional, minimum number of bins.<br></br>
+        ///	Should be non-negative.
+        /// </param>
+        public Tensor bincount(Tensor weights = null, int? minlength = 0)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+            });
+            var kwargs=new PyDict();
+            if (weights!=null) kwargs["weights"]=ToPython(weights);
+            if (minlength!=0) kwargs["minlength"]=ToPython(minlength);
+            dynamic py = __self__.InvokeMethod("bincount", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
+        
+        /// <summary>
+        ///	Performs a batch matrix-matrix product of matrices stored in batch1
+        ///	and batch2.
+        ///	
+        ///	batch1 and batch2 must be 3-D tensors each containing
+        ///	the same number of matrices.<br></br>
+        ///	
+        ///	If batch1 is a \((b \times n \times m)\) tensor, batch2 is a
+        ///	\((b \times m \times p)\) tensor, out will be a
+        ///	\((b \times n \times p)\) tensor.<br></br>
+        ///	
+        ///	\[\text{out}_i = \text{batch1}_i \mathbin{@} \text{batch2}_i
+        ///	
+        ///	\]
+        ///	
+        ///	Note
+        ///	This function does not broadcast.<br></br>
+        ///	
+        ///	For broadcasting matrix products, see torch.matmul().
+        /// </summary>
+        /// <param name="batch2">
+        ///	the second batch of matrices to be multiplied
+        /// </param>
+        /// <param name="out">
+        ///	the output tensor
+        /// </param>
+        public Tensor bmm(Tensor batch2, Tensor @out = null)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                batch2,
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("bmm", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
+        
+        /// <summary>
         ///	self.byte() is equivalent to self.to(torch.uint8).<br></br>
         ///	 See to().
         /// </summary>
@@ -323,6 +945,30 @@ namespace Torch
         }
         
         /// <summary>
+        ///	Returns a new tensor with the ceil of the elements of input,
+        ///	the smallest integer greater than or equal to each element.<br></br>
+        ///	
+        ///	\[\text{out}_{i} = \left\lceil \text{input}_{i} \right\rceil = \left\lfloor \text{input}_{i} \right\rfloor + 1
+        ///	
+        ///	\]
+        /// </summary>
+        /// <param name="out">
+        ///	the output tensor
+        /// </param>
+        public Tensor ceil(Tensor @out = null)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("ceil", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
+        
+        /// <summary>
         ///	self.char() is equivalent to self.to(torch.int8).<br></br>
         ///	 See to().
         /// </summary>
@@ -332,6 +978,170 @@ namespace Torch
             var __self__=self;
             dynamic py = __self__.InvokeMethod("char");
             return ToCsharp<Tensor>(py);
+        }
+        
+        /// <summary>
+        ///	Computes the Cholesky decomposition of a symmetric positive-definite
+        ///	matrix \(A\) or for batches of symmetric positive-definite matrices.<br></br>
+        ///	
+        ///	If upper is True, the returned matrix U is upper-triangular, and
+        ///	the decomposition has the form:
+        ///	
+        ///	\[A = U^TU\]
+        ///	
+        ///	If upper is False, the returned matrix L is lower-triangular, and
+        ///	the decomposition has the form:
+        ///	
+        ///	\[A = LL^T\]
+        ///	
+        ///	If upper is True, and A is a batch of symmetric positive-definite
+        ///	matrices, then the returned tensor will be composed of upper-triangular Cholesky factors
+        ///	of each of the individual matrices.<br></br>
+        ///	 Similarly, when upper is False, the returned
+        ///	tensor will be composed of lower-triangular Cholesky factors of each of the individual
+        ///	matrices.
+        /// </summary>
+        /// <param name="upper">
+        ///	flag that indicates whether to return a
+        ///	upper or lower triangular matrix.<br></br>
+        ///	Default: False
+        /// </param>
+        /// <param name="out">
+        ///	the output matrix
+        /// </param>
+        public Tensor cholesky(bool? upper = false, Tensor @out = null)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+            });
+            var kwargs=new PyDict();
+            if (upper!=false) kwargs["upper"]=ToPython(upper);
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("cholesky", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
+        
+        /// <summary>
+        ///	Computes the inverse of a symmetric positive-definite matrix \(A\) using its
+        ///	Cholesky factor u: returns matrix inv.<br></br>
+        ///	 The inverse is computed using
+        ///	LAPACK routines dpotri and spotri (and the corresponding MAGMA routines).<br></br>
+        ///	
+        ///	If upper is False, u is lower triangular
+        ///	such that the returned tensor is
+        ///	
+        ///	\[inv = (uu^{T})^{-1}
+        ///	
+        ///	\]
+        ///	
+        ///	If upper is True or not provided, u is upper
+        ///	triangular such that the returned tensor is
+        ///	
+        ///	\[inv = (u^T u)^{-1}
+        ///	
+        ///	\]
+        /// </summary>
+        /// <param name="upper">
+        ///	whether to return a lower (default) or upper triangular matrix
+        /// </param>
+        /// <param name="out">
+        ///	the output tensor for inv
+        /// </param>
+        public Tensor cholesky_inverse(bool? upper = false, Tensor @out = null)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+            });
+            var kwargs=new PyDict();
+            if (upper!=false) kwargs["upper"]=ToPython(upper);
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("cholesky_inverse", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
+        
+        /// <summary>
+        ///	Solves a linear system of equations with a positive semidefinite
+        ///	matrix to be inverted given its Cholesky factor matrix u.<br></br>
+        ///	
+        ///	If upper is False, u is and lower triangular and c is
+        ///	returned such that:
+        ///	
+        ///	\[c = (u u^T)^{-1} b
+        ///	
+        ///	\]
+        ///	
+        ///	If upper is True or not provided, u is upper triangular
+        ///	and c is returned such that:
+        ///	
+        ///	\[c = (u^T u)^{-1} b
+        ///	
+        ///	\]
+        ///	
+        ///	torch.cholesky_solve(b, u) can take in 2D inputs b, u or inputs that are
+        ///	batches of 2D matrices.<br></br>
+        ///	 If the inputs are batches, then returns
+        ///	batched outputs c
+        ///	
+        ///	Note
+        ///	The out keyword only supports 2D matrix inputs, that is,
+        ///	b, u must be 2D matrices.
+        /// </summary>
+        /// <param name="u">
+        ///	input matrix of size \((*, m, m)\),
+        ///	where \(*\) is zero of more batch dimensions composed of
+        ///	upper or lower triangular Cholesky factor
+        /// </param>
+        /// <param name="upper">
+        ///	whether to consider the Cholesky factor as a
+        ///	lower or upper triangular matrix.<br></br>
+        ///	Default: False.
+        /// </param>
+        /// <param name="out">
+        ///	the output tensor for c
+        /// </param>
+        public Tensor cholesky_solve(Tensor u, bool? upper = false, Tensor @out = null)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                u,
+            });
+            var kwargs=new PyDict();
+            if (upper!=false) kwargs["upper"]=ToPython(upper);
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("cholesky_solve", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
+        
+        /// <summary>
+        ///	Splits a tensor into a specific number of chunks.<br></br>
+        ///	
+        ///	Last chunk will be smaller if the tensor size along the given dimension
+        ///	dim is not divisible by chunks.
+        /// </summary>
+        /// <param name="chunks">
+        ///	number of chunks to return
+        /// </param>
+        /// <param name="dim">
+        ///	dimension along which to split the tensor
+        /// </param>
+        public Tensor[] chunk(int chunks, int dim = 0)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                chunks,
+            });
+            var kwargs=new PyDict();
+            if (dim!=0) kwargs["dim"]=ToPython(dim);
+            dynamic py = __self__.InvokeMethod("chunk", pyargs, kwargs);
+            return ToCsharp<Tensor[]>(py);
         }
         
         /// <summary>
@@ -399,6 +1209,53 @@ namespace Torch
         }
         
         /// <summary>
+        ///	Returns a new tensor with the cosine  of the elements of input.<br></br>
+        ///	
+        ///	\[\text{out}_{i} = \cos(\text{input}_{i})
+        ///	
+        ///	\]
+        /// </summary>
+        /// <param name="out">
+        ///	the output tensor
+        /// </param>
+        public Tensor cos(Tensor @out = null)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("cos", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
+        
+        /// <summary>
+        ///	Returns a new tensor with the hyperbolic cosine  of the elements of
+        ///	input.<br></br>
+        ///	
+        ///	\[\text{out}_{i} = \cosh(\text{input}_{i})
+        ///	
+        ///	\]
+        /// </summary>
+        /// <param name="out">
+        ///	the output tensor
+        /// </param>
+        public Tensor cosh(Tensor @out = null)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("cosh", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
+        
+        /// <summary>
         ///	Returns a copy of this object in CPU memory.<br></br>
         ///	
         ///	If this object is already in CPU memory and on the correct device,
@@ -409,6 +1266,40 @@ namespace Torch
             //auto-generated code, do not change
             var __self__=self;
             dynamic py = __self__.InvokeMethod("cpu");
+            return ToCsharp<Tensor>(py);
+        }
+        
+        /// <summary>
+        ///	Returns the cross product of vectors in dimension dim of input
+        ///	and other.<br></br>
+        ///	
+        ///	input and other must have the same size, and the size of their
+        ///	dim dimension should be 3.<br></br>
+        ///	
+        ///	If dim is not given, it defaults to the first dimension found with the
+        ///	size 3.
+        /// </summary>
+        /// <param name="other">
+        ///	the second input tensor
+        /// </param>
+        /// <param name="dim">
+        ///	the dimension to take the cross-product in.
+        /// </param>
+        /// <param name="out">
+        ///	the output tensor
+        /// </param>
+        public Tensor cross(Tensor other, int? dim = -1, Tensor @out = null)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                other,
+            });
+            var kwargs=new PyDict();
+            if (dim!=-1) kwargs["dim"]=ToPython(dim);
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("cross", pyargs, kwargs);
             return ToCsharp<Tensor>(py);
         }
         
@@ -445,6 +1336,86 @@ namespace Torch
         }
         
         /// <summary>
+        ///	Returns the cumulative product of elements of input in the dimension
+        ///	dim.<br></br>
+        ///	
+        ///	For example, if input is a vector of size N, the result will also be
+        ///	a vector of size N, with elements.<br></br>
+        ///	
+        ///	\[y_i = x_1 \times x_2\times x_3\times \dots \times x_i
+        ///	
+        ///	\]
+        /// </summary>
+        /// <param name="dim">
+        ///	the dimension to do the operation over
+        /// </param>
+        /// <param name="dtype">
+        ///	the desired data type of returned tensor.<br></br>
+        ///	
+        ///	If specified, the input tensor is casted to dtype before the operation
+        ///	is performed.<br></br>
+        ///	This is useful for preventing data type overflows.<br></br>
+        ///	Default: None.
+        /// </param>
+        /// <param name="out">
+        ///	the output tensor
+        /// </param>
+        public Tensor cumprod(int dim, Dtype dtype = null, Tensor @out = null)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                dim,
+            });
+            var kwargs=new PyDict();
+            if (dtype!=null) kwargs["dtype"]=ToPython(dtype);
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("cumprod", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
+        
+        /// <summary>
+        ///	Returns the cumulative sum of elements of input in the dimension
+        ///	dim.<br></br>
+        ///	
+        ///	For example, if input is a vector of size N, the result will also be
+        ///	a vector of size N, with elements.<br></br>
+        ///	
+        ///	\[y_i = x_1 + x_2 + x_3 + \dots + x_i
+        ///	
+        ///	\]
+        /// </summary>
+        /// <param name="dim">
+        ///	the dimension to do the operation over
+        /// </param>
+        /// <param name="dtype">
+        ///	the desired data type of returned tensor.<br></br>
+        ///	
+        ///	If specified, the input tensor is casted to dtype before the operation
+        ///	is performed.<br></br>
+        ///	This is useful for preventing data type overflows.<br></br>
+        ///	Default: None.
+        /// </param>
+        /// <param name="out">
+        ///	the output tensor
+        /// </param>
+        public Tensor cumsum(int dim, Dtype dtype = null, Tensor @out = null)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                dim,
+            });
+            var kwargs=new PyDict();
+            if (dtype!=null) kwargs["dtype"]=ToPython(dtype);
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("cumsum", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
+        
+        /// <summary>
         ///	Returns the address of the first element of self tensor.
         /// </summary>
         public int data_ptr()
@@ -463,6 +1434,25 @@ namespace Torch
             //auto-generated code, do not change
             var __self__=self;
             dynamic py = __self__.InvokeMethod("dequantize");
+            return ToCsharp<Tensor>(py);
+        }
+        
+        /// <summary>
+        ///	Calculates determinant of a 2D square tensor.<br></br>
+        ///	
+        ///	Note
+        ///	Backward through det() internally uses SVD results when A is
+        ///	not invertible.<br></br>
+        ///	 In this case, double backward through det() will be
+        ///	unstable in when A doesn’t have distinct singular values.<br></br>
+        ///	 See
+        ///	svd() for details.
+        /// </summary>
+        public Tensor det()
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            dynamic py = __self__.InvokeMethod("det");
             return ToCsharp<Tensor>(py);
         }
         
@@ -524,6 +1514,202 @@ namespace Torch
         }
         
         /// <summary>
+        ///	If input is a vector (1-D tensor), then returns a 2-D square tensor
+        ///	with the elements of input as the diagonal.<br></br>
+        ///	
+        ///	If input is a matrix (2-D tensor), then returns a 1-D tensor with
+        ///	the diagonal elements of input.<br></br>
+        ///	
+        ///	The argument diagonal controls which diagonal to consider:
+        ///	
+        ///	If diagonal = 0, it is the main diagonal.<br></br>
+        ///	
+        ///	If diagonal &gt; 0, it is above the main diagonal.<br></br>
+        ///	
+        ///	If diagonal &lt; 0, it is below the main diagonal.
+        /// </summary>
+        /// <param name="diagonal">
+        ///	the diagonal to consider
+        /// </param>
+        /// <param name="out">
+        ///	the output tensor
+        /// </param>
+        public Tensor diag(int? diagonal = 0, Tensor @out = null)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+            });
+            var kwargs=new PyDict();
+            if (diagonal!=0) kwargs["diagonal"]=ToPython(diagonal);
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("diag", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
+        
+        /// <summary>
+        ///	Creates a tensor whose diagonals of certain 2D planes (specified by
+        ///	dim1 and dim2) are filled by input.<br></br>
+        ///	
+        ///	To facilitate creating batched diagonal matrices, the 2D planes formed by
+        ///	the last two dimensions of the returned tensor are chosen by default.<br></br>
+        ///	
+        ///	The argument offset controls which diagonal to consider:
+        ///	
+        ///	If offset = 0, it is the main diagonal.<br></br>
+        ///	
+        ///	If offset &gt; 0, it is above the main diagonal.<br></br>
+        ///	
+        ///	If offset &lt; 0, it is below the main diagonal.<br></br>
+        ///	
+        ///	The size of the new matrix will be calculated to make the specified diagonal
+        ///	of the size of the last input dimension.<br></br>
+        ///	
+        ///	Note that for offset other than \(0\), the order of dim1
+        ///	and dim2 matters.<br></br>
+        ///	 Exchanging them is equivalent to changing the
+        ///	sign of offset.<br></br>
+        ///	
+        ///	Applying torch.diagonal() to the output of this function with
+        ///	the same arguments yields a matrix identical to input.<br></br>
+        ///	 However,
+        ///	torch.diagonal() has different default dimensions, so those
+        ///	need to be explicitly specified.
+        /// </summary>
+        /// <param name="offset">
+        ///	which diagonal to consider.<br></br>
+        ///	Default: 0
+        ///	(main diagonal).
+        /// </param>
+        /// <param name="dim1">
+        ///	first dimension with respect to which to
+        ///	take diagonal.<br></br>
+        ///	Default: -2.
+        /// </param>
+        /// <param name="dim2">
+        ///	second dimension with respect to which to
+        ///	take diagonal.<br></br>
+        ///	Default: -1.
+        /// </param>
+        public Tensor diag_embed(int? offset = 0, int? dim1 = -2, int? dim2 = -1)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+            });
+            var kwargs=new PyDict();
+            if (offset!=0) kwargs["offset"]=ToPython(offset);
+            if (dim1!=-2) kwargs["dim1"]=ToPython(dim1);
+            if (dim2!=-1) kwargs["dim2"]=ToPython(dim2);
+            dynamic py = __self__.InvokeMethod("diag_embed", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
+        
+        /// <summary>
+        ///	If input is a vector (1-D tensor), then returns a 2-D square tensor
+        ///	with the elements of input as the diagonal.<br></br>
+        ///	
+        ///	If input is a tensor with more than one dimension, then returns a
+        ///	2-D tensor with diagonal elements equal to a flattened input.<br></br>
+        ///	
+        ///	The argument offset controls which diagonal to consider:
+        ///	
+        ///	If offset = 0, it is the main diagonal.<br></br>
+        ///	
+        ///	If offset &gt; 0, it is above the main diagonal.<br></br>
+        ///	
+        ///	If offset &lt; 0, it is below the main diagonal.
+        /// </summary>
+        /// <param name="offset">
+        ///	the diagonal to consider.<br></br>
+        ///	Default: 0 (main
+        ///	diagonal).
+        /// </param>
+        public Tensor diagflat(int? offset = 0)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+            });
+            var kwargs=new PyDict();
+            if (offset!=0) kwargs["offset"]=ToPython(offset);
+            dynamic py = __self__.InvokeMethod("diagflat", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
+        
+        /// <summary>
+        ///	Returns a partial view of input with the its diagonal elements
+        ///	with respect to dim1 and dim2 appended as a dimension
+        ///	at the end of the shape.<br></br>
+        ///	
+        ///	The argument offset controls which diagonal to consider:
+        ///	
+        ///	If offset = 0, it is the main diagonal.<br></br>
+        ///	
+        ///	If offset &gt; 0, it is above the main diagonal.<br></br>
+        ///	
+        ///	If offset &lt; 0, it is below the main diagonal.<br></br>
+        ///	
+        ///	Applying torch.diag_embed() to the output of this function with
+        ///	the same arguments yields a diagonal matrix with the diagonal entries
+        ///	of the input.<br></br>
+        ///	 However, torch.diag_embed() has different default
+        ///	dimensions, so those need to be explicitly specified.
+        /// </summary>
+        /// <param name="offset">
+        ///	which diagonal to consider.<br></br>
+        ///	Default: 0
+        ///	(main diagonal).
+        /// </param>
+        /// <param name="dim1">
+        ///	first dimension with respect to which to
+        ///	take diagonal.<br></br>
+        ///	Default: 0.
+        /// </param>
+        /// <param name="dim2">
+        ///	second dimension with respect to which to
+        ///	take diagonal.<br></br>
+        ///	Default: 1.
+        /// </param>
+        public Tensor diagonal(int? offset = 0, int? dim1 = 0, int? dim2 = 1)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+            });
+            var kwargs=new PyDict();
+            if (offset!=0) kwargs["offset"]=ToPython(offset);
+            if (dim1!=0) kwargs["dim1"]=ToPython(dim1);
+            if (dim2!=1) kwargs["dim2"]=ToPython(dim2);
+            dynamic py = __self__.InvokeMethod("diagonal", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
+        
+        /// <summary>
+        ///	Computes the logarithmic derivative of the gamma function on input.<br></br>
+        ///	
+        ///	\[\psi(x) = \frac{d}{dx} \ln\left(\Gamma\left(x\right)\right) = \frac{\Gamma'(x)}{\Gamma(x)}
+        ///	
+        ///	\]
+        /// </summary>
+        public Tensor digamma(Tensor @out = null)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("digamma", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
+        
+        /// <summary>
         ///	Returns the number of dimensions of self tensor.
         /// </summary>
         public int dim()
@@ -532,6 +1718,65 @@ namespace Torch
             var __self__=self;
             dynamic py = __self__.InvokeMethod("dim");
             return ToCsharp<int>(py);
+        }
+        
+        /// <summary>
+        ///	Returns the p-norm of (input - other)
+        ///	
+        ///	The shapes of input and other must be
+        ///	broadcastable.
+        /// </summary>
+        /// <param name="other">
+        ///	the Right-hand-side input tensor
+        /// </param>
+        /// <param name="p">
+        ///	the norm to be computed
+        /// </param>
+        public Tensor dist(Tensor other, float? p = 2f)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                other,
+            });
+            var kwargs=new PyDict();
+            if (p!=2f) kwargs["p"]=ToPython(p);
+            dynamic py = __self__.InvokeMethod("dist", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
+        
+        public Tensor div<T>(T @value, Tensor @out = null)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                @value,
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("div", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
+        
+        /// <summary>
+        ///	Computes the dot product (inner product) of two tensors.<br></br>
+        ///	
+        ///	Note
+        ///	This function does not broadcast.
+        /// </summary>
+        public Tensor dot(Tensor tensor2)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                tensor2,
+            });
+            var kwargs=new PyDict();
+            dynamic py = __self__.InvokeMethod("dot", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
         }
         
         /// <summary>
@@ -547,6 +1792,36 @@ namespace Torch
         }
         
         /// <summary>
+        ///	Computes the eigenvalues and eigenvectors of a real square matrix.<br></br>
+        ///	
+        ///	Note
+        ///	Since eigenvalues and eigenvectors might be complex, backward pass is supported only
+        ///	
+        ///	for torch.symeig()
+        /// </summary>
+        /// <param name="eigenvectors">
+        ///	True to compute both eigenvalues and eigenvectors;
+        ///	otherwise, only eigenvalues will be computed
+        /// </param>
+        /// <param name="out">
+        ///	the output tensors
+        /// </param>
+        public (Tensor, Tensor) eig(bool eigenvectors = false, Tensor[] @out = null)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+            });
+            var kwargs=new PyDict();
+            if (eigenvectors!=false) kwargs["eigenvectors"]=ToPython(eigenvectors);
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("eig", pyargs, kwargs);
+            var t = py as PyTuple;
+            return (ToCsharp<Tensor>(t[0]), ToCsharp<Tensor>(t[1]));
+        }
+        
+        /// <summary>
         ///	Returns the size in bytes of an individual element.
         /// </summary>
         public int element_size()
@@ -555,6 +1830,171 @@ namespace Torch
             var __self__=self;
             dynamic py = __self__.InvokeMethod("element_size");
             return ToCsharp<int>(py);
+        }
+        
+        /// <summary>
+        ///	Computes element-wise equality
+        ///	
+        ///	The second argument can be a number or a tensor whose shape is
+        ///	broadcastable with the first argument.
+        /// </summary>
+        /// <param name="other">
+        ///	the tensor or value to compare
+        /// </param>
+        /// <param name="out">
+        ///	the output tensor.<br></br>
+        ///	Must be a ByteTensor
+        /// </param>
+        public Tensor eq(Tensor other, Tensor @out = null)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                other,
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("eq", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
+        
+        /// <summary>
+        ///	True if two tensors have the same size and elements, False otherwise.
+        /// </summary>
+        public bool equal(Tensor tensor2)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                tensor2,
+            });
+            var kwargs=new PyDict();
+            dynamic py = __self__.InvokeMethod("equal", pyargs, kwargs);
+            return ToCsharp<bool>(py);
+        }
+        
+        /// <summary>
+        ///	Computes the error function of each element.<br></br>
+        ///	 The error function is defined as follows:
+        ///	
+        ///	\[\mathrm{erf}(x) = \frac{2}{\sqrt{\pi}} \int_{0}^{x} e^{-t^2} dt
+        ///	
+        ///	\]
+        /// </summary>
+        /// <param name="out">
+        ///	the output tensor
+        /// </param>
+        public Tensor erf(Tensor @out = null)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("erf", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
+        
+        /// <summary>
+        ///	Computes the complementary error function of each element of input.<br></br>
+        ///	
+        ///	The complementary error function is defined as follows:
+        ///	
+        ///	\[\mathrm{erfc}(x) = 1 - \frac{2}{\sqrt{\pi}} \int_{0}^{x} e^{-t^2} dt
+        ///	
+        ///	\]
+        /// </summary>
+        /// <param name="out">
+        ///	the output tensor
+        /// </param>
+        public Tensor erfc(Tensor @out = null)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("erfc", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
+        
+        /// <summary>
+        ///	Computes the inverse error function of each element of input.<br></br>
+        ///	
+        ///	The inverse error function is defined in the range \((-1, 1)\) as:
+        ///	
+        ///	\[\mathrm{erfinv}(\mathrm{erf}(x)) = x
+        ///	
+        ///	\]
+        /// </summary>
+        /// <param name="out">
+        ///	the output tensor
+        /// </param>
+        public Tensor erfinv(Tensor @out = null)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("erfinv", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
+        
+        /// <summary>
+        ///	Returns a new tensor with the exponential of the elements
+        ///	of the input tensor input.<br></br>
+        ///	
+        ///	\[y_{i} = e^{x_{i}}
+        ///	
+        ///	\]
+        /// </summary>
+        /// <param name="out">
+        ///	the output tensor
+        /// </param>
+        public Tensor exp(Tensor @out = null)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("exp", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
+        
+        /// <summary>
+        ///	Returns a new tensor with the exponential of the elements minus 1
+        ///	of input.<br></br>
+        ///	
+        ///	\[y_{i} = e^{x_{i}} - 1
+        ///	
+        ///	\]
+        /// </summary>
+        /// <param name="out">
+        ///	the output tensor
+        /// </param>
+        public Tensor expm1(Tensor @out = null)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("expm1", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
         }
         
         /// <summary>
@@ -628,6 +2068,73 @@ namespace Torch
         }
         
         /// <summary>
+        ///	Complex-to-complex Discrete Fourier Transform
+        ///	
+        ///	This method computes the complex-to-complex discrete Fourier transform.<br></br>
+        ///	
+        ///	Ignoring the batch dimensions, it computes the following expression:
+        ///	
+        ///	\[X[\omega_1, \dots, \omega_d] =
+        ///	    \sum_{n_1=0}^{N_1-1} \dots \sum_{n_d=0}^{N_d-1} x[n_1, \dots, n_d]
+        ///	     e^{-j\ 2 \pi \sum_{i=0}^d \frac{\omega_i n_i}{N_i}},
+        ///	
+        ///	\]
+        ///	
+        ///	where \(d\) = signal_ndim is number of dimensions for the
+        ///	signal, and \(N_i\) is the size of signal dimension \(i\).<br></br>
+        ///	
+        ///	This method supports 1D, 2D and 3D complex-to-complex transforms, indicated
+        ///	by signal_ndim.<br></br>
+        ///	 input must be a tensor with last dimension
+        ///	of size 2, representing the real and imaginary components of complex
+        ///	numbers, and should have at least signal_ndim + 1 dimensions with optionally
+        ///	arbitrary number of leading batch dimensions.<br></br>
+        ///	 If normalized is set to
+        ///	True, this normalizes the result by dividing it with
+        ///	\(\sqrt{\prod_{i=1}^K N_i}\) so that the operator is unitary.<br></br>
+        ///	
+        ///	Returns the real and the imaginary parts together as one tensor of the same
+        ///	shape of input.<br></br>
+        ///	
+        ///	The inverse of this function is ifft().<br></br>
+        ///	
+        ///	Note
+        ///	For CUDA tensors, an LRU cache is used for cuFFT plans to speed up
+        ///	repeatedly running FFT methods on tensors of same geometry with same
+        ///	configuration.<br></br>
+        ///	 See cuFFT plan cache for more details on how to
+        ///	monitor and control the cache.<br></br>
+        ///	
+        ///	Warning
+        ///	For CPU tensors, this method is currently only available with MKL.<br></br>
+        ///	 Use
+        ///	torch.backends.mkl.is_available() to check if MKL is installed.
+        /// </summary>
+        /// <param name="signal_ndim">
+        ///	the number of dimensions in each signal.<br></br>
+        ///	
+        ///	signal_ndim can only be 1, 2 or 3
+        /// </param>
+        /// <param name="normalized">
+        ///	controls whether to return normalized results.<br></br>
+        ///	
+        ///	Default: False
+        /// </param>
+        public Tensor fft(int signal_ndim, bool? normalized = false)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                signal_ndim,
+            });
+            var kwargs=new PyDict();
+            if (normalized!=false) kwargs["normalized"]=ToPython(normalized);
+            dynamic py = __self__.InvokeMethod("fft", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
+        
+        /// <summary>
         ///	Fills self tensor with the specified value.
         /// </summary>
         public Tensor fill_<T>(T @value)
@@ -644,6 +2151,25 @@ namespace Torch
         }
         
         /// <summary>
+        ///	Reverse the order of a n-D tensor along given axis in dims.
+        /// </summary>
+        /// <param name="dims">
+        ///	axis to flip on
+        /// </param>
+        public Tensor flip(params int[] dims)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                dims,
+            });
+            var kwargs=new PyDict();
+            dynamic py = __self__.InvokeMethod("flip", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
+        
+        /// <summary>
         ///	self.float() is equivalent to self.to(torch.float32).<br></br>
         ///	 See to().
         /// </summary>
@@ -653,6 +2179,196 @@ namespace Torch
             var __self__=self;
             dynamic py = __self__.InvokeMethod("float");
             return ToCsharp<Tensor>(py);
+        }
+        
+        /// <summary>
+        ///	Returns a new tensor with the floor of the elements of input,
+        ///	the largest integer less than or equal to each element.<br></br>
+        ///	
+        ///	\[\text{out}_{i} = \left\lfloor \text{input}_{i} \right\rfloor
+        ///	
+        ///	\]
+        /// </summary>
+        /// <param name="out">
+        ///	the output tensor
+        /// </param>
+        public Tensor floor(Tensor @out = null)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("floor", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
+        
+        /// <summary>
+        ///	Computes the element-wise remainder of division.<br></br>
+        ///	
+        ///	The dividend and divisor may contain both for integer and floating point
+        ///	numbers.<br></br>
+        ///	 The remainder has the same sign as the dividend input.<br></br>
+        ///	
+        ///	When divisor is a tensor, the shapes of input and
+        ///	divisor must be broadcastable.
+        /// </summary>
+        /// <param name="divisor">
+        ///	the divisor, which may be either a number or a tensor of the same shape as the dividend
+        /// </param>
+        /// <param name="out">
+        ///	the output tensor
+        /// </param>
+        public Tensor fmod(Tensor divisor, Tensor @out = null)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                divisor,
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("fmod", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
+        
+        /// <summary>
+        ///	Computes the fractional portion of each element in input.<br></br>
+        ///	
+        ///	\[\text{out}_{i} = \text{input}_{i} - \left\lfloor \text{input}_{i} \right\rfloor
+        ///	
+        ///	\]
+        /// </summary>
+        public Tensor frac(Tensor @out = null)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("frac", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
+        
+        /// <summary>
+        ///	Gathers values along an axis specified by dim.<br></br>
+        ///	
+        ///	For a 3-D tensor the output is specified by:
+        ///	
+        ///	out[i][j][k] = input[index[i][j][k]][j][k]  # if dim == 0
+        ///	out[i][j][k] = input[i][index[i][j][k]][k]  # if dim == 1
+        ///	out[i][j][k] = input[i][j][index[i][j][k]]  # if dim == 2
+        ///	
+        ///	If input is an n-dimensional tensor with size
+        ///	\((x_0, x_1..., x_{i-1}, x_i, x_{i+1}, ..., x_{n-1})\)
+        ///	and dim = i, then index must be an \(n\)-dimensional tensor with
+        ///	size \((x_0, x_1, ..., x_{i-1}, y, x_{i+1}, ..., x_{n-1})\) where \(y \geq 1\)
+        ///	and out will have the same size as index.
+        /// </summary>
+        /// <param name="dim">
+        ///	the axis along which to index
+        /// </param>
+        /// <param name="index">
+        ///	the indices of elements to gather
+        /// </param>
+        /// <param name="out">
+        ///	the destination tensor
+        /// </param>
+        /// <param name="sparse_grad">
+        ///	If True, gradient w.r.t.<br></br>
+        ///	input will be a sparse tensor.
+        /// </param>
+        public Tensor gather(int dim, Tensor<long> index, Tensor @out = null, bool? sparse_grad = false)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                dim,
+                index,
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            if (sparse_grad!=false) kwargs["sparse_grad"]=ToPython(sparse_grad);
+            dynamic py = __self__.InvokeMethod("gather", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
+        
+        /// <summary>
+        ///	Computes \(\text{input} \geq \text{other}\) element-wise.<br></br>
+        ///	
+        ///	The second argument can be a number or a tensor whose shape is
+        ///	broadcastable with the first argument.
+        /// </summary>
+        /// <param name="other">
+        ///	the tensor or value to compare
+        /// </param>
+        /// <param name="out">
+        ///	the output tensor that must be a ByteTensor
+        /// </param>
+        public Tensor ge(Tensor other, Tensor @out = null)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                other,
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("ge", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
+        
+        /// <summary>
+        ///	Computes the solution to the least squares and least norm problems for a full
+        ///	rank matrix \(A\) of size \((m \times n)\) and a matrix \(B\) of
+        ///	size \((m \times k)\).<br></br>
+        ///	
+        ///	If \(m \geq n\), gels() solves the least-squares problem:
+        ///	
+        ///	\[\begin{array}{ll}
+        ///	\min_X & \|AX-B\|_2.
+        ///	\end{array}\]
+        ///	
+        ///	If \(m &lt; n\), gels() solves the least-norm problem:
+        ///	
+        ///	\[\begin{array}{ll}
+        ///	\min_X & \|X\|_2 & \text{subject to} & AX = B.<br></br>
+        ///	
+        ///	\end{array}\]
+        ///	
+        ///	Returned tensor \(X\) has shape \((\max(m, n) \times k)\).<br></br>
+        ///	 The first \(n\)
+        ///	rows of \(X\) contains the solution.<br></br>
+        ///	 If \(m \geq n\), the residual sum of squares
+        ///	for the solution in each column is given by the sum of squares of elements in the
+        ///	remaining \(m - n\) rows of that column.
+        /// </summary>
+        /// <param name="A">
+        ///	the \(m\) by \(n\) matrix \(A\)
+        /// </param>
+        /// <param name="out">
+        ///	the optional destination tensor
+        /// </param>
+        public (Tensor, Tensor) gels(Tensor A, Tensor[] @out = null)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                A,
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("gels", pyargs, kwargs);
+            var t = py as PyTuple;
+            return (ToCsharp<Tensor>(t[0]), ToCsharp<Tensor>(t[1]));
         }
         
         /// <summary>
@@ -674,6 +2390,66 @@ namespace Torch
         }
         
         /// <summary>
+        ///	This is a low-level function for calling LAPACK directly.<br></br>
+        ///	 This function
+        ///	returns a namedtuple (a, tau) as defined in LAPACK documentation for geqrf .
+        ///	
+        ///	You’ll generally want to use torch.qr() instead.<br></br>
+        ///	
+        ///	Computes a QR decomposition of input, but without constructing
+        ///	\(Q\) and \(R\) as explicit separate matrices.<br></br>
+        ///	
+        ///	Rather, this directly calls the underlying LAPACK function ?geqrf
+        ///	which produces a sequence of ‘elementary reflectors’.
+        ///	
+        ///	See LAPACK documentation for geqrf for further details.
+        /// </summary>
+        /// <param name="out">
+        ///	the output tuple of (Tensor, Tensor)
+        /// </param>
+        public (Tensor, Tensor) geqrf(params Tensor[] @out)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("geqrf", pyargs, kwargs);
+            var t = py as PyTuple;
+            return (ToCsharp<Tensor>(t[0]), ToCsharp<Tensor>(t[1]));
+        }
+        
+        /// <summary>
+        ///	Outer product of vec1 and vec2.
+        ///	If vec1 is a vector of size \(n\) and vec2 is a vector of
+        ///	size \(m\), then out must be a matrix of size \((n \times m)\).<br></br>
+        ///	
+        ///	Note
+        ///	This function does not broadcast.
+        /// </summary>
+        /// <param name="vec2">
+        ///	1-D input vector
+        /// </param>
+        /// <param name="out">
+        ///	optional output matrix
+        /// </param>
+        public Tensor ger(Tensor vec2, Tensor @out = null)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                vec2,
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("ger", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
+        
+        /// <summary>
         ///	For CUDA tensors, this function returns the device ordinal of the GPU on which the tensor resides.<br></br>
         ///	
         ///	For CPU tensors, an error is thrown.
@@ -687,6 +2463,32 @@ namespace Torch
         }
         
         /// <summary>
+        ///	Computes \(\text{input} &gt; \text{other}\) element-wise.<br></br>
+        ///	
+        ///	The second argument can be a number or a tensor whose shape is
+        ///	broadcastable with the first argument.
+        /// </summary>
+        /// <param name="other">
+        ///	the tensor or value to compare
+        /// </param>
+        /// <param name="out">
+        ///	the output tensor that must be a ByteTensor
+        /// </param>
+        public Tensor gt(Tensor other, Tensor @out = null)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                other,
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("gt", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
+        
+        /// <summary>
         ///	self.half() is equivalent to self.to(torch.float16).<br></br>
         ///	 See to().
         /// </summary>
@@ -695,6 +2497,108 @@ namespace Torch
             //auto-generated code, do not change
             var __self__=self;
             dynamic py = __self__.InvokeMethod("half");
+            return ToCsharp<Tensor>(py);
+        }
+        
+        /// <summary>
+        ///	Computes the histogram of a tensor.<br></br>
+        ///	
+        ///	The elements are sorted into equal width bins between min and
+        ///	max.<br></br>
+        ///	 If min and max are both zero, the minimum and
+        ///	maximum values of the data are used.
+        /// </summary>
+        /// <param name="bins">
+        ///	number of histogram bins
+        /// </param>
+        /// <param name="min">
+        ///	lower end of the range (inclusive)
+        /// </param>
+        /// <param name="max">
+        ///	upper end of the range (inclusive)
+        /// </param>
+        /// <param name="out">
+        ///	the output tensor
+        /// </param>
+        public Tensor histc(int bins = 100, int min = 0, int max = 0, Tensor @out = null)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+            });
+            var kwargs=new PyDict();
+            if (bins!=100) kwargs["bins"]=ToPython(bins);
+            if (min!=0) kwargs["min"]=ToPython(min);
+            if (max!=0) kwargs["max"]=ToPython(max);
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("histc", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
+        
+        /// <summary>
+        ///	Complex-to-complex Inverse Discrete Fourier Transform
+        ///	
+        ///	This method computes the complex-to-complex inverse discrete Fourier
+        ///	transform.<br></br>
+        ///	 Ignoring the batch dimensions, it computes the following
+        ///	expression:
+        ///	
+        ///	\[X[\omega_1, \dots, \omega_d] =
+        ///	    \frac{1}{\prod_{i=1}^d N_i} \sum_{n_1=0}^{N_1-1} \dots \sum_{n_d=0}^{N_d-1} x[n_1, \dots, n_d]
+        ///	     e^{\ j\ 2 \pi \sum_{i=0}^d \frac{\omega_i n_i}{N_i}},
+        ///	
+        ///	\]
+        ///	
+        ///	where \(d\) = signal_ndim is number of dimensions for the
+        ///	signal, and \(N_i\) is the size of signal dimension \(i\).<br></br>
+        ///	
+        ///	The argument specifications are almost identical with fft().<br></br>
+        ///	
+        ///	However, if normalized is set to True, this instead returns the
+        ///	results multiplied by \(\sqrt{\prod_{i=1}^d N_i}\), to become a unitary
+        ///	operator.<br></br>
+        ///	 Therefore, to invert a fft(), the normalized
+        ///	argument should be set identically for fft().<br></br>
+        ///	
+        ///	Returns the real and the imaginary parts together as one tensor of the same
+        ///	shape of input.<br></br>
+        ///	
+        ///	The inverse of this function is fft().<br></br>
+        ///	
+        ///	Note
+        ///	For CUDA tensors, an LRU cache is used for cuFFT plans to speed up
+        ///	repeatedly running FFT methods on tensors of same geometry with same
+        ///	configuration.<br></br>
+        ///	 See cuFFT plan cache for more details on how to
+        ///	monitor and control the cache.<br></br>
+        ///	
+        ///	Warning
+        ///	For CPU tensors, this method is currently only available with MKL.<br></br>
+        ///	 Use
+        ///	torch.backends.mkl.is_available() to check if MKL is installed.
+        /// </summary>
+        /// <param name="signal_ndim">
+        ///	the number of dimensions in each signal.<br></br>
+        ///	
+        ///	signal_ndim can only be 1, 2 or 3
+        /// </param>
+        /// <param name="normalized">
+        ///	controls whether to return normalized results.<br></br>
+        ///	
+        ///	Default: False
+        /// </param>
+        public Tensor ifft(int signal_ndim, bool? normalized = false)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                signal_ndim,
+            });
+            var kwargs=new PyDict();
+            if (normalized!=false) kwargs["normalized"]=ToPython(normalized);
+            dynamic py = __self__.InvokeMethod("ifft", pyargs, kwargs);
             return ToCsharp<Tensor>(py);
         }
         
@@ -912,6 +2816,46 @@ namespace Torch
         }
         
         /// <summary>
+        ///	Returns a new tensor which indexes the input tensor along dimension
+        ///	dim using the entries in index which is a LongTensor.<br></br>
+        ///	
+        ///	The returned tensor has the same number of dimensions as the original tensor
+        ///	(input).<br></br>
+        ///	  The dimth dimension has the same size as the length
+        ///	of index; other dimensions have the same size as in the original tensor.<br></br>
+        ///	
+        ///	Note
+        ///	The returned tensor does not use the same storage as the original
+        ///	tensor.<br></br>
+        ///	  If out has a different shape than expected, we
+        ///	silently change it to the correct shape, reallocating the underlying
+        ///	storage if necessary.
+        /// </summary>
+        /// <param name="dim">
+        ///	the dimension in which we index
+        /// </param>
+        /// <param name="index">
+        ///	the 1-D tensor containing the indices to index
+        /// </param>
+        /// <param name="out">
+        ///	the output tensor
+        /// </param>
+        public Tensor index_select(int dim, Tensor<long> index, Tensor @out = null)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                dim,
+                index,
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("index_select", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
+        
+        /// <summary>
         ///	If self is a sparse COO tensor (i.e., with torch.sparse_coo layout),
         ///	this returns a view of the contained indices tensor.<br></br>
         ///	 Otherwise, this throws an
@@ -954,6 +2898,130 @@ namespace Torch
             //auto-generated code, do not change
             var __self__=self;
             dynamic py = __self__.InvokeMethod("int_repr");
+            return ToCsharp<Tensor>(py);
+        }
+        
+        /// <summary>
+        ///	Takes the inverse of the square matrix input.<br></br>
+        ///	 input can be batches
+        ///	of 2D square tensors, in which case this function would return a tensor composed of
+        ///	individual inverses.<br></br>
+        ///	
+        ///	Note
+        ///	Irrespective of the original strides, the returned tensors will be
+        ///	transposed, i.e.<br></br>
+        ///	 with strides like input.contiguous().transpose(-2, -1).strides()
+        /// </summary>
+        /// <param name="out">
+        ///	the optional output tensor
+        /// </param>
+        public Tensor inverse(Tensor @out = null)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("inverse", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
+        
+        /// <summary>
+        ///	Complex-to-real Inverse Discrete Fourier Transform
+        ///	
+        ///	This method computes the complex-to-real inverse discrete Fourier transform.<br></br>
+        ///	
+        ///	It is mathematically equivalent with ifft() with differences only in
+        ///	formats of the input and output.<br></br>
+        ///	
+        ///	The argument specifications are almost identical with ifft().<br></br>
+        ///	
+        ///	Similar to ifft(), if normalized is set to True,
+        ///	this normalizes the result by multiplying it with
+        ///	\(\sqrt{\prod_{i=1}^K N_i}\) so that the operator is unitary, where
+        ///	\(N_i\) is the size of signal dimension \(i\).<br></br>
+        ///	
+        ///	Due to the conjugate symmetry, input do not need to contain the full
+        ///	complex frequency values.<br></br>
+        ///	 Roughly half of the values will be sufficient, as
+        ///	is the case when input is given by rfft() with
+        ///	rfft(signal, onesided=True).<br></br>
+        ///	 In such case, set the onesided
+        ///	argument of this method to True.<br></br>
+        ///	 Moreover, the original signal shape
+        ///	information can sometimes be lost, optionally set signal_sizes to be
+        ///	the size of the original signal (without the batch dimensions if in batched
+        ///	mode) to recover it with correct shape.<br></br>
+        ///	
+        ///	Therefore, to invert an rfft(), the normalized and
+        ///	onesided arguments should be set identically for irfft(),
+        ///	and preferrably a signal_sizes is given to avoid size mismatch.<br></br>
+        ///	 See the
+        ///	example below for a case of size mismatch.<br></br>
+        ///	
+        ///	See rfft() for details on conjugate symmetry.<br></br>
+        ///	
+        ///	The inverse of this function is rfft().<br></br>
+        ///	
+        ///	Warning
+        ///	Generally speaking, the input of this function should contain values
+        ///	following conjugate symmetry.<br></br>
+        ///	 Note that even if onesided is
+        ///	True, often symmetry on some part is still needed.<br></br>
+        ///	 When this
+        ///	requirement is not satisfied, the behavior of irfft() is
+        ///	undefined.<br></br>
+        ///	 Since torch.autograd.gradcheck() estimates numerical
+        ///	Jacobian with point perturbations, irfft() will almost
+        ///	certainly fail the check.<br></br>
+        ///	
+        ///	Note
+        ///	For CUDA tensors, an LRU cache is used for cuFFT plans to speed up
+        ///	repeatedly running FFT methods on tensors of same geometry with same
+        ///	configuration.<br></br>
+        ///	 See cuFFT plan cache for more details on how to
+        ///	monitor and control the cache.<br></br>
+        ///	
+        ///	Warning
+        ///	For CPU tensors, this method is currently only available with MKL.<br></br>
+        ///	 Use
+        ///	torch.backends.mkl.is_available() to check if MKL is installed.
+        /// </summary>
+        /// <param name="signal_ndim">
+        ///	the number of dimensions in each signal.<br></br>
+        ///	
+        ///	signal_ndim can only be 1, 2 or 3
+        /// </param>
+        /// <param name="normalized">
+        ///	controls whether to return normalized results.<br></br>
+        ///	
+        ///	Default: False
+        /// </param>
+        /// <param name="onesided">
+        ///	controls whether input was halfed to avoid
+        ///	redundancy, e.g., by rfft().<br></br>
+        ///	Default: True
+        /// </param>
+        /// <param name="signal_sizes">
+        ///	the size of the original
+        ///	signal (without batch dimension).<br></br>
+        ///	Default: None
+        /// </param>
+        public Tensor irfft(int signal_ndim, bool? normalized = false, bool? onesided = true, Shape signal_sizes = null)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                signal_ndim,
+            });
+            var kwargs=new PyDict();
+            if (normalized!=false) kwargs["normalized"]=ToPython(normalized);
+            if (onesided!=true) kwargs["onesided"]=ToPython(onesided);
+            if (signal_sizes!=null) kwargs["signal_sizes"]=ToPython(signal_sizes);
+            dynamic py = __self__.InvokeMethod("irfft", pyargs, kwargs);
             return ToCsharp<Tensor>(py);
         }
         
@@ -1057,6 +3125,235 @@ namespace Torch
         }
         
         /// <summary>
+        ///	Returns a namedtuple (values, indices) where values is the k th
+        ///	smallest element of each row of the input tensor in the given dimension
+        ///	dim.<br></br>
+        ///	 And indices is the index location of each element found.<br></br>
+        ///	
+        ///	If dim is not given, the last dimension of the input is chosen.<br></br>
+        ///	
+        ///	If keepdim is True, both the values and indices tensors
+        ///	are the same size as input, except in the dimension dim where
+        ///	they are of size 1.<br></br>
+        ///	 Otherwise, dim is squeezed
+        ///	(see torch.squeeze()), resulting in both the values and
+        ///	indices tensors having 1 fewer dimension than the input tensor.
+        /// </summary>
+        /// <param name="k">
+        ///	k for the k-th smallest element
+        /// </param>
+        /// <param name="dim">
+        ///	the dimension to find the kth value along
+        /// </param>
+        /// <param name="keepdim">
+        ///	whether the output tensors have dim retained or not
+        /// </param>
+        /// <param name="out">
+        ///	the output tuple of (Tensor, LongTensor)
+        ///	can be optionally given to be used as output buffers
+        /// </param>
+        public (Tensor, Tensor<long>) kthvalue(int k, int? dim = null, bool keepdim = false, Tensor[] @out = null)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                k,
+            });
+            var kwargs=new PyDict();
+            if (dim!=null) kwargs["dim"]=ToPython(dim);
+            if (keepdim!=false) kwargs["keepdim"]=ToPython(keepdim);
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("kthvalue", pyargs, kwargs);
+            var t = py as PyTuple;
+            return (ToCsharp<Tensor>(t[0]), ToCsharp<Tensor<long>>(t[1]));
+        }
+        
+        /// <summary>
+        ///	Computes \(\text{input} \leq \text{other}\) element-wise.<br></br>
+        ///	
+        ///	The second argument can be a number or a tensor whose shape is
+        ///	broadcastable with the first argument.
+        /// </summary>
+        /// <param name="other">
+        ///	the tensor or value to compare
+        /// </param>
+        /// <param name="out">
+        ///	the output tensor that must be a ByteTensor
+        /// </param>
+        public Tensor le(Tensor other, Tensor @out = null)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                other,
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("le", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
+        
+        /// <summary>
+        ///	Does a linear interpolation of two tensors start and end based
+        ///	on a scalar or tensor weight and returns the resulting out tensor.<br></br>
+        ///	
+        ///	\[\text{out}_i = \text{start}_i + \text{weight}_i \times (\text{end}_i - \text{start}_i)
+        ///	
+        ///	\]
+        ///	
+        ///	The shapes of start and end must be
+        ///	broadcastable.<br></br>
+        ///	 If weight is a tensor, then
+        ///	the shapes of start, end must be broadcastable.
+        /// </summary>
+        /// <param name="end">
+        ///	the tensor with the ending points
+        /// </param>
+        /// <param name="weight">
+        ///	the weight for the interpolation formula
+        /// </param>
+        /// <param name="out">
+        ///	the output tensor
+        /// </param>
+        public void lerp(Tensor end, double weight, Tensor @out = null)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                end,
+                weight,
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("lerp", pyargs, kwargs);
+        }
+        
+        /// <summary>
+        ///	Returns a new tensor with the natural logarithm of the elements
+        ///	of input.<br></br>
+        ///	
+        ///	\[y_{i} = \log_{e} (x_{i})
+        ///	
+        ///	\]
+        /// </summary>
+        /// <param name="out">
+        ///	the output tensor
+        /// </param>
+        public Tensor log(Tensor @out = null)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("log", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
+        
+        /// <summary>
+        ///	Calculates log determinant of a 2D square tensor.<br></br>
+        ///	
+        ///	Note
+        ///	Result is -inf if A has zero log determinant, and is nan if
+        ///	A has negative determinant.<br></br>
+        ///	
+        ///	Note
+        ///	Backward through logdet() internally uses SVD results when A
+        ///	is not invertible.<br></br>
+        ///	 In this case, double backward through logdet() will
+        ///	be unstable in when A doesn’t have distinct singular values.<br></br>
+        ///	 See
+        ///	svd() for details.
+        /// </summary>
+        public Tensor logdet()
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            dynamic py = __self__.InvokeMethod("logdet");
+            return ToCsharp<Tensor>(py);
+        }
+        
+        /// <summary>
+        ///	Returns a new tensor with the logarithm to the base 10 of the elements
+        ///	of input.<br></br>
+        ///	
+        ///	\[y_{i} = \log_{10} (x_{i})
+        ///	
+        ///	\]
+        /// </summary>
+        /// <param name="out">
+        ///	the output tensor
+        /// </param>
+        public Tensor log10(Tensor @out = null)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("log10", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
+        
+        /// <summary>
+        ///	Returns a new tensor with the natural logarithm of (1 + input).<br></br>
+        ///	
+        ///	\[y_i = \log_{e} (x_i + 1)
+        ///	
+        ///	\]
+        ///	
+        ///	Note
+        ///	This function is more accurate than torch.log() for small
+        ///	values of input
+        /// </summary>
+        /// <param name="out">
+        ///	the output tensor
+        /// </param>
+        public Tensor log1p(Tensor @out = null)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("log1p", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
+        
+        /// <summary>
+        ///	Returns a new tensor with the logarithm to the base 2 of the elements
+        ///	of input.<br></br>
+        ///	
+        ///	\[y_{i} = \log_{2} (x_{i})
+        ///	
+        ///	\]
+        /// </summary>
+        /// <param name="out">
+        ///	the output tensor
+        /// </param>
+        public Tensor log2(Tensor @out = null)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("log2", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
+        
+        /// <summary>
         ///	Fills self tensor with numbers samples from the log-normal distribution
         ///	parameterized by the given mean \(\mu\) and standard deviation
         ///	\(\sigma\).<br></br>
@@ -1080,6 +3377,47 @@ namespace Torch
         }
         
         /// <summary>
+        ///	Returns the log of summed exponentials of each row of the input
+        ///	tensor in the given dimension dim.<br></br>
+        ///	 The computation is numerically
+        ///	stabilized.<br></br>
+        ///	
+        ///	For summation index \(j\) given by dim and other indices \(i\), the result is
+        ///	
+        ///	\[\text{logsumexp}(x)_{i} = \log \sum_j \exp(x_{ij})
+        ///	
+        ///	\]
+        ///	
+        ///	If keepdim is True, the output tensor is of the same size
+        ///	as input except in the dimension(s) dim where it is of size 1.<br></br>
+        ///	
+        ///	Otherwise, dim is squeezed (see torch.squeeze()), resulting in the
+        ///	output tensor having 1 (or len(dim)) fewer dimension(s).
+        /// </summary>
+        /// <param name="dim">
+        ///	ints) : the dimension or dimensions to reduce
+        /// </param>
+        /// <param name="keepdim">
+        ///	whether the output tensor has dim retained or not
+        /// </param>
+        /// <param name="out">
+        ///	the output tensor
+        /// </param>
+        public void logsumexp(int dim, bool keepdim = false, Tensor @out = null)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                dim,
+            });
+            var kwargs=new PyDict();
+            if (keepdim!=false) kwargs["keepdim"]=ToPython(keepdim);
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("logsumexp", pyargs, kwargs);
+        }
+        
+        /// <summary>
         ///	self.long() is equivalent to self.to(torch.int64).<br></br>
         ///	 See to().
         /// </summary>
@@ -1088,6 +3426,119 @@ namespace Torch
             //auto-generated code, do not change
             var __self__=self;
             dynamic py = __self__.InvokeMethod("long");
+            return ToCsharp<Tensor>(py);
+        }
+        
+        /// <summary>
+        ///	Computes \(\text{input} &lt; \text{other}\) element-wise.<br></br>
+        ///	
+        ///	The second argument can be a number or a tensor whose shape is
+        ///	broadcastable with the first argument.
+        /// </summary>
+        /// <param name="other">
+        ///	the tensor or value to compare
+        /// </param>
+        /// <param name="out">
+        ///	the output tensor that must be a ByteTensor
+        /// </param>
+        public Tensor lt(Tensor other, Tensor @out = null)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                other,
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("lt", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
+        
+        /// <summary>
+        ///	Computes the LU factorization of a square matrix or batches of square matrices
+        ///	A.<br></br>
+        ///	 Returns a tuple containing the LU factorization and pivots of A.<br></br>
+        ///	
+        ///	Pivoting is done if pivot is set to True.<br></br>
+        ///	
+        ///	Note
+        ///	The pivots returned by the function are 1-indexed.<br></br>
+        ///	 If pivot is False,
+        ///	then the returned pivots is a tensor filled with zeros of the appropriate size.<br></br>
+        ///	
+        ///	Note
+        ///	LU factorization with pivot = False is not available for CPU, and attempting
+        ///	to do so will throw an error.<br></br>
+        ///	 However, LU factorization with pivot = False is
+        ///	available for CUDA.<br></br>
+        ///	
+        ///	Note
+        ///	This function does not check if the factorization was successful or not if
+        ///	get_infos is True since the status of the factorization is present in the
+        ///	third element of the return tuple.
+        /// </summary>
+        /// <param name="pivot">
+        ///	controls whether pivoting is done.<br></br>
+        ///	Default: True
+        /// </param>
+        /// <param name="get_infos">
+        ///	if set to True, returns an info IntTensor.<br></br>
+        ///	
+        ///	Default: False
+        /// </param>
+        /// <param name="out">
+        ///	optional output tuple.<br></br>
+        ///	If get_infos is True,
+        ///	then the elements in the tuple are Tensor, IntTensor,
+        ///	and IntTensor.<br></br>
+        ///	If get_infos is False, then the
+        ///	elements in the tuple are Tensor, IntTensor.<br></br>
+        ///	Default: None
+        /// </param>
+        public (Tensor, Tensor<int>, Tensor<int>) lu(bool? pivot = true, bool? get_infos = false, Tensor[] @out = null)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+            });
+            var kwargs=new PyDict();
+            if (pivot!=true) kwargs["pivot"]=ToPython(pivot);
+            if (get_infos!=false) kwargs["get_infos"]=ToPython(get_infos);
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("lu", pyargs, kwargs);
+            var t = py as PyTuple;
+            return (ToCsharp<Tensor>(t[0]), ToCsharp<Tensor<int>>(t[1]), ToCsharp<Tensor<int>>(t[2]));
+        }
+        
+        /// <summary>
+        ///	Batch LU solve.<br></br>
+        ///	
+        ///	Returns the LU solve of the linear system \(Ax = b\) using the partially pivoted
+        ///	LU factorization of A from torch.lu().
+        /// </summary>
+        /// <param name="LU_data">
+        ///	the pivoted LU factorization of A from torch.lu().
+        /// </param>
+        /// <param name="LU_pivots">
+        ///	the pivots of the LU factorization
+        /// </param>
+        /// <param name="out">
+        ///	the optional output tensor
+        /// </param>
+        public Tensor lu_solve(Tensor LU_data, Tensor<int> LU_pivots, Tensor @out = null)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                LU_data,
+                LU_pivots,
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("lu_solve", pyargs, kwargs);
             return ToCsharp<Tensor>(py);
         }
         
@@ -1203,6 +3654,384 @@ namespace Torch
         }
         
         /// <summary>
+        ///	Returns a new 1-D tensor which indexes the input tensor according to
+        ///	the binary mask mask which is a ByteTensor.<br></br>
+        ///	
+        ///	The shapes of the mask tensor and the input tensor don’t need
+        ///	to match, but they must be broadcastable.<br></br>
+        ///	
+        ///	Note
+        ///	The returned tensor does not use the same storage
+        ///	as the original tensor
+        /// </summary>
+        /// <param name="mask">
+        ///	the tensor containing the binary mask to index with
+        /// </param>
+        /// <param name="out">
+        ///	the output tensor
+        /// </param>
+        public Tensor masked_select(Tensor<byte> mask, Tensor @out = null)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                mask,
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("masked_select", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
+        
+        /// <summary>
+        ///	Matrix product of two tensors.<br></br>
+        ///	
+        ///	The behavior depends on the dimensionality of the tensors as follows:
+        ///	
+        ///	If both tensors are 1-dimensional, the dot product (scalar) is returned.<br></br>
+        ///	
+        ///	If both arguments are 2-dimensional, the matrix-matrix product is returned.<br></br>
+        ///	
+        ///	If the first argument is 1-dimensional and the second argument is 2-dimensional,
+        ///	a 1 is prepended to its dimension for the purpose of the matrix multiply.<br></br>
+        ///	
+        ///	After the matrix multiply, the prepended dimension is removed.<br></br>
+        ///	
+        ///	If the first argument is 2-dimensional and the second argument is 1-dimensional,
+        ///	the matrix-vector product is returned.<br></br>
+        ///	
+        ///	If both arguments are at least 1-dimensional and at least one argument is
+        ///	N-dimensional (where N &gt; 2), then a batched matrix multiply is returned.<br></br>
+        ///	  If the first
+        ///	argument is 1-dimensional, a 1 is prepended to its dimension for the purpose of the
+        ///	batched matrix multiply and removed after.<br></br>
+        ///	  If the second argument is 1-dimensional, a
+        ///	1 is appended to its dimension for the purpose of the batched matrix multiple and removed after.<br></br>
+        ///	
+        ///	The non-matrix (i.e.<br></br>
+        ///	 batch) dimensions are broadcasted (and thus
+        ///	must be broadcastable).<br></br>
+        ///	  For example, if tensor1 is a
+        ///	\((j \times 1 \times n \times m)\) tensor and tensor2 is a \((k \times m \times p)\)
+        ///	tensor, out will be an \((j \times k \times n \times p)\) tensor.<br></br>
+        ///	
+        ///	Note
+        ///	The 1-dimensional dot product version of this function does not support an out parameter.
+        /// </summary>
+        /// <param name="tensor2">
+        ///	the second tensor to be multiplied
+        /// </param>
+        /// <param name="out">
+        ///	the output tensor
+        /// </param>
+        public Tensor matmul(Tensor tensor2, Tensor @out = null)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                tensor2,
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("matmul", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
+        
+        /// <summary>
+        ///	Returns the matrix raised to the power n for square matrices.<br></br>
+        ///	
+        ///	For batch of matrices, each individual matrix is raised to the power n.<br></br>
+        ///	
+        ///	If n is negative, then the inverse of the matrix (if invertible) is
+        ///	raised to the power n.<br></br>
+        ///	  For a batch of matrices, the batched inverse
+        ///	(if invertible) is raised to the power n.<br></br>
+        ///	 If n is 0, then an identity matrix
+        ///	is returned.
+        /// </summary>
+        /// <param name="n">
+        ///	the power to raise the matrix to
+        /// </param>
+        public Tensor matrix_power(int n)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                n,
+            });
+            var kwargs=new PyDict();
+            dynamic py = __self__.InvokeMethod("matrix_power", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
+        
+        public Tensor max()
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            dynamic py = __self__.InvokeMethod("max");
+            return ToCsharp<Tensor>(py);
+        }
+        
+        public Tensor mean()
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            dynamic py = __self__.InvokeMethod("mean");
+            return ToCsharp<Tensor>(py);
+        }
+        
+        public Tensor median()
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            dynamic py = __self__.InvokeMethod("median");
+            return ToCsharp<Tensor>(py);
+        }
+        
+        public Tensor min()
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            dynamic py = __self__.InvokeMethod("min");
+            return ToCsharp<Tensor>(py);
+        }
+        
+        /// <summary>
+        ///	Performs a matrix multiplication of the matrices mat1 and mat2.
+        ///	
+        ///	If mat1 is a \((n \times m)\) tensor, mat2 is a
+        ///	\((m \times p)\) tensor, out will be a \((n \times p)\) tensor.<br></br>
+        ///	
+        ///	Note
+        ///	This function does not broadcast.<br></br>
+        ///	
+        ///	For broadcasting matrix products, see torch.matmul().
+        /// </summary>
+        /// <param name="mat2">
+        ///	the second matrix to be multiplied
+        /// </param>
+        /// <param name="out">
+        ///	the output tensor
+        /// </param>
+        public Tensor mm(Tensor mat2, Tensor @out = null)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                mat2,
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("mm", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
+        
+        /// <summary>
+        ///	Returns a namedtuple (values, indices) where values is the mode
+        ///	value of each row of the input tensor in the given dimension
+        ///	dim, i.e.<br></br>
+        ///	 a value which appears most often
+        ///	in that row, and indices is the index location of each mode value found.<br></br>
+        ///	
+        ///	By default, dim is the last dimension of the input tensor.<br></br>
+        ///	
+        ///	If keepdim is True, the output tensors are of the same size as
+        ///	input except in the dimension dim where they are of size 1.<br></br>
+        ///	
+        ///	Otherwise, dim is squeezed (see torch.squeeze()), resulting
+        ///	in the output tensors having 1 fewer dimension than input.<br></br>
+        ///	
+        ///	Note
+        ///	This function is not defined for torch.cuda.Tensor yet.
+        /// </summary>
+        /// <param name="dim">
+        ///	the dimension to reduce
+        /// </param>
+        /// <param name="keepdim">
+        ///	whether the output tensors have dim retained or not
+        /// </param>
+        /// <param name="values">
+        ///	the output tensor
+        /// </param>
+        /// <param name="indices">
+        ///	the output index tensor
+        /// </param>
+        public (Tensor, Tensor<long>) mode(int dim = -1, bool keepdim = false, Tensor values = null, Tensor indices = null)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+            });
+            var kwargs=new PyDict();
+            if (dim!=-1) kwargs["dim"]=ToPython(dim);
+            if (keepdim!=false) kwargs["keepdim"]=ToPython(keepdim);
+            if (values!=null) kwargs["values"]=ToPython(values);
+            if (indices!=null) kwargs["indices"]=ToPython(indices);
+            dynamic py = __self__.InvokeMethod("mode", pyargs, kwargs);
+            var t = py as PyTuple;
+            return (ToCsharp<Tensor>(t[0]), ToCsharp<Tensor<long>>(t[1]));
+        }
+        
+        public void mul<T>(T @value, Tensor @out = null)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                @value,
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("mul", pyargs, kwargs);
+        }
+        
+        /// <summary>
+        ///	Returns a tensor where each row contains num_samples indices sampled
+        ///	from the multinomial probability distribution located in the corresponding row
+        ///	of tensor input.<br></br>
+        ///	
+        ///	Note
+        ///	The rows of input do not need to sum to one (in which case we use
+        ///	the values as weights), but must be non-negative, finite and have
+        ///	a non-zero sum.<br></br>
+        ///	
+        ///	Indices are ordered from left to right according to when each was sampled
+        ///	(first samples are placed in first column).<br></br>
+        ///	
+        ///	If input is a vector, out is a vector of size num_samples.<br></br>
+        ///	
+        ///	If input is a matrix with m rows, out is an matrix of shape
+        ///	\((m \times \text{num\_samples})\).<br></br>
+        ///	
+        ///	If replacement is True, samples are drawn with replacement.<br></br>
+        ///	
+        ///	If not, they are drawn without replacement, which means that when a
+        ///	sample index is drawn for a row, it cannot be drawn again for that row.<br></br>
+        ///	
+        ///	Note
+        ///	When drawn without replacement, num_samples must be lower than
+        ///	number of non-zero elements in input (or the min number of non-zero
+        ///	elements in each row of input if it is a matrix).
+        /// </summary>
+        /// <param name="num_samples">
+        ///	number of samples to draw
+        /// </param>
+        /// <param name="replacement">
+        ///	whether to draw with replacement or not
+        /// </param>
+        /// <param name="out">
+        ///	the output tensor
+        /// </param>
+        public Tensor<long> multinomial(int num_samples, bool? replacement = false, Tensor @out = null)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                num_samples,
+            });
+            var kwargs=new PyDict();
+            if (replacement!=false) kwargs["replacement"]=ToPython(replacement);
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("multinomial", pyargs, kwargs);
+            return ToCsharp<Tensor<long>>(py);
+        }
+        
+        /// <summary>
+        ///	Performs a matrix-vector product of the matrix mat and the vector
+        ///	vec.<br></br>
+        ///	
+        ///	If mat is a \((n \times m)\) tensor, vec is a 1-D tensor of
+        ///	size \(m\), out will be 1-D of size \(n\).<br></br>
+        ///	
+        ///	Note
+        ///	This function does not broadcast.
+        /// </summary>
+        /// <param name="vec">
+        ///	vector to be multiplied
+        /// </param>
+        /// <param name="out">
+        ///	the output tensor
+        /// </param>
+        public Tensor mv(Tensor vec, Tensor @out = null)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                vec,
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("mv", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
+        
+        /// <summary>
+        ///	Computes the multivariate log-gamma function ([reference]) with dimension \(p\) element-wise, given by
+        ///	
+        ///	\[\log(\Gamma_{p}(a)) = C + \displaystyle \sum_{i=1}^{p} \log\left(\Gamma\left(a - \frac{i - 1}{2}\right)\right)
+        ///	
+        ///	\]
+        ///	
+        ///	where \(C = \log(\pi) \times \frac{p (p - 1)}{4}\) and \(\Gamma(\cdot)\) is the Gamma function.<br></br>
+        ///	
+        ///	If any of the elements are less than or equal to \(\frac{p - 1}{2}\), then an error
+        ///	is thrown.
+        /// </summary>
+        /// <param name="p">
+        ///	the number of dimensions
+        /// </param>
+        public Tensor mvlgamma(int p)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                p,
+            });
+            var kwargs=new PyDict();
+            dynamic py = __self__.InvokeMethod("mvlgamma", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
+        
+        /// <summary>
+        ///	Returns a new tensor that is a narrowed version of input tensor.<br></br>
+        ///	 The
+        ///	dimension dim is input from start to start + length.<br></br>
+        ///	 The
+        ///	returned tensor and input tensor share the same underlying storage.
+        /// </summary>
+        /// <param name="dimension">
+        ///	the dimension along which to narrow
+        /// </param>
+        /// <param name="start">
+        ///	the starting dimension
+        /// </param>
+        /// <param name="length">
+        ///	the distance to the ending dimension
+        /// </param>
+        public Tensor narrow(int dimension, int start, int length)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                dimension,
+                start,
+                length,
+            });
+            var kwargs=new PyDict();
+            dynamic py = __self__.InvokeMethod("narrow", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
+        
+        /// <summary>
         ///	Same as Tensor.narrow() except returning a copy rather
         ///	than shared storage.<br></br>
         ///	  This is primarily for sparse tensors, which
@@ -1238,6 +4067,55 @@ namespace Torch
         }
         
         /// <summary>
+        ///	Computes \(input \neq other\) element-wise.<br></br>
+        ///	
+        ///	The second argument can be a number or a tensor whose shape is
+        ///	broadcastable with the first argument.
+        /// </summary>
+        /// <param name="other">
+        ///	the tensor or value to compare
+        /// </param>
+        /// <param name="out">
+        ///	the output tensor that must be a ByteTensor
+        /// </param>
+        public Tensor ne(Tensor other, Tensor @out = null)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                other,
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("ne", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
+        
+        /// <summary>
+        ///	Returns a new tensor with the negative of the elements of input.<br></br>
+        ///	
+        ///	\[\text{out} = -1 \times \text{input}
+        ///	
+        ///	\]
+        /// </summary>
+        /// <param name="out">
+        ///	the output tensor
+        /// </param>
+        public Tensor neg(Tensor @out = null)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("neg", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
+        
+        /// <summary>
         ///	Alias for numel()
         /// </summary>
         public int nelement()
@@ -1246,6 +4124,108 @@ namespace Torch
             var __self__=self;
             dynamic py = __self__.InvokeMethod("nelement");
             return ToCsharp<int>(py);
+        }
+        
+        /// <summary>
+        ///	Returns a tensor containing the indices of all non-zero elements of
+        ///	input.<br></br>
+        ///	  Each row in the result contains the indices of a non-zero
+        ///	element in input.<br></br>
+        ///	 The result is sorted lexicographically, with
+        ///	the last index changing the fastest (C-style).<br></br>
+        ///	
+        ///	If input has n dimensions, then the resulting indices tensor
+        ///	out is of size \((z \times n)\), where \(z\) is the total number of
+        ///	non-zero elements in the input tensor.
+        /// </summary>
+        /// <param name="out">
+        ///	the output tensor containing indices
+        /// </param>
+        public Tensor<long> nonzero(Tensor<long> @out = null)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("nonzero", pyargs, kwargs);
+            return ToCsharp<Tensor<long>>(py);
+        }
+        
+        /// <summary>
+        ///	Returns the matrix norm or vector norm of a given tensor.
+        /// </summary>
+        /// <param name="p">
+        ///	the order of norm.<br></br>
+        ///	Default: 'fro'
+        ///	The following norms can be calculated:
+        ///	
+        ///	ord
+        ///	matrix norm
+        ///	vector norm
+        ///	
+        ///	None
+        ///	Frobenius norm
+        ///	2-norm
+        ///	
+        ///	’fro’
+        ///	Frobenius norm
+        ///	:
+        ///	
+        ///	‘nuc’
+        ///	nuclear norm
+        ///	:
+        ///	
+        ///	Other
+        ///	as vec norm when dim is None
+        ///	sum(abs(x)**ord)**(1./ord)
+        /// </param>
+        /// <param name="dim">
+        ///	ints, 2-list of python:ints, optional) : If it is an int,
+        ///	vector norm will be calculated, if it is 2-tuple of ints, matrix norm
+        ///	will be calculated.<br></br>
+        ///	If the value is None, matrix norm will be calculated
+        ///	when the input tensor only has two dimensions, vector norm will be
+        ///	calculated when the input tensor only has one dimension.<br></br>
+        ///	If the input
+        ///	tensor has more than two dimensions, the vector norm will be applied to
+        ///	last dimension.
+        /// </param>
+        /// <param name="keepdim">
+        ///	whether the output tensors have dim
+        ///	retained or not.<br></br>
+        ///	Ignored if dim = None and
+        ///	out = None.<br></br>
+        ///	Default: False
+        /// </param>
+        /// <param name="out">
+        ///	the output tensor.<br></br>
+        ///	Ignored if
+        ///	dim = None and out = None.
+        /// </param>
+        /// <param name="dtype">
+        ///	the desired data type of
+        ///	returned tensor.<br></br>
+        ///	If specified, the input tensor is casted to
+        ///	:attr:’dtype’ while performing the operation.<br></br>
+        ///	Default: None.
+        /// </param>
+        public void norm(object p = null, int[] dim = null, bool? keepdim = false, Tensor @out = null, Dtype dtype = null)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+            });
+            var kwargs=new PyDict();
+            if (p!=null) kwargs["p"]=ToPython(p);
+            if (dim!=null) kwargs["dim"]=ToPython(dim);
+            if (keepdim!=false) kwargs["keepdim"]=ToPython(keepdim);
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            if (dtype!=null) kwargs["dtype"]=ToPython(dtype);
+            dynamic py = __self__.InvokeMethod("norm", pyargs, kwargs);
         }
         
         /// <summary>
@@ -1267,6 +4247,17 @@ namespace Torch
         }
         
         /// <summary>
+        ///	Returns the total number of elements in the input tensor.
+        /// </summary>
+        public int numel()
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            dynamic py = __self__.InvokeMethod("numel");
+            return ToCsharp<int>(py);
+        }
+        
+        /// <summary>
         ///	Returns self tensor as a NumPy ndarray.<br></br>
         ///	 This tensor and the
         ///	returned ndarray share the same underlying storage.<br></br>
@@ -1279,6 +4270,60 @@ namespace Torch
             var __self__=self;
             dynamic py = __self__.InvokeMethod("numpy");
             return ToCsharp<NDarray>(py);
+        }
+        
+        /// <summary>
+        ///	Computes the orthogonal matrix Q of a QR factorization, from the (a, tau)
+        ///	tuple returned by torch.geqrf().<br></br>
+        ///	
+        ///	This directly calls the underlying LAPACK function ?orgqr.<br></br>
+        ///	
+        ///	See LAPACK documentation for orgqr for further details.
+        /// </summary>
+        /// <param name="tau">
+        ///	the tau from torch.geqrf().
+        /// </param>
+        public Tensor orgqr(Tensor tau)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                tau,
+            });
+            var kwargs=new PyDict();
+            dynamic py = __self__.InvokeMethod("orgqr", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
+        
+        /// <summary>
+        ///	Multiplies mat by the orthogonal Q matrix of the QR factorization
+        ///	formed by torch.geqrf() that is represented by (a, tau).<br></br>
+        ///	
+        ///	This directly calls the underlying LAPACK function ?ormqr.<br></br>
+        ///	
+        ///	See LAPACK documentation for ormqr for further details.
+        /// </summary>
+        /// <param name="tau">
+        ///	the tau from torch.geqrf().
+        /// </param>
+        /// <param name="mat">
+        ///	the matrix to be multiplied.
+        /// </param>
+        public Tensor ormqr(Tensor tau, Tensor mat, bool left = true, bool transpose = false)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                tau,
+                mat,
+            });
+            var kwargs=new PyDict();
+            if (left!=true) kwargs["left"]=ToPython(left);
+            if (transpose!=false) kwargs["transpose"]=ToPython(transpose);
+            dynamic py = __self__.InvokeMethod("ormqr", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
         }
         
         /// <summary>
@@ -1305,6 +4350,70 @@ namespace Torch
             //auto-generated code, do not change
             var __self__=self;
             dynamic py = __self__.InvokeMethod("pin_memory");
+            return ToCsharp<Tensor>(py);
+        }
+        
+        /// <summary>
+        ///	Calculates the pseudo-inverse (also known as the Moore-Penrose inverse) of a 2D tensor.<br></br>
+        ///	
+        ///	Please look at Moore-Penrose inverse for more details
+        ///	
+        ///	Note
+        ///	This method is implemented using the Singular Value Decomposition.<br></br>
+        ///	
+        ///	Note
+        ///	The pseudo-inverse is not necessarily a continuous function in the elements of the matrix [1].<br></br>
+        ///	
+        ///	Therefore, derivatives are not always existent, and exist for a constant rank only [2].<br></br>
+        ///	
+        ///	However, this method is backprop-able due to the implementation by using SVD results, and
+        ///	could be unstable.<br></br>
+        ///	 Double-backward will also be unstable due to the usage of SVD internally.<br></br>
+        ///	
+        ///	See svd() for more details.
+        /// </summary>
+        /// <param name="rcond">
+        ///	A floating point value to determine the cutoff for small singular values.<br></br>
+        ///	
+        ///	Default: 1e-15
+        /// </param>
+        public Tensor pinverse(float rcond = 1e-15f)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+            });
+            var kwargs=new PyDict();
+            if (rcond!=1e-15f) kwargs["rcond"]=ToPython(rcond);
+            dynamic py = __self__.InvokeMethod("pinverse", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
+        
+        public Tensor pow(Tensor exponent, Tensor @out = null)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                exponent,
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("pow", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
+        
+        public Tensor prod(Dtype dtype = null)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+            });
+            var kwargs=new PyDict();
+            if (dtype!=null) kwargs["dtype"]=ToPython(dtype);
+            dynamic py = __self__.InvokeMethod("prod", pyargs, kwargs);
             return ToCsharp<Tensor>(py);
         }
         
@@ -1341,6 +4450,44 @@ namespace Torch
             if (accumulate!=false) kwargs["accumulate"]=ToPython(accumulate);
             dynamic py = __self__.InvokeMethod("put_", pyargs, kwargs);
             return ToCsharp<Tensor>(py);
+        }
+        
+        /// <summary>
+        ///	Computes the QR decomposition of a matrix input, and returns a namedtuple
+        ///	(Q, R) of matrices such that \(\text{input} = Q R\), with \(Q\) being an
+        ///	orthogonal matrix and \(R\) being an upper triangular matrix.<br></br>
+        ///	
+        ///	This returns the thin (reduced) QR factorization.<br></br>
+        ///	
+        ///	Note
+        ///	precision may be lost if the magnitudes of the elements of input
+        ///	are large
+        ///	
+        ///	Note
+        ///	While it should always give you a valid decomposition, it may not
+        ///	give you the same one across platforms - it will depend on your
+        ///	LAPACK implementation.<br></br>
+        ///	
+        ///	Note
+        ///	Irrespective of the original strides, the returned matrix \(Q\) will be
+        ///	transposed, i.e.<br></br>
+        ///	 with strides (1, m) instead of (m, 1).
+        /// </summary>
+        /// <param name="out">
+        ///	tuple of Q and R tensors
+        /// </param>
+        public (Tensor, Tensor) qr(params Tensor[] @out)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("qr", pyargs, kwargs);
+            var t = py as PyTuple;
+            return (ToCsharp<Tensor>(t[0]), ToCsharp<Tensor>(t[1]));
         }
         
         /// <summary>
@@ -1413,6 +4560,29 @@ namespace Torch
         }
         
         /// <summary>
+        ///	Returns a new tensor with the reciprocal of the elements of input
+        ///	
+        ///	\[\text{out}_{i} = \frac{1}{\text{input}_{i}}
+        ///	
+        ///	\]
+        /// </summary>
+        /// <param name="out">
+        ///	the output tensor
+        /// </param>
+        public Tensor reciprocal(Tensor @out = null)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("reciprocal", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
+        
+        /// <summary>
         ///	Registers a backward hook.<br></br>
         ///	
         ///	The hook will be called every time a gradient with respect to the
@@ -1437,6 +4607,73 @@ namespace Torch
             });
             var kwargs=new PyDict();
             dynamic py = __self__.InvokeMethod("register_hook", pyargs, kwargs);
+        }
+        
+        /// <summary>
+        ///	Computes the element-wise remainder of division.<br></br>
+        ///	
+        ///	The divisor and dividend may contain both for integer and floating point
+        ///	numbers.<br></br>
+        ///	 The remainder has the same sign as the divisor.<br></br>
+        ///	
+        ///	When divisor is a tensor, the shapes of input and
+        ///	divisor must be broadcastable.
+        /// </summary>
+        /// <param name="divisor">
+        ///	the divisor that may be either a number or a
+        ///	Tensor of the same shape as the dividend
+        /// </param>
+        /// <param name="out">
+        ///	the output tensor
+        /// </param>
+        public Tensor remainder(Tensor divisor, Tensor @out = null)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                divisor,
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("remainder", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
+        
+        /// <summary>
+        ///	Returns a tensor where each sub-tensor of input along dimension
+        ///	dim is normalized such that the p-norm of the sub-tensor is lower
+        ///	than the value maxnorm
+        ///	
+        ///	Note
+        ///	If the norm of a row is lower than maxnorm, the row is unchanged
+        /// </summary>
+        /// <param name="p">
+        ///	the power for the norm computation
+        /// </param>
+        /// <param name="dim">
+        ///	the dimension to slice over to get the sub-tensors
+        /// </param>
+        /// <param name="maxnorm">
+        ///	the maximum norm to keep each sub-tensor under
+        /// </param>
+        /// <param name="out">
+        ///	the output tensor
+        /// </param>
+        public Tensor renorm(float p, int dim, float maxnorm, Tensor @out = null)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                p,
+                dim,
+                maxnorm,
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("renorm", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
         }
         
         /// <summary>
@@ -1465,6 +4702,20 @@ namespace Torch
             return ToCsharp<Tensor>(py);
         }
         
+        public Tensor repeat_interleave(int repeats, int? dim = null)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                repeats,
+            });
+            var kwargs=new PyDict();
+            if (dim!=null) kwargs["dim"]=ToPython(dim);
+            dynamic py = __self__.InvokeMethod("repeat_interleave", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
+        
         /// <summary>
         ///	Change if autograd should record operations on this tensor: sets this tensor’s
         ///	requires_grad attribute in-place.<br></br>
@@ -1487,6 +4738,38 @@ namespace Torch
             var kwargs=new PyDict();
             if (requires_grad!=true) kwargs["requires_grad"]=ToPython(requires_grad);
             dynamic py = __self__.InvokeMethod("requires_grad_", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
+        
+        /// <summary>
+        ///	Returns a tensor with the same data and number of elements as input,
+        ///	but with the specified shape.<br></br>
+        ///	 When possible, the returned tensor will be a view
+        ///	of input.<br></br>
+        ///	 Otherwise, it will be a copy.<br></br>
+        ///	 Contiguous inputs and inputs
+        ///	with compatible strides can be reshaped without copying, but you should not
+        ///	depend on the copying vs.<br></br>
+        ///	 viewing behavior.<br></br>
+        ///	
+        ///	See torch.Tensor.view() on when it is possible to return a view.<br></br>
+        ///	
+        ///	A single dimension may be -1, in which case it’s inferred from the remaining
+        ///	dimensions and the number of elements in input.
+        /// </summary>
+        /// <param name="shape">
+        ///	ints) : the new shape
+        /// </param>
+        public Tensor reshape(Shape shape)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                shape,
+            });
+            var kwargs=new PyDict();
+            dynamic py = __self__.InvokeMethod("reshape", pyargs, kwargs);
             return ToCsharp<Tensor>(py);
         }
         
@@ -1550,6 +4833,184 @@ namespace Torch
             //auto-generated code, do not change
             var __self__=self;
             dynamic py = __self__.InvokeMethod("retain_grad");
+        }
+        
+        /// <summary>
+        ///	Real-to-complex Discrete Fourier Transform
+        ///	
+        ///	This method computes the real-to-complex discrete Fourier transform.<br></br>
+        ///	 It is
+        ///	mathematically equivalent with fft() with differences only in
+        ///	formats of the input and output.<br></br>
+        ///	
+        ///	This method supports 1D, 2D and 3D real-to-complex transforms, indicated
+        ///	by signal_ndim.<br></br>
+        ///	 input must be a tensor with at least
+        ///	signal_ndim dimensions with optionally arbitrary number of leading batch
+        ///	dimensions.<br></br>
+        ///	 If normalized is set to True, this normalizes the result
+        ///	by dividing it with \(\sqrt{\prod_{i=1}^K N_i}\) so that the operator is
+        ///	unitary, where \(N_i\) is the size of signal dimension \(i\).<br></br>
+        ///	
+        ///	The real-to-complex Fourier transform results follow conjugate symmetry:
+        ///	
+        ///	\[X[\omega_1, \dots, \omega_d] = X^*[N_1 - \omega_1, \dots, N_d - \omega_d],
+        ///	
+        ///	\]
+        ///	
+        ///	where the index arithmetic is computed modulus the size of the corresponding
+        ///	dimension, \(\ ^*\) is the conjugate operator, and
+        ///	\(d\) = signal_ndim.<br></br>
+        ///	 onesided flag controls whether to avoid
+        ///	redundancy in the output results.<br></br>
+        ///	 If set to True (default), the output will
+        ///	not be full complex result of shape \((*, 2)\), where \(*\) is the shape
+        ///	of input, but instead the last dimension will be halfed as of size
+        ///	\(\lfloor \frac{N_d}{2} \rfloor + 1\).<br></br>
+        ///	
+        ///	The inverse of this function is irfft().<br></br>
+        ///	
+        ///	Note
+        ///	For CUDA tensors, an LRU cache is used for cuFFT plans to speed up
+        ///	repeatedly running FFT methods on tensors of same geometry with same
+        ///	configuration.<br></br>
+        ///	 See cuFFT plan cache for more details on how to
+        ///	monitor and control the cache.<br></br>
+        ///	
+        ///	Warning
+        ///	For CPU tensors, this method is currently only available with MKL.<br></br>
+        ///	 Use
+        ///	torch.backends.mkl.is_available() to check if MKL is installed.
+        /// </summary>
+        /// <param name="signal_ndim">
+        ///	the number of dimensions in each signal.<br></br>
+        ///	
+        ///	signal_ndim can only be 1, 2 or 3
+        /// </param>
+        /// <param name="normalized">
+        ///	controls whether to return normalized results.<br></br>
+        ///	
+        ///	Default: False
+        /// </param>
+        /// <param name="onesided">
+        ///	controls whether to return half of results to
+        ///	avoid redundancy.<br></br>
+        ///	Default: True
+        /// </param>
+        public Tensor rfft(int signal_ndim, bool? normalized = false, bool? onesided = true)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                signal_ndim,
+            });
+            var kwargs=new PyDict();
+            if (normalized!=false) kwargs["normalized"]=ToPython(normalized);
+            if (onesided!=true) kwargs["onesided"]=ToPython(onesided);
+            dynamic py = __self__.InvokeMethod("rfft", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
+        
+        /// <summary>
+        ///	Roll the tensor along the given dimension(s).<br></br>
+        ///	 Elements that are shifted beyond the
+        ///	last position are re-introduced at the first position.<br></br>
+        ///	 If a dimension is not
+        ///	specified, the tensor will be flattened before rolling and then restored
+        ///	to the original shape.
+        /// </summary>
+        /// <param name="shifts">
+        ///	ints) : The number of places by which the elements
+        ///	of the tensor are shifted.<br></br>
+        ///	If shifts is a tuple, dims must be a tuple of
+        ///	the same size, and each dimension will be rolled by the corresponding
+        ///	value
+        /// </param>
+        /// <param name="dims">
+        ///	ints) : Axis along which to roll
+        /// </param>
+        public Tensor roll(int[] shifts, int[] dims = null)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                shifts,
+            });
+            var kwargs=new PyDict();
+            if (dims!=null) kwargs["dims"]=ToPython(dims);
+            dynamic py = __self__.InvokeMethod("roll", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
+        
+        /// <summary>
+        ///	Rotate a n-D tensor by 90 degrees in the plane specified by dims axis.<br></br>
+        ///	
+        ///	Rotation direction is from the first towards the second axis if k &gt; 0, and from the second towards the first for k &lt; 0.
+        /// </summary>
+        /// <param name="k">
+        ///	number of times to rotate
+        /// </param>
+        /// <param name="dims">
+        ///	axis to rotate
+        /// </param>
+        public Tensor rot90(int k, int[] dims)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                k,
+                dims,
+            });
+            var kwargs=new PyDict();
+            dynamic py = __self__.InvokeMethod("rot90", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
+        
+        /// <summary>
+        ///	Returns a new tensor with each of the elements of input rounded
+        ///	to the closest integer.
+        /// </summary>
+        /// <param name="out">
+        ///	the output tensor
+        /// </param>
+        public Tensor round(Tensor @out = null)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("round", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
+        
+        /// <summary>
+        ///	Returns a new tensor with the reciprocal of the square-root of each of
+        ///	the elements of input.<br></br>
+        ///	
+        ///	\[\text{out}_{i} = \frac{1}{\sqrt{\text{input}_{i}}}
+        ///	
+        ///	\]
+        /// </summary>
+        /// <param name="out">
+        ///	the output tensor
+        /// </param>
+        public Tensor rsqrt(Tensor @out = null)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("rsqrt", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
         }
         
         /// <summary>
@@ -1797,6 +5258,95 @@ namespace Torch
         }
         
         /// <summary>
+        ///	Returns a new tensor with the sigmoid of the elements of input.<br></br>
+        ///	
+        ///	\[\text{out}_{i} = \frac{1}{1 + e^{-\text{input}_{i}}}
+        ///	
+        ///	\]
+        /// </summary>
+        /// <param name="out">
+        ///	the output tensor
+        /// </param>
+        public Tensor sigmoid(Tensor @out = null)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("sigmoid", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
+        
+        /// <summary>
+        ///	Returns a new tensor with the sign of the elements of input.
+        /// </summary>
+        /// <param name="out">
+        ///	the output tensor
+        /// </param>
+        public Tensor sign(Tensor @out = null)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("sign", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
+        
+        /// <summary>
+        ///	Returns a new tensor with the sine of the elements of input.<br></br>
+        ///	
+        ///	\[\text{out}_{i} = \sin(\text{input}_{i})
+        ///	
+        ///	\]
+        /// </summary>
+        /// <param name="out">
+        ///	the output tensor
+        /// </param>
+        public Tensor sin(Tensor @out = null)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("sin", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
+        
+        /// <summary>
+        ///	Returns a new tensor with the hyperbolic sine of the elements of
+        ///	input.<br></br>
+        ///	
+        ///	\[\text{out}_{i} = \sinh(\text{input}_{i})
+        ///	
+        ///	\]
+        /// </summary>
+        /// <param name="out">
+        ///	the output tensor
+        /// </param>
+        public Tensor sinh(Tensor @out = null)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("sinh", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
+        
+        /// <summary>
         ///	Returns the size of the self tensor.<br></br>
         ///	 The returned value is a subclass of
         ///	tuple.
@@ -1807,6 +5357,142 @@ namespace Torch
             var __self__=self;
             dynamic py = __self__.InvokeMethod("size");
             return ToCsharp<Shape>(py);
+        }
+        
+        /// <summary>
+        ///	Calculates the sign and log value of a 2D square tensor’s determinant.<br></br>
+        ///	
+        ///	Note
+        ///	If A has zero determinant, this returns (0, -inf).<br></br>
+        ///	
+        ///	Note
+        ///	Backward through slogdet() internally uses SVD results when A
+        ///	is not invertible.<br></br>
+        ///	 In this case, double backward through slogdet()
+        ///	will be unstable in when A doesn’t have distinct singular values.<br></br>
+        ///	
+        ///	See svd() for details.
+        /// </summary>
+        public (Tensor, Tensor) slogdet()
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            dynamic py = __self__.InvokeMethod("slogdet");
+            var t = py as PyTuple;
+            return (ToCsharp<Tensor>(t[0]), ToCsharp<Tensor>(t[1]));
+        }
+        
+        /// <summary>
+        ///	This function returns the solution to the system of linear
+        ///	equations represented by \(AX = B\) and the LU factorization of
+        ///	A, in order as a namedtuple solution, LU.<br></br>
+        ///	
+        ///	LU contains L and U factors for LU factorization of A.<br></br>
+        ///	
+        ///	torch.solve(B, A) can take in 2D inputs B, A or inputs that are
+        ///	batches of 2D matrices.<br></br>
+        ///	 If the inputs are batches, then returns
+        ///	batched outputs solution, LU.<br></br>
+        ///	
+        ///	Note
+        ///	Irrespective of the original strides, the returned matrices
+        ///	solution and LU will be transposed, i.e.<br></br>
+        ///	 with strides like
+        ///	B.contiguous().transpose(-1, -2).strides() and
+        ///	A.contiguous().transpose(-1, -2).strides() respectively.
+        /// </summary>
+        /// <param name="A">
+        ///	input square matrix of size \((*, m, m)\), where
+        ///	\(*\) is zero or more batch dimensions.
+        /// </param>
+        /// <param name="out">
+        ///	optional output tuple.
+        /// </param>
+        public (Tensor, Tensor) solve(Tensor A, Tensor @out = null)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                A,
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("solve", pyargs, kwargs);
+            var t = py as PyTuple;
+            return (ToCsharp<Tensor>(t[0]), ToCsharp<Tensor>(t[1]));
+        }
+        
+        /// <summary>
+        ///	Sorts the elements of the input tensor along a given dimension
+        ///	in ascending order by value.<br></br>
+        ///	
+        ///	If dim is not given, the last dimension of the input is chosen.<br></br>
+        ///	
+        ///	If descending is True then the elements are sorted in descending
+        ///	order by value.<br></br>
+        ///	
+        ///	A namedtuple of (values, indices) is returned, where the values are the
+        ///	sorted values and indices are the indices of the elements in the original
+        ///	input tensor.
+        /// </summary>
+        /// <param name="dim">
+        ///	the dimension to sort along
+        /// </param>
+        /// <param name="descending">
+        ///	controls the sorting order (ascending or descending)
+        /// </param>
+        /// <param name="out">
+        ///	the output tuple of (Tensor, LongTensor) that can
+        ///	be optionally given to be used as output buffers
+        /// </param>
+        public (Tensor, Tensor<long>) sort(int? dim = -1, bool? @descending = false, Tensor[] @out = null)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+            });
+            var kwargs=new PyDict();
+            if (dim!=-1) kwargs["dim"]=ToPython(dim);
+            if (@descending!=false) kwargs["descending"]=ToPython(@descending);
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("sort", pyargs, kwargs);
+            var t = py as PyTuple;
+            return (ToCsharp<Tensor>(t[0]), ToCsharp<Tensor<long>>(t[1]));
+        }
+        
+        /// <summary>
+        ///	Splits the tensor into chunks.<br></br>
+        ///	
+        ///	If split_size_or_sections is an integer type, then tensor will
+        ///	be split into equally sized chunks (if possible).<br></br>
+        ///	 Last chunk will be smaller if
+        ///	the tensor size along the given dimension dim is not divisible by
+        ///	split_size.<br></br>
+        ///	
+        ///	If split_size_or_sections is a list, then tensor will be split
+        ///	into len(split_size_or_sections) chunks with sizes in dim according
+        ///	to split_size_or_sections.
+        /// </summary>
+        /// <param name="split_size_or_sections">
+        ///	size of a single chunk or
+        ///	list of sizes for each chunk
+        /// </param>
+        /// <param name="dim">
+        ///	dimension along which to split the tensor.
+        /// </param>
+        public void split(int split_size_or_sections, int dim = 0)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                split_size_or_sections,
+            });
+            var kwargs=new PyDict();
+            if (dim!=0) kwargs["dim"]=ToPython(dim);
+            dynamic py = __self__.InvokeMethod("split", pyargs, kwargs);
         }
         
         /// <summary>
@@ -1849,6 +5535,201 @@ namespace Torch
             var __self__=self;
             dynamic py = __self__.InvokeMethod("sparse_dim");
             return ToCsharp<int>(py);
+        }
+        
+        /// <summary>
+        ///	Returns a new tensor with the square-root of the elements of input.<br></br>
+        ///	
+        ///	\[\text{out}_{i} = \sqrt{\text{input}_{i}}
+        ///	
+        ///	\]
+        /// </summary>
+        /// <param name="out">
+        ///	the output tensor
+        /// </param>
+        public Tensor sqrt(Tensor @out = null)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("sqrt", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
+        
+        /// <summary>
+        ///	Returns a tensor with all the dimensions of input of size 1 removed.<br></br>
+        ///	
+        ///	For example, if input is of shape:
+        ///	\((A \times 1 \times B \times C \times 1 \times D)\) then the out tensor
+        ///	will be of shape: \((A \times B \times C \times D)\).<br></br>
+        ///	
+        ///	When dim is given, a squeeze operation is done only in the given
+        ///	dimension.<br></br>
+        ///	 If input is of shape: \((A \times 1 \times B)\),
+        ///	squeeze(input, 0) leaves the tensor unchanged, but squeeze(input, 1)
+        ///	will squeeze the tensor to the shape \((A \times B)\).<br></br>
+        ///	
+        ///	Note
+        ///	The returned tensor shares the storage with the input tensor,
+        ///	so changing the contents of one will change the contents of the other.
+        /// </summary>
+        /// <param name="dim">
+        ///	if given, the input will be squeezed only in
+        ///	this dimension
+        /// </param>
+        /// <param name="out">
+        ///	the output tensor
+        /// </param>
+        public Tensor squeeze(int? dim = null, Tensor @out = null)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+            });
+            var kwargs=new PyDict();
+            if (dim!=null) kwargs["dim"]=ToPython(dim);
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("squeeze", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
+        
+        public Tensor std(bool unbiased = true)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+            });
+            var kwargs=new PyDict();
+            if (unbiased!=true) kwargs["unbiased"]=ToPython(unbiased);
+            dynamic py = __self__.InvokeMethod("std", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
+        
+        /// <summary>
+        ///	Short-time Fourier transform (STFT).<br></br>
+        ///	
+        ///	Ignoring the optional batch dimension, this method computes the following
+        ///	expression:
+        ///	
+        ///	\[X[m, \omega] = \sum_{k = 0}^{\text{win\_length-1}}%
+        ///	                    \text{window}[k]\ \text{input}[m \times \text{hop\_length} + k]\ %
+        ///	                    \exp\left(- j \frac{2 \pi \cdot \omega k}{\text{win\_length}}\right),
+        ///	
+        ///	\]
+        ///	
+        ///	where \(m\) is the index of the sliding window, and \(\omega\) is
+        ///	the frequency that \(0 \leq \omega &lt; \text{n\_fft}\).<br></br>
+        ///	 When
+        ///	onesided is the default value True,
+        ///	
+        ///	input must be either a 1-D time sequence or a 2-D batch of time
+        ///	sequences.<br></br>
+        ///	
+        ///	If hop_length is None (default), it is treated as equal to
+        ///	floor(n_fft / 4).<br></br>
+        ///	
+        ///	If win_length is None (default), it is treated as equal to
+        ///	n_fft.<br></br>
+        ///	
+        ///	window can be a 1-D tensor of size win_length, e.g., from
+        ///	torch.hann_window().<br></br>
+        ///	 If window is None (default), it is
+        ///	treated as if having \(1\) everywhere in the window.<br></br>
+        ///	 If
+        ///	\(\text{win\_length} &lt; \text{n\_fft}\), window will be padded on
+        ///	both sides to length n_fft before being applied.<br></br>
+        ///	
+        ///	If center is True (default), input will be padded on
+        ///	both sides so that the \(t\)-th frame is centered at time
+        ///	\(t \times \text{hop\_length}\).<br></br>
+        ///	 Otherwise, the \(t\)-th frame
+        ///	begins at time  \(t \times \text{hop\_length}\).<br></br>
+        ///	
+        ///	pad_mode determines the padding method used on input when
+        ///	center is True.<br></br>
+        ///	 See torch.nn.functional.pad() for
+        ///	all available options.<br></br>
+        ///	 Default is &quot;reflect&quot;.
+        ///	If onesided is True (default), only values for \(\omega\)
+        ///	in \(\left[0, 1, 2, \dots, \left\lfloor \frac{\text{n\_fft}}{2} \right\rfloor + 1\right]\)
+        ///	are returned because the real-to-complex Fourier transform satisfies the
+        ///	conjugate symmetry, i.e., \(X[m, \omega] = X[m, \text{n\_fft} - \omega]^*\).<br></br>
+        ///	
+        ///	If normalized is True (default is False), the function
+        ///	returns the normalized STFT results, i.e., multiplied by \((\text{frame\_length})^{-0.5}\).<br></br>
+        ///	
+        ///	Returns the real and the imaginary parts together as one tensor of size
+        ///	\((* \times N \times T \times 2)\), where \(*\) is the optional
+        ///	batch size of input, \(N\) is the number of frequencies where
+        ///	STFT is applied, \(T\) is the total number of frames used, and each pair
+        ///	in the last dimension represents a complex number as the real part and the
+        ///	imaginary part.<br></br>
+        ///	
+        ///	Warning
+        ///	This function changed signature at version 0.4.1. Calling with the
+        ///	previous signature may cause error or return incorrect result.
+        /// </summary>
+        /// <param name="n_fft">
+        ///	size of Fourier transform
+        /// </param>
+        /// <param name="hop_length">
+        ///	the distance between neighboring sliding window
+        ///	frames.<br></br>
+        ///	Default: None (treated as equal to floor(n_fft / 4))
+        /// </param>
+        /// <param name="win_length">
+        ///	the size of window frame and STFT filter.<br></br>
+        ///	
+        ///	Default: None  (treated as equal to n_fft)
+        /// </param>
+        /// <param name="window">
+        ///	the optional window function.<br></br>
+        ///	
+        ///	Default: None (treated as window of all \(1\) s)
+        /// </param>
+        /// <param name="center">
+        ///	whether to pad input on both sides so
+        ///	that the \(t\)-th frame is centered at time \(t \times \text{hop\_length}\).<br></br>
+        ///	
+        ///	Default: True
+        /// </param>
+        /// <param name="pad_mode">
+        ///	controls the padding method used when
+        ///	center is True.<br></br>
+        ///	Default: &quot;reflect&quot;
+        /// </param>
+        /// <param name="normalized">
+        ///	controls whether to return the normalized STFT results
+        ///	Default: False
+        /// </param>
+        /// <param name="onesided">
+        ///	controls whether to return half of results to
+        ///	avoid redundancy Default: True
+        /// </param>
+        public Tensor stft(int n_fft, int? hop_length = null, int? win_length = null, Tensor window = null, bool? center = true, string pad_mode = "reflect", bool? normalized = false, bool? onesided = true)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                n_fft,
+            });
+            var kwargs=new PyDict();
+            if (hop_length!=null) kwargs["hop_length"]=ToPython(hop_length);
+            if (win_length!=null) kwargs["win_length"]=ToPython(win_length);
+            if (window!=null) kwargs["window"]=ToPython(window);
+            if (center!=true) kwargs["center"]=ToPython(center);
+            if (pad_mode!="reflect") kwargs["pad_mode"]=ToPython(pad_mode);
+            if (normalized!=false) kwargs["normalized"]=ToPython(normalized);
+            if (onesided!=true) kwargs["onesided"]=ToPython(onesided);
+            dynamic py = __self__.InvokeMethod("stft", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
         }
         
         /// <summary>
@@ -1950,6 +5831,19 @@ namespace Torch
             return ToCsharp<Tensor>(py);
         }
         
+        public Tensor sum(Dtype dtype = null)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+            });
+            var kwargs=new PyDict();
+            if (dtype!=null) kwargs["dtype"]=ToPython(dtype);
+            dynamic py = __self__.InvokeMethod("sum", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
+        
         /// <summary>
         ///	Sum this tensor to size.<br></br>
         ///	
@@ -1970,6 +5864,153 @@ namespace Torch
             var kwargs=new PyDict();
             if (other!=null) kwargs["other"]=ToPython(other);
             dynamic py = __self__.InvokeMethod("sum_to_size", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
+        
+        /// <summary>
+        ///	svd(A) returns a namedtuple (U, S, V) which the singular value
+        ///	decomposition of a input real matrix A of size (n x m) such that
+        ///	\(A = USV^T\).<br></br>
+        ///	
+        ///	U is of shape \((n \times n)\).<br></br>
+        ///	
+        ///	S is a diagonal matrix of shape \((n \times m)\), represented as a vector
+        ///	of size \(\min(n, m)\) containing the non-negative diagonal entries.<br></br>
+        ///	
+        ///	V is of shape \((m \times m)\).<br></br>
+        ///	
+        ///	If some is True (default), the returned U and V matrices will
+        ///	contain only \(min(n, m)\) orthonormal columns.<br></br>
+        ///	
+        ///	If compute_uv is False, the returned U and V matrices will be zero matrices
+        ///	of shape \((n \times n)\) and \((m \times m)\) respectively.<br></br>
+        ///	 some will be ignored here.<br></br>
+        ///	
+        ///	Note
+        ///	The implementation of SVD on CPU uses the LAPACK routine ?gesdd (a divide-and-conquer
+        ///	algorithm) instead of ?gesvd for speed.<br></br>
+        ///	 Analogously, the SVD on GPU uses the MAGMA routine
+        ///	gesdd as well.<br></br>
+        ///	
+        ///	Note
+        ///	Irrespective of the original strides, the returned matrix U
+        ///	will be transposed, i.e.<br></br>
+        ///	 with strides (1, n) instead of (n, 1).<br></br>
+        ///	
+        ///	Note
+        ///	Extra care needs to be taken when backward through U and V
+        ///	outputs.<br></br>
+        ///	 Such operation is really only stable when input is
+        ///	full rank with all distinct singular values.<br></br>
+        ///	 Otherwise, NaN can
+        ///	appear as the gradients are not properly defined.<br></br>
+        ///	 Also, notice that
+        ///	double backward will usually do an additional backward through U and
+        ///	V even if the original backward is only on S.<br></br>
+        ///	
+        ///	Note
+        ///	When some = False, the gradients on U[:, min(n, m):]
+        ///	and V[:, min(n, m):] will be ignored in backward as those vectors
+        ///	can be arbitrary bases of the subspaces.<br></br>
+        ///	
+        ///	Note
+        ///	When compute_uv = False, backward cannot be performed since U and V
+        ///	from the forward pass is required for the backward operation.
+        /// </summary>
+        /// <param name="some">
+        ///	controls the shape of returned U and V
+        /// </param>
+        /// <param name="out">
+        ///	the output tuple of tensors
+        /// </param>
+        public (Tensor, Tensor, Tensor) svd(bool? some = true, Tensor[] @out = null, bool compute_uv = true)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+            });
+            var kwargs=new PyDict();
+            if (some!=true) kwargs["some"]=ToPython(some);
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            if (compute_uv!=true) kwargs["compute_uv"]=ToPython(compute_uv);
+            dynamic py = __self__.InvokeMethod("svd", pyargs, kwargs);
+            var t = py as PyTuple;
+            return (ToCsharp<Tensor>(t[0]), ToCsharp<Tensor>(t[1]), ToCsharp<Tensor>(t[2]));
+        }
+        
+        /// <summary>
+        ///	This function returns eigenvalues and eigenvectors
+        ///	of a real symmetric matrix input, represented by a namedtuple
+        ///	(eigenvalues, eigenvectors).<br></br>
+        ///	
+        ///	input and \(V\) are \((m \times m)\) matrices and \(e\) is a
+        ///	\(m\) dimensional vector.<br></br>
+        ///	
+        ///	This function calculates all eigenvalues (and vectors) of input
+        ///	such that \(\text{input} = V \text{diag}(e) V^T\).<br></br>
+        ///	
+        ///	The boolean argument eigenvectors defines computation of
+        ///	eigenvectors or eigenvalues only.<br></br>
+        ///	
+        ///	If it is False, only eigenvalues are computed.<br></br>
+        ///	 If it is True,
+        ///	both eigenvalues and eigenvectors are computed.<br></br>
+        ///	
+        ///	Since the input matrix input is supposed to be symmetric,
+        ///	only the upper triangular portion is used by default.<br></br>
+        ///	
+        ///	If upper is False, then lower triangular portion is used.<br></br>
+        ///	
+        ///	Note
+        ///	Irrespective of the original strides, the returned matrix V will
+        ///	be transposed, i.e.<br></br>
+        ///	 with strides (1, m) instead of (m, 1).<br></br>
+        ///	
+        ///	Note
+        ///	Extra care needs to be taken when backward through outputs.<br></br>
+        ///	 Such
+        ///	operation is really only stable when all eigenvalues are distinct.<br></br>
+        ///	
+        ///	Otherwise, NaN can appear as the gradients are not properly defined.
+        /// </summary>
+        /// <param name="eigenvectors">
+        ///	controls whether eigenvectors have to be computed
+        /// </param>
+        /// <param name="upper">
+        ///	controls whether to consider upper-triangular or lower-triangular region
+        /// </param>
+        /// <param name="out">
+        ///	the output tuple of (Tensor, Tensor)
+        /// </param>
+        public (Tensor, Tensor) symeig(bool? eigenvectors = false, bool? upper = true, Tensor[] @out = null)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+            });
+            var kwargs=new PyDict();
+            if (eigenvectors!=false) kwargs["eigenvectors"]=ToPython(eigenvectors);
+            if (upper!=true) kwargs["upper"]=ToPython(upper);
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("symeig", pyargs, kwargs);
+            var t = py as PyTuple;
+            return (ToCsharp<Tensor>(t[0]), ToCsharp<Tensor>(t[1]));
+        }
+        
+        /// <summary>
+        ///	Expects input to be &lt;= 2-D tensor and transposes dimensions 0
+        ///	and 1.<br></br>
+        ///	
+        ///	0-D and 1-D tensors are returned as it is and
+        ///	2-D tensor can be seen as a short-hand function for transpose(input, 0, 1).
+        /// </summary>
+        public Tensor t()
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            dynamic py = __self__.InvokeMethod("t");
             return ToCsharp<Tensor>(py);
         }
         
@@ -2073,6 +6114,76 @@ namespace Torch
         }
         
         /// <summary>
+        ///	Returns a new tensor with the elements of input at the given indices.<br></br>
+        ///	
+        ///	The input tensor is treated as if it were viewed as a 1-D tensor.<br></br>
+        ///	 The result
+        ///	takes the same shape as the indices.
+        /// </summary>
+        /// <param name="indices">
+        ///	the indices into tensor
+        /// </param>
+        public Tensor take(Tensor<long> indices)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                indices,
+            });
+            var kwargs=new PyDict();
+            dynamic py = __self__.InvokeMethod("take", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
+        
+        /// <summary>
+        ///	Returns a new tensor with the tangent of the elements of input.<br></br>
+        ///	
+        ///	\[\text{out}_{i} = \tan(\text{input}_{i})
+        ///	
+        ///	\]
+        /// </summary>
+        /// <param name="out">
+        ///	the output tensor
+        /// </param>
+        public Tensor tan(Tensor @out = null)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("tan", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
+        
+        /// <summary>
+        ///	Returns a new tensor with the hyperbolic tangent of the elements
+        ///	of input.<br></br>
+        ///	
+        ///	\[\text{out}_{i} = \tanh(\text{input}_{i})
+        ///	
+        ///	\]
+        /// </summary>
+        /// <param name="out">
+        ///	the output tensor
+        /// </param>
+        public Tensor tanh(Tensor @out = null)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("tanh", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
+        
+        /// <summary>
         ///	”
         ///	tolist() -&gt; list or number
         ///	
@@ -2092,6 +6203,56 @@ namespace Torch
         }
         
         /// <summary>
+        ///	Returns the k largest elements of the given input tensor along
+        ///	a given dimension.<br></br>
+        ///	
+        ///	If dim is not given, the last dimension of the input is chosen.<br></br>
+        ///	
+        ///	If largest is False then the k smallest elements are returned.<br></br>
+        ///	
+        ///	A namedtuple of (values, indices) is returned, where the indices are the indices
+        ///	of the elements in the original input tensor.<br></br>
+        ///	
+        ///	The boolean option sorted if True, will make sure that the returned
+        ///	k elements are themselves sorted
+        /// </summary>
+        /// <param name="k">
+        ///	the k in “top-k”
+        /// </param>
+        /// <param name="dim">
+        ///	the dimension to sort along
+        /// </param>
+        /// <param name="largest">
+        ///	controls whether to return largest or
+        ///	smallest elements
+        /// </param>
+        /// <param name="sorted">
+        ///	controls whether to return the elements
+        ///	in sorted order
+        /// </param>
+        /// <param name="out">
+        ///	the output tuple of (Tensor, LongTensor) that can be
+        ///	optionally given to be used as output buffers
+        /// </param>
+        public (Tensor, Tensor<long>) topk(int k, int? dim = null, bool? largest = true, bool? sorted = true, Tensor[] @out = null)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                k,
+            });
+            var kwargs=new PyDict();
+            if (dim!=null) kwargs["dim"]=ToPython(dim);
+            if (largest!=true) kwargs["largest"]=ToPython(largest);
+            if (sorted!=true) kwargs["sorted"]=ToPython(sorted);
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("topk", pyargs, kwargs);
+            var t = py as PyTuple;
+            return (ToCsharp<Tensor>(t[0]), ToCsharp<Tensor<long>>(t[1]));
+        }
+        
+        /// <summary>
         ///	Returns a sparse copy of the tensor.<br></br>
         ///	  PyTorch supports sparse tensors in
         ///	coordinate format.
@@ -2106,6 +6267,196 @@ namespace Torch
             var kwargs=new PyDict();
             if (sparseDims!=null) kwargs["sparseDims"]=ToPython(sparseDims);
             dynamic py = __self__.InvokeMethod("to_sparse", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
+        
+        /// <summary>
+        ///	Returns the sum of the elements of the diagonal of the input 2-D matrix.
+        /// </summary>
+        public Tensor trace()
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            dynamic py = __self__.InvokeMethod("trace");
+            return ToCsharp<Tensor>(py);
+        }
+        
+        /// <summary>
+        ///	Returns a tensor that is a transposed version of input.<br></br>
+        ///	
+        ///	The given dimensions dim0 and dim1 are swapped.<br></br>
+        ///	
+        ///	The resulting out tensor shares it’s underlying storage with the
+        ///	input tensor, so changing the content of one would change the content
+        ///	of the other.
+        /// </summary>
+        /// <param name="dim0">
+        ///	the first dimension to be transposed
+        /// </param>
+        /// <param name="dim1">
+        ///	the second dimension to be transposed
+        /// </param>
+        public Tensor transpose(int dim0, int dim1)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                dim0,
+                dim1,
+            });
+            var kwargs=new PyDict();
+            dynamic py = __self__.InvokeMethod("transpose", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
+        
+        /// <summary>
+        ///	Solves a system of equations with a triangular coefficient matrix \(A\)
+        ///	and multiple right-hand sides b.<br></br>
+        ///	
+        ///	In particular, solves \(AX = b\) and assumes \(A\) is upper-triangular
+        ///	with the default keyword arguments.<br></br>
+        ///	
+        ///	torch.triangular_solve(b, A) can take in 2D inputs b, A or inputs that are
+        ///	batches of 2D matrices.<br></br>
+        ///	 If the inputs are batches, then returns
+        ///	batched outputs X
+        ///	
+        ///	Note
+        ///	The out keyword only supports 2D matrix inputs, that is,
+        ///	b, A must be 2D matrices.
+        /// </summary>
+        /// <param name="b">
+        ///	multiple right-hand sides of size \((*, m, k)\) where
+        ///	\(*\) is zero of more batch dimensions
+        /// </param>
+        /// <param name="upper">
+        ///	whether to solve the upper-triangular system
+        ///	of equations (default) or the lower-triangular system of equations.<br></br>
+        ///	Default: True.
+        /// </param>
+        /// <param name="transpose">
+        ///	whether \(A\) should be transposed before
+        ///	being sent into the solver.<br></br>
+        ///	Default: False.
+        /// </param>
+        /// <param name="unitriangular">
+        ///	whether \(A\) is unit triangular.<br></br>
+        ///	
+        ///	If True, the diagonal elements of \(A\) are assumed to be
+        ///	1 and not referenced from \(A\).<br></br>
+        ///	Default: False.
+        /// </param>
+        public (Tensor, Tensor) triangular_solve(Tensor b, bool? upper = true, bool? transpose = false, bool? unitriangular = false)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                b,
+            });
+            var kwargs=new PyDict();
+            if (upper!=true) kwargs["upper"]=ToPython(upper);
+            if (transpose!=false) kwargs["transpose"]=ToPython(transpose);
+            if (unitriangular!=false) kwargs["unitriangular"]=ToPython(unitriangular);
+            dynamic py = __self__.InvokeMethod("triangular_solve", pyargs, kwargs);
+            var t = py as PyTuple;
+            return (ToCsharp<Tensor>(t[0]), ToCsharp<Tensor>(t[1]));
+        }
+        
+        /// <summary>
+        ///	Returns the lower triangular part of the matrix (2-D tensor) or batch of matrices
+        ///	input, the other elements of the result tensor out are set to 0.<br></br>
+        ///	
+        ///	The lower triangular part of the matrix is defined as the elements on and
+        ///	below the diagonal.<br></br>
+        ///	
+        ///	The argument diagonal controls which diagonal to consider.<br></br>
+        ///	 If
+        ///	diagonal = 0, all elements on and below the main diagonal are
+        ///	retained.<br></br>
+        ///	 A positive value includes just as many diagonals above the main
+        ///	diagonal, and similarly a negative value excludes just as many diagonals below
+        ///	the main diagonal.<br></br>
+        ///	 The main diagonal are the set of indices
+        ///	\(\lbrace (i, i) \rbrace\) for \(i \in [0, \min\{d_{1}, d_{2}\} - 1]\) where
+        ///	\(d_{1}, d_{2}\) are the dimensions of the matrix.
+        /// </summary>
+        /// <param name="diagonal">
+        ///	the diagonal to consider
+        /// </param>
+        /// <param name="out">
+        ///	the output tensor
+        /// </param>
+        public Tensor tril(int? diagonal = 0, Tensor @out = null)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+            });
+            var kwargs=new PyDict();
+            if (diagonal!=0) kwargs["diagonal"]=ToPython(diagonal);
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("tril", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
+        
+        /// <summary>
+        ///	Returns the upper triangular part of a matrix (2-D tensor) or batch of matrices
+        ///	input, the other elements of the result tensor out are set to 0.<br></br>
+        ///	
+        ///	The upper triangular part of the matrix is defined as the elements on and
+        ///	above the diagonal.<br></br>
+        ///	
+        ///	The argument diagonal controls which diagonal to consider.<br></br>
+        ///	 If
+        ///	diagonal = 0, all elements on and below the main diagonal are
+        ///	retained.<br></br>
+        ///	 A positive value excludes just as many diagonals above the main
+        ///	diagonal, and similarly a negative value includes just as many diagonals below
+        ///	the main diagonal.<br></br>
+        ///	 The main diagonal are the set of indices
+        ///	\(\lbrace (i, i) \rbrace\) for \(i \in [0, \min\{d_{1}, d_{2}\} - 1]\) where
+        ///	\(d_{1}, d_{2}\) are the dimensions of the matrix.
+        /// </summary>
+        /// <param name="diagonal">
+        ///	the diagonal to consider
+        /// </param>
+        /// <param name="out">
+        ///	the output tensor
+        /// </param>
+        public Tensor triu(int? diagonal = 0, Tensor @out = null)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+            });
+            var kwargs=new PyDict();
+            if (diagonal!=0) kwargs["diagonal"]=ToPython(diagonal);
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("triu", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
+        
+        /// <summary>
+        ///	Returns a new tensor with the truncated integer values of
+        ///	the elements of input.
+        /// </summary>
+        /// <param name="out">
+        ///	the output tensor
+        /// </param>
+        public Tensor trunc(Tensor @out = null)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("trunc", pyargs, kwargs);
             return ToCsharp<Tensor>(py);
         }
         
@@ -2158,6 +6509,27 @@ namespace Torch
             var kwargs=new PyDict();
             dynamic py = __self__.InvokeMethod("type_as", pyargs, kwargs);
             return ToCsharp<Tensor>(py);
+        }
+        
+        /// <summary>
+        ///	Removes a tensor dimension.<br></br>
+        ///	
+        ///	Returns a tuple of all slices along a given dimension, already without it.
+        /// </summary>
+        /// <param name="dim">
+        ///	dimension to remove
+        /// </param>
+        public Tensor[] unbind(int dim = 0)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+            });
+            var kwargs=new PyDict();
+            if (dim!=0) kwargs["dim"]=ToPython(dim);
+            dynamic py = __self__.InvokeMethod("unbind", pyargs, kwargs);
+            return ToCsharp<Tensor[]>(py);
         }
         
         /// <summary>
@@ -2219,6 +6591,131 @@ namespace Torch
         }
         
         /// <summary>
+        ///	Returns the unique elements of the input tensor.
+        /// </summary>
+        /// <param name="sorted">
+        ///	Whether to sort the unique elements in ascending order
+        ///	before returning as output.
+        /// </param>
+        /// <param name="return_inverse">
+        ///	Whether to also return the indices for where
+        ///	elements in the original input ended up in the returned unique list.
+        /// </param>
+        /// <param name="return_counts">
+        ///	Whether to also return the counts for each unique
+        ///	element.
+        /// </param>
+        /// <param name="dim">
+        ///	the dimension to apply unique.<br></br>
+        ///	If None, the unique of the
+        ///	flattened input is returned.<br></br>
+        ///	default: None
+        /// </param>
+        /// <returns>
+        /// A tuple of:
+        /// output
+        ///	the output list of unique scalar elements.
+        /// inverse_indices
+        ///	(optional) if
+        ///	return_inverse is True, there will be an additional
+        ///	returned tensor (same shape as input) representing the indices
+        ///	for where elements in the original input map to in the output;
+        ///	otherwise, this function will only return a single tensor.
+        /// counts
+        ///	(optional) if
+        ///	return_counts is True, there will be an additional
+        ///	returned tensor (same shape as output or output.size(dim),
+        ///	if dim was specified) representing the number of occurrences
+        ///	for each unique value or tensor.
+        /// </returns>
+        public (Tensor, Tensor, Tensor) unique(bool sorted = true, bool return_inverse = false, bool return_counts = false, int? dim = null)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+            });
+            var kwargs=new PyDict();
+            if (sorted!=true) kwargs["sorted"]=ToPython(sorted);
+            if (return_inverse!=false) kwargs["return_inverse"]=ToPython(return_inverse);
+            if (return_counts!=false) kwargs["return_counts"]=ToPython(return_counts);
+            if (dim!=null) kwargs["dim"]=ToPython(dim);
+            dynamic py = __self__.InvokeMethod("unique", pyargs, kwargs);
+            var t = py as PyTuple;
+            return (ToCsharp<Tensor>(t[0]), ToCsharp<Tensor>(t[1]), ToCsharp<Tensor>(t[2]));
+        }
+        
+        /// <summary>
+        ///	Eliminates all but the first element from every consecutive group of equivalent elements.<br></br>
+        ///	
+        ///	Note
+        ///	This function is different from torch.unique() in the sense that this function
+        ///	only eliminates consecutive duplicate values.<br></br>
+        ///	 This semantics is similar to std::unique
+        ///	in C++.
+        /// </summary>
+        /// <param name="return_inverse">
+        ///	Whether to also return the indices for where
+        ///	elements in the original input ended up in the returned unique list.
+        /// </param>
+        /// <param name="return_counts">
+        ///	Whether to also return the counts for each unique
+        ///	element.
+        /// </param>
+        /// <param name="dim">
+        ///	the dimension to apply unique.<br></br>
+        ///	If None, the unique of the
+        ///	flattened input is returned.<br></br>
+        ///	default: None
+        /// </param>
+        public (Tensor, Tensor, Tensor) unique_consecutive(bool return_inverse = false, bool return_counts = false, int? dim = null)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+            });
+            var kwargs=new PyDict();
+            if (return_inverse!=false) kwargs["return_inverse"]=ToPython(return_inverse);
+            if (return_counts!=false) kwargs["return_counts"]=ToPython(return_counts);
+            if (dim!=null) kwargs["dim"]=ToPython(dim);
+            dynamic py = __self__.InvokeMethod("unique_consecutive", pyargs, kwargs);
+            var t = py as PyTuple;
+            return (ToCsharp<Tensor>(t[0]), ToCsharp<Tensor>(t[1]), ToCsharp<Tensor>(t[2]));
+        }
+        
+        /// <summary>
+        ///	Returns a new tensor with a dimension of size one inserted at the
+        ///	specified position.<br></br>
+        ///	
+        ///	The returned tensor shares the same underlying data with this tensor.<br></br>
+        ///	
+        ///	A dim value within the range [-input.dim() - 1, input.dim() + 1)
+        ///	can be used.<br></br>
+        ///	 Negative dim will correspond to unsqueeze()
+        ///	applied at dim = dim + input.dim() + 1.
+        /// </summary>
+        /// <param name="dim">
+        ///	the index at which to insert the singleton dimension
+        /// </param>
+        /// <param name="out">
+        ///	the output tensor
+        /// </param>
+        public Tensor unsqueeze(int dim, Tensor @out = null)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                dim,
+            });
+            var kwargs=new PyDict();
+            if (@out!=null) kwargs["out"]=ToPython(@out);
+            dynamic py = __self__.InvokeMethod("unsqueeze", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
+        
+        /// <summary>
         ///	If self is a sparse COO tensor (i.e., with torch.sparse_coo layout),
         ///	this returns a view of the contained values tensor.<br></br>
         ///	 Otherwise, this throws an
@@ -2236,6 +6733,19 @@ namespace Torch
             //auto-generated code, do not change
             var __self__=self;
             dynamic py = __self__.InvokeMethod("values");
+            return ToCsharp<Tensor>(py);
+        }
+        
+        public Tensor @var(bool unbiased = true)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+            });
+            var kwargs=new PyDict();
+            if (unbiased!=true) kwargs["unbiased"]=ToPython(unbiased);
+            dynamic py = __self__.InvokeMethod("var", pyargs, kwargs);
             return ToCsharp<Tensor>(py);
         }
         
@@ -2288,6 +6798,41 @@ namespace Torch
             });
             var kwargs=new PyDict();
             dynamic py = __self__.InvokeMethod("view_as", pyargs, kwargs);
+            return ToCsharp<Tensor>(py);
+        }
+        
+        /// <summary>
+        ///	Return a tensor of elements selected from either x or y, depending on condition.<br></br>
+        ///	
+        ///	The operation is defined as:
+        ///	
+        ///	\[out_i = \begin{cases}
+        ///	    x_i & \text{if } \text{condition}_i \\
+        ///	    y_i & \text{otherwise} \\
+        ///	\end{cases}
+        ///	
+        ///	\]
+        ///	
+        ///	Note
+        ///	The tensors condition, x, y must be broadcastable.
+        /// </summary>
+        /// <param name="x">
+        ///	values selected at indices where condition is True
+        /// </param>
+        /// <param name="y">
+        ///	values selected at indices where condition is False
+        /// </param>
+        public Tensor @where(Tensor x, Tensor y)
+        {
+            //auto-generated code, do not change
+            var __self__=self;
+            var pyargs=ToTuple(new object[]
+            {
+                x,
+                y,
+            });
+            var kwargs=new PyDict();
+            dynamic py = __self__.InvokeMethod("where", pyargs, kwargs);
             return ToCsharp<Tensor>(py);
         }
         
