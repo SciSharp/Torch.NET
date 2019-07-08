@@ -7,6 +7,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Torch", "src\Torch\Torch.cs
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Torch.UnitTest", "test\Torch.UnitTest\Torch.UnitTest.csproj", "{C525ECD3-A4B4-46E3-A3C1-ADE77E0C7491}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Examples", "Examples", "{E1F45002-4CE5-45AF-BC89-6FB8F11ED5C6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleNeuralNetworkExample", "src\Examples\SimpleNeuralNetworkExample\SimpleNeuralNetworkExample.csproj", "{8C467AB9-DDD6-476C-B768-755F85F006ED}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -61,9 +65,32 @@ Global
 		{C525ECD3-A4B4-46E3-A3C1-ADE77E0C7491}.ReleaseWin|Any CPU.Build.0 = Release|Any CPU
 		{C525ECD3-A4B4-46E3-A3C1-ADE77E0C7491}.ReleaseWinPY3|Any CPU.ActiveCfg = Release|Any CPU
 		{C525ECD3-A4B4-46E3-A3C1-ADE77E0C7491}.ReleaseWinPY3|Any CPU.Build.0 = Release|Any CPU
+		{8C467AB9-DDD6-476C-B768-755F85F006ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C467AB9-DDD6-476C-B768-755F85F006ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C467AB9-DDD6-476C-B768-755F85F006ED}.DebugMono|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C467AB9-DDD6-476C-B768-755F85F006ED}.DebugMono|Any CPU.Build.0 = Debug|Any CPU
+		{8C467AB9-DDD6-476C-B768-755F85F006ED}.DebugMonoPY3|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C467AB9-DDD6-476C-B768-755F85F006ED}.DebugMonoPY3|Any CPU.Build.0 = Debug|Any CPU
+		{8C467AB9-DDD6-476C-B768-755F85F006ED}.DebugWin|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C467AB9-DDD6-476C-B768-755F85F006ED}.DebugWin|Any CPU.Build.0 = Debug|Any CPU
+		{8C467AB9-DDD6-476C-B768-755F85F006ED}.DebugWinPY3|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C467AB9-DDD6-476C-B768-755F85F006ED}.DebugWinPY3|Any CPU.Build.0 = Debug|Any CPU
+		{8C467AB9-DDD6-476C-B768-755F85F006ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C467AB9-DDD6-476C-B768-755F85F006ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C467AB9-DDD6-476C-B768-755F85F006ED}.ReleaseMono|Any CPU.ActiveCfg = Release|Any CPU
+		{8C467AB9-DDD6-476C-B768-755F85F006ED}.ReleaseMono|Any CPU.Build.0 = Release|Any CPU
+		{8C467AB9-DDD6-476C-B768-755F85F006ED}.ReleaseMonoPY3|Any CPU.ActiveCfg = Release|Any CPU
+		{8C467AB9-DDD6-476C-B768-755F85F006ED}.ReleaseMonoPY3|Any CPU.Build.0 = Release|Any CPU
+		{8C467AB9-DDD6-476C-B768-755F85F006ED}.ReleaseWin|Any CPU.ActiveCfg = Release|Any CPU
+		{8C467AB9-DDD6-476C-B768-755F85F006ED}.ReleaseWin|Any CPU.Build.0 = Release|Any CPU
+		{8C467AB9-DDD6-476C-B768-755F85F006ED}.ReleaseWinPY3|Any CPU.ActiveCfg = Release|Any CPU
+		{8C467AB9-DDD6-476C-B768-755F85F006ED}.ReleaseWinPY3|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{8C467AB9-DDD6-476C-B768-755F85F006ED} = {E1F45002-4CE5-45AF-BC89-6FB8F11ED5C6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F06B38DB-480C-484E-9AEA-664AC4C641B8}
