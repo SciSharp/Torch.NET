@@ -70,6 +70,12 @@ namespace Torch
             set { self.SetItem(ToTuple(index), value.PyObject); }
         }
 
+        public Tensor this[Tensor selection_indices]
+        {
+            get { return new Tensor(self.GetItem(selection_indices.PyObject)); }
+            set { self.SetItem(selection_indices.PyObject, value.PyObject); }
+        }
+
         private T as_scalar<T>() => self.InvokeMethod("item").As<T>();
 
         /// <summary>
