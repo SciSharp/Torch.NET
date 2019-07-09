@@ -31,7 +31,7 @@ namespace Torch
             ///	 If there was no such class as Parameter, these
             ///	temporaries would get registered too.
             /// </summary>
-            public partial class Parameter : PythonObject
+            public partial class Parameter : Tensor
             {
                 // auto-generated class
                 
@@ -39,7 +39,7 @@ namespace Torch
                 
                 public Parameter(PythonObject other) : base(other.PyObject as PyObject) { }
                 
-                public Parameter(Tensor data, bool? requires_grad = null)
+                public Parameter(Tensor data, bool? requires_grad = null) : base(data)
                 {
                     //auto-generated code, do not change
                     var nn = self.GetAttr("nn");

@@ -45,7 +45,23 @@ namespace Torch
 
                 protected Module() : base() { }
 
-                // TODO: every module is callable. it should have a Invoke(...) function
+                /// <summary>
+                /// Call the module to transform the provided inputs and return the outputs
+                /// </summary>
+                /// <param name="inputs"></param>
+                /// <returns></returns>
+                public IEnumerable<Tensor> Invoke(params Tensor[] inputs)
+                {
+                    var result=self.Invoke(new PyTuple(inputs.Select(x => x.PyObject as PyObject).ToArray()));
+                    if (result.HasAttr("device"))
+                    {
+                        // must be a tensor
+                        yield return new Tensor(result);
+                        yield break;
+                    }
+                    foreach(PyObject sub_result in result)
+                        yield return new Tensor(sub_result);
+                }
 
                 /// <summary>
                 /// Adds a child module to the current module.
@@ -124,7 +140,7 @@ namespace Torch
                     //auto-generated code, do not change
                     var __self__=self;
                     dynamic py = __self__.InvokeMethod("cpu");
-                    return ToCsharp<Module>(py);
+                    return this;
                 }
                 
                 /// <summary>
@@ -144,7 +160,7 @@ namespace Torch
                     var kwargs=new PyDict();
                     if (device!=null) kwargs["device"]=ToPython(device);
                     dynamic py = __self__.InvokeMethod("cuda", pyargs, kwargs);
-                    return ToCsharp<Module>(py);
+                    return this;
                 }
                 
                 /// <summary>
@@ -155,7 +171,7 @@ namespace Torch
                     //auto-generated code, do not change
                     var __self__=self;
                     dynamic py = __self__.InvokeMethod("double");
-                    return ToCsharp<Module>(py);
+                    return this;
                 }
                 
                 /// <summary>
@@ -247,7 +263,7 @@ namespace Torch
                     //auto-generated code, do not change
                     var __self__=self;
                     dynamic py = __self__.InvokeMethod("half");
-                    return ToCsharp<Module>(py);
+                    return this;
                 }
                 
                 /// <summary>
@@ -388,7 +404,8 @@ namespace Torch
                     var kwargs=new PyDict();
                     if (recurse!=true) kwargs["recurse"]=ToPython(recurse);
                     dynamic py = __self__.InvokeMethod("parameters", pyargs, kwargs);
-                    return ToCsharp<IEnumerable<Parameter>>(py);
+                    foreach(var p in py) 
+                        yield return new Parameter(p);
                 }
                 
                 /// <summary>
