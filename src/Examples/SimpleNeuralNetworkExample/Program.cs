@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using Numpy.Models;
 using Python.Runtime;
 using Torch;
@@ -10,9 +11,10 @@ namespace SimpleNeuralNetworkExample
         static void Main(string[] args)
         {
             Console.WriteLine("Fitting a two-layer NN against random data ...");
+            Console.WriteLine("\timporting torch ...");
 
-            var dtype = torch.@float;
-            var device = torch.device("cuda:0"); // or "cpu"
+            var dtype = torch.@float64;
+            var device = torch.device("cuda:0"); // "cuda:0" or "cpu"
 
             // N is batch size; D_in is input dimension;
             // H is hidden dimension; D_out is output dimension.
@@ -20,9 +22,11 @@ namespace SimpleNeuralNetworkExample
             // Create random Tensors to hold input and outputs.
             // Setting requires_grad=False indicates that we do not need to compute gradients
             // with respect to these Tensors during the backward pass.
+            Console.WriteLine("\tcreating random data ...");
             var x = torch.randn(new Shape(N, D_in), device: device, dtype: dtype);
             var y = torch.randn(new Shape(N, D_out), device: device, dtype: dtype);
 
+            var stopwatch = Stopwatch.StartNew();
             // Create random Tensors for weights.
             // Setting requires_grad=true indicates that we want to compute gradients with
             // respect to these Tensors during the backward pass.
@@ -42,7 +46,8 @@ namespace SimpleNeuralNetworkExample
                 // Now loss is a Tensor of shape (1,)
                 // loss.item() gets the a scalar value held in the loss.
                 var loss = (y_pred - y).pow(2).sum();
-                Console.WriteLine($"\tstep {t}: {loss.item<double>()}");
+                if((t+1)%20==0)
+                    Console.WriteLine($"\tstep {t}: {loss.item<double>():F4}");
 
                 // Use autograd to compute the backward pass. This call will compute the
                 // gradient of loss with respect to all Tensors with requires_grad=true.
@@ -67,6 +72,10 @@ namespace SimpleNeuralNetworkExample
                     w2.grad.zero_();
                 });
             }
+            stopwatch.Stop();
+            Console.WriteLine($"\telapsed time: {stopwatch.Elapsed.TotalSeconds:F3} seconds\n");
+            Console.Write("Hit any key to exit: ");
+            Console.ReadKey();
         }
     }
 }
