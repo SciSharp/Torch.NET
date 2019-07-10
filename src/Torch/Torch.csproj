@@ -18,8 +18,8 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.CSharp" Version="4.5.0" />
-    <PackageReference Include="Numpy.Bare" Version="1.1.0" />
-    <PackageReference Include="Python.Runtime.NETStandard" Version="3.7.0" />
+    <PackageReference Include="Numpy.Bare" Version="3.7.1.6" />
+    <PackageReference Include="Python.Runtime.NETStandard" Version="3.7.1" />
   </ItemGroup>
 
 </Project>

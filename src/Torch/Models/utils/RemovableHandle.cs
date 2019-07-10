@@ -2,19 +2,22 @@
 
 namespace Torch
 {
-    public static partial class utils
+    public static partial class torch
     {
-        public static partial class hooks
+        public static partial class utils
         {
-            public partial class RemovableHandle : PythonObject
+            public static partial class hooks
             {
-                public RemovableHandle(PyObject pyobj) : base(pyobj)
+                public partial class RemovableHandle : PythonObject
                 {
-                }
+                    public RemovableHandle(PyObject pyobj) : base(pyobj)
+                    {
+                    }
 
-                public void remove()
-                {
-                    self.InvokeMethod("remove");
+                    public void remove()
+                    {
+                        self.InvokeMethod("remove");
+                    }
                 }
             }
         }

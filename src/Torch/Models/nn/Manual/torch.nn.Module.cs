@@ -11,8 +11,10 @@ using Numpy.Models;
 
 namespace Torch
 {
-    public static partial class torch {
-        public static partial class nn {
+    public static partial class torch
+    {
+        public static partial class nn
+        {
             /// <summary>
             /// Base class for all neural network modules.
             /// 
@@ -39,7 +41,7 @@ namespace Torch
             /// </summary>
             public class Module : PythonObject
             {
-                
+
                 public Module(PyObject pyobj) : base(pyobj) { }
                 public Module(PythonObject other) : base(other.PyObject as PyObject) { }
 
@@ -52,14 +54,14 @@ namespace Torch
                 /// <returns></returns>
                 public IEnumerable<Tensor> Invoke(params Tensor[] inputs)
                 {
-                    var result=self.Invoke(new PyTuple(inputs.Select(x => x.PyObject as PyObject).ToArray()));
+                    var result = self.Invoke(new PyTuple(inputs.Select(x => x.PyObject as PyObject).ToArray()));
                     if (result.HasAttr("device"))
                     {
                         // must be a tensor
                         yield return new Tensor(result);
                         yield break;
                     }
-                    foreach(PyObject sub_result in result)
+                    foreach (PyObject sub_result in result)
                         yield return new Tensor(sub_result);
                 }
 
@@ -77,16 +79,16 @@ namespace Torch
                 /// </param>
                 public void add_module(string name, Module module)
                 {
-                    var __self__=self;
-                    var pyargs=ToTuple(new object[]
+                    var __self__ = self;
+                    var pyargs = ToTuple(new object[]
                     {
                         name,
                         module,
                     });
-                    var kwargs=new PyDict();
+                    var kwargs = new PyDict();
                     dynamic py = __self__.InvokeMethod("add_module", pyargs, kwargs);
                 }
-                
+
                 /// <summary>
                 /// Applies fn recursively to every submodule (as returned by .children())
                 /// as well as self. Typical use includes initializing the parameters of a model
@@ -95,54 +97,54 @@ namespace Torch
                 public Module apply(Action<Module> fn)
                 {
                     //auto-generated code, do not change
-                    var __self__=self;
-                    var pyargs=ToTuple(new object[]
+                    var __self__ = self;
+                    var pyargs = ToTuple(new object[]
                     {
                         fn,
                     });
-                    var kwargs=new PyDict();
+                    var kwargs = new PyDict();
                     dynamic py = __self__.InvokeMethod("apply", pyargs, kwargs);
                     return ToCsharp<Module>(py);
                 }
-                
+
                 /// <summary>
                 /// Returns an iterator over module buffers.
                 /// </summary>
                 public IEnumerable<Tensor> buffers(bool recurse = true)
                 {
                     //auto-generated code, do not change
-                    var __self__=self;
-                    var pyargs=ToTuple(new object[]
+                    var __self__ = self;
+                    var pyargs = ToTuple(new object[]
                     {
                     });
-                    var kwargs=new PyDict();
-                    if (recurse!=true) kwargs["recurse"]=ToPython(recurse);
+                    var kwargs = new PyDict();
+                    if (recurse != true) kwargs["recurse"] = ToPython(recurse);
                     dynamic py = __self__.InvokeMethod("buffers", pyargs, kwargs);
                     return ToCsharp<IEnumerable<Tensor>>(py);
                 }
-                
+
                 /// <summary>
                 /// Returns an iterator over immediate children modules.
                 /// </summary>
                 public IEnumerable<Module> children()
                 {
                     //auto-generated code, do not change
-                    var __self__=self;
+                    var __self__ = self;
                     dynamic py = __self__.InvokeMethod("children");
                     return ToCsharp<IEnumerable<Module>>(py);
                 }
-                
+
                 /// <summary>
                 /// Moves all model parameters and buffers to the CPU.
                 /// </summary>
                 public Module cpu()
                 {
                     //auto-generated code, do not change
-                    var __self__=self;
+                    var __self__ = self;
                     dynamic py = __self__.InvokeMethod("cpu");
                     return this;
                 }
-                
+
                 /// <summary>
                 /// Moves all model parameters and buffers to the GPU.
                 /// 
@@ -153,27 +155,27 @@ namespace Torch
                 public Module cuda(int? device = null)
                 {
                     //auto-generated code, do not change
-                    var __self__=self;
-                    var pyargs=ToTuple(new object[]
+                    var __self__ = self;
+                    var pyargs = ToTuple(new object[]
                     {
                     });
-                    var kwargs=new PyDict();
-                    if (device!=null) kwargs["device"]=ToPython(device);
+                    var kwargs = new PyDict();
+                    if (device != null) kwargs["device"] = ToPython(device);
                     dynamic py = __self__.InvokeMethod("cuda", pyargs, kwargs);
                     return this;
                 }
-                
+
                 /// <summary>
                 /// Casts all floating point parameters and buffers to double datatype.
                 /// </summary>
                 public Module @double()
                 {
                     //auto-generated code, do not change
-                    var __self__=self;
+                    var __self__ = self;
                     dynamic py = __self__.InvokeMethod("double");
                     return this;
                 }
-                
+
                 /// <summary>
                 /// This allows better BC support for load_state_dict(). In
                 /// state_dict(), the version number will be saved as in the attribute
@@ -198,7 +200,7 @@ namespace Torch
                         self.SetAttr("dump_patches", ToPython(value));
                     }
                 }
-                
+
                 /// <summary>
                 /// Sets the module in evaluation mode.
                 /// 
@@ -210,10 +212,10 @@ namespace Torch
                 public void eval()
                 {
                     //auto-generated code, do not change
-                    var __self__=self;
+                    var __self__ = self;
                     dynamic py = __self__.InvokeMethod("eval");
                 }
-                
+
                 /// <summary>
                 /// Set the extra representation of the module
                 /// 
@@ -224,17 +226,17 @@ namespace Torch
                 public void extra_repr()
                 {
                     //auto-generated code, do not change
-                    var __self__=self;
+                    var __self__ = self;
                     dynamic py = __self__.InvokeMethod("extra_repr");
                 }
-                
+
                 /// <summary>
                 /// Casts all floating point parameters and buffers to float datatype.
                 /// </summary>
                 public Module @float()
                 {
                     //auto-generated code, do not change
-                    var __self__=self;
+                    var __self__ = self;
                     dynamic py = __self__.InvokeMethod("float");
                     return ToCsharp<Module>(py);
                 }
@@ -261,11 +263,11 @@ namespace Torch
                 public Module half()
                 {
                     //auto-generated code, do not change
-                    var __self__=self;
+                    var __self__ = self;
                     dynamic py = __self__.InvokeMethod("half");
                     return this;
                 }
-                
+
                 /// <summary>
                 /// Copies parameters and buffers from state_dict into
                 /// this module and its descendants. If strict is True, then
@@ -284,29 +286,29 @@ namespace Torch
                 public (string[], string[]) load_state_dict(Hashtable state_dict, bool? strict = true)
                 {
                     //auto-generated code, do not change
-                    var __self__=self;
-                    var pyargs=ToTuple(new object[]
+                    var __self__ = self;
+                    var pyargs = ToTuple(new object[]
                     {
                         state_dict,
                     });
-                    var kwargs=new PyDict();
-                    if (strict!=true) kwargs["strict"]=ToPython(strict);
+                    var kwargs = new PyDict();
+                    if (strict != true) kwargs["strict"] = ToPython(strict);
                     dynamic py = __self__.InvokeMethod("load_state_dict", pyargs, kwargs);
                     var t = py as PyTuple;
                     return (ToCsharp<string[]>(t[0]), ToCsharp<string[]>(t[1]));
                 }
-                
+
                 /// <summary>
                 /// Returns an iterator over all modules in the network.
                 /// </summary>
                 public IEnumerable<Module> modules()
                 {
                     //auto-generated code, do not change
-                    var __self__=self;
+                    var __self__ = self;
                     dynamic py = __self__.InvokeMethod("modules");
                     return ToCsharp<IEnumerable<Module>>(py);
                 }
-                
+
                 /// <summary>
                 /// Returns an iterator over module buffers, yielding both the
                 /// name of the buffer as well as the buffer itself.
@@ -322,17 +324,17 @@ namespace Torch
                 public IEnumerable<KeyValuePair<string, Tensor>> named_buffers(string prefix = "", bool recurse = true)
                 {
                     //auto-generated code, do not change
-                    var __self__=self;
-                    var pyargs=ToTuple(new object[]
+                    var __self__ = self;
+                    var pyargs = ToTuple(new object[]
                     {
                     });
-                    var kwargs=new PyDict();
-                    if (prefix!="") kwargs["prefix"]=ToPython(prefix);
-                    if (recurse!=true) kwargs["recurse"]=ToPython(recurse);
+                    var kwargs = new PyDict();
+                    if (prefix != "") kwargs["prefix"] = ToPython(prefix);
+                    if (recurse != true) kwargs["recurse"] = ToPython(recurse);
                     dynamic py = __self__.InvokeMethod("named_buffers", pyargs, kwargs);
                     return ToCsharp<IEnumerable<KeyValuePair<string, Tensor>>>(py);
                 }
-                
+
                 /// <summary>
                 /// Returns an iterator over immediate children modules, yielding both
                 /// the name of the module as well as the module itself.
@@ -340,11 +342,11 @@ namespace Torch
                 public IEnumerable<KeyValuePair<string, Tensor>> named_children()
                 {
                     //auto-generated code, do not change
-                    var __self__=self;
+                    var __self__ = self;
                     dynamic py = __self__.InvokeMethod("named_children");
                     return ToCsharp<IEnumerable<KeyValuePair<string, Tensor>>>(py);
                 }
-                
+
                 /// <summary>
                 /// Returns an iterator over all modules in the network, yielding
                 /// both the name of the module as well as the module itself.
@@ -352,17 +354,17 @@ namespace Torch
                 public IEnumerable<KeyValuePair<string, Tensor>> named_modules(HashSet<object> memo = null, string prefix = "")
                 {
                     //auto-generated code, do not change
-                    var __self__=self;
-                    var pyargs=ToTuple(new object[]
+                    var __self__ = self;
+                    var pyargs = ToTuple(new object[]
                     {
                     });
-                    var kwargs=new PyDict();
-                    if (memo!=null) kwargs["memo"]=ToPython(memo);
-                    if (prefix!="") kwargs["prefix"]=ToPython(prefix);
+                    var kwargs = new PyDict();
+                    if (memo != null) kwargs["memo"] = ToPython(memo);
+                    if (prefix != "") kwargs["prefix"] = ToPython(prefix);
                     dynamic py = __self__.InvokeMethod("named_modules", pyargs, kwargs);
                     return ToCsharp<IEnumerable<KeyValuePair<string, Tensor>>>(py);
                 }
-                
+
                 /// <summary>
                 /// Returns an iterator over module parameters, yielding both the
                 /// name of the parameter as well as the parameter itself.
@@ -378,17 +380,17 @@ namespace Torch
                 public IEnumerable<KeyValuePair<string, Tensor>> named_parameters(string prefix = "", bool recurse = true)
                 {
                     //auto-generated code, do not change
-                    var __self__=self;
-                    var pyargs=ToTuple(new object[]
+                    var __self__ = self;
+                    var pyargs = ToTuple(new object[]
                     {
                     });
-                    var kwargs=new PyDict();
-                    if (prefix!="") kwargs["prefix"]=ToPython(prefix);
-                    if (recurse!=true) kwargs["recurse"]=ToPython(recurse);
+                    var kwargs = new PyDict();
+                    if (prefix != "") kwargs["prefix"] = ToPython(prefix);
+                    if (recurse != true) kwargs["recurse"] = ToPython(recurse);
                     dynamic py = __self__.InvokeMethod("named_parameters", pyargs, kwargs);
                     return ToCsharp<IEnumerable<KeyValuePair<string, Tensor>>>(py);
                 }
-                
+
                 /// <summary>
                 /// Returns an iterator over module parameters.
                 /// 
@@ -397,17 +399,17 @@ namespace Torch
                 public IEnumerable<Parameter> parameters(bool recurse = true)
                 {
                     //auto-generated code, do not change
-                    var __self__=self;
-                    var pyargs=ToTuple(new object[]
+                    var __self__ = self;
+                    var pyargs = ToTuple(new object[]
                     {
                     });
-                    var kwargs=new PyDict();
-                    if (recurse!=true) kwargs["recurse"]=ToPython(recurse);
+                    var kwargs = new PyDict();
+                    if (recurse != true) kwargs["recurse"] = ToPython(recurse);
                     dynamic py = __self__.InvokeMethod("parameters", pyargs, kwargs);
-                    foreach(var p in py) 
+                    foreach (var p in py)
                         yield return new Parameter(p);
                 }
-                
+
                 /// <summary>
                 /// Registers a backward hook on the module.
                 /// 
@@ -422,19 +424,19 @@ namespace Torch
                 /// input that will be used in place of grad_input in subsequent
                 /// computations.
                 /// </summary>
-                public utils.hooks.RemovableHandle register_backward_hook(Func<Module, Tensor[], Tensor[], Tensor> hook)
+                public torch.utils.hooks.RemovableHandle register_backward_hook(Func<Module, Tensor[], Tensor[], Tensor> hook)
                 {
                     //auto-generated code, do not change
-                    var __self__=self;
-                    var pyargs=ToTuple(new object[]
+                    var __self__ = self;
+                    var pyargs = ToTuple(new object[]
                     {
                         hook,
                     });
-                    var kwargs=new PyDict();
+                    var kwargs = new PyDict();
                     dynamic py = __self__.InvokeMethod("register_backward_hook", pyargs, kwargs);
-                    return ToCsharp<utils.hooks.RemovableHandle>(py);
+                    return ToCsharp<torch.utils.hooks.RemovableHandle>(py);
                 }
-                
+
                 /// <summary>
                 /// Adds a persistent buffer to the module.
                 /// 
@@ -454,16 +456,16 @@ namespace Torch
                 public void register_buffer(string name, Tensor tensor)
                 {
                     //auto-generated code, do not change
-                    var __self__=self;
-                    var pyargs=ToTuple(new object[]
+                    var __self__ = self;
+                    var pyargs = ToTuple(new object[]
                     {
                         name,
                         tensor,
                     });
-                    var kwargs=new PyDict();
+                    var kwargs = new PyDict();
                     dynamic py = __self__.InvokeMethod("register_buffer", pyargs, kwargs);
                 }
-                
+
                 /// <summary>
                 /// Registers a forward hook on the module.
                 /// 
@@ -474,19 +476,19 @@ namespace Torch
                 /// 
                 /// The hook should not modify the input or output.
                 /// </summary>
-                public utils.hooks.RemovableHandle register_forward_hook(Action<Module, Tensor[], Tensor[]> hook)
+                public torch.utils.hooks.RemovableHandle register_forward_hook(Action<Module, Tensor[], Tensor[]> hook)
                 {
                     //auto-generated code, do not change
-                    var __self__=self;
-                    var pyargs=ToTuple(new object[]
+                    var __self__ = self;
+                    var pyargs = ToTuple(new object[]
                     {
                         hook,
                     });
-                    var kwargs=new PyDict();
+                    var kwargs = new PyDict();
                     dynamic py = __self__.InvokeMethod("register_forward_hook", pyargs, kwargs);
-                    return ToCsharp<utils.hooks.RemovableHandle>(py);
+                    return ToCsharp<torch.utils.hooks.RemovableHandle>(py);
                 }
-                
+
                 /// <summary>
                 /// Registers a forward pre-hook on the module.
                 /// 
@@ -497,19 +499,19 @@ namespace Torch
                 /// 
                 /// The hook should not modify the input.
                 /// </summary>
-                public utils.hooks.RemovableHandle register_forward_pre_hook(Action<Module, Tensor[]> hook)
+                public torch.utils.hooks.RemovableHandle register_forward_pre_hook(Action<Module, Tensor[]> hook)
                 {
                     //auto-generated code, do not change
-                    var __self__=self;
-                    var pyargs=ToTuple(new object[]
+                    var __self__ = self;
+                    var pyargs = ToTuple(new object[]
                     {
                         hook,
                     });
-                    var kwargs=new PyDict();
+                    var kwargs = new PyDict();
                     dynamic py = __self__.InvokeMethod("register_forward_pre_hook", pyargs, kwargs);
-                    return ToCsharp<utils.hooks.RemovableHandle>(py);
+                    return ToCsharp<torch.utils.hooks.RemovableHandle>(py);
                 }
-                
+
                 /// <summary>
                 /// Adds a parameter to the module.
                 /// 
@@ -525,16 +527,16 @@ namespace Torch
                 public void register_parameter(string name, Parameter param)
                 {
                     //auto-generated code, do not change
-                    var __self__=self;
-                    var pyargs=ToTuple(new object[]
+                    var __self__ = self;
+                    var pyargs = ToTuple(new object[]
                     {
                         name,
                         param,
                     });
-                    var kwargs=new PyDict();
+                    var kwargs = new PyDict();
                     dynamic py = __self__.InvokeMethod("register_parameter", pyargs, kwargs);
                 }
-                
+
                 /// <summary>
                 /// Returns a dictionary containing a whole state of the module.
                 /// 
@@ -544,61 +546,61 @@ namespace Torch
                 public Hashtable state_dict(Hashtable destination = null, string prefix = "", bool keep_vars = false)
                 {
                     //auto-generated code, do not change
-                    var __self__=self;
-                    var pyargs=ToTuple(new object[]
+                    var __self__ = self;
+                    var pyargs = ToTuple(new object[]
                     {
                     });
-                    var kwargs=new PyDict();
-                    if (destination!=null) kwargs["destination"]=ToPython(destination);
-                    if (prefix!="") kwargs["prefix"]=ToPython(prefix);
-                    if (keep_vars!=false) kwargs["keep_vars"]=ToPython(keep_vars);
+                    var kwargs = new PyDict();
+                    if (destination != null) kwargs["destination"] = ToPython(destination);
+                    if (prefix != "") kwargs["prefix"] = ToPython(prefix);
+                    if (keep_vars != false) kwargs["keep_vars"] = ToPython(keep_vars);
                     dynamic py = __self__.InvokeMethod("state_dict", pyargs, kwargs);
                     return ToCsharp<Hashtable>(py);
                 }
-                
+
                 public Module to(Device device, Dtype dtype, bool non_blocking = false)
                 {
                     //auto-generated code, do not change
-                    var __self__=self;
-                    var pyargs=ToTuple(new object[]
+                    var __self__ = self;
+                    var pyargs = ToTuple(new object[]
                     {
                         device,
                         dtype,
                     });
-                    var kwargs=new PyDict();
-                    if (non_blocking!=false) kwargs["non_blocking"]=ToPython(non_blocking);
+                    var kwargs = new PyDict();
+                    if (non_blocking != false) kwargs["non_blocking"] = ToPython(non_blocking);
                     dynamic py = __self__.InvokeMethod("to", pyargs, kwargs);
                     return ToCsharp<Module>(py);
                 }
-                
+
                 public Module to(Dtype dtype, bool non_blocking = false)
                 {
                     //auto-generated code, do not change
-                    var __self__=self;
-                    var pyargs=ToTuple(new object[]
+                    var __self__ = self;
+                    var pyargs = ToTuple(new object[]
                     {
                         dtype,
                     });
-                    var kwargs=new PyDict();
-                    if (non_blocking!=false) kwargs["non_blocking"]=ToPython(non_blocking);
+                    var kwargs = new PyDict();
+                    if (non_blocking != false) kwargs["non_blocking"] = ToPython(non_blocking);
                     dynamic py = __self__.InvokeMethod("to", pyargs, kwargs);
                     return ToCsharp<Module>(py);
                 }
-                
+
                 public Module to(Tensor tensor, bool non_blocking = false)
                 {
                     //auto-generated code, do not change
-                    var __self__=self;
-                    var pyargs=ToTuple(new object[]
+                    var __self__ = self;
+                    var pyargs = ToTuple(new object[]
                     {
                         tensor,
                     });
-                    var kwargs=new PyDict();
-                    if (non_blocking!=false) kwargs["non_blocking"]=ToPython(non_blocking);
+                    var kwargs = new PyDict();
+                    if (non_blocking != false) kwargs["non_blocking"] = ToPython(non_blocking);
                     dynamic py = __self__.InvokeMethod("to", pyargs, kwargs);
                     return ToCsharp<Module>(py);
                 }
-                
+
                 /// <summary>
                 /// Sets the module in training mode.
                 /// 
@@ -610,44 +612,44 @@ namespace Torch
                 public Module train(bool mode = true)
                 {
                     //auto-generated code, do not change
-                    var __self__=self;
-                    var pyargs=ToTuple(new object[]
+                    var __self__ = self;
+                    var pyargs = ToTuple(new object[]
                     {
                     });
-                    var kwargs=new PyDict();
-                    if (mode!=true) kwargs["mode"]=ToPython(mode);
+                    var kwargs = new PyDict();
+                    if (mode != true) kwargs["mode"] = ToPython(mode);
                     dynamic py = __self__.InvokeMethod("train", pyargs, kwargs);
                     return ToCsharp<Module>(py);
                 }
-                
+
                 /// <summary>
                 /// Casts all parameters and buffers to dst_type.
                 /// </summary>
                 public Module type(Dtype dst_type)
                 {
                     //auto-generated code, do not change
-                    var __self__=self;
-                    var pyargs=ToTuple(new object[]
+                    var __self__ = self;
+                    var pyargs = ToTuple(new object[]
                     {
                         dst_type,
                     });
-                    var kwargs=new PyDict();
+                    var kwargs = new PyDict();
                     dynamic py = __self__.InvokeMethod("type", pyargs, kwargs);
                     return ToCsharp<Module>(py);
                 }
-                
+
                 /// <summary>
                 /// Sets gradients of all model parameters to zero.
                 /// </summary>
                 public void zero_grad()
                 {
                     //auto-generated code, do not change
-                    var __self__=self;
+                    var __self__ = self;
                     dynamic py = __self__.InvokeMethod("zero_grad");
                 }
-                
+
             }
         }
     }
-    
+
 }

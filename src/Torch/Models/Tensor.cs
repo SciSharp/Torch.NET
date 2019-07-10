@@ -22,8 +22,6 @@ namespace Torch
         /// </summary>
         public T[] GetData<T>()
         {
-            // note: this implementation works only for device CPU
-            // todo: implement for GPU
             var storage = PyObject.storage();
             int size = storage.size();
             if (size==0)
@@ -161,6 +159,7 @@ namespace Torch
             dynamic py = __self__.InvokeMethod("clamp", new PyTuple(), kwargs);
             return ToCsharp<Tensor>(py);
         }
+
     }
 
     public partial class Tensor<T> : Tensor
@@ -198,5 +197,6 @@ namespace Torch
 
         public new Tensor<T> t() => new Tensor<T>(self.InvokeMethod("t"));
 
+   
     }
 }

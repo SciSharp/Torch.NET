@@ -13,8 +13,10 @@ using Numpy.Models;
 
 namespace Torch
 {
-    public static partial class torch {
-        public static partial class nn {
+    public static partial class torch
+    {
+        public static partial class nn
+        {
             /// <summary>
             ///	A kind of Tensor that is to be considered a module parameter.<br></br>
             ///	
@@ -34,28 +36,28 @@ namespace Torch
             public partial class Parameter : Tensor
             {
                 // auto-generated class
-                
+
                 public Parameter(PyObject pyobj) : base(pyobj) { }
-                
+
                 public Parameter(PythonObject other) : base(other.PyObject as PyObject) { }
-                
+
                 public Parameter(Tensor data, bool? requires_grad = null) : base(data)
                 {
                     //auto-generated code, do not change
                     var nn = self.GetAttr("nn");
-                    var __self__=nn;
-                    var pyargs=ToTuple(new object[]
+                    var __self__ = nn;
+                    var pyargs = ToTuple(new object[]
                     {
                         data,
                     });
-                    var kwargs=new PyDict();
-                    if (requires_grad!=null) kwargs["requires_grad"]=ToPython(requires_grad);
+                    var kwargs = new PyDict();
+                    if (requires_grad != null) kwargs["requires_grad"] = ToPython(requires_grad);
                     dynamic py = __self__.InvokeMethod("Parameter", pyargs, kwargs);
-                    self=py as PyObject;
+                    self = py as PyObject;
                 }
-                
+
             }
         }
     }
-    
+
 }
