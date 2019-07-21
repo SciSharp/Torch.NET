@@ -10,10 +10,11 @@
     <PackageProjectUrl>https://github.com/SciSharpTorch.NET</PackageProjectUrl>
     <PackageIconUrl>https://github.com/SciSharp/Torch.NET/blob/master/docs/art/Torch.NET_icon128.png?raw=true</PackageIconUrl>
     <RepositoryUrl>https://github.com/SciSharp/Torch.NET/</RepositoryUrl>
-    <PackageTags>Torch, PyTorch, ML, AI,</PackageTags>
+    <PackageTags>Torch, PyTorch, ML, AI, Machine Learning, Data Science, Artificial Intelligence, Neural Network, Deep Learning, Tensor</PackageTags>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Description>Torch.NET brings the awesome Python package PyTorch to the .NET world. PyTorch offers Tensor computations and more with efficient GPU or multi-core CPU processing support and is to be considered one of the fundamental libraries for scientific computing, machine learning and AI in Python. Torch.NET empowers .NET developers to leverage PyTorch's extensive functionality including computational graphs with with multi-dimensional arrays, back-propagation, neural network implementations and many more via a compatible strong-typed API.</Description>
     <AssemblyVersion>0.1.0.0</AssemblyVersion>
+    <Version>3.7.1.1</Version>
   </PropertyGroup>
 
   <ItemGroup>
