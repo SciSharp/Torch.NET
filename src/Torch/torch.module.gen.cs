@@ -13,7 +13,7 @@ using Numpy.Models;
 
 namespace Torch
 {
-    public partial class torch
+    public static partial class torch
     {
         
         public static PyObject self => _lazy_self.Value;
