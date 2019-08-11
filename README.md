@@ -1,4 +1,4 @@
-![Logo](docs/art/Torch.NET_logo512.png)
+![Logo](docs/art/Torch.NET_logo512.png)<a href="http://scisharpstack.org"><img src="https://github.com/SciSharp/SciSharp/blob/master/art/scisharp_badge.png" width="200" height="200" align="right" /></a>
 
 **Torch.NET** brings the awesome [PyTorch](https://pytorch.org) library to the .NET world. It offers Tensor computations and Neural Network modules with efficient GPU or multi-core CPU processing support and is to be considered one of the fundamental libraries for scientific computing, machine learning and AI. Torch.NET empowers .NET developers to leverage PyTorch's extensive functionality including computational graphs with with multi-dimensional arrays, back-propagation, neural network implementations and many more via a compatible strong-typed API.
 
